@@ -1,0 +1,84 @@
+# Author Image pot file.
+# Copyright (C) 2009 Mesoconcepts <http://www.mesoconcepts.com>
+# This file is distributed under the same license as the Author Image package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 4.0\n"
+"Report-Msgid-Bugs-To: http://gigx.co.uk\n"
+"POT-Creation-Date: 2009-09-16 13:16+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: gigx-author-image-admin.php:19 gigx-author-image-admin.php:26
+#, php-format
+msgid "Author Images requires that your %s folder be writable by the server"
+msgstr ""
+
+#: gigx-author-image-admin.php:33 gigx-author-image-info.php:2
+#: gigx-author-image.php:81
+msgid "Author Image"
+msgstr ""
+
+#: gigx-author-image-admin.php:56
+msgid "Delete author image"
+msgstr ""
+
+#: gigx-author-image-admin.php:59
+msgid "This author image is not writable by the server."
+msgstr ""
+
+#: gigx-author-image-admin.php:68
+msgid "New Image"
+msgstr ""
+
+#: gigx-author-image-admin.php:78
+msgid "(jpg, jpeg or png)"
+msgstr ""
+
+#: gigx-author-image-admin.php:80
+msgid "(jpg)"
+msgstr ""
+
+#: gigx-author-image-admin.php:133
+msgid "Invalid File Type."
+msgstr ""
+
+#: gigx-author-image-info.php:3
+msgid ""
+"Adds authors images to your site, which individual users can configure in "
+"their profile. Your wp-content folder needs to be writable by the server."
+msgstr ""
+
+#: gigx-author-image.php:77
+msgid "Displays the post author's image"
+msgstr ""
+
+#: gigx-author-image.php:308
+msgid "Title:"
+msgstr ""
+
+#: gigx-author-image.php:322
+msgid "Display the author's bio"
+msgstr ""
+
+#: gigx-author-image.php:332
+msgid "Link to the author's posts"
+msgstr ""
+
+#: gigx-author-image.php:342
+msgid "This site has a single author"
+msgstr ""
+
+#: gigx-author-image.php:346
+msgid ""
+"Normally, this widget will only output something when in the loop or on "
+"singular posts or pages. Check the above checkbox if a single author has an "
+"image."
+msgstr ""
