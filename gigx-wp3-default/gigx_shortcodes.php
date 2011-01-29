@@ -169,6 +169,13 @@ function gigx_progressbar_generate_title($value,$label) {
 
 ## end progressbar ##
 
+# start box
+function gigx_box( $atts, $content = null ) {
+   return '<div class="gigx_box">' . $content . '</div>';
+}
+add_shortcode('box', 'gigx_box');	
+# end box
+
 # user reference
 function cam105_reference() {
     $ref= md5 ( $_SERVER['REMOTE_ADDR'].date("ymd") );

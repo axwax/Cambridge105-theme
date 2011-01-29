@@ -14,6 +14,7 @@ Tags: wordpress 3, custom header, custom background, fixed width, two columns, w
 	whose site you will find at http://www.gigx.co.uk/
 	
 Changelog: 
+0.5.10 added box shortcode to gigx_shortcodes.php and gigx_box style to style.php
 0.5.9 removed cheezcap, gigx_settings.php, added gigx_controlpanel.php, gigx_styles.php, theme options, posts styling, blockquote.gif, updated functions.php, header.php for dynamic stylesheets      
 0.5.8 added cheezcap options folder
 0.5.7 removed text-align: justify from #content
@@ -436,3 +437,16 @@ textarea#comment {
 .gallery-caption {
     padding: 0 5px;
 }
+
+/* gigx_box shortcode style */
+.gigx_box{
+    border: 1px solid #DADADA;
+    overflow: auto;
+    padding: 10px;
+    background: none repeat scroll 0 0 #F0F0F0;
+    
+}
+.gigx_box h2,.gigx_box h3,.gigx_box h4{
+margin-top:0px;
+}
+/* gigx_box shortcode style */
