@@ -2,7 +2,7 @@
 /*
 File Description: Theme Functions
 Built By: GIGX
-Theme Version: 0.5.9.9
+Theme Version: 0.5.9
 */
 
 //error_reporting(E_ALL);
@@ -13,7 +13,7 @@ if ( ! isset( $jquery_version ) ) $jquery_version='1.4.2'; // change number to l
 # include components
 include 'gigx_widgets.php';
 //include 'gigx_settings.php';
-include 'gigx_shortcodes.php';   
+include 'gigx_shortcodes.php';  
 
 # set up action hooks
 /** Tell WordPress to run gigx_setup() when the 'after_setup_theme' hook is run. */
@@ -50,6 +50,33 @@ function gigx_mime_types($mime_types){
 add_filter('upload_mimes', 'gigx_mime_types', 1, 1);
 
  
+
+######
+# theme options #
+######
+
+  require_once(TEMPLATEPATH . '/options/gigx_options.php'); 
+
+	function add_new_var_to_wp($public_query_vars) {
+		$public_query_vars[] = 'css';
+		return $public_query_vars;
+	}
+	function dynamic_css_display(){
+		$css = get_query_var('css');
+		if ($css == 'css'){
+			include_once (TEMPLATEPATH . '/gigx_style.php');
+			exit;
+		}
+	}
+	add_filter('query_vars', 'add_new_var_to_wp');
+	add_action('template_redirect', 'dynamic_css_display');
+
+# end theme options	
+   
+#################
+### functions ###
+#################
+
 # gigx_setup()
 # Sets up theme defaults and registers support for various WordPress features.  
 

@@ -2,7 +2,7 @@
 /*
 File Description: Shortcodes
 Built By: GIGX
-Theme Version: 0.5.9
+Theme Version: 0.5
 
 This needs sorting out - I just copied and pasted it in case we want to have our own shortcodes
 it isn't actually tested
@@ -173,17 +173,10 @@ function gigx_progressbar_generate_title($value,$label) {
 function gigx_box( $atts, $content = null ) {
    return '<div class="gigx_box">' . $content . '</div>';
 }
+
 add_shortcode('box', 'gigx_box');	
+
 # end box
-
-# user reference
-function cam105_reference() {
-    $ref= md5 ( $_SERVER['REMOTE_ADDR'].date("ymd") );
-    return '<strong>'.$ref.'</strong>'.' (calculated from md5 hash for ip:'.$_SERVER['REMOTE_ADDR'].' and date:'.date("y/m/d").')';
-}
-add_shortcode('cam105ref', 'cam105_reference');		  
-# end user reference
-
 
 function thmfooter_wp_link() {
     return '<a class="wp-link" href="http://WordPress.org/" title="WordPress" rel="generator">WordPress</a>';

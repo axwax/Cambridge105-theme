@@ -2,7 +2,7 @@
 Theme Name: GIGX Default
 Theme URI: http://gigx.co.uk/
 Description: The GIGX theme built by <a href="http://www.gigx.co.uk/">GIGX</a>.
-Version: 0.5.9
+Version: 0.5
 Author: Benjamin Rowe & Axel Minet
 Author URI: http://www.gigx.co.uk/
 Tags: wordpress 3, custom header, custom background, fixed width, two columns, widgets
@@ -449,4 +449,3 @@ textarea#comment {
 .gigx_box h2,.gigx_box h3,.gigx_box h4{
 margin-top:0px;
 }
-/* gigx_box shortcode style */

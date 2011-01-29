@@ -2,7 +2,7 @@
 /*
 File Description: The Sidebar
 Built By: GIGX
-Theme Version: 0.5.9
+Theme Version: 0.5
 */
 ?><div id="sidebar">
 	<div id="sidebar-right">   
