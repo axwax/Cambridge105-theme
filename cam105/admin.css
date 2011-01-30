@@ -1,0 +1,60 @@
+/* Admin Styles */
+
+#wpwrap{ background:#e2f59f; }
+#header-logo{ background-image:url('images/admin-logo.png')!important; }
+#wphead{ background:#83ae2c url('images/admin-bg.png') repeat-x!important; border-bottom:0px solid #abc2cc; height:52px; } 
+h1#site-heading a{ color:#deefeb; }
+#user_info { color:#deefeb; }
+#user_info a { color:#ffffff !important; font-weight:bold; } /* login/out */
+
+a, #adminmenu a, #poststuff #edButtonPreview, #poststuff #edButtonHTML, #the-comment-list p.comment-author strong a, #media-upload a.del-link, #media-items a.delete, .plugins a.delete, .ui-tabs-nav a {
+color: #486D25 !important;
+}
+
+#screen-options-link-wrap, #contextual-help-link-wrap, #screen-options-wrap, #contextual-help-wrap {
+background-color: #83ae2c;
+}
+
+#screen-meta a.show-settings {
+color: #ffffff !important;
+text-shadow: none !important;
+}
+
+.metabox-prefs, h1#site-heading a, #adminmenu a.menu-top, .widefat thead tr th, .widefat tfoot tr th, h3.dashboard-widget-title, h3.dashboard-widget-title span, h3.dashboard-widget-title small, .find-box-head {
+background: #83ae2c !important;
+color: #ffffff !important;
+}
+
+/* Links on Table Headers with background */
+.widefat thead tr th a, .widefat tfoot tr th a{
+color:#ffffff !important; 
+font-size:11px;
+font-weight:normal;
+}
+
+/* table headers */
+.widefat th {
+color: #112845 !important;
+text-shadow: none !important;
+}
+
+/*boxes & widget headers */
+.widget .widget-top, .postbox h3, .stuffbox h3{
+background: #83ae2c !important;
+color: #ffffff !important;
+text-shadow: none !important;
+font:13px/18px Georgia,"Times New Roman","Bitstream Charter",Times,serif !important;
+}
+
+.meta-box-sortables .postbox:hover .handlediv {
+background:url("images/menu-bits.png") no-repeat scroll left -111px transparent !important;
+}
+#adminmenu .wp-has-submenu:hover .wp-menu-toggle, #adminmenu .wp-menu-open .wp-menu-toggle {
+background:url("images/menu-bits.png") no-repeat scroll left -109px transparent !important;
+}
+#adminmenu li.wp-has-current-submenu.wp-menu-open .wp-menu-toggle, #adminmenu li.wp-has-current-submenu:hover .wp-menu-toggle {
+background:url("images/menu-bits.png") no-repeat scroll left -207px transparent !important;
+}
+
+
+
