@@ -135,24 +135,23 @@ a.negative:active {
 .small {font-size:.8em;margin-bottom:1.875em;line-height:1.5em;}
 
 #header #logo {
-padding-bottom: 1em;
+padding-bottom: 1em;   
 }
 
+/*
 #below-header-widgets{
  clear:both;
  width:100%;
  background:#fff; 
 padding-top: 10px;
 overflow: hidden;
-
 }
 #below-header-widgets .widget{
 width: 320px;
 float: left;
 margin-right:10px; 
-/*padding-left:10px; */
 }
-
+*/
 
 
 #page #main{
@@ -299,6 +298,7 @@ padding:3px 0 0 18px;
 }
 
 .header-menu ul {
+width: 1000px;
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -307,6 +307,7 @@ padding:3px 0 0 18px;
 }
 
 .header-menu ul ul {
+width: 100%;
 }
 
 .header-menu a {
@@ -317,16 +318,18 @@ padding:3px 0 0 18px;
 	padding: 7px;
 	text-decoration: none;
 	background-color: #222222; 
-  letter-spacing: 2px; 
+  letter-spacing: 2px;
+  height: 20px; 
 }
 
 .header-menu ul li {
-margin-left:0;
+/*margin-left:0; */
+
 }
 
 .header-menu ul ul li a {
 	font-size: 15px;
-	padding: 10px; 
+	padding: 7px 10px; 
 }
 
 .header-menu a:hover {
@@ -528,4 +531,59 @@ a.button1{
 }
 .shows .entry-utility{
 padding-top:10px;
+}
+
+
+/* adbox */
+.cam105-adbox{  
+    background-color:#486D25;
+    padding:10px; 
+    border-radius: 5px;
+    -moz-border-radius: 5px;     
+      	width:468px;
+      	height:60px;
+      	margin:10px auto 0 auto;
+}  
+
+.cam105-adbox-wrapper {
+  	margin: 0;  
+    padding: 0; 
+    text-align: left;
+}
+
+.cam105-adbox-wrapper p{
+    color:#FFFFFF;
+    font-weight:bold;
+    margin:0.75em 30px 0 0;
+}
+.cam105-adbox-wrapper a{
+margin:0;
+padding:0;
+}
+
+
+
+/* single slide styles */
+.cam105-adbox-wrapper .cam105-ad{
+    background-color:#83AE2C;
+    color:#333333;
+    /*margin-bottom:10px; */
+    /*overflow:hidden;*/
+    padding:0px 0px 0px 0px;
+    display:none;
+    border-radius: 5px 5px 0 0 ;
+    -moz-border-radius: 5px 5px 0 0; 
+    
+
+  background-color: #769d28;
+  background-image: -moz-linear-gradient(top, #769d28, #83AE2C); 
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #769d28),color-stop(1, #83AE2C)); 
+            filter:  progid:DXImageTransform.Microsoft.gradient(startColorStr='#769d28', EndColorStr='#83AE2C'); 
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#769d28', EndColorStr='#83AE2C')"; 
+
+    
+}
+
+.cam105-adbox-wrapper div.cam105-ad1 {
+  	display:block;
 }
