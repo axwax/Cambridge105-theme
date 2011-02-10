@@ -46,15 +46,15 @@ Theme Version: 0.5.9
   					<?php endif; ?>
         	</div> 
   
+ 
+        </div><!-- end of header div -->
         	<?php if ( is_active_sidebar( 'below_header_widgets' ) ) : // Widgets Below Header ?>
           	<div id="below-header-widgets-container">
               <div id="below-header-widgets">
             		<?php dynamic_sidebar('below_header_widgets'); ?>
             	</div>
             </div>  
-          <?php endif; ?> 
-        </div><!-- end of header div -->
-
+          <?php endif; ?>
         <div id="main">
           <?php wp_nav_menu( array( 'theme_location' => 'below-header', 'sort_column' => 'menu_order', 'fallback_cb' => 'header_menu', 'container_class' => 'header-menu' ) ); ?>
      

@@ -16,5 +16,14 @@ add_action('init', 'my_connection_types', 100);
       	add_image_size( 'shows-image', 200, 200, true );
       	add_image_size( 'shows-thumb', 75, 75, true );
       
+# change header image size
+add_filter('gigx_header_image_width','cam105_header_image_width');
+add_filter('gigx_header_image_height','cam105_header_image_height');
+function cam105_header_image_width($size){
+   return 510;
+}
+function cam105_header_image_height($size){
+   return 120;
+}
 
 ?>
