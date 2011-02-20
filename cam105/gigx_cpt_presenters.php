@@ -81,4 +81,58 @@ function add_presenters_help_text($contextual_help, $screen_id, $screen) {
   return $contextual_help;
 }
 
+add_action( 'admin_init', 'gigx_head' );
+function gigx_head() {
+		if( is_admin() ) {
+$url = get_stylesheet_directory_uri().'/';
+    //wp_enqueue_style( 'gigx-autosuggest', $url . '/js/autoSuggest.css' );
+    //wp_enqueue_script( 'gigx-autosuggest-js', $url . 'js/jquery.autoSuggest.packed.js', array( 'jquery' ), '1.4', false );
+wp_enqueue_script( 'suggest' );    
+    }
+}
+
+
+add_action('admin_head', 'my_action_javascript');
+
+function my_action_javascript() {
+
+
+
+?>
+<script type="text/javascript" >
+jQuery(document).ready(function($) {
+     //jQuery("input[type=text]").autoSuggest(ajaxurl, {minChars: 2, matchCase: true,extraParams: '&action=my_special_action'});
+	var data = {
+		action: 'my_special_action',
+		q: 'axwax'
+	};
+     
+     jQuery("input[type=text]").suggest(ajaxurl+ '?action=my_special_action');
+
+	// since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
+//	jQuery.post(ajaxurl, data, function(response) {
+//		alert('Got this from the server: ' + response);
+//	});
+});
+</script>
+<?php
+}
+
+
+add_action('wp_ajax_my_special_action', 'my_action_callback');
+
+function my_action_callback() {
+	global $wpdb; // this is how you get access to the database
+
+	//$q = $_POST['q'];
+   $q = $_GET['q'];
+	//$whatever += 10;
+	$q.='yo';
+
+        echo $q;
+
+	die(); // this is required to return a proper result
+}
+
+
 ?>
