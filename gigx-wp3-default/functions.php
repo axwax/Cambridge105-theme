@@ -41,6 +41,41 @@ function add_your_dashboard_widget() {
 }
 add_action('wp_dashboard_setup', 'add_your_dashboard_widget' );
 
+### 
+## no howdy
+
+// Customize:
+$nohowdy = "Logged in as ";
+
+// Hook in
+if (is_admin()) {
+	add_action('init', 'ozh_nohowdy_h');
+	add_action('admin_footer', 'ozh_nohowdy_f');
+}
+
+// Load jQuery
+function ozh_nohowdy_h() {
+	wp_enqueue_script('jquery');
+}
+
+// Modify
+function ozh_nohowdy_f() {
+global $nohowdy;
+echo <<<JS
+<script type="text/javascript">
+//<![CDATA[
+var nohowdy = "$nohowdy";
+jQuery('#user_info p')
+	.html(
+	jQuery('#user_info p')
+		.html()
+		.replace(/Howdy,/,nohowdy)
+	);
+//]]>
+JS;
+}
+## eo no howdy
+
 #####
 #upload filetypes
 function gigx_mime_types($mime_types){

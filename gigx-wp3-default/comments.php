@@ -1,95 +1,63 @@
-<?php // Do not delete these lines
-if (!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
-	die ('Please do not load this page directly. Thanks!');
-if ( post_password_required() ) { ?>
-	<p class="nocomments">This post is password protected. Enter the password to view comments.</p>
 <?php
-	return;
-}
+/*
+File Description: The template used to display Comments
+ * The area of the page that contains both current comments
+ * and the comment form.  The actual display of comments is
+ * handled by a callback to gigx_comment which is
+ * located in the functions.php file
+Built By: GIGX
+Theme Version: 0.5
+*/
+?>
 
-// add a microid to all the comments
-function comment_add_microid($classes) {
-	$c_email=get_comment_author_email();
-	$c_url=get_comment_author_url();
-	if (!empty($c_email) && !empty($c_url)) {
-		$microid = 'microid-mailto+http:sha1:' . sha1(sha1('mailto:'.$c_email).sha1($c_url));
-		$classes[] = $microid;
-	}
-	return $classes;	
-}
-add_filter('comment_class','comment_add_microid');
-
-// show the comments
-if ( have_comments() ) : ?>
-	<h4 id="comments"><?php comments_number('No Comments', 'One Comment', '% Comments' );?></h4>
-	<ul class="commentlist" id="singlecomments">
-	<?php wp_list_comments(array('avatar_size'=>48, 'reply_text'=>'Reply to this Comment')); ?>
-	</ul>
-	<div class="navigation">
-		<div class="alignleft"><?php previous_comments_link() ?></div>
-		<div class="alignright"><?php next_comments_link() ?></div>
-	</div>
- <?php else : // this is displayed if there are no comments so far ?>
-
-	<?php if ('open' == $post->comment_status) :
-		// If comments are open, but there are no comments.
-	else : 
-		// comments are closed 
+			<div id="comments">
+<?php if ( post_password_required() ) : ?>
+				<div class="nopassword">This post is password protected. Enter the password to view any comments.</div>
+			</div><!-- .comments -->
+<?php
+		return;
 	endif;
-endif; 
-
-if ('open' == $post-> comment_status) : 
-
-// show the form
 ?>
-<div id="respond"><h3><?php comment_form_title(); ?></h3>
 
-<div id="cancel-comment-reply">
-	<small><?php cancel_comment_reply_link(); ?></small>
-</div>
+<?php
+	// You can start editing here -- including this comment!
+?>
 
-<?php if ( get_option('comment_registration') && !$user_ID ) : ?>
+<?php if ( have_comments() ) : ?>
+			<h3 id="comments-title">
+<?php
+    printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 'gigx' ),
+        number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' );
+?>
+            </h3>
 
-<p>You must be <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php echo urlencode(get_permalink()); ?>">logged in</a> to post a comment.</p>
+<?php if ( get_comment_pages_count() > 1 ) : // are there comments to navigate through ?>
+			<div class="navigation">
+				<div class="nav-previous"><?php previous_comments_link( '&larr; Older Comments' ); ?></div>
+				<div class="nav-next"><?php next_comments_link( 'Newer Comments &rarr;' ); ?></div>
+			</div>
+<?php endif; // check for comment navigation ?>
 
-<?php else : ?>
+			<ol class="commentlist">
+				<?php wp_list_comments( array( 'callback' => 'gigx_comment' ) ); ?>
+			</ol>
 
-<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
+<?php if ( get_comment_pages_count() > 1 ) : // are there comments to navigate through ?>
+			<div class="navigation">
+				<div class="nav-previous"><?php previous_comments_link( '&larr; Older Comments' ); ?></div>
+				<div class="nav-next"><?php next_comments_link( 'Newer Comments &rarr;' ); ?></div>
+			</div>
+<?php endif; // check for comment navigation ?>
 
-<?php if ( $user_ID ) : ?>
+<?php else : // this is displayed if there are no comments so far ?>
 
-<p>Logged in as <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>.
-<a href="<?php echo get_option('siteurl'); ?>/wp-login.php?action=logout" title="Log out of this account">Logout &raquo;</a></p>
+<?php if ( comments_open() ) : // If comments are open, but there are no comments ?>
 
-<?php else : ?>
-
-<p><input type="text" name="author" id="author" value="<?php echo $comment_author; ?>" size="22" tabindex="1" />
-<label for="author"><small>Name <?php if ($req) echo "(required)"; ?></small></label></p>
-<p><input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="22" tabindex="2" />
-<label for="email"><small>Email <?php if ($req) echo "(required)"; ?></small></label></p>
-<p><input type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" size="22" tabindex="3" />
-<label for="url"><small>Website</small></label></p>
+<?php else : // if comments are closed ?>
 
 <?php endif; ?>
-
-<div>
-<?php comment_id_fields(); ?>
-<input type="hidden" name="redirect_to" value="<?php echo htmlspecialchars($_SERVER["REQUEST_URI"]); ?>" /></div>
-
-<p><small><strong>XHTML:</strong> You can use these tags: <?php echo allowed_tags(); ?></small></p>
-
-<p><textarea name="comment" id="comment" cols="10" rows="10" tabindex="4"></textarea></p>
-
-<?php if (get_option("comment_moderation") == "1") { ?>
- <p><small><strong>Please note:</strong> Comment moderation is enabled and may delay your comment. There is no need to resubmit your comment.</small></p>
-<?php } ?>
-
-<p><input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" /></p>
-<?php do_action('comment_form', $post->ID); ?>
-
-</form>
 <?php endif; ?>
-</div>
-<?php 
-endif;
-?>
+
+<?php comment_form(); ?>
+
+</div><!-- #comments -->
