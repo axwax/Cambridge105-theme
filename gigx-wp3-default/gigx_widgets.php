@@ -19,8 +19,7 @@ $widgetarray=	array(
                     'gigx_post_author',
                     'gigx_post_author_image',
                     'gigx_custom_title',
-                    'gigx_tabilizer',
-                    'gigx_post_categories',
+                    'gigx_post_categories'
                    );
 
 
