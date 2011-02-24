@@ -1,8 +1,8 @@
 <?php
-########################
-### gigx_post_author ###
-### v0.1             ###
-########################
+############################
+### gigx_post_categories ###
+### v0.1                 ###
+############################
 
 class gigx_post_categories extends WP_Widget {
 	/**
