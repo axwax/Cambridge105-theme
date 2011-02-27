@@ -24,7 +24,7 @@ if (!$fbimg) $fbimg= Array(get_bloginfo('stylesheet_directory').'/images/faceboo
     <title><?php wp_title(''); ?></title>
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/style.css" type="text/css" media="screen" />
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-    <link rel="image_src" href="<?php bloginfo('stylesheet_directory'); ?>/images/facebookdefault.gif" />
+    <link rel="image_src" href="<?php echo $fbimg[0]; ?>" />
     <?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
     <?php wp_head(); ?>
   </head>
