@@ -4,6 +4,17 @@ File Description: Default Header
 Built By: GIGX
 Theme Version: 0.5.9
 */
+global $wp_query;
+$post_id=$wp_query->post->ID;
+$is_single= $wp_query->is_single;
+
+# get image for facebook - look for featured image, then first attached image, then default
+if($is_single!=0){
+$fbimg='';
+$fbimg=wp_get_attachment_image_src (get_post_thumbnail_id($post_id),'facebook-thumb',false);
+if (!$fbimg) $fbimg=wp_get_attachment_image_src (gigx_find_image_attachment($post_id),'facebook-thumb',false);
+}
+if (!$fbimg) $fbimg= Array(get_bloginfo('stylesheet_directory').'/images/facebookdefault.gif');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
