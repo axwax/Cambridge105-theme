@@ -45,19 +45,19 @@ class gigx_post_categories extends WP_Widget {
 		
 		$categories = get_the_category_list(', ');
 
-
 		//$categories = false;		
-		# do not show categories and image on special pages
-		if ( $show_post_categories && !is_sticky() && ( is_single() || !is_singular() && !is_day() ) ) {
+		# do not show categories on special pages or if empty
+		if ( $categories && $show_post_categories && !is_sticky() && ( is_single() || !is_singular() && !is_day() ) ) {
         # construct categories      
-        if ($before_categories) $categories = $before_categories . ' ' . $categories;        				
+        if ($before_categories) $categories = $before_categories . ' ' . $categories; 
+
+    		echo '<span class="postcategories">' . $categories . '</span>';
+
+      echo "\n\r";               				
     }
 
 	
-			if ( $categories ) {
-    		echo '<span class="postcategories">' . $categories . '</span>';
-			}
-      echo "\n\r";			
+			
 	} # widget()
 	
 	
