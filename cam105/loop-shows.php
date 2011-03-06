@@ -75,10 +75,8 @@ Theme Version: 0.2
             $taxo_text = "";
             
             // Variables to store each of our possible taxonomy lists
-            // This one checks for an Operating System classification
-            //$shows_list = get_the_term_list( $post->ID, 'shows', '<strong>Presenter(s):</strong> ', ', ', '' );
-            // add check for missing taxonomies
-
+            
+            /* remove presenters list
             $presenters_array = get_posts( array(
               'suppress_filters' => false,
               'post_type' => 'presenters',
@@ -93,7 +91,7 @@ Theme Version: 0.2
                $presenters_list.=', ';
                $count++;
             endforeach; 
-
+            */
 
             
             $website_title=get_post_meta($post->ID, 'WebsiteTitle', True);
@@ -103,22 +101,27 @@ Theme Version: 0.2
                 $taxo_text .= "Website: $website_title<br />\n";
             }
 
+            /* remove presenters list
             $presenters_list=substr_replace($presenters_list,'',-2); //strip last ', '
             $post=$oldpost;
             if ($count<1)$presenters_list= '';
             else if ($count>1)$presenters_list= '<strong>Presenters:</strong> '.$presenters_list;
             else $presenters_list= '<strong>Presenter:</strong> '.$presenters_list; 
+            */
+            
             $frequency_list = get_the_term_list( $post->ID, 'frequency', '<strong>Show Frequency:</strong> ', ', ', '' );
             $genres_list = get_the_term_list( $post->ID, 'genres', '<strong>Genre(s):</strong> ', ', ', '' );
-            // Add OS list if this post was so tagged
+            /* removed presenters
+            // Add presenters list if this post was so tagged
             if ( '' != $presenters_list ) {
                 $taxo_text .= "<p>$presenters_list</p>\n";
             }
-            // Add RAM list if this post was so tagged
+            */
+            // Add frequency list if this post was so tagged
             if ( '' != $frequency_list ) {
                 $taxo_text .= "<p>$frequency_list</p>\n";
             }
-            // Add HD list if this post was so tagged
+            // Add genres list if this post was so tagged
             if ( '' != $genres_list ) {
                 //$taxo_text .= "$genres_list<br />\n";
             }
