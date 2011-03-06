@@ -4,6 +4,23 @@ File Description: Default Header
 Built By: GIGX
 Theme Version: 0.5.9
 */
+
+global $wp_query;
+$post_id=$wp_query->post->ID;
+$is_single= $wp_query->is_single;
+#if ($is_single!=0) echo "single!";
+#$post_parent=$wp_query->post->post_parent;
+#if ($post_parent!=0) echo "child!";
+#$children = get_pages('child_of='.$post_id);
+
+# get image for facebook - look for featured image, then first attached image, then default
+if($is_single!=0){
+$fbimg='';
+$fbimg=wp_get_attachment_image_src (get_post_thumbnail_id($post_id),'facebook-thumb',false);
+if (!$fbimg) $fbimg=wp_get_attachment_image_src (gigx_find_image_attachment($post_id),'facebook-thumb',false);
+}
+if (!$fbimg) $fbimg= Array(get_bloginfo('stylesheet_directory').'/images/facebookdefault.gif');
+	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
@@ -13,7 +30,7 @@ Theme Version: 0.5.9
     <title><?php wp_title(''); ?></title>
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/style.css" type="text/css" media="screen" />
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-    <link rel="image_src" href="<?php bloginfo('stylesheet_directory'); ?>/images/facebookdefault.gif" />
+    <link rel="image_src" href="<?php echo $fbimg[0]; ?>" />
     <?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
     <?php wp_head(); ?>
   </head>
@@ -34,14 +51,7 @@ Theme Version: 0.5.9
         <div id="header">
         	<div id="logo">
   					<?php
-            // Check if this is a post or page, if it has a thumbnail, and if it's a big one
-  					if ( is_singular() &&
-  							has_post_thumbnail( $post->ID ) &&
-  							( /* $src, $width, $height */ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'post-thumbnail') ) &&
-  							$image[1] >= HEADER_IMAGE_WIDTH ) :
-  						// Houston, we have a new header image!
-  						echo get_the_post_thumbnail( $post->ID, 'post-thumbnail' );
-  					elseif (get_header_image()) : ?>
+            if (get_header_image()) : ?>
   						<img src="<?php header_image(); ?>" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" alt="<?php bloginfo('show'); ?>" />
   					<?php endif; ?>
         	</div> 
