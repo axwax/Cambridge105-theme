@@ -13,9 +13,6 @@ Theme Version: 0.2
     <?php endif; ?>
        
     <div class="posts">
-<?php if ( function_exists('yoast_breadcrumb') ) {
-	yoast_breadcrumb('<p id="breadcrumbs">','</p>');
-} ?>
         <?php /* Do we have posts, then start the loop, otherwise display 404 */ ?>
       	<?php if (have_posts()) : ?>
           <?php /* Start the Loop */ ?>  	
@@ -49,7 +46,6 @@ Theme Version: 0.2
       $title_tag=$single_title_tag;
 		}		
 		if ( $title && $title_tag && !is_page()) {
-  		//echo'<h2 class="post-title"><a href="' . the_permalink() . '" rel="bookmark" title="Permanent Link to ' . the_title_attribute() . '">' . the_title() .'</a></h2>';
       echo'<' . $title_tag . ' class="post-title">' . $title . '</' . $title_tag . '>';
 		}
     echo "\n\r";  
@@ -108,6 +104,29 @@ Theme Version: 0.2
             else if ($count>1)$presenters_list= '<strong>Presenters:</strong> '.$presenters_list;
             else $presenters_list= '<strong>Presenter:</strong> '.$presenters_list; 
             */
+
+            #schedule test
+            $schedule_array = get_posts( array(
+              'suppress_filters' => false,
+              'post_type' => 'schedule',
+              'connected' => $post->ID,
+            ) );
+            $schedule_list='';
+            $oldpost=$post;
+            $count=0;
+            foreach($schedule_array as $post) :
+               setup_postdata($post);
+               $schedule_list.='<a href="'.get_permalink().'">'.get_the_title().'</a>';
+               $schedule_list.=', ';
+               $count++;
+            endforeach; 
+            $schedule_list=substr_replace($schedule_list,'',-2); //strip last ', '
+            $post=$oldpost;
+            if ($count<1)$schedule_list= '';
+            else if ($count>1)$schedule_list= '<strong>Schedule:</strong> '.$schedule_list;
+            else $schedule_list= '<strong>Schedule:</strong> '.$schedule_list; 
+
+
             
             $frequency_list = get_the_term_list( $post->ID, 'frequency', '<strong>Show Frequency:</strong> ', ', ', '' );
             $genres_list = get_the_term_list( $post->ID, 'genres', '<strong>Genre(s):</strong> ', ', ', '' );

@@ -1,6 +1,20 @@
 <?php
 # include custom post types
 include 'gigx_cpt_shows.php';
+include 'gigx_cpt_schedule.php';
+# posts to posts stuff #
+function my_connection_types() {
+    if ( !function_exists('p2p_register_connection_type') )
+        return;
+    $args=array('from'=>'gigx_schedule',
+                'to'=>'shows',
+                'title'=>'Select Show',
+                'reciprocal'=>false,
+                'box'=>'P2P_Box_Multiple');    
+    p2p_register_connection_type( $args );
+}
+add_action('init', 'my_connection_types', 100);
+
 
 /* presenters stuff
 include 'gigx_cpt_presenters.php';
