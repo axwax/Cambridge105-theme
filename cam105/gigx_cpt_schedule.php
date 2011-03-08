@@ -106,7 +106,7 @@ function gigx_schedule_edit_columns($columns) {
 
     $columns = array(
         "cb" => "<input type=\"checkbox\" />",
-        "gigx_col_ev_cat" => "Category",
+        "gigx_col_ev_show" => "Show",
         "gigx_col_ev_date" => "Dates",
         "gigx_col_ev_times" => "Times",
         "gigx_col_ev_thumb" => "Thumbnail",
@@ -125,6 +125,32 @@ function gigx_schedule_custom_columns($column) {
     switch ($column)
 
         {
+            case "gigx_col_ev_show":
+                // - show taxonomy terms -
+            $shows_array = get_posts( array(
+              'suppress_filters' => false,
+              'post_type' => 'shows',
+              'connected' => $post->ID,
+            ) );
+            //print_r($schedule_array);
+            foreach($shows_array as $show) :
+              $title= $show->post_title;
+              edit_post_link($title, '<p><strong>', '</strong></p>',$post->ID);
+              #setup_postdata($show);
+              #echo get_the_title();
+            endforeach;              
+              /*
+                $schedule_cats = get_the_terms($post->ID, "gigx_schedule_category");
+                $schedule_cats_html = array();
+                if ($schedule_cats) {
+                    foreach ($schedule_cats as $schedule_cat)
+                    array_push($schedule_cats_html, $schedule_cat->name);
+                    echo implode($schedule_cats_html, ", ");
+                } else {
+                _e('None', 'themeforce');;
+                }
+                */
+            break;
             case "gigx_col_ev_cat":
                 // - show taxonomy terms -
                 $schedule_cats = get_the_terms($post->ID, "gigx_schedule_category");

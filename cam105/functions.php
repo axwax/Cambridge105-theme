@@ -27,8 +27,8 @@ include 'gigx_cpt_schedule.php';
 function my_connection_types() {
     if ( !function_exists('p2p_register_connection_type') )
         return;
-    $args=array('from'=>'shows',
-                'to'=>'gigx_schedule',
+    $args=array('from'=>'gigx_schedule',
+                'to'=>'shows',
                 'title'=>'Select Show',
                 'reciprocal'=>false,
                 'box'=>'P2P_Box_Multiple');    
