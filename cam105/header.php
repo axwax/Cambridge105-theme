@@ -14,10 +14,10 @@ $is_single= $wp_query->is_single;
 #$children = get_pages('child_of='.$post_id);
 
 # get image for facebook - look for featured image, then first attached image, then default
-if($is_single!=0){
 $fbimg='';
-$fbimg=wp_get_attachment_image_src (get_post_thumbnail_id($post_id),'facebook-thumb',false);
-if (!$fbimg) $fbimg=wp_get_attachment_image_src (gigx_find_image_attachment($post_id),'facebook-thumb',false);
+if($is_single!=0){
+  $fbimg=wp_get_attachment_image_src (get_post_thumbnail_id($post_id),'facebook-thumb',false);
+  if (!$fbimg) $fbimg=wp_get_attachment_image_src (gigx_find_image_attachment($post_id),'facebook-thumb',false);
 }
 if (!$fbimg) $fbimg= Array(get_bloginfo('stylesheet_directory').'/images/facebookdefault.gif');
 	

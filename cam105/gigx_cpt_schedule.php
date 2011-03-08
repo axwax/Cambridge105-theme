@@ -49,18 +49,19 @@ $args = array(
     '_builtin' => false,
     '_edit_link' => 'post.php?post=%d', // ?
     'capability_type' => 'post',
-    'menu_icon' => get_bloginfo('stylesheet_directory').'/images/schedule_16.png',
+    'menu_icon' => get_bloginfo('stylesheet_directory').'/images/calendar-month.png',
+    'menu_position' => 6,
     'hierarchical' => false,
     'rewrite' => array( "slug" => "schedule" ),
-    'supports'=> array('title', 'thumbnail', 'excerpt', 'editor') ,
-    'show_in_nav_menus' => true,
-    'taxonomies' => array( 'gigx_schedule_category', 'post_tag')
+    'supports'=> array( 'thumbnail','editor') ,
+    'show_in_nav_menus' => true
 );
 
 register_post_type( 'gigx_schedule', $args);
 
 }
 
+/*
 // 2. Custom Taxonomy Registration (Schedule Entry Types)
 
 function create_schedule_category_taxonomy() {
@@ -94,7 +95,7 @@ function create_schedule_category_taxonomy() {
 }
 
 add_action( 'init', 'create_schedule_category_taxonomy', 0 );
-
+*/
 
 // 3. Show Columns
 

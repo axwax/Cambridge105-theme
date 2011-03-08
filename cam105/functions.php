@@ -1,13 +1,34 @@
 <?php
+
+
+
+/*
+if ( ! function_exists( 'unregister_post_type' ) ) :
+function unregister_post_type( $post_type ) {
+	global $wp_post_types;
+	if ( isset( $wp_post_types[ $post_type ] ) ) {
+		unset( $wp_post_types[ $post_type ] );
+		return true;
+	}
+	return false;
+}
+endif;
+
+unregister_post_type('gigx_schedule');
+unregister_post_type('schedule');
+unregister_post_type('shows');
+*/
+
 # include custom post types
 include 'gigx_cpt_shows.php';
 include 'gigx_cpt_schedule.php';
 # posts to posts stuff #
+
 function my_connection_types() {
     if ( !function_exists('p2p_register_connection_type') )
         return;
-    $args=array('from'=>'gigx_schedule',
-                'to'=>'shows',
+    $args=array('from'=>'shows',
+                'to'=>'gigx_schedule',
                 'title'=>'Select Show',
                 'reciprocal'=>false,
                 'box'=>'P2P_Box_Multiple');    

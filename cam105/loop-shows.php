@@ -94,7 +94,7 @@ Theme Version: 0.2
             //print_r($website_title);
             //the_meta();
             if ( '' != $website_title ) {
-                $taxo_text .= "Website: $website_title<br />\n";
+                $taxo_text .= "<p>Website: $website_title</p>\n";
             }
 
             /* remove presenters list
@@ -108,15 +108,20 @@ Theme Version: 0.2
             #schedule test
             $schedule_array = get_posts( array(
               'suppress_filters' => false,
-              'post_type' => 'schedule',
+              'post_type' => 'gigx_schedule',
               'connected' => $post->ID,
             ) );
+            //print_r($schedule_array);
             $schedule_list='';
             $oldpost=$post;
             $count=0;
             foreach($schedule_array as $post) :
                setup_postdata($post);
-               $schedule_list.='<a href="'.get_permalink().'">'.get_the_title().'</a>';
+               $start=get_post_custom_values("gigx_schedule_startdate");
+               $end=get_post_custom_values("gigx_schedule_enddate");
+               $schedtime= date('jS F Y g:i a',$start[0]).'-'.date('g:i a',$end[0]);
+                //echo date('jS F Y',$start[0]); 
+               $schedule_list.='<a href="'.get_permalink().'"><strong>'.$schedtime.'</strong> - '.get_the_title().'</a>';
                $schedule_list.=', ';
                $count++;
             endforeach; 
@@ -124,8 +129,10 @@ Theme Version: 0.2
             $post=$oldpost;
             if ($count<1)$schedule_list= '';
             else if ($count>1)$schedule_list= '<strong>Schedule:</strong> '.$schedule_list;
-            else $schedule_list= '<strong>Schedule:</strong> '.$schedule_list; 
-
+            else $schedule_list= '<strong>Next Show:</strong> '.$schedule_list; 
+            if ( '' != $schedule_list ) {
+                $taxo_text .= "<p>$schedule_list</p>\n";
+            }
 
             
             $frequency_list = get_the_term_list( $post->ID, 'frequency', '<strong>Show Frequency:</strong> ', ', ', '' );
