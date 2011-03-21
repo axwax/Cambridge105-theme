@@ -108,4 +108,49 @@ function unregister_default_wp_widgets() {
     unregister_widget('WP_Widget_Tag_Cloud');
 }
 add_action('widgets_init', 'unregister_default_wp_widgets', 1);
+
+# custom xml-rpc handler
+add_filter('xmlrpc_methods', 'gigx_xmlrpc_methods');
+function gigx_xmlrpc_methods($methods)
+{
+	$methods['cam105Shows'] = 'cam105_shows';
+	return $methods;
+}
+
+function cam105_shows($args)
+{
+	// Parse the arguments, assuming they're in the correct order
+	$username	= $args[0];
+	$password	= $args[1];
+	$data = $args[2];
+
+	global $wp_xmlrpc_server;
+
+	// Let's run a check to see if credentials are okay
+	if ( !$user = $wp_xmlrpc_server->login($username, $password) ) {
+		return $wp_xmlrpc_server->error;
+	}
+
+	// Let's gather the title and custom fields
+	// At a later stage we'll send these via XML-RPC
+	$title = $data["title"];
+	$custom_fields = $data["custom_fields"];
+
+	// Format the new post
+	$new_post = array(
+		'post_status' => 'draft',
+		'post_title' => $title,
+		'post_type' => 'shows',
+	);
+
+	// Run the insert and add all meta values
+	$new_post_id = wp_insert_post($new_post);
+	foreach($custom_fields as $meta_key => $values)
+		foreach ($values as $meta_value)
+			add_post_meta($new_post_id, $meta_key, $meta_value);
+
+	// Just output something ;)
+	return "Done!";
+}
+
 ?>
