@@ -36,8 +36,8 @@
             'actcat' => false, // get posts current category
             'cats' => '4',  // Categories to get posts (post IDs, comma-separated)
             'cusfield' => '', // custom field name of thumbnail image
-            'w' => 64,  // image width
-            'h' => 64, // image height
+            'width' => 64,  // image width
+            'height' => 64, // image height
             'firstimage' => true,  // get first image of post content
             'showauthor' => 0, // Show post author?
             'showtime' => 1,   // show post date/time?
@@ -49,15 +49,15 @@
 
         echo '<div class="cambridgenews widget_gigxrecentposts"><h2 class="widget-title">Cambridge News</h2>';     
         $atts['shownum']=1;
-        $atts['w']=200;
-        $atts['h']=200;
+        $atts['width']=200;
+        $atts['height']=200;
         $atts['excerpt']=600;
         $atts['excerptlengthwords']=60;   
         gigx_recentposts($atts);
-
+        
         $atts['shownum']=2;
-        $atts['w']=64;
-        $atts['h']=64;
+        $atts['width']=64;
+        $atts['height']=64;
         $atts['excerpt']=300;
         $atts['excerptlengthwords']=30;        
         $atts['postoffset']=1;
@@ -67,8 +67,8 @@
         echo '<div class="stationnews widget_gigxrecentposts"><h2 class="widget-title">Station News</h2>';
         $atts['cats']=30;
         $atts['shownum']=1;
-        $atts['w']=200;
-        $atts['h']=200;
+        $atts['width']=200;
+        $atts['height']=200;
         $atts['excerpt']=600;
         $atts['excerptlengthwords']=60;        
         $atts['postoffset']=0;
