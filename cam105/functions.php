@@ -91,6 +91,10 @@ function gigx_find_image_attachment($post_id=0){
 ################
 # untesteds stuff:
 #
+
+# remove admin bar
+add_filter('show_admin_bar', '__return_false');
+
 # remove default widgets
 // unregister all default WP Widgets
 function unregister_default_wp_widgets() {
