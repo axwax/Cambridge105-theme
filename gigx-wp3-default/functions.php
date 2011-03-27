@@ -13,7 +13,8 @@ if ( ! isset( $jquery_version ) ) $jquery_version='1.4.2'; // change number to l
 # include components
 include 'gigx_widgets.php';
 //include 'gigx_settings.php';
-include 'gigx_shortcodes.php';   
+include 'gigx_shortcodes.php';
+include 'gigx_editor_buttons.php';   
 
 # set up action hooks
 /** Tell WordPress to run gigx_setup() when the 'after_setup_theme' hook is run. */
