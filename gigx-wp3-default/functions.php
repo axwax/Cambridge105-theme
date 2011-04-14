@@ -54,7 +54,7 @@ add_filter('upload_mimes', 'gigx_mime_types', 1, 1);
 ######
 # theme options #
 ######
-
+/*
   require_once(TEMPLATEPATH . '/options/gigx_options.php'); 
 
 	function add_new_var_to_wp($public_query_vars) {
@@ -70,7 +70,7 @@ add_filter('upload_mimes', 'gigx_mime_types', 1, 1);
 	}
 	add_filter('query_vars', 'add_new_var_to_wp');
 	add_action('template_redirect', 'dynamic_css_display');
-
+*/
 # end theme options	
    
 #################
