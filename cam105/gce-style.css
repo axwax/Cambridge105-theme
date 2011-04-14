@@ -181,7 +181,7 @@
 	background-color:#FFFFFF;
 	border:1px solid #333333;
 	text-align:left;
-	max-width:300px;
+	max-width:400px;
 }
 
 .gce-event-info .gce-tooltip-title{ /* 'Events on...' text */
@@ -222,3 +222,9 @@
 .entry .gce-page-list li:before, #sidebar .gce-widget-list ul li:before {
 	content:none;
 }
+
+
+.gce-qtip, .gce-qtip .qtip-wrapper{
+	width:400px !important;
+}
+ 
