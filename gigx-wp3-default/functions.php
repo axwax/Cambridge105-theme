@@ -2,13 +2,14 @@
 /*
 File Description: Theme Functions
 Built By: GIGX
-Theme Version: 0.5.9.9
+Theme Version: 0.6.alpha
 */
 
 //error_reporting(E_ALL);
+
 # default variables
-if ( ! isset( $content_width ) ) $content_width = 640; //not used yet
-if ( ! isset( $jquery_version ) ) $jquery_version='1.4.2'; // change number to latest version
+if ( ! isset( $content_width ) ) $content_width = 640; 
+if ( ! isset( $jquery_version ) ) $jquery_version='1.4.4'; // change number to latest version
 
 # include components
 include 'gigx_widgets.php';
@@ -31,16 +32,45 @@ function gigx_admin_style() {
 }
 add_action('admin_head', 'gigx_admin_style');
 
-function your_dashboard_widget() {
+####
+# Dashboard Widget
+add_action('wp_dashboard_setup', 'gigx_dashboard_widgets' );
+function gigx_dashboard_widgets() {
+	wp_add_dashboard_widget('gigx_dashboard_widget', 'GIGX Help and Support', 'gigx_dashboard_widget_function');
+	
+	// Globalize the metaboxes array, this holds all the widgets for wp-admin
 
- # Widget content goes here #
-echo 'yay! dashboard widget!';
+	global $wp_meta_boxes;
+  # remove useless widgets
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
+	
+	// Get the regular dashboard widgets array 
+	// (which has our new widget already but at the end)
+
+	$normal_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
+	
+	// Backup and delete our new dashboard widget from the end of the array
+
+	$example_widget_backup = array('gigx_dashboard_widget' => $normal_dashboard['gigx_dashboard_widget']);
+	unset($normal_dashboard['gigx_dashboard_widget']);
+
+	// Merge the two arrays together so our widget is at the beginning
+
+	$sorted_dashboard = array_merge($example_widget_backup, $normal_dashboard);
+
+	// Save the sorted array back into the original metaboxes 
+
+	$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
+} 
+# Display a default dashboard widget if there isn't one defined in child theme
+if (!function_exists ('gigx_dashboard_widget_function')){
+  function gigx_dashboard_widget_function(){
+    echo "yay";
+  }   
 }
 
-function add_your_dashboard_widget() {
-  wp_add_dashboard_widget( 'your_dashboard_widget', 'my first dashboard widget', 'your_dashboard_widget' );
-}
-add_action('wp_dashboard_setup', 'add_your_dashboard_widget' );
 
 ### 
 ## no howdy
@@ -136,7 +166,7 @@ if ( ! function_exists('gigx_setup') ):
       	// Your changeable header business starts here
       	define( 'HEADER_TEXTCOLOR', '' );
       	// No CSS, just IMG call. The %s is a placeholder for the theme template directory URI.
-      	define( 'HEADER_IMAGE', '%s/images/headers/default.png' );
+      	define( 'HEADER_IMAGE', apply_filters( 'gigx_header_image', '%s/images/headers/default.png' ) );
       
       	// The height and width of your custom header. You can hook into the theme's own filters to change these values.
       	// Add a filter to gigx_header_image_width and gigx_header_image_height to change these values.
