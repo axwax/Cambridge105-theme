@@ -46,6 +46,12 @@ function gigx_dashboard_widgets() {
 	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
 	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
 	
+	#remove plugin specific dashboard widgets
+  unset($wp_meta_boxes['dashboard']['normal']['core']['powerpress_dashboard_news']);
+	unset($wp_meta_boxes['dashboard']['normal']['core']['powerpress_dashboard_stats']);
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
+	unset($wp_meta_boxes['dashboard']['side']['core']['yoast_db_widget']);	                                                                	
+	
 	// Get the regular dashboard widgets array 
 	// (which has our new widget already but at the end)
 
