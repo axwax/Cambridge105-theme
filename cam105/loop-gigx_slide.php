@@ -5,7 +5,6 @@ Built By: GIGX
 Theme Version: 0.5
 */
 ?>
-
   	<?php wp_nav_menu( array( 'theme_location' => 'above-posts', 'sort_column' => 'menu_order', 'fallback_cb' => 'header_menu', 'container_class' => 'header-menu' ) ); ?>
     <?php if ( is_active_sidebar( 'above_posts_widgets' ) ) : // Widgets Above Posts ?>
     	<div id="above-posts-widgets">
@@ -27,7 +26,15 @@ Theme Version: 0.5
                 		<?php dynamic_sidebar('above_entry_widgets'); ?>
                 	</div>  
                 <?php endif; ?>
-        				<div class="entry"> 
+                <div class="entry">
+                <?php
+                $img=wp_get_attachment_image_src (get_post_thumbnail_id(get_the_ID()),'gigx-slide',false);
+  			        
+
+                echo '<div class="wp-caption alignleft" style="width: 310px"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$p->post_title.'"/><p class="wp-caption-text">'.get_the_title().'</p></div>';
+  			                
+                
+                ?> 
         					<?php the_content('<p>Read the rest of this entry &raquo;</p>'); ?>
         				</div>
 

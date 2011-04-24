@@ -9,7 +9,7 @@ get_header();
 ?>
 
 	<div id="content">
-    <?php get_template_part( 'loop', 'index' ); ?>
+    <?php get_template_part( 'loop', 'gigx_slide' ); ?>
 	</div>
 
  
