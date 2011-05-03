@@ -628,3 +628,7 @@ a.button1{
 .shows .entry-utility{
 padding-top:10px;
 }
+
+/* dirty hack for mail form <br/> */
+#mailup form br {display:none;}
+#mailup h2 {border:none;}
