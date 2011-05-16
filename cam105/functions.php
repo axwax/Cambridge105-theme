@@ -157,4 +157,71 @@ function cam105_shows($args)
 	return "Done!";
 }
 
+
+### uncheck comments tickbox by default:
+
+function page_comments_off_please() {
+//print_r($_REQUEST);
+global $pagenow;
+//echo"page:$pagenow";
+
+	// This function checks if you are creating a new page and turns off
+	// the allow comments / allow pingbacks check boxes.
+	// it's a simple plugin, and my first.  Enjoy!
+	// //
+# axmod: we are adding a new page,post or custom post
+if ($pagenow=="post-new.php"){
+		// I couldn't fig up a hook that would give me $post object,
+		// so a crude circumstantial work-around was to use the fact 
+		// that wordpress sets the request var post_type = page on
+		// new page creation.  
+		// 
+		// This may be triggered in other places, but the javascript 
+		// will simply fail in that case.  Hopefully with some grace...
+		// //
+		# axmod: only disable for posts (no post_type set) and pages
+		if (($_REQUEST['post_type'] == "page") || (!isset($_REQUEST['post_type']))) {  
+			// A simple javascript unchecks the boxes for you.
+			// I would have prefered something more php-oriented,
+			// but I just coudln't find the right hooks to make it
+			// happen reliably.  
+			// //
+			$fixit = <<<ENDIT
+				<script>
+					if (document.post) {
+						var the_comment = document.post.comment_status;
+						var the_ping = document.post.ping_status;
+						if (the_comment && the_ping) {
+							the_comment.checked = false;
+							the_ping.checked = false;
+						}
+					}									
+				</script>
+ENDIT;
+				echo $fixit;
+		}
+	}
+}
+
+add_action ( 'admin_footer', 'page_comments_off_please' );
+
+
+### Default editor content
+
+add_filter( 'default_content', 'gigx_editor_content' );
+
+function gigx_editor_content( $content ) {
+  global $pagenow;
+	if ($pagenow=="post-new.php"){
+	  if ((!isset($_REQUEST['post_type']))){  //only for pages
+      $content = "<h2>This is the headline</h2>\n\r
+                  <strong>This is the blurb</strong>\n\r
+                  [[insert image here]]\n\r
+                  text to go by the side of the image.\n\r
+                  <!--more-->\n\r
+                  This text only gets displayed in single view.";
+    }
+  }
+	return $content;
+}
 ?>
