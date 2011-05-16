@@ -17,7 +17,8 @@ $widgetarray=	array(
                     'gigx_post_title',
                     'gigx_post_date',
                     'gigx_post_author',
-                    'gigx_post_author_image',
+#                    'gigx_post_author_image',
+                    'gigx_banner_widget',
                     'gigx_custom_title',
                     'gigx_post_categories'
                    );
