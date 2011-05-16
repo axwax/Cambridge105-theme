@@ -105,35 +105,6 @@ Theme Version: 0.2
             else $presenters_list= '<strong>Presenter:</strong> '.$presenters_list; 
             */
 
-            #schedule test
-            $schedule_array = get_posts( array(
-              'suppress_filters' => false,
-              'post_type' => 'gigx_schedule',
-              'connected' => $post->ID,
-            ) );
-            //print_r($schedule_array);
-            $schedule_list='';
-            $oldpost=$post;
-            $count=0;
-            foreach($schedule_array as $post) :
-               setup_postdata($post);
-               $start=get_post_custom_values("gigx_schedule_startdate");
-               $end=get_post_custom_values("gigx_schedule_enddate");
-               $schedtime= date('jS F Y g:i a',$start[0]).'-'.date('g:i a',$end[0]);
-                //echo date('jS F Y',$start[0]); 
-               $schedule_list.='<a href="'.get_permalink().'"><strong>'.$schedtime.'</strong> - '.get_the_title().'</a>';
-               $schedule_list.=', ';
-               $count++;
-            endforeach; 
-            $schedule_list=substr_replace($schedule_list,'',-2); //strip last ', '
-            $post=$oldpost;
-            if ($count<1)$schedule_list= '';
-            else if ($count>1)$schedule_list= '<strong>Schedule:</strong> '.$schedule_list;
-            else $schedule_list= '<strong>Next Show:</strong> '.$schedule_list; 
-            if ( '' != $schedule_list ) {
-                $taxo_text .= "<p>$schedule_list</p>\n";
-            }
-
             
             $frequency_list = get_the_term_list( $post->ID, 'frequency', '<strong>Show Frequency:</strong> ', ', ', '' );
             $genres_list = get_the_term_list( $post->ID, 'genres', '<strong>Genre(s):</strong> ', ', ', '' );
@@ -163,6 +134,39 @@ Theme Version: 0.2
             <?
             } // endif
             
+
+#schedule
+            #schedule test
+            $schedule_array = get_posts( array(
+              'suppress_filters' => false,
+              'post_type' => 'gigx_schedule',
+              'connected' => $post->ID,
+            ) );
+            //print_r($schedule_array);
+            $schedule_list='';
+            $oldpost=$post;
+            $count=0;
+            foreach($schedule_array as $post) :
+               //print_r($post);
+               setup_postdata($post);
+               $start=get_post_custom_values("gigx_schedule_startdate");
+               $end=get_post_custom_values("gigx_schedule_enddate");
+               $schedtime= date('jS F Y g:ia',$start[0]).' - '.date('g:ia',$end[0]);
+                //echo date('jS F Y',$start[0]); 
+               $schedule_list.='<h3><a href="'.get_permalink().'"><strong>'.$schedtime.'</strong> - '.$title.'</a></h3>';
+               $schedule_list.='<p>'.get_the_excerpt().'</p>';
+               $schedule_list.=', ';
+               $count++;
+            endforeach; 
+            $schedule_list=substr_replace($schedule_list,'',-2); //strip last ', '
+            $post=$oldpost;
+            if ($count<1)$schedule_list= '';
+            else if ($count>1)$schedule_list= '<strong>Schedule:</strong> '.$schedule_list;
+            else $schedule_list= '<strong>Next Show:</strong> '.$schedule_list; 
+            if ( '' != $schedule_list ) {
+                echo '<div class="schedule_entry">'.$schedule_list.'</div>';
+            }
+#schedule
                 
                 
                 
