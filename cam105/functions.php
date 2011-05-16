@@ -224,4 +224,12 @@ function gigx_editor_content( $content ) {
   }
 	return $content;
 }
+
+# style select box for editor
+/* Custom CSS styles on WYSIWYG Editor */
+  function gigx_editor_styles_function ($init) {
+    $init['theme_advanced_buttons2_add_before'] = 'styleselect';
+    $init['theme_advanced_styles'] = 'Box=cam105_box';
+    return $init;
+  }
 ?>
