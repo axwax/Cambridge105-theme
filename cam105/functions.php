@@ -227,9 +227,17 @@ function gigx_editor_content( $content ) {
 
 # style select box for editor
 /* Custom CSS styles on WYSIWYG Editor */
+/* replaced by filter below
   function gigx_editor_styles_function ($init) {
     $init['theme_advanced_buttons2_add_before'] = 'styleselect';
     $init['theme_advanced_styles'] = 'Box=cam105_box';
     return $init;
   }
+*/
+add_filter('gigx_editor_styles','cam105_editor_styles');
+function cam105_editor_styles($styles){
+    $styles.=',105Box=cam105_box';
+    return $styles;
+}
+  
 ?>
