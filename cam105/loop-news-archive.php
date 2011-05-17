@@ -74,70 +74,8 @@
         $atts['postoffset']=0;
         gigx_recentposts($atts);
         echo '</div>';
-        
-        if (have_posts()) : ?>
-          <?php /* Start the Loop */ ?>  	
-      		<?php while (have_posts()) : the_post(); ?>
- 		
-        			<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
-            
-          <?php
-          $title = the_title('', '', false);
-    			$permalink = apply_filters('the_permalink', get_permalink());
-    			echo '<a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '">';
-          if(has_post_thumbnail()) {
-	           the_post_thumbnail('shows-thumb',array('class'	=> "alignleft",'alt'	=> esc_attr($title), 'title'	=> esc_attr($title)));
-          } else {
-	           echo '<img src="'.get_bloginfo("template_url").'/images/shows-default.png" />';
-          }
-          echo'</a>'; 
-          ?>
-
-              	<?php if ( is_active_sidebar( 'above_entry_widgets' ) ) : // Nothing here by default and design ?>
-                	<div class="above-entry-widgets">
-                		<?php dynamic_sidebar('above_entry_widgets'); ?>
-                	</div>  
-                <?php endif; ?>
-        				<div class="entry"> 
-        					<?php 
-                  echo get_the_term_list( $post->ID, 'genres', '', ', ', '' );
-                  the_content('more &raquo;');
-                  echo get_the_term_list( $post->ID, 'frequency', '', ', ', '' );
-                   ?>    
-        				</div>
-
-              <?php if(defined ('CUSTOM_POST_TYPE') && is_singular(CUSTOM_POST_TYPE)) {
-                //echo CUSTOM_POST_TYPE;
-                  get_template_part(CUSTOM_POST_TYPE);
-                }
-              ?>
-        				
-        		<!--		<p class="postmetadata"><?php the_tags('Tags: ', ', ', '<br />'); ?> Posted by <?php if (function_exists('author_exposed')) {author_exposed(get_the_author_meta('display_name'));}   ?> in <?php the_category(', ') ?> | <?php edit_post_link('Edit', '', ' | '); ?>  <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;', '% Comments &#187;'); ?></p>  -->
-              	<?php if ( is_active_sidebar( 'below_entry_widgets' ) ) : // Nothing here by default and design ?>
-                    <div class="below-entry-widgets">
-                		  <?php dynamic_sidebar('below_entry_widgets'); ?>
-                  	</div>
-                <?php endif; ?>  
-        			</div>
-    
-               <?php comments_template( '', true ); ?> 			
-      		<?php endwhile; ?>
-              
-      	<?php else : ?>
-      	
-      		<h2 class="center">Not Found</h2>
-      		<p class="center">Sorry, but you are looking for something that isn't here.</p>
-      		<?php get_search_form(); ?>
-      
-      	<?php endif; ?>
-    </div><!-- end of posts div -->
-
-    <?php /* Display navigation to next/previous pages when applicable */ ?>
-    	<div id="nav-below" class="navigation">
-    		<div class="nav-previous"><?php previous_posts_link(); ?></div>
-    		<div class="nav-next"><?php next_posts_link(); ?></div>
-    	</div><!-- #nav-above -->
-  
+         ?>
+    </div><!-- end of posts div -->  
 
   	<?php if ( is_active_sidebar( 'below_posts_widgets' ) ) : // Widgets Below Posts ?>
     	<div id="below-posts-widgets">
