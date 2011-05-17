@@ -6,7 +6,7 @@ File Description: The template used to display Comments
  * handled by a callback to gigx_comment which is
  * located in the functions.php file
 Built By: GIGX
-Theme Version: 0.5
+Theme Version: 0.5.11
 */
 ?>
 

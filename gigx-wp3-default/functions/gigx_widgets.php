@@ -2,25 +2,24 @@
 /*
 File Description: Widgets Collection
 Built By: GIGX
-Theme Version: 0.5.9.1
+Theme Version: 0.5.11
 */
 
 ####################
 ### GIGX widgets ###
 ### v0.2         ###
 ####################
-//error_reporting(E_ALL);
+
 # widgets to load / register
 
 $widgetarray=	array(
-                    'gigx_page_title', 
-                    'gigx_post_title',
-                    'gigx_post_date',
-                    'gigx_post_author',
-#                    'gigx_post_author_image',
                     'gigx_banner_widget',
                     'gigx_custom_title',
-                    'gigx_post_categories'
+                    'gigx_page_title', 
+                    'gigx_post_author',
+                    'gigx_post_categories',
+                    'gigx_post_date',
+                    'gigx_post_title'
                    );
 
 

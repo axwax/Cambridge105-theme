@@ -2,7 +2,7 @@
 /*
 File Description: Widgets Collection
 Built By: GIGX
-Theme Version: 0.5.9
+Theme Version: 0.5.11
 
 
 This needs sorting out - I just copied and pasted it in case we want to have our own theme settings

@@ -1,6 +1,9 @@
 <?php
-# gigx_editor_buttons.php
-# custom buttons for shortcodes in TinyMCE editor
+/*
+File Description: custom buttons for shortcodes in TinyMCE editor
+Built By: GIGX
+Theme Version: 0.5.11
+*/
 
 /**
 Hook into WordPress
@@ -21,6 +24,7 @@ function gigx_buttons() {
    if ( get_user_option('rich_editing') == 'true' ) {
      add_filter( 'mce_external_plugins', 'gigx_add_plugin' );
      add_filter( 'mce_buttons', 'gigx_register_button' );
+
    }
 
 }
@@ -49,7 +53,10 @@ function gigx_add_plugin( $plugin_array ) {
 if (!function_exists (gigx_editor_styles_function)){
   function gigx_editor_styles_function ($init) {
     $init['theme_advanced_buttons2_add_before'] = 'styleselect';
-    $init['theme_advanced_styles'] = 'Box=gigx_box';
+
+    $default_styles='Box=gigx_box';
+    $styles=apply_filters( 'gigx_editor_styles', $default_styles ) ;
+    $init['theme_advanced_styles'] = $styles;
     return $init;
   }
 }
