@@ -173,6 +173,30 @@ padding-bottom:10px;
     padding:0;
 }
 
+.wp_bannerize {
+    background-color:#486D25;
+    padding:10px; 
+    margin: 0; 
+    border-radius: 5px;
+    -moz-border-radius: 5px;    
+    -moz-box-shadow: 5px 5px 5px #333; 
+    -webkit-box-shadow: 5px 5px 5px #333; 
+    box-shadow: 5px 5px 5px #333;
+    background-image: -moz-linear-gradient(top, #445533, #56822c); 
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #445533),color-stop(1, #56822c));      
+    width:468px;
+    height:60px;
+    text-align: left;
+    display:block;      	
+}
+.wp_bannerize a{
+    margin:0;
+    padding:0;
+}
+.wp_bannerize img{
+    margin:0;
+    padding:0;
+}
 
 #page #main{
   background-color:#fff; 
