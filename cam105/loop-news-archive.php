@@ -16,10 +16,106 @@
     <div class="posts">
 
         <?php /* Do we have posts, then start the loop, otherwise display 404 */ ?>
-      	<?php query_posts( array('post_type'=> 'post','posts_per_page'=>6));
+      	<?php 
+        
+        /*
+        
+        function gigx_get_cat_id($slug){
+        $theCatId = get_term_by( 'slug', $slug, 'category' );
+        return $theCatId->term_id;
+        }
+        
+        
+        query_posts( array('post_type'=> 'post','posts_per_page'=>6));
       	// set $more to 0 in order to only get the first part of the post
         global $more;
         $more = 0;
+        */
+        /*
+        $args = array(
+            'numberposts'     => 3,
+            
+            'category'        => ,
+            
+            'order'           => 'DESC',
+            'include'         => ,
+            'exclude'         => ,
+            'meta_key'        => ,
+            'meta_value'      => ,
+            'post_type'       => 'post',
+            'post_mime_type'  => ,
+            'post_parent'     => ,
+            'post_status'     => 'publish' );
+         */   
+        $args = array('numberposts'=>3, 'offset' => 0,'orderby' => 'post_date', 'order'=>'DESC','post_status' => 'publish');    
+        $args['category_name']='news';
+        $args['numberposts']=1;
+        
+        $news=get_posts( $args );
+        //print_r($news);
+        foreach($news as $post) : setup_postdata($post); ?>
+          <div <?php post_class() ?> id="post-<?php the_ID(); ?>">
+            
+            <?php
+            $img=wp_get_attachment_image_src (get_post_thumbnail_id(get_the_ID()),'medium',false);
+        		//print_r($img);
+            $excerpt = $post->post_excerpt;
+            $content = $post->post_content;
+            $link=get_page_link($page->ID);
+            if (function_exists('gigx_excerpt')){
+              $content=gigx_excerpt ($content,$excerpt,false,500,$link,'(more...)');
+            }
+            echo '<div class="wp-caption alignleft" style="width: 310px"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$post->post_title.'"/><p class="wp-caption-text">'.get_the_title().'</p></div>';
+            echo '<h1 class="post-title">'.get_the_title().'</h1>';
+            echo '<span class="postdate">Posted on '. get_the_time('jS F Y') .'</span>'; ?> 
+            <div class="entry" style="padding-top:10px;">
+              <?php echo $content; ?>
+          	</div>
+          </div>
+
+        <?php endforeach; ?>            
+
+
+        <div class="twocol">
+            <?php
+            $args['category_name']='construction-blog';
+            $args['numberposts']=2;
+            
+            $news=get_posts( $args );
+            //print_r($news);
+            $count=0;
+            foreach($news as $post) : setup_postdata($post); 
+            $count++;
+            ?>
+              <div class="twocol_content col_<?php echo $count; ?>" id="post-<?php the_ID(); ?>">
+                
+                <?php
+                $img=wp_get_attachment_image_src (get_post_thumbnail_id(get_the_ID()),'medium',false);
+            		//print_r($img);
+                $excerpt = $post->post_excerpt;
+                $content = $post->post_content;
+                $link=get_page_link($page->ID);
+                if (function_exists('gigx_excerpt')){
+                  $content=gigx_excerpt ($content,$excerpt,false,300,$link,'(more...)');
+                }
+                echo '<div class="wp-caption" style="width: 310px"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$post->post_title.'"/><p class="wp-caption-text">'.get_the_title().'</p></div>';
+                echo '<h1 class="post-title">'.get_the_title().'</h1>';
+                echo '<span class="postdate">Posted on '. get_the_time('jS F Y') .'</span>'; ?> 
+                <div class="entry" style="padding-top:10px;">
+                  <?php echo $content; ?>
+              	</div>
+              </div>
+    
+            <?php endforeach; ?>            
+        </div>       
+
+
+
+
+
+            
+<?php        
+/*        
         $atts = array(
             'title' => 'Cambridge News', // post title
             'link' => '' . get_bloginfo( 'url' ).'news', //post title url
@@ -74,6 +170,7 @@
         $atts['postoffset']=0;
         gigx_recentposts($atts);
         echo '</div>';
+*/
          ?>
     </div><!-- end of posts div -->  
 
