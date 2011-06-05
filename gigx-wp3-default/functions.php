@@ -15,6 +15,7 @@ if ( ! isset( $jquery_version ) ) $jquery_version='1.4.4'; // change number to l
 include 'functions/gigx_widgets.php';
 include 'functions/gigx_shortcodes.php';
 include 'functions/gigx_editor_buttons.php';   
+if (!function_exists('gigx_excerpt')) include 'functions/gigx_excerpt.php';
 
 # set up action hooks
 /** Tell WordPress to run gigx_setup() when the 'after_setup_theme' hook is run. */
