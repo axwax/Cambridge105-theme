@@ -1,10 +1,11 @@
 <?php
 
-# gigx custom post type shows
+# Cambridge105 custom post type Shows & Taxonomies "Genres" and "Frequency"
 # needs to be executed during init
-# v0.1
-# author: axwax
+# v0.2
+# author: Axel Minet
 
+# register shows custom post type
 add_action( 'init', 'gigx_cpt_shows' );
 function gigx_cpt_shows() 
 {
@@ -41,18 +42,18 @@ function gigx_cpt_shows()
   register_post_type('shows',$args);
 }
 
-//add filter to insure the text Show, or show, is displayed when user updates a show 
+# add filter to insure the text Show, or show, is displayed when user updates a show 
 add_filter('post_updated_messages', 'show_updated_messages');
 function show_updated_messages( $messages ) {
   global $post, $post_ID;
 
   $messages['show'] = array(
-    0 => '', // Unused. Messages start at index 1.
+    0 => '', # Unused. Messages start at index 1.
     1 => sprintf( __('Show updated. <a href="%s">View Show</a>'), esc_url( get_permalink($post_ID) ) ),
     2 => __('Custom field updated.'),
     3 => __('Custom field deleted.'),
     4 => __('Show updated.'),
-    /* translators: %s: date and time of the revision */
+    # translators: %s: date and time of the revision
     5 => isset($_GET['revision']) ? sprintf( __('Show restored to revision from %s'), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
     6 => sprintf( __('Show published. <a href="%s">View Show</a>'), esc_url( get_permalink($post_ID) ) ),
     7 => __('Show saved.'),
@@ -66,11 +67,11 @@ function show_updated_messages( $messages ) {
   return $messages;
 }
 
-//display contextual help for Shows
+# display contextual help for Shows
 add_action( 'contextual_help', 'add_help_text', 10, 3 );
 
 function add_help_text($contextual_help, $screen_id, $screen) { 
-  //$contextual_help .= var_dump($screen); // use this to help determine $screen->id
+  # $contextual_help .= var_dump($screen); // use this to help determine $screen->id
   if ('show' == $screen->id ) {
     $contextual_help =
       '<p>' . __('Things to remember when adding or editing a show:') . '</p>';
@@ -84,13 +85,13 @@ function add_help_text($contextual_help, $screen_id, $screen) {
 
 # register genre and frequency taxonomies for shows cpt
 
-//hook into the init action and call create_book_taxonomies when it fires
+# hook into the init action and call create_book_taxonomies when it fires
 add_action( 'init', 'create_shows_taxonomies', 0 );
 
-//create two taxonomies, genres and writers for the post type "book"
+# create two taxonomies, "genres" and "frequency" for the post type "shows"
 function create_shows_taxonomies() 
 {
-  // Add new taxonomy, make it hierarchical (like categories)
+  # Add "Genres" taxonomy, make it hierarchical (like categories)
   $labels = array(
     'name' => _x( 'Genres', 'taxonomy general name' ),
     'singular_name' => _x( 'Genre', 'taxonomy singular name' ),
@@ -113,7 +114,7 @@ function create_shows_taxonomies()
     'rewrite' => array( 'slug' => 'genres' ),
   ));
 
-  // Add new taxonomy, NOT hierarchical (like tags)
+  # Add "Frequency" taxonomy, NOT hierarchical (like tags)
   $labels = array(
     'name' => _x( 'Frequency', 'taxonomy general name' ),
     'singular_name' => _x( 'Frequency', 'taxonomy singular name' ),

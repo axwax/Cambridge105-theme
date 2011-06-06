@@ -1,8 +1,8 @@
 <?php
 /*
 File Description: Default Index Page
-Built By: GIGX
-Theme Version: 0.5.10
+Author: Axel Minet
+Theme Version: 0.5.11
 */
 define('CUSTOM_POST_TYPE',get_post_type()); 
 get_header();

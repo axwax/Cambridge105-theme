@@ -135,7 +135,7 @@ a.negative:active {
 .small {font-size:.8em;margin-bottom:1.875em;line-height:1.5em;}
 
 #header #logo {
-padding-bottom: 1em;   
+padding-bottom: 1em;
 }
 
 #below-header-widgets{
@@ -288,7 +288,6 @@ letter-spacing: normal;
 .widget_advancedrecentposts img.recent-posts-thumb {float: left; text-align: left;display: inline; margin:0; padding-right:10px;}
 
 
-
 .widget_gigxrecentposts{
 background-color:#486D25;
 color:#333333;
@@ -351,6 +350,9 @@ letter-spacing: normal;
 
 .widget_gigxrecentposts img.recent-posts-thumb {float: left; text-align: left;display: inline; margin:0; padding-right:10px;}
 
+ul.gigx-recent-posts{
+margin: 0 0 0 0; 
+}
 /* widget defaults */
 /* search widget */
 #searchsubmit{
@@ -430,12 +432,12 @@ padding:3px 0 0 18px;
 }
 
 .header-menu ul {
-width: 1000px;
+	width: 1000px;
 	list-style: none;
 	margin: 0;
 	padding: 0;
 	position: absolute;
-	z-index: 20; 
+	z-index: 20;
 }
 
 .header-menu ul ul {
@@ -444,14 +446,14 @@ width: 100%;
 
 .header-menu a {
 	display: block;
-		font-family: 'HarabaraRegular',Arial,sans-serif;
+	font-family: 'HarabaraRegular',Arial,sans-serif;
 	font-size: 20px;
 	color: #ffffff;
 	padding: 7px;
 	text-decoration: none;
-	background-color: #222222; 
+	background-color: #222222;
   letter-spacing: 2px;
-  height: 20px; 
+  height: 20px;
 }
 
 .header-menu ul li {
@@ -460,7 +462,7 @@ margin-left:0;
 
 .header-menu ul ul li a {
 	font-size: 15px;
-	padding: 7px 10px; 
+	padding: 7px 10px;
 }
 
 .header-menu a:hover {
@@ -586,7 +588,7 @@ a.button1{
 			
 		font-family: 'HarabaraRegular',Arial,sans-serif;
 	  font-size: 20px;
-	  color: #f1a11c;
+	  color: #ffffff;
 	  text-decoration: none;
     letter-spacing: 2px; 			
 			
@@ -595,7 +597,7 @@ a.button1{
 			display: inline-block;	
 			padding: 0px 14px;
 			line-height: 40px;
-			background-color: #00a9e4;
+			background-color: #445533;
 		
 			/* rounded corners */
 			-webkit-border-radius: 15px;
@@ -620,6 +622,7 @@ a.button1{
 				rgba(255,255,255,.4) 45%, 
 				rgba(255,255,255,.0) 55%);
 }
+a:hover.button1 {color: #96D400;}
 
 .shows h4 {
   margin: 0em 0 1em;

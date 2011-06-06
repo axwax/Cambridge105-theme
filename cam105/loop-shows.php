@@ -1,8 +1,8 @@
 <?php
 /*
-File Description: The Loop
-Built By: GIGX
-Theme Version: 0.2
+File Description: The Loop for "Shows" Custom Post Type
+Author: Axel Minet
+Theme Version: 0.5.11
 */
 ?>
 
@@ -29,7 +29,6 @@ Theme Version: 0.2
               	<?php if ( is_active_sidebar( 'above_entry_widgets' ) ) : // Nothing here by default and design ?>
                 	<div class="above-entry-widgets">
                 		<?php 
-                    //dynamic_sidebar('above_entry_widgets');
 
 		# construct title
 		$title_tag='h1';
@@ -61,18 +60,28 @@ Theme Version: 0.2
         				</div>
 
               <?php if(defined ('CUSTOM_POST_TYPE') && is_singular(CUSTOM_POST_TYPE)) {
-                //echo CUSTOM_POST_TYPE;
+
                   get_template_part(CUSTOM_POST_TYPE);
                 }
                 
-                
-  					// Let's find out if we have taxonomy information to display
-            // Something to build our output in
+			
+  			# Something to build our output in
             $taxo_text = "";
             
-            // Variables to store each of our possible taxonomy lists
+			# Website Custom Meta
+			$website_title=get_post_meta($post->ID, 'WebsiteTitle', True);
+            $website_url=get_post_meta($post->ID, 'WebsiteURL', True);
+			if ( ('' != $website_title) and ('' != $website_url)  ) {
+                $taxo_text .= '<p>Website: <a href="'.$website_url.'" target="_blank">'.$website_title.'</p>\n";
+            }
             
-            /* remove presenters list
+            # Let's find out if we have taxonomy information to display
+            # Variables to store each of our possible taxonomy lists
+            $frequency_list = get_the_term_list( $post->ID, 'frequency', '<strong>Show Frequency:</strong> ', ', ', '' );
+            $genres_list = get_the_term_list( $post->ID, 'genres', '<strong>Genre(s):</strong> ', ', ', '' );
+            
+            # Presenters list
+			/* remove presenters list
             $presenters_array = get_posts( array(
               'suppress_filters' => false,
               'post_type' => 'presenters',
@@ -90,14 +99,7 @@ Theme Version: 0.2
             */
 
             
-            $website_title=get_post_meta($post->ID, 'WebsiteTitle', True);
-            //print_r($website_title);
-            //the_meta();
-            if ( '' != $website_title ) {
-                $taxo_text .= "<p>Website: $website_title</p>\n";
-            }
-
-            /* remove presenters list
+            /* removed presenters list
             $presenters_list=substr_replace($presenters_list,'',-2); //strip last ', '
             $post=$oldpost;
             if ($count<1)$presenters_list= '';
@@ -106,19 +108,18 @@ Theme Version: 0.2
             */
 
             
-            $frequency_list = get_the_term_list( $post->ID, 'frequency', '<strong>Show Frequency:</strong> ', ', ', '' );
-            $genres_list = get_the_term_list( $post->ID, 'genres', '<strong>Genre(s):</strong> ', ', ', '' );
             /* removed presenters
             // Add presenters list if this post was so tagged
             if ( '' != $presenters_list ) {
                 $taxo_text .= "<p>$presenters_list</p>\n";
             }
             */
-            // Add frequency list if this post was so tagged
+			
+            # Add frequency list if this post was so tagged
             if ( '' != $frequency_list ) {
                 $taxo_text .= "<p>$frequency_list</p>\n";
             }
-            // Add genres list if this post was so tagged
+            # Add genres list if this post was so tagged
             if ( '' != $genres_list ) {
                 //$taxo_text .= "$genres_list<br />\n";
             }
@@ -135,24 +136,21 @@ Theme Version: 0.2
             } // endif
             
 
-#schedule
+			#schedule
             #schedule test
             $schedule_array = get_posts( array(
               'suppress_filters' => false,
               'post_type' => 'gigx_schedule',
               'connected' => $post->ID,
             ) );
-            //print_r($schedule_array);
             $schedule_list='';
             $oldpost=$post;
             $count=0;
             foreach($schedule_array as $post) :
-               //print_r($post);
                setup_postdata($post);
                $start=get_post_custom_values("gigx_schedule_startdate");
                $end=get_post_custom_values("gigx_schedule_enddate");
                $schedtime= date('jS F Y g:ia',$start[0]).' - '.date('g:ia',$end[0]);
-                //echo date('jS F Y',$start[0]); 
                $schedule_list.='<h3><a href="'.get_permalink().'"><strong>'.$schedtime.'</strong> - '.$title.'</a></h3>';
                $schedule_list.='<p>'.get_the_excerpt().'</p>';
                $schedule_list.=', ';
@@ -166,7 +164,7 @@ Theme Version: 0.2
             if ( '' != $schedule_list ) {
                 echo '<div class="schedule_entry">'.$schedule_list.'</div>';
             }
-#schedule
+			#schedule
                 
                 
                 
