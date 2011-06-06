@@ -56,5 +56,11 @@ background:url("images/menu-bits.png") no-repeat scroll left -109px transparent 
 background:url("images/menu-bits.png") no-repeat scroll left -207px transparent !important;
 }
 
+.column-menu_order, .column-linkimage{
+width: 10%;
+}
+.column-limit{
+width:20%;
+}
 
 
