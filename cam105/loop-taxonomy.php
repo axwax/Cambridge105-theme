@@ -1,42 +1,40 @@
 <?php
 /*
-File Description: The Loop
-Built By: GIGX
-Theme Version: 0.5.9
+File Description: The Loop for "Shows" Custom Post Type
+Author: Axel Minet
+Theme Version: 0.5.11
 */
 ?>
 
   	<?php wp_nav_menu( array( 'theme_location' => 'above-posts', 'sort_column' => 'menu_order', 'fallback_cb' => 'header_menu', 'container_class' => 'header-menu' ) ); ?>
-    <?php if ( is_active_sidebar( 'above_posts_widgets' ) ) : // Widgets Above Posts ?>
+  	<?php if ( is_active_sidebar( 'above_posts_widgets' ) ) : // Widgets Above Posts ?>
     	<div id="above-posts-widgets">
     		<?php dynamic_sidebar('above_posts_widgets'); ?>
     	</div>  
     <?php endif; ?>
-				<?php 
+	<?php 
             $categorydesc = category_description(); 
             if ( ! empty( $categorydesc ) ) echo apply_filters( 'archive_meta', '<div class="archive-meta">' . $categorydesc . '</div>' );
-         ?>
-      
+     ?>
+       
     <div class="posts">
-
         <?php /* Do we have posts, then start the loop, otherwise display 404 */ ?>
       	<?php if (have_posts()) : ?>
           <?php /* Start the Loop */ ?>  	
       		<?php while (have_posts()) : the_post(); ?>
- 		
-        			<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
+				<div <?php post_class() ?> id="post-<?php the_ID(); ?>"> 		
             
-          <?php
-          $title = the_title('', '', false);
-    			$permalink = apply_filters('the_permalink', get_permalink());
-    			echo '<a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '">';
-          if(has_post_thumbnail()) {
-	           the_post_thumbnail('shows-thumb',array('class'	=> "alignleft",'alt'	=> esc_attr($title), 'title'	=> esc_attr($title)));
-          } else {
-	           echo '<img src="'.get_bloginfo("template_url").'/images/shows-default.png" />';
-          }
-          echo'</a>'; 
-          ?>
+<?php
+	$title = the_title('', '', false);
+	$permalink = apply_filters('the_permalink', get_permalink());
+	echo '<a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '">';
+	if(has_post_thumbnail()) {
+	   the_post_thumbnail('shows-thumb',array('class'	=> "alignleft",'alt'	=> esc_attr($title), 'title'	=> esc_attr($title)));
+	} else {
+	   echo '<img src="'.get_bloginfo("template_url").'/images/shows-default.png" />';
+	}
+	echo'</a>'; 
+ ?>
 
               	<?php if ( is_active_sidebar( 'above_entry_widgets' ) ) : // Nothing here by default and design ?>
                 	<div class="above-entry-widgets">

@@ -1,52 +1,21 @@
 <?php
-
+/*
+File Description: The Loop for the main News page 
+Author: Axel Minet
+Theme Version: 0.5.11
+*/
 ?>
 
   	<?php wp_nav_menu( array( 'theme_location' => 'above-posts', 'sort_column' => 'menu_order', 'fallback_cb' => 'header_menu', 'container_class' => 'header-menu' ) ); ?>
-    <?php if ( is_active_sidebar( 'above_posts_widgets' ) ) : // Widgets Above Posts ?>
+  	<?php if ( is_active_sidebar( 'above_posts_widgets' ) ) : // Widgets Above Posts ?>
     	<div id="above-posts-widgets">
     		<?php dynamic_sidebar('above_posts_widgets'); ?>
     	</div>  
     <?php endif; ?>
-				<?php 
-            $categorydesc = category_description(); 
-            if ( ! empty( $categorydesc ) ) echo apply_filters( 'archive_meta', '<div class="archive-meta">' . $categorydesc . '</div>' );
-         ?>
-      
+       
     <div class="posts">
-
-        <?php /* Do we have posts, then start the loop, otherwise display 404 */ ?>
-      	<?php 
-        
-        /*
-        
-        function gigx_get_cat_id($slug){
-        $theCatId = get_term_by( 'slug', $slug, 'category' );
-        return $theCatId->term_id;
-        }
-        
-        
-        query_posts( array('post_type'=> 'post','posts_per_page'=>6));
-      	// set $more to 0 in order to only get the first part of the post
-        global $more;
-        $more = 0;
-        */
-        /*
-        $args = array(
-            'numberposts'     => 3,
-            
-            'category'        => ,
-            
-            'order'           => 'DESC',
-            'include'         => ,
-            'exclude'         => ,
-            'meta_key'        => ,
-            'meta_value'      => ,
-            'post_type'       => 'post',
-            'post_mime_type'  => ,
-            'post_parent'     => ,
-            'post_status'     => 'publish' );
-         */   
+        <?php 
+		
         $args = array('numberposts'=>3, 'offset' => 0,'orderby' => 'post_date', 'order'=>'DESC','post_status' => 'publish');    
         $args['category_name']='news';
         $args['numberposts']=1;
