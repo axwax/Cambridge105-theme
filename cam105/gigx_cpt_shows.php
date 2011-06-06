@@ -36,7 +36,7 @@ function gigx_cpt_shows()
     'menu_position' => 5,
     'menu_icon' => null,
     'show_in_nav_menus' => true,
-    'supports' => array('title','editor','thumbnail','sticky')
+    'supports' => array('title','editor','thumbnail','sticky','custom-fields')
   ); 
   register_post_type('shows',$args);
 }
