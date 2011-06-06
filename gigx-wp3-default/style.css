@@ -158,7 +158,6 @@ p ul li { margin-left: .85em; }
 ul { list-style-type: disc; }
 ul ul { list-style-type: square; }
 ul ul ul { list-style-type: circle; }
-ol { list-style-position: outside; list-style-type: decimal; }
 dt { font-weight: bold; }
 
 /* TABLES */
@@ -185,7 +184,7 @@ blockquote { padding: 0 1em; margin: 1.6em 0; }
 a { position: relative; padding: 0.3em 0 .1em 0; } /* for larger click-area */
 dt { margin-top: .8em; margin-bottom: .4em; }
 /* ul { margin:0;padding:0;list-style-type:none;}  */
-ol { margin-left: 2.35em; }
+ol,ul { margin-left: 2em; }
 ol ol, ul ol { margin-left: 2.5em; }
 
 /* for inheritance (is it needed?) */
@@ -312,15 +311,9 @@ img.alignright, img.right {display: inline; margin:0 0 8px 8px;}
 	line-height:1.8em;
 }
 
-.entry ul li {
-	list-style: disc inside none;
-	padding-left: 15px;
-}
-
-.entry ol li {
-	list-style: circle inside none;
-	padding-left: 15px;
-}
+div.entry ul { list-style: disc inside none; }
+div.entry ol { list-style: decimal inside none; }
+div.entry ol ol { list-style: upper-alpha inside none; }
 
 .entry dd {
 	margin-left: 12px;
