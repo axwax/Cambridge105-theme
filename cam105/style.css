@@ -144,7 +144,7 @@ float: left;
       	position:relative;
       	left: 10px;
 }
-.postcategories{
+.above-entry-widgets{
 padding-bottom:10px;
 }
 /* infobox */
@@ -326,8 +326,9 @@ letter-spacing: normal;
 
 .widget_gigxrecentposts img.recent-posts-thumb {float: left; text-align: left;display: inline; margin:0; padding-right:10px;}
 
-
-
+ul.gigx-recent-posts{
+margin: 0 0 0 0; 
+}
 /* widget defaults */
 /* search widget */
 #searchsubmit{
@@ -408,7 +409,7 @@ padding:3px 0 0 18px;
 
 .header-menu ul {
 	width: 1000px;
- 	list-style: none;
+	list-style: none;
 	margin: 0;
 	padding: 0;
 	position: absolute;
@@ -428,7 +429,7 @@ width: 100%;
 	text-decoration: none;
 	background-color: #222222;
   letter-spacing: 2px;
-  height: 20px;     
+  height: 20px;
 }
 
 .header-menu ul li {
@@ -505,30 +506,7 @@ background-color: #83ae2c;
 
 
 
-/* feature */
-.feature{
-background-color:#83AE2C;
-color:#333333;
-margin-bottom:10px;
-margin-top:10px;
-overflow:hidden;
-padding:0px 0px 0px 10px;
-}
-.feature h2 {
-color:#FFFFFF;
-font:1.5em Arial,Tahoma,sans-serif;
-}
-.feature h1 {
-color:#FFFFFF;
-font:1.8em Arial,Tahoma,sans-serif;
-}
-.feature p{
-color:#FFFFFF;
-font-weight:bold;
-margin:0.75em 30px 0 0;
-}
-.feature img.alignleft {display: inline; margin:0; padding-right:10px;}
-.feature img.alignright{display: inline; margin:0; padding-left:10px;}
+
 
 /* faq */
 #post-82 h2{
@@ -586,7 +564,7 @@ a.button1{
 			
 		font-family: 'HarabaraRegular',Arial,sans-serif;
 	  font-size: 20px;
-	  color: #f1a11c;
+	  color: #FFFFFF;
 	  text-decoration: none;
     letter-spacing: 2px; 			
 			
@@ -595,7 +573,7 @@ a.button1{
 			display: inline-block;	
 			padding: 0px 14px;
 			line-height: 40px;
-			background-color: #00a9e4;
+			background-color: #445533;
 		
 			/* rounded corners */
 			-webkit-border-radius: 15px;
@@ -620,6 +598,7 @@ a.button1{
 				rgba(255,255,255,.4) 45%, 
 				rgba(255,255,255,.0) 55%);
 }
+a:hover.button1 {color: #96D400;}
 
 .shows h4 {
   margin: 0em 0 1em;
@@ -629,6 +608,4 @@ a.button1{
 padding-top:10px;
 }
 
-/* dirty hack for mail form <br/> */
-#mailup form br {display:none;}
-#mailup h2 {border:none;}
+
