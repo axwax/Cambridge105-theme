@@ -5,7 +5,6 @@ Author: Axel Minet
 Theme Version: 0.5.11
 */
 ?>
-
   	<?php wp_nav_menu( array( 'theme_location' => 'above-posts', 'sort_column' => 'menu_order', 'fallback_cb' => 'header_menu', 'container_class' => 'header-menu' ) ); ?>
   	<?php if ( is_active_sidebar( 'above_posts_widgets' ) ) : // Widgets Above Posts ?>
     	<div id="above-posts-widgets">
@@ -17,7 +16,7 @@ Theme Version: 0.5.11
             if ( ! empty( $categorydesc ) ) echo apply_filters( 'archive_meta', '<div class="archive-meta">' . $categorydesc . '</div>' );
      ?>
        
-    <div class="posts">
+    <div class="taxonomy list">
         <?php /* Do we have posts, then start the loop, otherwise display 404 */ ?>
       	<?php if (have_posts()) : ?>
           <?php /* Start the Loop */ ?>  	
@@ -27,13 +26,16 @@ Theme Version: 0.5.11
 <?php
 	$title = the_title('', '', false);
 	$permalink = apply_filters('the_permalink', get_permalink());
+	echo '<div class="wp-caption alignleft">';
 	echo '<a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '">';
 	if(has_post_thumbnail()) {
-	   the_post_thumbnail('shows-thumb',array('class'	=> "alignleft",'alt'	=> esc_attr($title), 'title'	=> esc_attr($title)));
+	   the_post_thumbnail('shows-thumb',array('class'	=> '','alt'	=> esc_attr($title), 'title'	=> esc_attr($title)));
 	} else {
 	   echo '<img src="'.get_bloginfo("template_url").'/images/shows-default.png" />';
 	}
-	echo'</a>'; 
+	echo'</a>';
+	echo '<p class="wp-caption-text">'.get_the_title().'</p></div>';
+          	
  ?>
 
               	<?php if ( is_active_sidebar( 'above_entry_widgets' ) ) : // Nothing here by default and design ?>

@@ -13,7 +13,7 @@ Theme Version: 0.5.11
     	</div>  
     <?php endif; ?>
        
-    <div class="posts">
+    <div class="single show">
         <?php /* Do we have posts, then start the loop, otherwise display 404 */ ?>
       	<?php if (have_posts()) : ?>
           <?php /* Start the Loop */ ?>  	
@@ -27,7 +27,7 @@ Theme Version: 0.5.11
 	} else {
 		$img=get_bloginfo("template_url").'/images/shows-default.png';
 	}
-	$img_html= '<div class="wp-caption alignleft" style="width: 210px"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$p->post_title.'"/><p class="wp-caption-text">'.get_the_title().'</p></div>';
+	$img_html= '<div class="wp-caption alignleft"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$p->post_title.'"/><p class="wp-caption-text">'.get_the_title().'</p></div>';
 
 	# Show Title (Shows CPT)
 	$title_tag='h1';

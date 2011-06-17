@@ -54,8 +54,8 @@ add_action('init', 'my_connection_types', 100);
 */
 
 # add shows image and thumbnail size
-      	add_image_size( 'shows-image', 200, 200, true );
-      	add_image_size( 'shows-thumb', 75, 75, true );
+      	add_image_size( 'shows-image', 300, 225, true );
+      	add_image_size( 'shows-thumb', 125, 125, true );
 
 # add facebook thumbnail size
       	add_image_size( 'facebook-thumb', 130, 130, true );

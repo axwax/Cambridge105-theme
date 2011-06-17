@@ -14,7 +14,7 @@
          ?>
       
     <div class="posts">
-
+hmm
         <?php /* Do we have posts, then start the loop, otherwise display 404 */ ?>
       	<?php query_posts( array('post_type'=> 'shows','posts_per_page'=>6));
       	// set $more to 0 in order to only get the first part of the post
@@ -30,13 +30,16 @@
           <?php
           $title = the_title('', '', false);
     			$permalink = apply_filters('the_permalink', get_permalink());
-    			echo '<a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '">';
+    			
+				echo '<div class="wp-caption alignleft">';
+				echo '<a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '">';
           if(has_post_thumbnail()) {
 	           the_post_thumbnail('shows-thumb',array('class'	=> "alignleft",'alt'	=> esc_attr($title), 'title'	=> esc_attr($title)));
           } else {
 	           echo '<img src="'.get_bloginfo("template_url").'/images/shows-default.png" />';
           }
-          echo'</a>'; 
+          echo'</a>';
+		  echo '</div>';
           ?>
 
               	<?php if ( is_active_sidebar( 'above_entry_widgets' ) ) : // Nothing here by default and design ?>

@@ -402,9 +402,20 @@ font-size:90%;
 text-transform: lowercase;
 margin-left: 0px;
 }
-.post,.shows{
+.post,.taxonomy .shows{
 border-bottom:1px dotted;
 margin-bottom: 10px;
+}
+.shows {
+overflow:hidden;
+width: 100%;
+}
+
+.show .wp-caption {
+width:310px;
+}
+.taxonomy .wp-caption {
+width:135px;
 }
 
 .type-post {
