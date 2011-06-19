@@ -44,9 +44,11 @@ if (!$fbimg) $fbimg= Array(get_bloginfo('stylesheet_directory').'/images/faceboo
 
         <div id="header">
         	<div id="logo">
-  					<?php if (get_header_image()) : ?>
+  				<a href="<?php echo home_url();?>"><?php
+  					if (get_header_image()) : ?>
   						<img src="<?php header_image(); ?>" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" alt="<?php bloginfo('show'); ?>" />
   					<?php endif; ?>
+				</a>	
         	</div> 
   
  
