@@ -26,11 +26,11 @@ if (!$fbimg) $fbimg= Array(get_bloginfo('stylesheet_directory').'/images/faceboo
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
     <link rel="image_src" href="<?php echo $fbimg[0]; ?>" />
     <?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
-    <?php wp_head(); ?>
+	<?php wp_head(); ?>
   </head>
   
   <body <?php body_class(); ?>>
-    <!--[if lte IE 6]><script src="<?php bloginfo('stylesheet_directory'); ?>/js/ie6/warning.js"></script><script>window.onload=function(){e("<?php bloginfo('stylesheet_directory'); ?>/js/ie6/")}</script><![endif]-->
+    <!--[if lte IE 6]><script src="<?php bloginfo('template_directory'); ?>/js/ie6/warning.js"></script><script>window.onload=function(){e("<?php bloginfo('template_directory'); ?>/js/ie6/")}</script><![endif]-->
 
     <div id="page">
 

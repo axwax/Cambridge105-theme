@@ -19,7 +19,7 @@ Theme Version: 0.5
   </head>
   
   <body <?php body_class(); ?>>
-    <!--[if lte IE 6]><script src="<?php bloginfo('stylesheet_directory'); ?>/js/ie6/warning.js"></script><script>window.onload=function(){e("<?php bloginfo('stylesheet_directory'); ?>/js/ie6/")}</script><![endif]-->
+    <!--[if lte IE 6]><script src="<?php bloginfo('template_directory'); ?>/js/ie6/warning.js"></script><script>window.onload=function(){e("<?php bloginfo('template_directory'); ?>/js/ie6/")}</script><![endif]-->
 
     <div id="page">
 
