@@ -17,7 +17,7 @@ Theme Version: 0.5.11
         <?php 
 		
         $args = array('numberposts'=>3, 'offset' => 0,'orderby' => 'post_date', 'order'=>'DESC','post_status' => 'publish');    
-        $args['category_name']='news';
+        $args['category_name']='headline-news';
         $args['numberposts']=1;
         
         $news=get_posts( $args );
@@ -26,13 +26,13 @@ Theme Version: 0.5.11
           <div <?php post_class() ?> id="post-<?php the_ID(); ?>">
             
             <?php
-            $img=wp_get_attachment_image_src (get_post_thumbnail_id(get_the_ID()),'medium',false);
+            $img=wp_get_attachment_image_src (get_post_thumbnail_id(get_the_ID()),'shows-image',false);
         		//print_r($img);
             $excerpt = $post->post_excerpt;
             $content = $post->post_content;
             $link=get_page_link($page->ID);
             if (function_exists('gigx_excerpt')){
-              $content=gigx_excerpt ($content,$excerpt,false,500,$link,'(more...)');
+              $content=gigx_excerpt ($content,$excerpt,false,500,$link,'(more...)',True);
             }
             echo '<div class="wp-caption alignleft" style="width: 310px"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$post->post_title.'"/><p class="wp-caption-text">'.get_the_title().'</p></div>';
             echo '<h1 class="post-title">'.get_the_title().'</h1>';
@@ -47,7 +47,7 @@ Theme Version: 0.5.11
 
         <div class="twocol">
             <?php
-            $args['category_name']='construction-blog';
+            $args['category_name']='local-news';
             $args['numberposts']=2;
             
             $news=get_posts( $args );
@@ -59,7 +59,7 @@ Theme Version: 0.5.11
               <div class="twocol_content col_<?php echo $count; ?>" id="post-<?php the_ID(); ?>">
                 
                 <?php
-                $img=wp_get_attachment_image_src (get_post_thumbnail_id(get_the_ID()),'medium',false);
+                $img=wp_get_attachment_image_src (get_post_thumbnail_id(get_the_ID()),'shows-image',false);
             		//print_r($img);
                 $excerpt = $post->post_excerpt;
                 $content = $post->post_content;
