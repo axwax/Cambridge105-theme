@@ -513,6 +513,17 @@ div.header-menu ul ul ul li:hover ul
 	display: block; 
 }         
 
+div.header-menu li.current-menu-item a {
+background: #83AE2C;
+}
+div.header-menu li.current-menu-item .sub-menu a{
+background: #222222;
+}
+div.header-menu li.current-menu-item .sub-menu a:hover {
+	color: #000;
+	background: #ffffff;
+	border: none; 
+}
 /* End Menu */
 
 
