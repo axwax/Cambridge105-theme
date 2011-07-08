@@ -4,15 +4,15 @@ Version: 0.1
 Author: Axel Minet
 */
 
-function gigx_excerpt ($content='',$excerpt='',$striphtml=false, $extract_length=200, $link='', $getmore_text='(more...)'){
-	if ( $excerpt != '' ) {
+function gigx_excerpt ($content='',$excerpt='',$striphtml=false, $extract_length=200, $link='', $getmore_text='(more...)',$autop=False){
+	if ( $excerpt != '' ) {  // uses text from the exceprt field in post screen
 	// do something
 	$text=$except;
 	}
 	else {
   	$text = $content;
 		$text = explode('<!--more-->', $text, 2);
-		if (count($text) > 1) $gotmore = true;
+		if (count($text) > 1) $gotmore = true; // checks if there is a more tag
 		
 		$text = apply_filters('the_content', $text[0]);
 		$text = str_replace(']]>', ']]&gt;', $text);
@@ -23,14 +23,14 @@ function gigx_excerpt ($content='',$excerpt='',$striphtml=false, $extract_length
 			//
 			//	Strip leading and trailing tags from the entry.
 			//
-    $textnew=gigx_truncate($text, $extract_length, '', false, true,'<br><b><i><u><strong><span><a>');
-    if(strlen($textnew)<strlen($text)) {  // extract is shorter than original text
-      $gotmore=true;
-      $text=$textnew;
-      }
+			$textnew=gigx_truncate($text, $extract_length, '', false, true,'<br><b><i><u><strong><span><a>');
+			if(strlen($textnew)<strlen($text)) {  // extract is shorter than original text
+				  $gotmore=true;
+				  $text=$textnew;
+			}
  		}
 
-		if ($gotmore) {
+		if ($gotmore) { // if extract is shorter than full post then...
 			//
 			//	Check for adding the onwards link... only needed if some truncation took place.
 			//
@@ -38,8 +38,9 @@ function gigx_excerpt ($content='',$excerpt='',$striphtml=false, $extract_length
 				$text .= ' <a href="'. $link . "\">$getmore_text</a>";
 			} 
 		}
-	} 
-return $text;
+	}
+	if ($autop) $text=wpautop($text);
+	return $text;
 }
 
 
