@@ -513,6 +513,7 @@ div.header-menu ul ul ul li:hover ul
 	display: block; 
 }         
 
+/* attempt at highlighting current menu item (doesn't work for shows cpt)
 div.header-menu li.current-menu-item a {
 background: #83AE2C;
 }
@@ -524,6 +525,7 @@ div.header-menu li.current-menu-item .sub-menu a:hover {
 	background: #ffffff;
 	border: none; 
 }
+*/
 /* End Menu */
 
 
