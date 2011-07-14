@@ -1,35 +1,86 @@
-/* Admin Styles */
-
-#wpwrap{ background:#e2f59f; }
-#header-logo{ background-image:url('images/admin-logo.png')!important; }
-#wphead{ background:#83ae2c url('images/admin-bg.png') repeat-x!important; border-bottom:0px solid #abc2cc; height:52px; } 
-h1#site-heading a{ color:#deefeb; }
-#user_info { color:#deefeb; }
-#user_info a { color:#ffffff !important; font-weight:bold; } /* login/out */
+/*Improve Color Contrast*/
 
 a, #adminmenu a, #poststuff #edButtonPreview, #poststuff #edButtonHTML, #the-comment-list p.comment-author strong a, #media-upload a.del-link, #media-items a.delete, .plugins a.delete, .ui-tabs-nav a {
-color: #486D25 !important;
+color: #01466D;
+}
+/*Add focus on links*/
+
+#wphead #viewsite a:focus, #adminmenu a:focus, #adminmenu ul.wp-submenu a:focus, #the-comment-list .comment a:focus, #rightnow a:focus, #media-upload a.del-link:focus, div.dashboard-widget-submit input:focus, .subsubsub a:focus, .subsubsub a.current:focus, .ui-tabs-nav a:focus, .plugins .inactive a:focus, #all-plugins-table .plugins .inactive a:focus, #search-plugins-table .plugins .inactive a:focus {
+color: #D54E21;
+}
+#adminmenu .wp-submenu a:focus {
+background-color: #EAF2FA !important;
+color: #333333 !important;
+}
+/*Increase Site Title Size (by Otto)*/
+.wp-admin #wphead {
+	height: 42px;
+}
+.wp-admin #wphead h1 {
+font-size: 28px;
+#font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif; #uncomment this if you want to go to the sans-serif font
+}
+.wp-admin #header-logo {
+background-image: url("images/logo.gif");
+background-size:32px 32px;
+width:32px; height:32px;
+}
+.wp-admin .icon32 {
+display:none;}
+
+/*Reduce Page Heading Size*/
+
+.wrap h2 {
+font-size: 22px;
+line-height: 28px;
+padding: 9px 15px 2px 0;
 }
 
-#screen-options-link-wrap, #contextual-help-link-wrap, #screen-options-wrap, #contextual-help-wrap {
-background-color: #83ae2c;
+/*Remove pointless publish icon*/
+
+.curtime #timestamp {
+background-image: none;
+}
+.curtime #timestamp {
+background-position: left top;
+background-repeat: no-repeat;
+padding-left: 0;
 }
 
-#screen-meta a.show-settings {
-color: #ffffff !important;
-text-shadow: none !important;
+/* main page background */
+html, .wp-dialog {
+    background-color: #e2f59f !important;
 }
 
-.metabox-prefs, h1#site-heading a, #adminmenu a.menu-top, .widefat thead tr th, .widefat tfoot tr th, h3.dashboard-widget-title, h3.dashboard-widget-title span, h3.dashboard-widget-title small, .find-box-head {
+/* new/edit post background */
+#post-body {
+    background: none repeat scroll 0 0 #e2f59f !important;
+    border-bottom-color: #e2f59f !important;
+    border-top-color: #e2f59f !important;
+}
+
+/* mce Editor background */
+.mceIframeContainer {
+	background-color: #ffffff;
+}
+
+/* dark green font for menu headings, links, tabs etc */
+a, #adminmenu a, #poststuff #edButtonPreview, #poststuff #edButtonHTML, #the-comment-list p.comment-author strong a, #media-upload a.del-link, #media-items a.delete, .plugins a.delete, .ui-tabs-nav a {
+	color: #486D25 !important;
+}
+
+/* main green bg on boxes & widget headers */
+.widget .widget-top, .postbox h3, .stuffbox h3{
+	background: #83ae2c !important;
+	color: #ffffff !important;
+	text-shadow: none !important;
+	font:13px/18px Georgia,"Times New Roman","Bitstream Charter",Times,serif !important;
+}
+
+/* main green bg on table and main menu headers */
+.metabox-prefs, h1#site-heading a, #adminmenu a.menu-top, .widefat thead tr th, .widefat tfoot tr th, h3.dashboard-widget-title, h3.dashboard-widget-title span, h3.dashboard-widget-title small, .find-box-head, #wphead {
 background: #83ae2c !important;
 color: #ffffff !important;
-}
-
-/* Links on Table Headers with background */
-.widefat thead tr th a, .widefat tfoot tr th a{
-color:#ffffff !important; 
-font-size:11px;
-font-weight:normal;
 }
 
 /* table headers */
@@ -37,31 +88,31 @@ font-weight:normal;
 color: #112845 !important;
 text-shadow: none !important;
 }
-
-/*boxes & widget headers */
-.widget .widget-top, .postbox h3, .stuffbox h3{
-background: #83ae2c !important;
-color: #ffffff !important;
-text-shadow: none !important;
-font:13px/18px Georgia,"Times New Roman","Bitstream Charter",Times,serif !important;
+/* White Font for Links on Table Headers */
+.widefat thead tr th a, .widefat tfoot tr th a{
+color:#ffffff !important; 
+/* font-size:11px; */
+font-weight:normal;
 }
 
-.meta-box-sortables .postbox:hover .handlediv {
-background:url("images/menu-bits.png") no-repeat scroll left -111px transparent !important;
-}
-#adminmenu .wp-has-submenu:hover .wp-menu-toggle, #adminmenu .wp-menu-open .wp-menu-toggle {
-background:url("images/menu-bits.png") no-repeat scroll left -109px transparent !important;
-}
-#adminmenu li.wp-has-current-submenu.wp-menu-open .wp-menu-toggle, #adminmenu li.wp-has-current-submenu:hover .wp-menu-toggle {
-background:url("images/menu-bits.png") no-repeat scroll left -207px transparent !important;
+/* menu */
+.wp-menu-arrow div {
+    background: no-repeat scroll right top transparent !important;
 }
 
-.column-menu_order, .column-linkimage{
-width: 10%;
+/* menu arrow replacement image */
+ #adminmenu .wp-menu-arrow {
+    background-color: transparent !important;
+    /*background-image: none !important;*/
+	background:url("images/menu-arrow-frame.png") no-repeat transparent !important;
 }
-.column-limit{
-width:20%;
+
+#adminmenu a.wp-has-current-submenu{
+	text-shadow: none !important;
+	color: #EDEA00 !important;
 }
 
-
-
+/* main header */
+.wp-admin #wphead{
+margin: 0 0 0 -15px !important;
+}
