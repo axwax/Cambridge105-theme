@@ -288,7 +288,7 @@ letter-spacing: normal;
 .widget_advancedrecentposts img.recent-posts-thumb {float: left; text-align: left;display: inline; margin:0; padding-right:10px;}
 
 
-.widget_gigxrecentposts{
+.widget_gigxrecentposts,.cam105_now_playing{
 background-color:#486D25;
 color:#333333;
     border-radius: 5px;
@@ -305,7 +305,7 @@ overflow:hidden;
 padding:10px 10px 0 10px;
 
 }
-.widget_gigxrecentposts h2.widget-title {
+.widget_gigxrecentposts h2.widget-title , .cam105_now_playing h2.widget-title{
     background-color: transparent;
     color:#FFFFFF;
 		font-family: 'HarabaraRegular',Arial,sans-serif;
@@ -313,11 +313,11 @@ padding:10px 10px 0 10px;
 	  letter-spacing: 2px;
     margin:0 0 10px 0;
 }
-.widget_gigxrecentposts h2.widget-title a{
+.widget_gigxrecentposts h2.widget-title a, .cam105_now_playing h2.widget-title a{
 color:#fff;
 }
 
-.widget_gigxrecentposts ul.gigx-recent-posts li{
+.widget_gigxrecentposts ul.gigx-recent-posts li, .cam105_now_playing div.rounded_5{
 background-color:#fff;
 color:#333333;
     border-radius: 5px;
@@ -513,7 +513,6 @@ div.header-menu ul ul ul li:hover ul
 	display: block; 
 }         
 
-/* attempt at highlighting current menu item (doesn't work for shows cpt)
 div.header-menu li.current-menu-item a {
 background: #83AE2C;
 }
@@ -525,7 +524,6 @@ div.header-menu li.current-menu-item .sub-menu a:hover {
 	background: #ffffff;
 	border: none; 
 }
-*/
 /* End Menu */
 
 
@@ -656,4 +654,8 @@ a:hover.button1 {color: #96D400;}
 padding-top:10px;
 }
 
-
+.rounded_5
+{
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
