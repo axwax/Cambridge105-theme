@@ -288,7 +288,7 @@ letter-spacing: normal;
 .widget_advancedrecentposts img.recent-posts-thumb {float: left; text-align: left;display: inline; margin:0; padding-right:10px;}
 
 
-.widget_gigxrecentposts,.cam105_now_playing{
+.widget_gigxrecentposts{
 background-color:#486D25;
 color:#333333;
     border-radius: 5px;
@@ -305,7 +305,7 @@ overflow:hidden;
 padding:10px 10px 0 10px;
 
 }
-.widget_gigxrecentposts h2.widget-title , .cam105_now_playing h2.widget-title{
+.widget_gigxrecentposts h2.widget-title {
     background-color: transparent;
     color:#FFFFFF;
 		font-family: 'HarabaraRegular',Arial,sans-serif;
@@ -313,11 +313,11 @@ padding:10px 10px 0 10px;
 	  letter-spacing: 2px;
     margin:0 0 10px 0;
 }
-.widget_gigxrecentposts h2.widget-title a, .cam105_now_playing h2.widget-title a{
+.widget_gigxrecentposts h2.widget-title a{
 color:#fff;
 }
 
-.widget_gigxrecentposts ul.gigx-recent-posts li, .cam105_now_playing div.rounded_5{
+.widget_gigxrecentposts ul.gigx-recent-posts li{
 background-color:#fff;
 color:#333333;
     border-radius: 5px;
