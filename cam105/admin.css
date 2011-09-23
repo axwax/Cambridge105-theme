@@ -21,7 +21,7 @@ font-size: 28px;
 #font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif; #uncomment this if you want to go to the sans-serif font
 }
 .wp-admin #header-logo {
-background-image: url("images/logo.gif");
+background-image: url("images/admin-logo.png");
 background-size:32px 32px;
 width:32px; height:32px;
 }
@@ -59,27 +59,100 @@ html, .wp-dialog {
     border-top-color: #e2f59f !important;
 }
 
+/* appearance/themes background and padding */
+.themes-php .wrap, .theme-install-php .wrap, .appearance_page_custom-background .wrap, .appearance_page_custom-header .wrap{
+background-color: #F5F5f5 !important;
+background-image: -moz-linear-gradient(center top , #F9F9F9, #F5F5F5) !important;
+padding: 0 10px !important;
+}
+
+.themes-php .nav-tab-active, .theme-install-php .nav-tab-active {
+font-weight: bold;
+}
+.themes-php .nav-tab:hover, .theme-install-php .nav-tab:hover {
+text-decoration: underline;
+}
+
+/*
+
+.themes-php .nav-tab:hover, .themes-php .nav-tab-active {
+    border-color: #ff0000;
+    border-width: 1px;
+	background-color: #F5F5f5 !important;	
+}
+.themes-php .nav-tab {
+background-color: #83ae2c;
+}
+*/
+
+/* appearance/menus background */
+.menu-edit #post-body {
+background-color: #F5F5F5 !important;
+background-image: -moz-linear-gradient(center top , #F9F9F9, #F5F5F5) !important;
+}
+
+/* appearance/menus header item type text */
+.item-type, .postbox-title-action a{
+color: #ffffff !important;
+}
+/* appearance/menus header item type position */
+.item-controls{
+padding: 7px 0 !important;
+}
+
+
 /* mce Editor background */
 .mceIframeContainer {
 	background-color: #ffffff;
 }
 
 /* dark green font for menu headings, links, tabs etc */
-a, #adminmenu a, #poststuff #edButtonPreview, #poststuff #edButtonHTML, #the-comment-list p.comment-author strong a, #media-upload a.del-link, #media-items a.delete, .plugins a.delete, .ui-tabs-nav a {
+a, #poststuff #edButtonPreview, #poststuff #edButtonHTML, #the-comment-list p.comment-author strong a, #media-upload a.del-link, #media-items a.delete, .plugins a.delete, .ui-tabs-nav a {
 	color: #486D25 !important;
 }
 
 /* main green bg on boxes & widget headers */
 .widget .widget-top, .postbox h3, .stuffbox h3{
+/*
 	background: #83ae2c !important;
+	color: #ffffff !important;
+	text-shadow: none !important;
+	font:13px/18px Georgia,"Times New Roman","Bitstream Charter",Times,serif !important;
+*/
+	}
+
+/* more widget headers */
+#widget-list .widget-top,
+.widget .widget-top,
+.postbox h3,
+.stuffbox h3,
+.widefat thead tr th,
+.widefat tfoot tr th,
+h3.dashboard-widget-title,
+h3.dashboard-widget-title span,
+h3.dashboard-widget-title small,
+.find-box-head,
+.sidebar-name,
+#nav-menu-header,
+#nav-menu-footer,
+.menu-item-handle,
+#fullscreen-topbar {
+	background-color: #83ae2c; /* Fallback */
+	background-image: -ms-linear-gradient(bottom, #56822C, #83ae2c); /* IE10 */
+	background-image: -moz-linear-gradient(bottom, #56822C, #83ae2c); /* Firefox */
+	background-image: -o-linear-gradient(bottom, #56822C, #83ae2c); /* Opera */
+	background-image: -webkit-gradient(linear, left bottom, left top, from(#56822C), to(#83ae2c)); /* old Webkit */
+	background-image: -webkit-linear-gradient(bottom, #56822C, #83ae2c); /* new Webkit */
+	background-image: linear-gradient(bottom, #56822C, #83ae2c); /* proposed W3C Markup */
 	color: #ffffff !important;
 	text-shadow: none !important;
 	font:13px/18px Georgia,"Times New Roman","Bitstream Charter",Times,serif !important;
 }
 
-/* main green bg on table and main menu headers */
-.metabox-prefs, h1#site-heading a, #adminmenu a.menu-top, .widefat thead tr th, .widefat tfoot tr th, h3.dashboard-widget-title, h3.dashboard-widget-title span, h3.dashboard-widget-title small, .find-box-head, #wphead {
-background: #83ae2c !important;
+
+/* main green bg on table headers */
+.metabox-prefs, h1#site-heading a, .widefat thead tr th, .widefat tfoot tr th, h3.dashboard-widget-title, h3.dashboard-widget-title span, h3.dashboard-widget-title small, .find-box-head, #wphead {
+background: #83ae2c !important; 
 color: #ffffff !important;
 }
 
@@ -107,12 +180,112 @@ font-weight:normal;
 	background:url("images/menu-arrow-frame.png") no-repeat transparent !important;
 }
 
-#adminmenu a.wp-has-current-submenu{
+/* currently selected admin menu header text & background colour */
+#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu{
 	text-shadow: none !important;
 	color: #EDEA00 !important;
+	background-color: #486D25 !important; /* Fallback */
+	background-image: none;
 }
+
+/* regular admin menu header arrow */
+#adminmenu .wp-has-submenu:hover .wp-menu-toggle, #adminmenu .wp-menu-open .wp-menu-toggle {
+background: transparent url(images/arrows-dark.png) no-repeat -2px 6px !important;
+}
+
+/* currently selected admin menu header arrow */
+#adminmenu li.wp-has-current-submenu.wp-menu-open .wp-menu-toggle, #adminmenu li.wp-has-current-submenu:hover .wp-menu-toggle {
+background: transparent url(images/arrows.png) no-repeat -1px 6px !important;
+background-image: url(images/arrows.png) !important;
+}
+
+/* regular admin menu header background */
+#adminmenu a.menu-top{
+	background-color: #83ae2c; /* Fallback */
+	background-image: -ms-linear-gradient(bottom, #56822C, #83ae2c); /* IE10 */
+	background-image: -moz-linear-gradient(bottom, #56822C, #83ae2c); /* Firefox */
+	background-image: -o-linear-gradient(bottom, #56822C, #83ae2c); /* Opera */
+	background-image: -webkit-gradient(linear, left bottom, left top, from(#56822C), to(#83ae2c)); /* old Webkit */
+	background-image: -webkit-linear-gradient(bottom, #56822C, #83ae2c); /* new Webkit */
+	background-image: linear-gradient(bottom, #56822C, #83ae2c); /* proposed W3C Markup */
+	color: #ffffff !important;
+}
+
 
 /* main header */
 .wp-admin #wphead{
-margin: 0 0 0 -15px !important;
+	margin: 0 0 0 -15px !important;
+	border-color: #486D25 !important;
+}
+#wphead h1 {
+	padding-top: 5px;
+}
+
+/* header logo fix */
+#header-logo {
+	margin: 5px 7px 0 15px !important; 
+}
+
+/* screen options */
+#screen-options-wrap, #contextual-help-wrap {
+    background-color: #83ae2c;
+    border-color: #486D25;
+	color: #ffffff;
+}
+
+/* screen options & help button */
+#screen-options-link-wrap,
+#contextual-help-link-wrap {
+	background-color: #83ae2c; /* Fallback */
+	border-right: 1px solid transparent;
+	border-left: 1px solid transparent;
+	border-bottom: 1px solid transparent;
+	background-image: -ms-linear-gradient(bottom, #56822C, #83ae2c); /* IE10 */
+	background-image: -moz-linear-gradient(bottom, #56822C, #83ae2c); /* Firefox */
+	background-image: -o-linear-gradient(bottom, #56822C, #83ae2c); /* Opera */
+	background-image: -webkit-gradient(linear, left bottom, left top, from(#56822C), to(#83ae2c)); /* old Webkit */
+	background-image: -webkit-linear-gradient(bottom, #56822C, #83ae2c); /* new Webkit */
+	background-image: linear-gradient(bottom, #56822C, #83ae2c); /* proposed W3C Markup */
+}
+
+/* screen options & help button text */
+#screen-meta a.show-settings{
+text-shadow: none !important;
+	color: #ffffff !important;
+}
+
+/* screen options & help button arrow */
+#screen-meta a.show-settings,
+.toggle-arrow {
+	background: transparent url(images/arrows-dark.png) no-repeat right 3px;
+}
+
+/* screen options & help button arrow */
+#screen-meta .screen-meta-active a.show-settings {
+	background: transparent url(images/arrows-dark.png) no-repeat right -33px;
+}
+
+/* post box header arrow */
+.meta-box-sortables .postbox:hover .handlediv {
+	background: transparent url(images/arrows-dark.png) no-repeat 6px 7px;
+}
+
+/* user info arrow (top-right corner) */
+#user_info_arrow {
+	background: transparent url(images/arrows-dark.png) no-repeat 6px 5px;
+}
+#user_info:hover #user_info_arrow,
+#user_info.active #user_info_arrow {
+	background: transparent url(images/arrows.png) no-repeat 6px 5px;
+}
+
+/* update nag position fix*/
+#update-nag, .update-nag {
+margin-left: 0 !important;
+}
+
+/* editor toolbar background */
+#poststuff #editor-toolbar{
+	background: #83ae2c !important; 
+	color: #ffffff !important;
 }
