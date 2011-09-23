@@ -7,10 +7,11 @@ Author: Axel Minet
 function gigx_excerpt ($content='',$excerpt='',$striphtml=false, $extract_length=200, $link='', $getmore_text='(more...)',$autop=False){
 	if ( $excerpt != '' ) {  // uses text from the exceprt field in post screen
 	// do something
-	$text=$except;
+	$text=$excerpt;
 	}
 	else {
   	$text = $content;
+	}
 		$text = explode('<!--more-->', $text, 2);
 		if (count($text) > 1) $gotmore = true; // checks if there is a more tag
 		
@@ -38,7 +39,7 @@ function gigx_excerpt ($content='',$excerpt='',$striphtml=false, $extract_length
 				$text .= ' <a href="'. $link . "\">$getmore_text</a>";
 			} 
 		}
-	}
+	
 	if ($autop) $text=wpautop($text);
 	return $text;
 }
