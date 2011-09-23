@@ -187,5 +187,22 @@ function cam105_editor_styles($styles){
     $styles.=',105Box=cam105_box';
     return $styles;
 }
+
+
+# remove columns from all posts screen
+add_filter('manage_posts_columns', 'scompt_custom_columns');
+function scompt_custom_columns($defaults) {
+    //unset($defaults['comments']);
+    //unset($defaults['author']);
+	//print_r($defaults);
+    return $defaults;
+}
+
+# remove wordpress seo 'robots meta' column
+// remove annoying "Robots Meta" columns that WP SEO puts in
+remove_filter( 'manage_page_posts_columns',array($wpseo_metabox,'page_title_column_heading'), 10, 1 );
+remove_filter( 'manage_post_posts_columns',array($wpseo_metabox,'page_title_column_heading'), 10, 1 );
+remove_action( 'manage_pages_custom_column',array($wpseo_metabox,'page_title_column_content'), 10, 2 );
+remove_action( 'manage_posts_custom_column',array($wpseo_metabox,'page_title_column_content'), 10, 2 );
   
 ?>
