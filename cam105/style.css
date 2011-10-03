@@ -21,7 +21,7 @@ Version: 0.1
 
 /* COLORS */
 
-body {background:#83ae2c url(../images/page_bg.png) top left repeat;font-family:Arial, Tahoma, sans-serif;}
+body {background:#83ae2c top left repeat;font-family:Arial, Tahoma, sans-serif;}
 
 a:link {text-decoration: none;outline:none;color:#486D25;font-weight:bolder;}
 a:visited {color: #486D25; font-weight:bolder;}
