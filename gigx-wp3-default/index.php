@@ -2,7 +2,7 @@
 /*
 File Description: Default Index Page
 Built By: GIGX
-Theme Version: 0.5.11
+Theme Version: 0.5.12
 */
  
 get_header();

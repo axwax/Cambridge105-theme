@@ -2,7 +2,7 @@
 /*
 File Description: custom buttons for shortcodes in TinyMCE editor
 Built By: GIGX
-Theme Version: 0.5.11
+Theme Version: 0.5.12
 */
 
 /**
