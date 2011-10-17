@@ -24,7 +24,7 @@ function gigx_excerpt ($content='',$excerpt='',$striphtml=false, $extract_length
 			//
 			//	Strip leading and trailing tags from the entry.
 			//
-			$textnew=gigx_truncate($text, $extract_length, '', false, true,'<br><b><i><u><strong><span><a>');
+			$textnew=gigx_truncate($text, $extract_length, '', false, true,'<br><b><i><u><strong><span><a><em>');
 			if(strlen($textnew)<strlen($text)) {  // extract is shorter than original text
 				  $gotmore=true;
 				  $text=$textnew;
@@ -59,7 +59,7 @@ function gigx_excerpt ($content='',$excerpt='',$striphtml=false, $extract_length
  * @return string Trimmed string.
  * Modified by kvs, http://www.securityhacking.tk
  */
-    function gigx_truncate($text, $length = 100, $ending = '...', $exact = false, $considerHtml = true, $allowedTags='<br><b><i><u><p><strong><span><div>') {
+    function gigx_truncate($text, $length = 100, $ending = '...', $exact = false, $considerHtml = true, $allowedTags='<br><b><i><u><p><strong><span><div><em>') {
         if ($considerHtml) {
             if($allowedTags) $text=strip_tags($text,$allowedTags);
             // if the plain text is shorter than the maximum length, return the whole text
