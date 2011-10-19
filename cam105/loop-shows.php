@@ -13,7 +13,7 @@ Theme Version: 0.5.11
     	</div>  
     <?php endif; ?>
        
-    <div class="single show">
+    <div class="shows_container">
         <?php /* Do we have posts, then start the loop, otherwise display 404 */ ?>
       	<?php if (have_posts()) : ?>
           <?php /* Start the Loop */ ?>  	
