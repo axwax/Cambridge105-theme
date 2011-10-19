@@ -66,8 +66,9 @@ if (!$fbimg) $fbimg= Array(get_bloginfo('stylesheet_directory').'/images/faceboo
             	</div>
             </div>  
           <?php endif; ?>
-        <div id="main">
           <?php wp_nav_menu( array( 'theme_location' => 'below-header', 'sort_column' => 'menu_order', 'fallback_cb' => 'header_menu', 'container_class' => 'header-menu' ) ); ?>
+
+		  <div id="main">
      
   
         <div id="container">
