@@ -16,6 +16,7 @@
 				 * If you want to overload this in a child theme then include a file
 				 * called loop-category.php and that will be used instead.
 				 */
+				 wp_sfw_render();
 				get_template_part( 'loop', 'cpt-archive' ); 
 				?>
 

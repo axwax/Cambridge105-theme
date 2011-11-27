@@ -1,0 +1,129 @@
+/* Fonts */
+@font-face {
+	font-family: 'HarabaraRegular';
+	src: url('type/harabara-webfont.eot');
+	src: local('?'), url('type/harabara-webfont.woff') format('woff'), url('type/harabara-webfont.ttf') format('truetype'), url('type/harabara-webfont.svg#webfontCLJ3VJzF') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* COLORS */
+
+body {background:#83ae2c url(../images/page_bg.png) top left repeat;font-family:Arial, Tahoma, sans-serif;}
+
+a:link {text-decoration: none;outline:none;color:#486D25;font-weight:bolder;}
+a:visited {color: #486D25; font-weight:bolder;}
+a:hover {color: #2b9417;text-decoration: underline;font-weight:bolder;}
+a:active, a:focus {color: #000; font-weight:bolder;}
+code, pre { color: #c33; } /* very optional, but still useful. W3C uses about the same colors for codes */
+
+/* Colour Scheme */
+
+
+#page #container #header #logo {
+background-color: #83ae2c;
+}
+#page #footer {
+	background-color: transparent;
+}
+
+/* Text colours */
+.whitetext {
+	color: #ffffff;
+}
+.blacktext {
+	color: #000000;
+}
+
+
+
+/* IE HACKS
+-------------------------------------------------------------- */
+
+body { text-align:center; }
+.container { text-align:left; }
+ol { margin-left:2em; }
+sup { vertical-align:text-top; }
+sub { vertical-align:text-bottom; }
+html>body p code { white-space:normal; }
+hr { margin:-8px auto 11px; }
+fieldset { padding-top:0; }
+
+/* Utility Classes */
+/* --------------- */
+
+/* clearfix */
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+ 
+.clearfix {
+	display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+	display: block;
+}
+ 
+* html .clearfix {
+	height: 1%;
+}
+
+
+
+/* WP Styling */
+/* ---------- */
+
+
+.small {font-size:.8em;margin-bottom:1.875em;line-height:1.5em;}
+
+.wp-caption {
+    background-color: #F3F3F3;
+    border: 1px solid #DDDDDD;
+    border-radius: 3px 3px 3px 3px;
+    margin: 10px;
+    padding: 5px;
+    text-align: center;
+}
+
+.frontpagefeature, .single #content, .archive .shows, .page .posts{
+background-color:#fff;
+color:#111;
+    border-radius: 5px;
+    -moz-border-radius: 5px;    
+    -moz-box-shadow: 5px 5px 5px #333; 
+    -webkit-box-shadow: 5px 5px 5px #333; 
+    box-shadow: 5px 5px 5px #333;
+    background-image: -moz-linear-gradient(top, #fafafa, #fff); 
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #fafafa),color-stop(1, #fff));  
+margin:0 0 10px 0;
+overflow:hidden;
+padding:10px;
+    font-family: 'HarabaraRegular',Arial,sans-serif;
+     width: 720px;
+}
+.single #content h2, .archive .shows h2, .page .posts h2{
+    font-size: 1.9em;
+    letter-spacing: 0.05em;
+	font-weight:normal;
+	margin-top:10px;
+}
+
+.single #content p, .archive .shows p, .page .posts p{
+font-size: 1.3em;
+margin-bottom:10px;
+font-family: Arial, sans-serif;
+}
+.home #content .posts{
+background:none;
+margin:0 ;
+overflow:hidden;
+padding:0;
+    font-family: 'HarabaraRegular',Arial,sans-serif;
+     width: 740px;
+}

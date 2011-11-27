@@ -14,21 +14,15 @@ Theme Version: 0.5.11
     <?php endif; ?>
        
     <div class="shows_container">
-        <?php /* Do we have posts, then start the loop, otherwise display 404 */ ?>
+        <?php /* Do we have posts, then start the loop, otherwise display 404 */
+        
+        ?>
       	<?php if (have_posts()) : ?>
           <?php /* Start the Loop */ ?>  	
       		<?php while (have_posts()) : the_post(); ?>
-				<div <?php post_class() ?> id="post-<?php the_ID(); ?>"> 		
+				<div <?php post_class("clearfix") ?> id="post-<?php the_ID(); ?>"> 		
 <?php 
 	  
-	# Show Image (Post Thumbnail)
-	if(has_post_thumbnail()) {
-		$img=wp_get_attachment_image_src (get_post_thumbnail_id(get_the_ID()),'shows-image',false);    
-	} else {
-		$img=get_bloginfo("template_url").'/images/shows-default.png';
-	}
-	$img_html= '<div class="wp-caption alignleft"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$p->post_title.'"/><p class="wp-caption-text">'.get_the_title().'</p></div>';
-
 	# Show Title (Shows CPT)
 	$title_tag='h1';
 	$single_title_tag='h2';
@@ -43,6 +37,15 @@ Theme Version: 0.5.11
 	if ( $title && $title_tag && !is_page()) {
 		$title_html='<' . $title_tag . ' class="post-title">' . $title . '</' . $title_tag . '>'."\n\r";
 	}
+	# Show Image (Post Thumbnail)
+	if(has_post_thumbnail()) {
+		$img=wp_get_attachment_image_src (get_post_thumbnail_id(get_the_ID()),'shows-thumb',false);    
+	} else {
+		$img=get_bloginfo("template_url").'/images/shows-default.png';
+	}
+	//$img_html= '<div class="wp-caption alignleft"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$p->post_title.'"/><p class="wp-caption-text">'.get_the_title().'</p></div>';
+	$img_html= '<div class="wp-caption alignleft"><a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$p->post_title.'"/></a></div>';
+
 
 	# Show genres list (Tax)
 	$genres_list = get_the_term_list( $post->ID, 'genres', '', ', ', '' );
@@ -62,9 +65,11 @@ Theme Version: 0.5.11
 	if ( '' != $frequency_list ) {
 		$frequency_html= "<p>$frequency_list</p>\n";
 	}
+	# Podcasts (posts-to-posts)
+	//$connected = p2p_type( 'posts_to_shows' )->get_connected( $post->ID );	
  ?>
-				<?php echo $img_html ?>
 				<?php echo $title_html ?>
+				<?php echo $img_html ?>
 				<?php echo $genres_html ?>
                 <div class="entry" style="padding-top:10px;">
                   <?php the_content('<p>Read the rest of this entry &raquo;</p>'); ?>
@@ -72,6 +77,58 @@ Theme Version: 0.5.11
 				<div class="entry-utility">
 					<?php echo $website_html; ?>
 					<?php echo $frequency_html; ?>
+<?php
+// Find connected pages
+
+if ( function_exists( 'p2p_type' ) && is_single() ){
+	$connected = p2p_type( 'posts_to_shows' )->get_connected( $post->ID );
+
+	// Display connected pages
+	if ( $connected->have_posts() ) :
+	$done=false;
+	?>
+	<h3>Latest Podcast:</h3>
+	<?php while ( $connected->have_posts() && !$done) : $connected->the_post(); $done=true; ?>
+		<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+		<p><?php the_excerpt() ?></p>
+	<?php endwhile; ?>
+
+	<?php 
+	// Prevent weirdness
+	wp_reset_postdata();
+
+	endif;
+}
+?>
+
+<?php  //for use in the loop, list 5 post titles related to first tag on current post
+  $backup = $post;  // backup the current object
+  $tags = wp_get_post_tags($post->ID);
+  $tagIDs = array();
+  if ($tags) {
+    $tagcount = count($tags);
+    for ($i = 0; $i < $tagcount; $i++) {
+      $tagIDs[$i] = $tags[$i]->term_id;
+    }
+    $args=array(
+      'tag__in' => $tagIDs,
+      'post__not_in' => array($post->ID),
+      'showposts'=>5,
+      'caller_get_posts'=>1,
+      'post_type'=>'shows'
+    );
+    $my_query = new WP_Query($args);
+    if( $my_query->have_posts()  && is_single()) {
+      ?><h2>Related Shows:</h2><?php
+      while ($my_query->have_posts()) : $my_query->the_post(); ?>
+        <p><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></p>
+      <?php endwhile;
+    } else {  }
+  }
+  $post = $backup;  // copy it back
+  wp_reset_query(); // to use the original query again
+?>
+					
 				</div>
 				<?php 
 				if(defined ('CUSTOM_POST_TYPE') && is_singular(CUSTOM_POST_TYPE)) {
