@@ -9,10 +9,10 @@ Version: 0.1
 */
  
 @import url("../gigx-wp3-default/style.css");
-@import url("global.css");
-@import url("structure.css");
-@import url("menu.css");
-@import url("widgets.css");
+@import url("css/global.css");
+@import url("css/structure.css");
+@import url("css/menu.css");
+@import url("css/widgets.css");
 
 
 
