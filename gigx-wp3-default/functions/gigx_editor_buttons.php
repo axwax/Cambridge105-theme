@@ -50,7 +50,7 @@ function gigx_add_plugin( $plugin_array ) {
 ###
 # style select box for editor
 /* Custom CSS styles on WYSIWYG Editor */
-if (!function_exists (gigx_editor_styles_function)){
+if (!function_exists ("gigx_editor_styles_function")){
   function gigx_editor_styles_function ($init) {
     $init['theme_advanced_buttons2_add_before'] = 'styleselect';
 
