@@ -50,7 +50,7 @@ class gigx_post_author extends WP_Widget {
     }
 
 	
-			if ( $author ) {
+			if ( isset($author) && $author != '' ) {
     		echo '<span class="postauthor">' . $author . '</span>';
 			}
       echo "\n\r";			
