@@ -4,7 +4,7 @@ File Description: The Loop for "Shows" Custom Post Type
 Author: Axel Minet
 Theme Version: 0.5.11
 */
-?>tax
+?>
   	<?php wp_nav_menu( array( 'theme_location' => 'above-posts', 'sort_column' => 'menu_order', 'fallback_cb' => 'header_menu', 'container_class' => 'header-menu' ) ); ?>
   	<?php if ( is_active_sidebar( 'above_posts_widgets' ) ) : // Widgets Above Posts ?>
     	<div id="above-posts-widgets">

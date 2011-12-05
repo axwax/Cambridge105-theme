@@ -319,4 +319,23 @@ function shows_alphabetical( $orderby )
 		}
 	}
 		add_action( 'wp_head', 'gigx_head' , 1 );
-		add_action( 'wp_footer', 'gigx_footer', 2 );	
+		add_action( 'wp_footer', 'gigx_footer', 2 );
+                
+add_filter('pre_get_posts', 'query_post_type');
+function query_post_type($query) {
+    $post_types = get_post_types();
+    if ( is_category() || is_tag()) {
+
+        $post_type = get_query_var('post_type');
+        //print_r($post_type);
+    
+        if ( $post_type )
+            $post_type = $post_type;
+        else
+            $post_type = $post_types;
+
+        $query->set('post_type', $post_type);
+
+    return $query;
+    }
+}                

@@ -28,8 +28,9 @@ Theme Version: 0.5.11
 	$single_title_tag='h2';
 	$title = the_title('', '', false);		
 	if ( $title && !is_singular() ) {
+                $permalink='';
 		$permalink = apply_filters('the_permalink', get_permalink());
-		$title = '<a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '">'.$title.'</a>';
+		if(isset($permalink)) $title = '<a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '">'.$title.'</a>';
 	}
 	if ( $single_title_tag && is_singular() ) {
 		$title_tag=$single_title_tag;
@@ -45,7 +46,7 @@ Theme Version: 0.5.11
 			$img=get_bloginfo("template_url").'/images/shows-default.png';
 		}
 		//$img_html= '<div class="wp-caption alignleft"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$p->post_title.'"/><p class="wp-caption-text">'.get_the_title().'</p></div>';
-		$img_html= '<div class="wp-caption alignleft"><a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$post->post_title.'" title="'.$post->post_title.'"/></a></div>';
+		$img_html= '<div class="wp-caption alignleft"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$post->post_title.'" title="'.$post->post_title.'"/></div>';
 	}
 	else{
 		if(has_post_thumbnail()) {
@@ -54,7 +55,8 @@ Theme Version: 0.5.11
 			$img=get_bloginfo("template_url").'/images/shows-thumb-default.png';
 		}
 		//$img_html= '<div class="wp-caption alignleft"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$p->post_title.'"/><p class="wp-caption-text">'.get_the_title().'</p></div>';
-		$img_html= '<div class="wp-caption alignleft"><a href="' . esc_url($permalink) . '" title="' . esc_attr(the_title('', '', false)) . '"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$post->post_title.'" title="'.$post->post_title.'"/></a></div>';	
+		if(isset($permalink)) $img_html= '<div class="wp-caption alignleft"><a href="' . esc_url($permalink) . '" title="' . esc_attr(the_title('', '', false)) . '"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$post->post_title.'" title="'.$post->post_title.'"/></a></div>';
+                else $img_html= '<div class="wp-caption alignleft"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$post->post_title.'" title="'.$post->post_title.'"/></div>';    
 	}
 
 	# Show genres list (Tax)
