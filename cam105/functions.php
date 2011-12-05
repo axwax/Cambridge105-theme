@@ -21,6 +21,8 @@ endif;
 unregister_post_type('gigx_schedule');
 unregister_post_type('schedule');
 unregister_post_type('shows');
+unregister_post_type('site');
+
 */
 
 # include custom post types
@@ -204,13 +206,15 @@ return $defaults;
 
 # remove wordpress seo 'robots meta' column
 // remove annoying "Robots Meta" columns that WP SEO puts in
+/*
 remove_filter( 'manage_page_posts_columns',array($wpseo_metabox,'page_title_column_heading'), 10, 1 );
 remove_filter( 'manage_post_posts_columns',array($wpseo_metabox,'page_title_column_heading'), 10, 1 );
 remove_action( 'manage_pages_custom_column',array($wpseo_metabox,'page_title_column_content'), 10, 2 );
 remove_action( 'manage_posts_custom_column',array($wpseo_metabox,'page_title_column_content'), 10, 2 );
+*/
 
 /* meta boxes */
-
+/*
 include_once get_stylesheet_directory() . '/MetaBox.php';
 
 include_once get_stylesheet_directory() . '/MediaAccess.php';
@@ -229,7 +233,7 @@ $podcast_mb = new WPAlchemy_MetaBox(array
 	'priority' => 'high', // same as above, defaults to "high"	
 	'template' => get_stylesheet_directory() . '/podcast-mb.php',
 ));
-
+*/
 /* podcast menu button test */
 add_action('admin_menu', 'register_podcast_submenu_page');
 
@@ -295,3 +299,24 @@ function shows_alphabetical( $orderby )
      return "post_title ASC";
   }
 }  
+
+
+/* shows slider test */
+	function gigx_head() {
+		if( !is_admin() ) {
+			$queued = true;
+			$url = plugin_dir_url( __FILE__ );
+			wp_enqueue_script( 'jquery' );
+			wp_enqueue_script( 'gigx-caroufredsel-js', get_bloginfo('stylesheet_directory'). '/js/jquery.carouFredSel-5.2.3-packed.js', array( 'jquery' ), '1.4', true );
+			wp_enqueue_script( 'gigx-shows-slides-js', get_bloginfo('stylesheet_directory').'/js/gigx-shows-slides.js', false, false, true );
+		}
+	}
+	function gigx_footer() {
+	global $queued;
+		if( $queued ) {
+			wp_deregister_script( 'gigx-caroufredsel-js' );
+			wp_deregister_script( 'gigx-shows-slides-js' );
+		}
+	}
+		add_action( 'wp_head', 'gigx_head' , 1 );
+		add_action( 'wp_footer', 'gigx_footer', 2 );	

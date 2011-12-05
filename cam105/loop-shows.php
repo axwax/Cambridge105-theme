@@ -13,7 +13,7 @@ Theme Version: 0.5.11
     	</div>  
     <?php endif; ?>
        
-    <div class="shows_container">
+    <div id="shows_container" class="shows_container">
         <?php /* Do we have posts, then start the loop, otherwise display 404 */
         
         ?>
@@ -38,22 +38,34 @@ Theme Version: 0.5.11
 		$title_html='<' . $title_tag . ' class="post-title">' . $title . '</' . $title_tag . '>'."\n\r";
 	}
 	# Show Image (Post Thumbnail)
-	if(has_post_thumbnail()) {
-		$img=wp_get_attachment_image_src (get_post_thumbnail_id(get_the_ID()),'shows-thumb',false);    
-	} else {
-		$img=get_bloginfo("template_url").'/images/shows-default.png';
+	if (is_singular()){
+		if(has_post_thumbnail()) {
+			$img=wp_get_attachment_image_src (get_post_thumbnail_id(get_the_ID()),'shows-image',false);    
+		} else {
+			$img=get_bloginfo("template_url").'/images/shows-default.png';
+		}
+		//$img_html= '<div class="wp-caption alignleft"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$p->post_title.'"/><p class="wp-caption-text">'.get_the_title().'</p></div>';
+		$img_html= '<div class="wp-caption alignleft"><a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$post->post_title.'" title="'.$post->post_title.'"/></a></div>';
 	}
-	//$img_html= '<div class="wp-caption alignleft"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$p->post_title.'"/><p class="wp-caption-text">'.get_the_title().'</p></div>';
-	$img_html= '<div class="wp-caption alignleft"><a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$p->post_title.'"/></a></div>';
-
+	else{
+		if(has_post_thumbnail()) {
+			$img=wp_get_attachment_image_src (get_post_thumbnail_id(get_the_ID()),'shows-thumb',false);    
+		} else {
+			$img=get_bloginfo("template_url").'/images/shows-thumb-default.png';
+		}
+		//$img_html= '<div class="wp-caption alignleft"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$p->post_title.'"/><p class="wp-caption-text">'.get_the_title().'</p></div>';
+		$img_html= '<div class="wp-caption alignleft"><a href="' . esc_url($permalink) . '" title="' . esc_attr(the_title('', '', false)) . '"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$post->post_title.'" title="'.$post->post_title.'"/></a></div>';	
+	}
 
 	# Show genres list (Tax)
+	$genres_html='';
 	$genres_list = get_the_term_list( $post->ID, 'genres', '', ', ', '' );
 	if ( '' != $genres_list ) {
 		$genres_html='<h4> ('.$genres_list.')</h4>';               
 	}
 
 	# Show's Website (Custom Meta)
+	$website_html='';
 	$website_title=get_post_meta($post->ID, 'WebsiteTitle', True);
 	$website_url=get_post_meta($post->ID, 'WebsiteURL', True);
 	if ( ('' != $website_title) and ('' != $website_url)  ) {
@@ -61,6 +73,7 @@ Theme Version: 0.5.11
 	}
 		
 	# Show Frequency list (Tax)
+	$frequency_html='';
 	$frequency_list = get_the_term_list( $post->ID, 'frequency', 'Show Frequency: ', ', ', '' );
 	if ( '' != $frequency_list ) {
 		$frequency_html= "<p>$frequency_list</p>\n";
@@ -114,7 +127,7 @@ if ( function_exists( 'p2p_type' ) && is_single() ){
       'tag__in' => $tagIDs,
       'post__not_in' => array($post->ID),
       'showposts'=>5,
-      'caller_get_posts'=>1,
+      'ignore_sticky_posts'=>1,
       'post_type'=>'shows'
     );
     $my_query = new WP_Query($args);
@@ -154,6 +167,7 @@ if ( function_exists( 'p2p_type' ) && is_single() ){
       
       	<?php endif; ?>
     </div><!-- end of posts div -->
+    <div id="shows_pager"></div>
 
   
 

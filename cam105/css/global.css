@@ -2,14 +2,14 @@
 @font-face {
 	font-family: 'HarabaraRegular';
 	src: url('type/harabara-webfont.eot');
-	src: local('?'), url('type/harabara-webfont.woff') format('woff'), url('type/harabara-webfont.ttf') format('truetype'), url('type/harabara-webfont.svg#webfontCLJ3VJzF') format('svg');
+	src: local('?'), url('../type/harabara-webfont.woff') format('woff'), url('../type/harabara-webfont.ttf') format('truetype'), url('../type/harabara-webfont.svg#webfontCLJ3VJzF') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 
 /* COLORS */
 
-body {background:#83ae2c url(../images/page_bg.png) top left repeat;font-family:Arial, Tahoma, sans-serif;}
+body {background:#83ae2c top left repeat;font-family:Arial, Tahoma, sans-serif;}
 
 a:link {text-decoration: none;outline:none;color:#486D25;font-weight:bolder;}
 a:visited {color: #486D25; font-weight:bolder;}

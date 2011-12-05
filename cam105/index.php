@@ -24,4 +24,5 @@ get_header();
 	</div>
 
 <?php get_sidebar(); ?>
+<?= "<!-- ".$loop." -->\r\n";?>
 <?php get_footer(); ?>
