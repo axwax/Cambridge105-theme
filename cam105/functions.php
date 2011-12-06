@@ -104,7 +104,7 @@ return $item->ID;
 #
 
 # remove admin bar
-add_filter('show_admin_bar', '__return_false');
+    //add_filter('show_admin_bar', '__return_false');
 
 # remove default widgets
 // unregister all default WP Widgets
@@ -125,66 +125,70 @@ unregister_widget('WP_Widget_RSS');
 add_action('widgets_init', 'unregister_default_wp_widgets', 1);
 
 # custom xml-rpc handler
-add_filter('xmlrpc_methods', 'gigx_xmlrpc_methods');
-function gigx_xmlrpc_methods($methods)
-{
-	$methods['cam105Shows'] = 'cam105_shows';
-	return $methods;
-}
-
-function cam105_shows($args)
-{
-	// Parse the arguments, assuming they're in the correct order
-	$username	= $args[0];
-	$password	= $args[1];
-	$data = $args[2];
-
-	global $wp_xmlrpc_server;
-
-	// Let's run a check to see if credentials are okay
-	if ( !$user = $wp_xmlrpc_server->login($username, $password) ) {
-		return $wp_xmlrpc_server->error;
-	}
-
-	// Let's gather the title and custom fields
-	// At a later stage we'll send these via XML-RPC
-	$title = $data["title"];
-	$custom_fields = $data["custom_fields"];
-
-	// Format the new post
-	$new_post = array(
-		'post_status' => 'draft',
-		'post_title' => $title,
-		'post_type' => 'shows',
-	);
-
-	// Run the insert and add all meta values
-	$new_post_id = wp_insert_post($new_post);
-	foreach($custom_fields as $meta_key => $values)
-		foreach ($values as $meta_value)
-			add_post_meta($new_post_id, $meta_key, $meta_value);
-
-	// Just output something ;)
-	return "Done!";
-}
+/*
+    add_filter('xmlrpc_methods', 'gigx_xmlrpc_methods');
+    function gigx_xmlrpc_methods($methods)
+    {
+            $methods['cam105Shows'] = 'cam105_shows';
+            return $methods;
+    }
+    
+    function cam105_shows($args)
+    {
+            // Parse the arguments, assuming they're in the correct order
+            $username	= $args[0];
+            $password	= $args[1];
+            $data = $args[2];
+    
+            global $wp_xmlrpc_server;
+    
+            // Let's run a check to see if credentials are okay
+            if ( !$user = $wp_xmlrpc_server->login($username, $password) ) {
+                    return $wp_xmlrpc_server->error;
+            }
+    
+            // Let's gather the title and custom fields
+            // At a later stage we'll send these via XML-RPC
+            $title = $data["title"];
+            $custom_fields = $data["custom_fields"];
+    
+            // Format the new post
+            $new_post = array(
+                    'post_status' => 'draft',
+                    'post_title' => $title,
+                    'post_type' => 'shows',
+            );
+    
+            // Run the insert and add all meta values
+            $new_post_id = wp_insert_post($new_post);
+            foreach($custom_fields as $meta_key => $values)
+                    foreach ($values as $meta_value)
+                            add_post_meta($new_post_id, $meta_key, $meta_value);
+    
+            // Just output something ;)
+            return "Done!";
+    }
+*/
 
 ### Default editor content
-add_filter( 'default_content', 'gigx_editor_content' );
-
-function gigx_editor_content( $content ) {
-global $pagenow;
-	if ($pagenow=="post-new.php"){
-	  if ((!isset($_REQUEST['post_type']))){  //only for pages
-$content = "<h2>This is the headline</h2>\n\r
-<strong>This is the blurb</strong>\n\r
-[[insert image here]]\n\r
-text to go by the side of the image.\n\r
-<!--more-->\n\r
-This text only gets displayed in single view.";
-}
-}
-	return $content;
-}
+/*
+    add_filter( 'default_content', 'gigx_editor_content' );
+    
+    function gigx_editor_content( $content ) {
+    global $pagenow;
+            if ($pagenow=="post-new.php"){
+              if ((!isset($_REQUEST['post_type']))){  //only for pages
+    $content = "<h2>This is the headline</h2>\n\r
+    <strong>This is the blurb</strong>\n\r
+    [[insert image here]]\n\r
+    text to go by the side of the image.\n\r
+    <!--more-->\n\r
+    This text only gets displayed in single view.";
+    }
+    }
+            return $content;
+    }
+*/
 
 # style select box for editor
 /* Custom CSS styles on WYSIWYG Editor */
@@ -196,43 +200,44 @@ return $styles;
 
 
 # remove columns from all posts screen
-add_filter('manage_posts_columns', 'scompt_custom_columns');
-function scompt_custom_columns($defaults) {
-//unset($defaults['comments']);
-//unset($defaults['author']);
-	//print_r($defaults);
-return $defaults;
-}
-
-# remove wordpress seo 'robots meta' column
-// remove annoying "Robots Meta" columns that WP SEO puts in
 /*
-remove_filter( 'manage_page_posts_columns',array($wpseo_metabox,'page_title_column_heading'), 10, 1 );
-remove_filter( 'manage_post_posts_columns',array($wpseo_metabox,'page_title_column_heading'), 10, 1 );
-remove_action( 'manage_pages_custom_column',array($wpseo_metabox,'page_title_column_content'), 10, 2 );
-remove_action( 'manage_posts_custom_column',array($wpseo_metabox,'page_title_column_content'), 10, 2 );
+    add_filter('manage_posts_columns', 'scompt_custom_columns');
+    function scompt_custom_columns($defaults) {
+    //unset($defaults['comments']);
+    //unset($defaults['author']);
+            //print_r($defaults);
+    return $defaults;
+    }
+*/
+
+# remove annoying "Robots Meta" columns that WP SEO puts in
+/*
+    remove_filter( 'manage_page_posts_columns',array($wpseo_metabox,'page_title_column_heading'), 10, 1 );
+    remove_filter( 'manage_post_posts_columns',array($wpseo_metabox,'page_title_column_heading'), 10, 1 );
+    remove_action( 'manage_pages_custom_column',array($wpseo_metabox,'page_title_column_content'), 10, 2 );
+    remove_action( 'manage_posts_custom_column',array($wpseo_metabox,'page_title_column_content'), 10, 2 );
 */
 
 /* meta boxes */
 /*
-include_once get_stylesheet_directory() . '/MetaBox.php';
-
-include_once get_stylesheet_directory() . '/MediaAccess.php';
-
-// global styles for the meta boxes
-if (is_admin()) wp_enqueue_style('wpalchemy-metabox', get_stylesheet_directory_uri() . '/meta.css');
-
-$wpalchemy_media_access= new WPAlchemy_MediaAccess();
-
-$podcast_mb = new WPAlchemy_MetaBox(array
-(
-	'id' => '_podcast_mb',
-	'title' => 'Podcast Episode2',
-	'types' => array('shows'), // added only for pages and to custom post type "events"
-	'context' => 'normal', // same as above, defaults to "normal"
-	'priority' => 'high', // same as above, defaults to "high"	
-	'template' => get_stylesheet_directory() . '/podcast-mb.php',
-));
+    include_once get_stylesheet_directory() . '/MetaBox.php';
+    
+    include_once get_stylesheet_directory() . '/MediaAccess.php';
+    
+    // global styles for the meta boxes
+    if (is_admin()) wp_enqueue_style('wpalchemy-metabox', get_stylesheet_directory_uri() . '/meta.css');
+    
+    $wpalchemy_media_access= new WPAlchemy_MediaAccess();
+    
+    $podcast_mb = new WPAlchemy_MetaBox(array
+    (
+            'id' => '_podcast_mb',
+            'title' => 'Podcast Episode2',
+            'types' => array('shows'), // added only for pages and to custom post type "events"
+            'context' => 'normal', // same as above, defaults to "normal"
+            'priority' => 'high', // same as above, defaults to "high"	
+            'template' => get_stylesheet_directory() . '/podcast-mb.php',
+    ));
 */
 /* podcast menu button test */
 add_action('admin_menu', 'register_podcast_submenu_page');
