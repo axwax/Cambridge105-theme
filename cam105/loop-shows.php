@@ -60,12 +60,13 @@ Theme Version: 0.5.11
 	}
 
 	# Show genres list (Tax)
+	/*
 	$genres_html='';
 	$genres_list = get_the_term_list( $post->ID, 'genres', '', ', ', '' );
 	if ( '' != $genres_list ) {
 		$genres_html='<h4> ('.$genres_list.')</h4>';               
 	}
-
+        */
 	# Show's Website (Custom Meta)
 	$website_html='';
 	$website_title=get_post_meta($post->ID, 'WebsiteTitle', True);
@@ -85,7 +86,7 @@ Theme Version: 0.5.11
  ?>
 				<?php echo $title_html ?>
 				<?php echo $img_html ?>
-				<?php echo $genres_html ?>
+				
                 <div class="entry" style="padding-top:10px;">
                   <?php the_content('<p>Read the rest of this entry &raquo;</p>'); ?>
         		</div>

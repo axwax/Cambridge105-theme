@@ -92,6 +92,7 @@ add_action( 'init', 'create_shows_taxonomies', 0 );
 # create two taxonomies, "genres" and "frequency" for the post type "shows"
 function create_shows_taxonomies() 
 {
+    /*    
   # Add "Genres" taxonomy, make it hierarchical (like categories)
   $labels = array(
     'name' => _x( 'Genres', 'taxonomy general name' ),
@@ -114,6 +115,7 @@ function create_shows_taxonomies()
     'query_var' => true,
     'rewrite' => array( 'slug' => 'genres' ),
   ));
+    */
 
   # Add "Frequency" taxonomy, NOT hierarchical (like tags)
   $labels = array(

@@ -9,7 +9,9 @@
 
 /* COLORS */
 
-body {background:#83ae2c top left repeat;font-family:Arial, Tahoma, sans-serif;}
+body {background:#444 top left repeat;font-family:Arial, Tahoma, sans-serif;}
+#header {background-color:#83ae2c; }
+#footer {background-color:#83ae2c; }
 
 a:link {text-decoration: none;outline:none;color:#486D25;font-weight:bolder;}
 a:visited {color: #486D25; font-weight:bolder;}
@@ -20,12 +22,6 @@ code, pre { color: #c33; } /* very optional, but still useful. W3C uses about th
 /* Colour Scheme */
 
 
-#page #container #header #logo {
-background-color: #83ae2c;
-}
-#page #footer {
-	background-color: transparent;
-}
 
 /* Text colours */
 .whitetext {
@@ -92,8 +88,8 @@ html[xmlns] .clearfix {
 }
 
 .frontpagefeature, .single #content, .archive .shows, .page .posts{
-background-color:#fff;
-color:#111;
+    background-color:#fff;
+    color:#111;
     border-radius: 5px;
     -moz-border-radius: 5px;    
     -moz-box-shadow: 5px 5px 5px #333; 
@@ -101,9 +97,9 @@ color:#111;
     box-shadow: 5px 5px 5px #333;
     background-image: -moz-linear-gradient(top, #fafafa, #fff); 
     background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #fafafa),color-stop(1, #fff));  
-margin:0 0 10px 0;
-overflow:hidden;
-padding:10px;
+    margin:0 0 10px 0;
+    overflow:hidden;
+    padding:10px;
     font-family: 'HarabaraRegular',Arial,sans-serif;
      width: 720px;
 }

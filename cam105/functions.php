@@ -25,6 +25,19 @@ unregister_post_type('site');
 
 */
 
+# remove custom taxonomies
+function remove_taxonomy($taxonomy) {
+	if (!$taxonomy->_builtin) {
+		global $wp_taxonomies;
+		$terms = get_terms($taxonomy); 
+		foreach ($terms as $term) {
+			wp_delete_term( $term->term_id, $taxonomy );
+		}
+		unset($wp_taxonomies[$taxonomy]);
+	}
+}
+//remove_taxonomy('genres');
+
 # include custom post types
 include 'gigx_cpt_shows.php';
 #include 'gigx_cpt_schedule.php';
@@ -253,12 +266,24 @@ function add_podcast_callback() {
 	$category=13;
 	if (!$_GET['submit']) {
 	?>
-   		<form action="<?php echo get_admin_url('','edit.php'); ?>" method="get">
+	<div class="wrap">
+        <div id="icon-edit" class="icon32 icon32-posts-post"><br /></div><h2>Add New Podcast</h2>
+	<div id="poststuff" class="metabox-holder" style="width:50%">
+	<div class="postbox">
+	    <div class="handlediv" title="Click to toggle"><br/></div>
+	    <h3 class="hndle"><span>New Podcast</span></h3>
+	    <div class="inside">
+		<form action="<?php echo get_admin_url('','edit.php'); ?>" method="get">
    		<input type="hidden" name="post_type" value="shows" />
    		<input type="hidden" name="page" value="add_podcast" />
    		<?php wp_dropdown_pages(array('post_type' => 'shows')); ?>
-   		<input type="submit" name="submit" value="view" />
+		<input type="text" class="scheduledate" name="podcast_date" value="<?php echo date("D, M d, Y"); ?>"/>
+   		<input type="submit" name="submit" value="Add Podcast" />
    		</form>
+	    </div>	
+	</div>
+	</div>
+	</div>
 	<? }
 	else {
 		$showID=$_GET['page_id'];
@@ -283,16 +308,41 @@ function add_podcast_callback() {
 		$post_id = $post_details->ID; // extract the post id from the post details
 		update_post_meta($post_id, '_thumbnail_id', $show_thumb);
 		$connected = p2p_type( 'posts_to_shows' )->get_connected( get_queried_object_id() );
-		echo "post:$post_id show:$showID connected:$connected";
-		echo "type:".p2p_type('posts_to_shows')->connect($post_id, $showID);
+		//echo "post:$post_id show:$showID connected:$connected";
+		//echo "type:".p2p_type('posts_to_shows')->connect($post_id, $showID);
 		$post_redirect = 'http://'.$_SERVER['SERVER_NAME'].'/wp-admin/post.php?action=edit&post='.$post_id; // construct url for editing of post
 	//echo 'ax'.$post_id.$post_redirect;
-	
+		echo '<div class="podcast_form">Podcast post created. <a href="'.$post_redirect.'">Click here to edit</a></div>';
 		wp_redirect($post_redirect);// redirect to edit page for new post.
 		exit;
 	}
 
 }
+
+# enqueue jquery UI for podcasts
+function schedule_styles() {
+    //global $post_type;
+    //if( 'gigx_schedule' != $post_type ) return;
+    //wp_enqueue_style('ui-datepicker', get_bloginfo('stylesheet_directory') . '/css/jquery-ui-1.8.9.custom.css');
+    wp_enqueue_style('jquery.ui.theme', get_bloginfo('stylesheet_directory') . '/css/smoothness/jquery-ui-1.8.16.custom.css');
+}
+
+function schedule_scripts() {
+    //global $post_type;
+    //if( 'gigx_schedule' != $post_type ) return;
+    #wp_deregister_script('jquery-ui-core');
+    wp_enqueue_script('jquery-ui', get_bloginfo('stylesheet_directory') . '/js/jquery-ui-1.8.9.custom.min.js', array('jquery'));
+    wp_enqueue_script('ui-datepicker', get_bloginfo('stylesheet_directory') . '/js/jquery.ui.datepicker.min.js',array('jquery-ui'));
+    wp_enqueue_script('ui-autocomplete', get_bloginfo('stylesheet_directory') . '/js/jquery.ui.autocomplete.min.js',array('jquery-ui'));
+    wp_enqueue_script('gigx_podcast', get_bloginfo('stylesheet_directory').'/js/gigx-admin.js', array('jquery'));
+}
+
+add_action( 'admin_init', 'schedule_styles', 1000 );
+//add_action( 'admin_print_styles-post-new.php', 'schedule_styles', 1000 );
+
+add_action( 'admin_init', 'schedule_scripts', 1000 );
+//add_action( 'admin_print_scripts-post-new.php', 'schedule_scripts', 1000 );
+# end podcasts
 
 // sort shows alphabetically 
 add_filter('posts_orderby', 'shows_alphabetical' );
@@ -315,8 +365,8 @@ function shows_alphabetical( $orderby )
 			wp_enqueue_script( 'gigx-caroufredsel-js', get_bloginfo('stylesheet_directory'). '/js/jquery.carouFredSel-5.2.3-packed.js', array( 'jquery' ), '1.4', true );
 			wp_enqueue_script( 'gigx-shows-slides-js', get_bloginfo('stylesheet_directory').'/js/gigx-shows-slides.js', array ('gigx-caroufredsel-js'), '0.1', true );
 			wp_enqueue_script( 'gigx-syncheight-js', get_bloginfo('stylesheet_directory').'/js/jquery.syncheight.min.js', array('jquery'), false, false );
-                        wp_enqueue_script( 'snowstorm-js', get_bloginfo('stylesheet_directory').'/js/snowstorm.js', array (), '0.1', true );
-			               
+                        //wp_enqueue_script( 'snowstorm-js', get_bloginfo('stylesheet_directory').'/js/snowstorm.js', array (), '0.1', true );
+
 		}
 	}
 	function gigx_footer() {
@@ -348,4 +398,19 @@ function query_post_type($query) {
 
     return $query;
     }
-}              
+}
+
+/* remove top-level menu entry for gigx-slides */
+add_action('admin_menu', 'remove_niggly_bits');
+function remove_niggly_bits() {
+    global $submenu;
+    //unset($submenu['edit.php?post_type=portfolio'][11]);
+    //print_r($submenu); exit;
+}
+add_action( 'admin_menu', 'gigx_remove_menus', 999 );
+
+function gigx_remove_menus() {
+
+	//remove_submenu_page( 'edit.php', 'post_type=gigx_slide' );
+
+}
