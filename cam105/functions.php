@@ -313,7 +313,8 @@ function shows_alphabetical( $orderby )
 			$url = plugin_dir_url( __FILE__ );
 			wp_enqueue_script( 'jquery' );
 			wp_enqueue_script( 'gigx-caroufredsel-js', get_bloginfo('stylesheet_directory'). '/js/jquery.carouFredSel-5.2.3-packed.js', array( 'jquery' ), '1.4', true );
-			wp_enqueue_script( 'gigx-shows-slides-js', get_bloginfo('stylesheet_directory').'/js/gigx-shows-slides.js', false, false, true );
+			wp_enqueue_script( 'gigx-shows-slides-js', get_bloginfo('stylesheet_directory').'/js/gigx-shows-slides.js', array ('gigx-caroufredsel-js'), '0.1', true );
+			wp_enqueue_script( 'gigx-syncheight-js', get_bloginfo('stylesheet_directory').'/js/jquery.syncheight.min.js', array('jquery'), false, false );
 		}
 	}
 	function gigx_footer() {
@@ -321,11 +322,13 @@ function shows_alphabetical( $orderby )
 		if( $queued ) {
 			wp_deregister_script( 'gigx-caroufredsel-js' );
 			wp_deregister_script( 'gigx-shows-slides-js' );
+                        wp_deregister_script( 'gigx-syncheight-js' );
 		}
 	}
 		add_action( 'wp_head', 'gigx_head' , 1 );
 		add_action( 'wp_footer', 'gigx_footer', 2 );
-                
+  
+/* fix for custom post type tag archives */               
 add_filter('pre_get_posts', 'query_post_type');
 function query_post_type($query) {
     $post_types = get_post_types();
@@ -343,4 +346,4 @@ function query_post_type($query) {
 
     return $query;
     }
-}                
+}              
