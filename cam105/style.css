@@ -5,10 +5,11 @@ Description: Child Theme for GIGX Default
 Author: Axel Minet
 Author URI: http://axwax.de/
 Template: gigx-wp3-default
-Version: 0.1
+Version: 0.6
 */
  
-@import url("../gigx-wp3-default/style.css");
+/* @import url("../gigx-wp3-default/style.css"); */
+@import url("css/gigx.css");
 @import url("css/global.css");
 @import url("css/structure.css");
 @import url("css/menu.css");
