@@ -1,17 +1,14 @@
 /* Menu */
 .header-menu {
-	width: 1020px;
 	height: 34px;
 	font-size: 18px;
 	background: #222222;
     background-image: -moz-linear-gradient(top, #56822c, #445533); 
     background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #56822c),color-stop(1, #445533));  
 	
-	float: left;
 }
 
 .header-menu ul {
-	width: 1000px;
 	list-style: none;
 	margin: 0;
 	padding: 0;

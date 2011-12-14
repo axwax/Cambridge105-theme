@@ -51,24 +51,25 @@ if (!$fbimg) $fbimg= Array(get_bloginfo('stylesheet_directory').'/images/faceboo
         <div id="header">
         	<div id="logo">
   				<a href="<?php echo home_url();?>"><?php
-            if (get_header_image()) : ?>
+					if (get_header_image()) : ?>
   						<img src="<?php header_image(); ?>" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" alt="<?php bloginfo('show'); ?>" />
   					<?php endif; ?>
 				</a>	
         	</div> 
-  
- 
-        </div><!-- end of header div -->
-        	<?php if ( is_active_sidebar( 'below_header_widgets' ) ) : // Widgets Below Header ?>
+
+          <?php if ( is_active_sidebar( 'below_header_widgets' ) ) : // Widgets Below Header ?>
           	<div id="below-header-widgets-container">
               <div id="below-header-widgets">
             		<?php dynamic_sidebar('below_header_widgets'); ?>
             	</div>
             </div>  
-          <?php endif; ?>
+          <?php endif; ?>  
+ 
+        </div><!-- end of header div -->
+
           <?php wp_nav_menu( array( 'theme_location' => 'below-header', 'sort_column' => 'menu_order', 'fallback_cb' => 'header_menu', 'container_class' => 'header-menu' ) ); ?>
 
-		  <div id="main">
+		  <div id="main" class="clearfix">
      
   
         <div id="container">

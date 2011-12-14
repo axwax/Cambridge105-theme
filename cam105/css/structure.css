@@ -1,18 +1,45 @@
 /* structure */
-#header #logo {
-padding-bottom: 1em;
+body{
+  margin: 0;
+  padding: 0;
+  
 }
 
-#page #main{
+#page {
+}
+
+#page #header {
+     /*width: 1000px;
+     margin:0 auto;*/
+}
+
+#page #header #logo {
+/* padding-bottom: 1em; */
+}
+
+#page .header-menu {
+    /* clear: both;
+     width: 1000px;
+     margin:0 auto; */
+     /* padding: 0pt 80px; */
+}
+
+#page #main {
   background-color:#444; 
-    padding:0 10px 0px 10px;
-    margin-bottom:10px;
+  /*padding:0 10px 0px 10px;*/
+     width: 1000px;
+     margin:0 auto;
+  /* margin-bottom:10px; */
 }
+
 #page #main #container {
-background-color: #444;
-margin-top:10px;
+  background-color: #444;
+  margin-top:10px; 
+  
 }
+
 #page #main #container #content{
+  float:left;
 width: 720px;
 }
 .home #page #main #container #content{
@@ -22,50 +49,29 @@ width: 740px;
 
 #page #main #container #sidebar{
  display: block;
-	float: right;
+	float: right; 
 	border: none;
+	width: 250px;
 }
 #page #main #container  #sidebar .widget{
   margin-bottom:10px;
 color:#000;
 }
+
+#page #above-footer-widgets {
+     /* margin-left: 80px; */
+     width: 1000px;
+     margin:0 auto;
+}
+
 #page #footer{
-    padding:0 10px 0 10px;
+  /*
+  padding:0 10px 0 10px;
+  width: 1000px;
+  margin:0 auto;
+  */
 }
 
-/* extra CSS for front page mockup */
-
-#page {
-     width: auto;
-}
-
-#page #header {
-     margin-left: 80px;
-     /* margin-right: auto;
-     width: 1000px; */
-}
-
-#page .header-menu {
-     clear: both;
-     margin-left: auto;
-     margin-right: auto;
-     padding: 0pt 80px;
-     width: 1000px;
-}
-
-#page #main {
-     padding: 0pt 80px 10px;
-     width: 100%;
-}
-
-#page #main #container {
-     width: 1000px;
-}
-
-#page #footer, #page #above-footer-widgets {
-     margin-left: 80px;
-     width: 1000px;
-}
 
 /* multi column */
 

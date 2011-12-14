@@ -212,46 +212,6 @@ border:0;
 
 
 
-
-#page #header #logo {
-  float:left;
-}
-#page #main {
-	float: left;
-  overflow: hidden; 
-  width: 100%;
-  display: block;
-}
-
-/* container: main content area plus sidebar */
-#page #main #container {
-	float: left;
-  overflow: hidden; 
-  /*padding-bottom: 15px; */
-  width: 100%;
-  display: block;
-}
-
-#page #main #container #content{
-  display: block;
-  float: left;
-  width: 740px;
-  /*text-align: justify;*/  
-}
-
-#page #main #container  #sidebar {
- display: block;
-	float: left;
-	width: 250px;
-}
-  
-#page #footer {
-clear:both;
-  width: 100%;
-	display: block;
-	/*margin: 0 10px 0 10px;*/
-}
-
 /*-- WordPress Rules --*/
 .pleft {
 	float: left;
