@@ -27,7 +27,7 @@ add_action( 'after_setup_theme', 'gigx_setup' );
 # admin style
 function gigx_admin_style() {
 	//wp_enqueue_style( TEMPLATEPATH . '/admin.css' );
-	$url = get_bloginfo('stylesheet_directory') . '/admin.css';
+	$url = get_bloginfo('stylesheet_directory') . '/css/admin.css';
 	echo '<link rel="stylesheet" type="text/css" href="' . $url . '" />';
 }
 add_action('admin_head', 'gigx_admin_style');
@@ -80,37 +80,18 @@ if (!function_exists ('gigx_dashboard_widget_function')){
 
 ### 
 ## no howdy
-
-// Customize:
-$nohowdy = "Logged in as ";
-
-// Hook in
-if (is_admin()) {
-	add_action('init', 'ozh_nohowdy_h');
-	add_action('admin_footer', 'ozh_nohowdy_f');
+/**
+ * replace WordPress Howdy in WordPress 3.3
+ */
+function replace_howdy( $wp_admin_bar ) {
+	$my_account=$wp_admin_bar->get_node('my-account');
+    $newtitle = str_replace( 'Howdy,', 'Logged in as', $my_account->title );            
+    $wp_admin_bar->add_node( array(
+        'id' => 'my-account',
+        'title' => $newtitle,
+    ) );
 }
-
-// Load jQuery
-function ozh_nohowdy_h() {
-	wp_enqueue_script('jquery');
-}
-
-// Modify
-function ozh_nohowdy_f() {
-global $nohowdy;
-echo <<<JS
-<script type="text/javascript">
-//<![CDATA[
-var nohowdy = "$nohowdy";
-jQuery('#user_info p')
-	.html(
-	jQuery('#user_info p')
-		.html()
-		.replace(/Howdy,/,nohowdy)
-	);
-//]]>
-JS;
-}
+add_filter( 'admin_bar_menu', 'replace_howdy',25 );
 ## eo no howdy
 
 #####
@@ -236,6 +217,20 @@ function current_jquery($version) {
             false, $version);
     }
 }
+
+# custom admin footer
+add_filter( 'admin_footer_text', 'gigx_admin_footer_text' );
+
+if ( ! function_exists( 'gigx_admin_footer_text' ) ) :
+	function gigx_admin_footer_text( $default_text ) {
+        $child_theme_data = get_theme_data( get_stylesheet_directory() . '/style.css' );
+        $parent_theme_data = get_theme_data( get_template_directory() . '/style.css' );
+        
+		return '<span id="footer-thankyou">Thank you for creating with <a href="http://wordpress.org/" target="_blank">WordPress</a>. '. $child_theme_data['Title'] . ' Theme v' . $child_theme_data['Version'] .' is based on '. $parent_theme_data['Title'] . ' Theme v' . $parent_theme_data['Version'] .' and created by:
+<a href="http://gigx.co.uk/"><img width="36" height="11" title="GIGX.co.uk" alt="GIGX.co.uk" src="'. get_template_directory_uri() .'/images/gigx-logo36x11.png">
+</a></span>';
+	}
+endif;
 
 # gigx_comment ( $comment, $args, $depth )
 # comments function
