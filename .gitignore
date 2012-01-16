@@ -2,3 +2,5 @@
 #ignore thumbnails created by windows
 Thumbs.db
 .DS_Store
+*.scssc
+.gitignore

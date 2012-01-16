@@ -1,0 +1,124 @@
+@import "colours";
+@import "fonts";
+@import "mixins";
+
+/* Fonts */
+@font-face {
+	@include harabara;
+}
+
+/* COLORS */
+
+body {background:$background top left repeat;font-family:Arial, Tahoma, sans-serif;}
+#header {background-color:$main_green; }
+#footer {background-color:$main_green; }
+
+a:link {text-decoration: none;outline:none;color:$dark_green;font-weight:bolder;}
+a:visited {color: $dark_green; font-weight:bolder;}
+a:hover {color: $hover_green;text-decoration: underline;font-weight:bolder;}
+a:active, a:focus {color: $black_text; font-weight:bolder;}
+code, pre { color: #c33; } /* very optional, but still useful. W3C uses about the same colors for codes */
+
+/* Colour Scheme */
+
+
+
+/* Text colours */
+.whitetext {
+	color: $white_text;
+}
+.blacktext {
+	color: $black_text;
+}
+
+
+
+/* IE HACKS
+-------------------------------------------------------------- */
+
+body { text-align:center; }
+.container { text-align:left; }
+ol { margin-left:2em; }
+sup { vertical-align:text-top; }
+sub { vertical-align:text-bottom; }
+html>body p code { white-space:normal; }
+hr { margin:-8px auto 11px; }
+fieldset { padding-top:0; }
+
+/* Utility Classes */
+/* --------------- */
+
+/* clearfix */
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+ 
+.clearfix {
+	display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+	display: block;
+}
+ 
+* html .clearfix {
+	height: 1%;
+}
+
+
+
+/* WP Styling */
+/* ---------- */
+
+
+.small {font-size:.8em;margin-bottom:1.875em;line-height:1.5em;}
+
+.wp-caption {
+    background-color: $caption_bg;
+    border: 1px solid $caption_border;
+    @include rounded(3px);    
+	margin: 10px;
+    padding: 5px;
+    text-align: center;
+}
+
+.frontpagefeature, .single #content, .archive .shows, .page-template-news-archive-php .posts, .category-podcasts .post, .page .posts{
+    color:#111;
+	@include rounded(5px);    
+	@include shadow(5px,#333);
+	@include gradient(top, $white_box_gradient1, $white_box_gradient2,$white_box_gradient2);	 
+    margin:0 0 10px 0;
+    overflow:hidden;
+    padding:10px;
+    font-family: 'HarabaraRegular',Arial,sans-serif;
+}
+
+.single #content h2, .archive .shows h2, .page .posts h2, .category .post h2{
+    font-size: 1.9em;
+    letter-spacing: 0.05em;
+	font-weight:normal;
+	margin-top:10px;
+}
+
+.single #content p, .archive .shows p, .page .posts p, .category .posts p{
+font-size: 1.3em;
+margin-bottom:10px;
+font-family: Arial, sans-serif;
+}
+.home #content .posts{
+background:none;
+margin:0 ;
+overflow:hidden;
+padding:0;
+    font-family: 'HarabaraRegular',Arial,sans-serif;
+     /* width: 740px; */
+}
+	 /* Nicolas Gallagher's micro clearfix */
+	 .row:before, .row:after, .clearfix:before, .clearfix:after { content:""; display:table; }
+	 .row:after, .clearfix:after { clear: both; }
+	 .row, .clearfix { zoom: 1; }

@@ -6,6 +6,7 @@ body{
 }
 
 #page {
+  text-align: left;
 }
 
 #page #header {
@@ -84,16 +85,19 @@ color:#000;
 }
 
 .twocol div.twocol_content{
+  /*
 	background-color:#486D25;
 	color:#fff;
     border-radius: 5px;
     -moz-border-radius: 5px;    
 
     background-image: -moz-linear-gradient(top, #56822c, #445533); 
-    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #56822c),color-stop(1, #445533));  
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #56822c),color-stop(1, #445533));
+  */
 	font: 1em Arial,Tahoma,sans-serif;
 	line-height:1.3em;
-    width: 345px;
+    /*width: 345px; */
+	width: 300px;
 	padding: 10px;
 	float: left;
 	min-height:170px;
@@ -148,7 +152,7 @@ color:#000;
     width: 220px;
 	padding: 10px;
 	float: left;
-	min-height:180px;
+	min-height:265px;
 	position:relative;
 	display:block;
 }
@@ -170,3 +174,5 @@ color:#000;
 }
 
 /* end multi columns */
+
+

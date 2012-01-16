@@ -16,6 +16,12 @@
 	z-index: 20;
 }
 
+.header-menu ul.menu{
+	width: 1000px;
+	position: relative;
+	margin: 0 auto;
+}
+
 .header-menu ul ul {
 width: 100%;
 }
@@ -42,6 +48,7 @@ margin-left:0;
 .header-menu ul ul li a {
 	font-size: 15px;
 	padding: 7px 10px;
+	background: #486D25;
 }
 
 .header-menu a:hover {

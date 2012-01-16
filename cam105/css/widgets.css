@@ -352,6 +352,11 @@ display:none;
 	border-radius: 5px;
 }
 
-.tagcloud{
+.tagcloud, .ctc{
 margin-top:10px;
+}
+
+#above-footer-widgets{
+	
+	padding-top: 10px;
 }

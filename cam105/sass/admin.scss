@@ -1,19 +1,6 @@
 @import "colours";
-/* */
-/*Improve Color Contrast*/
+@import "mixins";
 
-a, #adminmenu a, #poststuff #edButtonPreview, #poststuff #edButtonHTML, #the-comment-list p.comment-author strong a, #media-upload a.del-link, #media-items a.delete, .plugins a.delete, .ui-tabs-nav a {
-color: $blue_text;
-}
-/*Add focus on links*/
-
-#wphead #viewsite a:focus, #adminmenu a:focus, #adminmenu ul.wp-submenu a:focus, #the-comment-list .comment a:focus, #rightnow a:focus, #media-upload a.del-link:focus, div.dashboard-widget-submit input:focus, .subsubsub a:focus, .subsubsub a.current:focus, .ui-tabs-nav a:focus, .plugins .inactive a:focus, #all-plugins-table .plugins .inactive a:focus, #search-plugins-table .plugins .inactive a:focus {
-color: $link_focus;
-}
-#adminmenu .wp-submenu a:focus {
-background-color: $admin_bg !important;
-color: $medium_grey_text !important;
-}
 /*Increase Site Title Size (by Otto)*/
 .wp-admin #wphead {
 	height: 42px;
@@ -22,31 +9,30 @@ color: $medium_grey_text !important;
     font-size: 28px;
     /* font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif; */
 }
-.wp-admin #header-logo {
-background-image: url("images/admin-logo.png");
-background-size:32px 32px;
-width:32px; height:32px;
-}
-.wp-admin .icon32 {
-display:none;}
 
+/* remove icon next to page title */
+/*
+.wp-admin .icon32 {
+	display:none;
+}
+*/
 /*Reduce Page Heading Size*/
 
 .wrap h2 {
-font-size: 22px;
-line-height: 28px;
-padding: 9px 15px 2px 0;
+	font-size: 22px;
+	line-height: 28px;
+	padding: 9px 15px 2px 0;
 }
 
 /*Remove pointless publish icon*/
 
 .curtime #timestamp {
-background-image: none;
+	background-image: none;
 }
 .curtime #timestamp {
-background-position: left top;
-background-repeat: no-repeat;
-padding-left: 0;
+	background-position: left top;
+	background-repeat: no-repeat;
+	padding-left: 0;
 }
 
 /* main page background */
@@ -63,9 +49,10 @@ html, .wp-dialog {
 
 /* appearance/themes background and padding */
 .themes-php .wrap, .theme-install-php .wrap, .appearance_page_custom-background .wrap, .appearance_page_custom-header .wrap{
-background-color: $caption_bg !important;
-background-image: -moz-linear-gradient(center top , $grey_box_gradient1, $caption_bg) !important;
-padding: 0 10px !important;
+	//background-color: $caption_bg !important;
+	//background-image: -moz-linear-gradient(center top , $grey_box_gradient1, $caption_bg) !important;
+	@include gradient(center top, $grey_box_gradient1, $caption_bg,$caption_bg, none, !important);
+	padding: 0 10px !important;
 }
 
 .themes-php .nav-tab-active, .theme-install-php .nav-tab-active {
@@ -88,9 +75,8 @@ background-color: $main_green;
 */
 
 /* appearance/menus background */
-.menu-edit #post-body {
-background-color: $caption_bg !important;
-background-image: -moz-linear-gradient(center top , $grey_box_gradient1, $caption_bg) !important;
+#menu-management .nav-tab, .menu-edit #post-body {
+	@include gradient(center top, $grey_box_gradient1, $caption_bg,$caption_bg, none, !important);
 }
 
 /* appearance/menus header item type text */
@@ -109,9 +95,11 @@ padding: 7px 0 !important;
 }
 
 /* dark green font for menu headings, links, tabs etc */
-a, #poststuff #edButtonPreview, #poststuff #edButtonHTML, #the-comment-list p.comment-author strong a, #media-upload a.del-link, #media-items a.delete, .plugins a.delete, .ui-tabs-nav a {
-	color: $dark_green !important;
-}
+	/*
+	a, #poststuff #edButtonPreview, #poststuff #edButtonHTML, #the-comment-list p.comment-author strong a, #media-upload a.del-link, #media-items a.delete, .plugins a.delete, .ui-tabs-nav a {
+		color: $dark_green !important;
+	}
+	*/
 
 /* main green bg on boxes & widget headers */
 .widget .widget-top, .postbox h3, .stuffbox h3{
@@ -139,13 +127,7 @@ h3.dashboard-widget-title small,
 #nav-menu-footer,
 .menu-item-handle,
 #fullscreen-topbar {
-	background-color: $main_green; /* Fallback */
-	background-image: -ms-linear-gradient(bottom, $green_title_gradient1, $green_title_gradient2); /* IE10 */
-	background-image: -moz-linear-gradient(bottom, $green_title_gradient1, $green_title_gradient2); /* Firefox */
-	background-image: -o-linear-gradient(bottom, $green_title_gradient1, $green_title_gradient2); /* Opera */
-	background-image: -webkit-gradient(linear, left bottom, left top, from($green_title_gradient1), to($green_title_gradient2)); /* old Webkit */
-	background-image: -webkit-linear-gradient(bottom, $green_title_gradient1, $green_title_gradient2); /* new Webkit */
-	background-image: linear-gradient(bottom, $green_title_gradient1, $green_title_gradient2); /* proposed W3C Markup */
+	@include gradient(bottom, $green_title_gradient1, $green_title_gradient2,$dark_green);
 	color: $white_text !important;
 	text-shadow: none !important;
 	font:13px/18px Georgia,"Times New Roman","Bitstream Charter",Times,serif !important;
@@ -170,48 +152,6 @@ color:$white_text !important;
 font-weight:normal;
 }
 
-/* menu */
-.wp-menu-arrow div {
-    background: no-repeat scroll right top transparent !important;
-}
-
-/* menu arrow replacement image */
- #adminmenu .wp-menu-arrow {
-    background-color: transparent !important;
-    /*background-image: none !important;*/
-	background:url("images/menu-arrow-frame.png") no-repeat transparent !important;
-}
-
-/* currently selected admin menu header text & background colour */
-#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu{
-	text-shadow: none !important;
-	color: $yellow !important;
-	background-color: $dark_green !important; /* Fallback */
-	background-image: none;
-}
-
-/* regular admin menu header arrow */
-#adminmenu .wp-has-submenu:hover .wp-menu-toggle, #adminmenu .wp-menu-open .wp-menu-toggle {
-background: transparent url(images/arrows-dark.png) no-repeat -2px 6px !important;
-}
-
-/* currently selected admin menu header arrow */
-#adminmenu li.wp-has-current-submenu.wp-menu-open .wp-menu-toggle, #adminmenu li.wp-has-current-submenu:hover .wp-menu-toggle {
-background: transparent url(images/arrows.png) no-repeat -1px 6px !important;
-background-image: url(images/arrows.png) !important;
-}
-
-/* regular admin menu header background */
-#adminmenu a.menu-top{
-	background-color: $main_green; /* Fallback */
-	background-image: -ms-linear-gradient(bottom, $green_title_gradient1, $green_title_gradient2); /* IE10 */
-	background-image: -moz-linear-gradient(bottom, $green_title_gradient1, $green_title_gradient2); /* Firefox */
-	background-image: -o-linear-gradient(bottom, $green_title_gradient1, $green_title_gradient2); /* Opera */
-	background-image: -webkit-gradient(linear, left bottom, left top, from($green_title_gradient1), to($green_title_gradient2)); /* old Webkit */
-	background-image: -webkit-linear-gradient(bottom, $green_title_gradient1, $green_title_gradient2); /* new Webkit */
-	background-image: linear-gradient(bottom, $green_title_gradient1, $green_title_gradient2); /* proposed W3C Markup */
-	color: $white_text !important;
-}
 
 
 /* main header */
@@ -238,47 +178,41 @@ background-image: url(images/arrows.png) !important;
 /* screen options & help button */
 #screen-options-link-wrap,
 #contextual-help-link-wrap {
-	background-color: $main_green; /* Fallback */
 	border-right: 1px solid transparent;
 	border-left: 1px solid transparent;
 	border-bottom: 1px solid transparent;
-	background-image: -ms-linear-gradient(bottom, $green_title_gradient1, $green_title_gradient2); /* IE10 */
-	background-image: -moz-linear-gradient(bottom, $green_title_gradient1, $green_title_gradient2); /* Firefox */
-	background-image: -o-linear-gradient(bottom, $green_title_gradient1, $green_title_gradient2); /* Opera */
-	background-image: -webkit-gradient(linear, left bottom, left top, from($green_title_gradient1), to($green_title_gradient2)); /* old Webkit */
-	background-image: -webkit-linear-gradient(bottom, $green_title_gradient1, $green_title_gradient2); /* new Webkit */
-	background-image: linear-gradient(bottom, $green_title_gradient1, $green_title_gradient2); /* proposed W3C Markup */
+	@include gradient(center bottom, $green_title_gradient1, $green_title_gradient2,$dark_green);
 }
 
 /* screen options & help button text */
-#screen-meta a.show-settings{
+#screen-meta-links a.show-settings{
 text-shadow: none !important;
 	color: $white_text !important;
 }
 
 /* screen options & help button arrow */
-#screen-meta a.show-settings,
+#screen-meta-links a.show-settings,
 .toggle-arrow {
-	background: transparent url(images/arrows-dark.png) no-repeat right 3px;
+	background: transparent url(../images/arrows-dark.png) no-repeat right 3px;
 }
 
 /* screen options & help button arrow */
-#screen-meta .screen-meta-active a.show-settings {
-	background: transparent url(images/arrows-dark.png) no-repeat right -33px;
+#screen-meta-links .screen-meta-active a.show-settings {
+	background: transparent url(../images/arrows-dark.png) no-repeat right -33px;
 }
 
 /* post box header arrow */
 .meta-box-sortables .postbox:hover .handlediv {
-	background: transparent url(images/arrows-dark.png) no-repeat 6px 7px;
+	background: transparent url(../images/arrows-dark.png) no-repeat 6px 7px;
 }
 
 /* user info arrow (top-right corner) */
 #user_info_arrow {
-	background: transparent url(images/arrows-dark.png) no-repeat 6px 5px;
+	background: transparent url(../images/arrows-dark.png) no-repeat 6px 5px;
 }
 #user_info:hover #user_info_arrow,
 #user_info.active #user_info_arrow {
-	background: transparent url(images/arrows.png) no-repeat 6px 5px;
+	background: transparent url(../images/arrows.png) no-repeat 6px 5px;
 }
 
 /* update nag position fix*/
@@ -294,16 +228,59 @@ margin-left: 0 !important;
 
 /* podcast form */
 .podcast_form {
-    background-color:$white_text;
     color:$dark_grey_text;
     border-radius: 5px;
     -moz-border-radius: 5px;    
     -moz-box-shadow: 5px 5px 5px $medium_grey_text; 
     -webkit-box-shadow: 5px 5px 5px $medium_grey_text; 
     box-shadow: 5px 5px 5px $medium_grey_text;
-    background-image: -moz-linear-gradient(top, $white_box_gradient1, $white_box_gradient2); 
-    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, $white_box_gradient1),color-stop(1, $white_box_gradient2));  
+	@include gradient(top, $white_box_gradient1, $white_box_gradient2,$white_text);
     margin:20px 0 10px 0;
     overflow:hidden;
     padding:10px;    
 }
+
+/* new adminmenu (sidebar)*/
+
+	#adminmenu div.wp-menu-image {float: left;width: 1px;height: 28px;}
+	#adminmenu .wp-menu-image a{display: none;}
+	#wp-admin-bar-wp-logo{display: none;}
+	#adminmenuback, #adminmenuwrap {background-color: $main_green;border-color: $dark_green;border-right-color: #ddd;}
+	#adminmenu li.wp-menu-separator {display: none;}
+	#adminmenu div.separator {border-color: #0e6ac8;}
+	#adminmenu a.menu-top, .folded #adminmenu li.menu-top, #adminmenu .wp-submenu .wp-submenu-head {border-top-color: $dark_green;border-bottom-color: #000;}
+	#adminmenu a {color:#fff;}
+	#adminmenu .wp-submenu a {color:#777;}
+	#adminmenu a:hover, #adminmenu li.menu-top>a:focus, #adminmenu ul.wp-submenu a:hover {color: #fff;}
+	#adminmenu li.menu-top:hover>a, #adminmenu li.menu-top.focused>a, #adminmenu li.menu-top>a:focus {background-color: $dark_green;text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);}
+	#adminmenu li.wp-not-current-submenu:hover>a {border-top-color: #000;border-bottom-color: #000;}
+	#adminmenu li.wp-not-current-submenu .wp-menu-arrow {border-top-color: #000;border-bottom-color: #000;background: $dark_green;}
+	#adminmenu li.wp-not-current-submenu .wp-menu-arrow div {background: $dark_green;border-color: #000;}
+	#collapse-menu {color: rgba(255,255,255,0.3);}
+	#collapse-menu:hover {color: rgba(255,255,255,1.0);}
+	#collapse-menu:hover #collapse-button {border-color: rgba(255,255,255,0.4);	@include gradient(center bottom, $medium_grey_text, $dark_green, $dark_green);}
+	#collapse-button {border-color: rgba(255,255,255,0.2);@include gradient(center bottom, $dark_grey_text, $black_text, $black_text);}
+	#adminmenu .awaiting-mod, #adminmenu .update-plugins, #sidemenu a .update-plugins, #rightnow .reallynow {background-color: #464646;box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);color: #FFFFFF;}
+	.folded #adminmenu .wp-submenu-head {border-bottom-color: #ccc;border-top-color: #ccc;}
+	.folded #adminmenu li.wp-has-current-submenu, .folded #adminmenu li.current.menu-top {border-bottom-color: #6D6D6D;border-top-color: #808080;}
+
+
+#adminmenu a.menu-top{
+//	@include gradient(bottom, $green_title_gradient1, $green_title_gradient2,$main_green);
+}
+
+
+/* currently selected submenu */
+	#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu, #adminmenu li.current a.menu-top, #adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head {
+		border-bottom-color: $green_title_gradient1;
+		border-top-color: $green_title_gradient2;
+		color: #FFFFFF;
+		text-shadow: 0 -1px 0 #333333;
+	}
+	#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu, #adminmenu li.current a.menu-top, .folded #adminmenu li.wp-has-current-submenu, .folded #adminmenu li.current.menu-top, #adminmenu .wp-menu-arrow, #adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head {
+		@include gradient(center bottom, $green_title_gradient1, $green_title_gradient2,$dark_green);
+	}
+	/* arrow */
+	#adminmenu .wp-menu-arrow div {
+		@include gradient(right bottom, $green_title_gradient1, $green_title_gradient2,$dark_green);
+	}

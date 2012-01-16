@@ -1,0 +1,7 @@
+@mixin harabara {
+	font-family: 'HarabaraRegular';
+	src: url('type/harabara-webfont.eot');
+	src: local('?'), url('../type/harabara-webfont.woff') format('woff'), url('../type/harabara-webfont.ttf') format('truetype'), url('../type/harabara-webfont.svg#webfontCLJ3VJzF') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
