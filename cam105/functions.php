@@ -290,13 +290,17 @@ function add_podcast_callback() {
 		$show_title=get_post($showID)->post_title;
 		$show_slug=get_post($showID)->post_name;
 		$show_thumb=get_post_thumbnail_id( $showID );
+		$author=get_userdatabylogin($show_slug);
+		if (isset($author)) $authorID=$author->ID;
+        if (!$authorID) $authorID=$user_ID;
 		$post = array( // add a new post to the wordpress database
 			'post_title' => $show_title.' '.date('d/m/Y',time()),
 			'post_name' => $show_slug.'-'.date('d-m-Y',time()),
 			'post_status' => 'draft', // set post status to draft - we don't want the new post to appear live yet.
 			'post_date_gmt' => date('Y-m-d H:i:s',time()),
 			'post_date' => get_date_from_gmt( date('Y-m-d H:i:s',time()) ),
-			'post_author' => $user_ID, // set post author to current logged on user.
+			//'post_author' => $user_ID, // set post author to current logged on user.
+			'post_author' => $authorID, // set post author to current logged on user.
 			'post_type' => 'post', // set post type to post.
 			'post_category' => array(get_cat_ID( 'Podcasts' )) // set category to the category/categories parsed in your previous array
 		);
@@ -361,10 +365,10 @@ function shows_alphabetical( $orderby )
 		if( !is_admin() ) {
 			$queued = true;
 			$url = plugin_dir_url( __FILE__ );
-			wp_enqueue_script( 'jquery' );
-			wp_enqueue_script( 'gigx-caroufredsel-js', get_bloginfo('stylesheet_directory'). '/js/jquery.carouFredSel-5.2.3-packed.js', array( 'jquery' ), '1.4', true );
-			wp_enqueue_script( 'gigx-shows-slides-js', get_bloginfo('stylesheet_directory').'/js/gigx-shows-slides.js', array ('gigx-caroufredsel-js'), '0.1', true );
-			wp_enqueue_script( 'gigx-syncheight-js', get_bloginfo('stylesheet_directory').'/js/jquery.syncheight.min.js', array('jquery'), false, false );
+			//wp_enqueue_script( 'jquery' );
+			//wp_enqueue_script( 'gigx-caroufredsel-js', get_bloginfo('stylesheet_directory'). '/js/jquery.carouFredSel-5.2.3-packed.js', array( 'jquery' ), '1.4', true );
+			//wp_enqueue_script( 'gigx-shows-slides-js', get_bloginfo('stylesheet_directory').'/js/gigx-shows-slides.js', array ('gigx-caroufredsel-js'), '0.1', true );
+			//wp_enqueue_script( 'gigx-syncheight-js', get_bloginfo('stylesheet_directory').'/js/jquery.syncheight.min.js', array('jquery'), false, false );
                         //wp_enqueue_script( 'snowstorm-js', get_bloginfo('stylesheet_directory').'/js/snowstorm.js', array (), '0.1', true );
 
 		}
@@ -372,9 +376,9 @@ function shows_alphabetical( $orderby )
 	function gigx_footer() {
 	global $queued;
 		if( $queued ) {
-			wp_deregister_script( 'gigx-caroufredsel-js' );
-			wp_deregister_script( 'gigx-shows-slides-js' );
-                        wp_deregister_script( 'gigx-syncheight-js' );
+			//wp_deregister_script( 'gigx-caroufredsel-js' );
+			//wp_deregister_script( 'gigx-shows-slides-js' );
+                        //wp_deregister_script( 'gigx-syncheight-js' );
 		}
 	}
 		add_action( 'wp_head', 'gigx_head' , 1 );
@@ -403,9 +407,10 @@ function query_post_type($query) {
 /* remove top-level menu entry for gigx-slides */
 add_action('admin_menu', 'remove_niggly_bits');
 function remove_niggly_bits() {
+    global $menu;
     global $submenu;
     //unset($submenu['edit.php?post_type=portfolio'][11]);
-    //print_r($submenu); exit;
+    //print_r($menu); print_r($submenu); exit;
 }
 add_action( 'admin_menu', 'gigx_remove_menus', 999 );
 
@@ -414,3 +419,10 @@ function gigx_remove_menus() {
 	//remove_submenu_page( 'edit.php', 'post_type=gigx_slide' );
 
 }
+
+/* remove tags from posts */
+function unregister_taxonomy(){
+    register_taxonomy('post_tag', array());
+}
+add_action('init', 'unregister_taxonomy');
+

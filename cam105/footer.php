@@ -8,7 +8,7 @@ Theme Version: 0.5.9
         </div><!-- end of container--> 
       </div><!-- end of main -->
     	<?php if ( is_active_sidebar( 'above_footer_widgets' ) ) : // Widgets Above Footer ?>
-      	<div id="above-footer-widgets clearfix">
+      	<div id="above-footer-widgets" class="clearfix">
       		<?php dynamic_sidebar('above_footer_widgets'); ?>
       	</div>  
       <?php endif; ?>            
