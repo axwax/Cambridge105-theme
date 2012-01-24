@@ -118,7 +118,5 @@ padding:0;
     font-family: 'HarabaraRegular',Arial,sans-serif;
      /* width: 740px; */
 }
-	 /* Nicolas Gallagher's micro clearfix */
-	 .row:before, .row:after, .clearfix:before, .clearfix:after { content:""; display:table; }
-	 .row:after, .clearfix:after { clear: both; }
-	 .row, .clearfix { zoom: 1; }
+
+@include clearfix();
