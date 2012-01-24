@@ -34,7 +34,8 @@ Theme Version: 0.5.11
 	   echo '<img src="'.get_bloginfo("template_url").'/images/shows-default.png" />';
 	}
 	echo'</a>';
-	echo '<p class="wp-caption-text">'.get_the_title().'</p></div>';
+	//echo '<p class="wp-caption-text">'.get_the_title().'</p>';
+	echo '</div>';
           	
  ?>
 

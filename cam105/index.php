@@ -12,11 +12,6 @@ elseif (is_tag()) {
 }
 else $loop= CUSTOM_POST_TYPE;
 get_header();
-
-//print_r($wp_query->query);
-//if (is_tax()) echo 'yay tax';
-//$query = new WP_Query( $args );
-//print_r($query);
 ?>
 
 	<div id="content">

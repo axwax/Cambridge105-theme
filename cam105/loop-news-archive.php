@@ -67,7 +67,7 @@ Theme Version: 0.5.11
                 if (function_exists('gigx_excerpt')){
                   $content=gigx_excerpt ($content,$excerpt,false,300,$link,'(more...)',True);
                 }
-                echo '<div class="wp-caption" style="width: 310px"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$post->post_title.'"/><p class="wp-caption-text">'.get_the_title().'</p></div>';
+                echo '<div class="wp-caption" style="width: 310px"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$post->post_title.'"/></div>';
                 echo '<h3 class="post-title">'.get_the_title().'</h3>';
                 echo '<span class="postdate">Posted on '. get_the_time('jS F Y') .'</span>'; ?> 
                 <div class="entry" style="padding-top:10px;">
