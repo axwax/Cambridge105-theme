@@ -1,8 +1,8 @@
 <?php
 /*
-File Description: The Loop for "Shows" Custom Post Type
+File Description: The default Loop
 Author: Axel Minet
-Theme Version: 0.5.11
+Theme Version: 0.5.13
 */
 ?>
 
@@ -13,7 +13,7 @@ Theme Version: 0.5.11
     	</div>  
     <?php endif; ?>
        
-    <div id="shows_container" class="shows_container">
+    <div class="posts">
         <?php /* Do we have posts, then start the loop, otherwise display 404 */
         
         ?>
