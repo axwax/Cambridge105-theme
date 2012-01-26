@@ -14,15 +14,19 @@ Theme Version: 0.5.11
     <?php endif; ?>
        
     <div id="shows_container" class="shows_container">
+		
         <?php /* Do we have posts, then start the loop, otherwise display 404 */
-        
+        $postcount=0;
         ?>
       	<?php if (have_posts()) : ?>
           <?php /* Start the Loop */ ?>  	
       		<?php while (have_posts()) : the_post(); ?>
 				<div <?php post_class("clearfix") ?> id="post-<?php the_ID(); ?>"> 		
+<?php if ( function_exists('yoast_breadcrumb') && $postcount ==0) {
+	yoast_breadcrumb('<div id="breadcrumbs">','</div>');
+} ?>       
 <?php 
-	  
+	 $postcount++; 
 	# Show Title (Shows CPT)
 	$title_tag='h1';
 	$single_title_tag='h2';

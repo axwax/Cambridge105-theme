@@ -12,8 +12,10 @@ Theme Version: 0.5.13
     		<?php dynamic_sidebar('above_posts_widgets'); ?>
     	</div>  
     <?php endif; ?>
-       
     <div class="posts">
+<?php if ( function_exists('yoast_breadcrumb') ) {
+	yoast_breadcrumb('<p id="breadcrumbs">','</p>');
+} ?>       
         <?php /* Do we have posts, then start the loop, otherwise display 404 */
         
         ?>
@@ -38,51 +40,6 @@ Theme Version: 0.5.13
 	if ( $title && $title_tag && !is_page()) {
 		$title_html='<' . $title_tag . ' class="post-title">' . $title . '</' . $title_tag . '>'."\n\r";
 	}
-	# Show Image (Post Thumbnail)
-	if (is_singular()){
-		if(has_post_thumbnail()) {
-			$img=wp_get_attachment_image_src (get_post_thumbnail_id(get_the_ID()),'shows-image',false);    
-		} else {
-			$img=get_bloginfo("template_url").'/images/shows-default.png';
-		}
-		//$img_html= '<div class="wp-caption alignleft"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$p->post_title.'"/><p class="wp-caption-text">'.get_the_title().'</p></div>';
-		$img_html= '<div class="wp-caption alignleft"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$post->post_title.'" title="'.$post->post_title.'"/></div>';
-	}
-	else{
-		if(has_post_thumbnail()) {
-			$img=wp_get_attachment_image_src (get_post_thumbnail_id(get_the_ID()),'shows-thumb',false);    
-		} else {
-			$img=get_bloginfo("template_url").'/images/shows-thumb-default.png';
-		}
-		//$img_html= '<div class="wp-caption alignleft"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$p->post_title.'"/><p class="wp-caption-text">'.get_the_title().'</p></div>';
-		if(isset($permalink)) $img_html= '<div class="wp-caption alignleft"><a href="' . esc_url($permalink) . '" title="' . esc_attr(the_title('', '', false)) . '"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$post->post_title.'" title="'.$post->post_title.'"/></a></div>';
-                else $img_html= '<div class="wp-caption alignleft"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$post->post_title.'" title="'.$post->post_title.'"/></div>';    
-	}
-
-	# Show genres list (Tax)
-	/*
-	$genres_html='';
-	$genres_list = get_the_term_list( $post->ID, 'genres', '', ', ', '' );
-	if ( '' != $genres_list ) {
-		$genres_html='<h4> ('.$genres_list.')</h4>';               
-	}
-        */
-	# Show's Website (Custom Meta)
-	$website_html='';
-	$website_title=get_post_meta($post->ID, 'WebsiteTitle', True);
-	$website_url=get_post_meta($post->ID, 'WebsiteURL', True);
-	if ( ('' != $website_title) and ('' != $website_url)  ) {
-		$website_html='<p>Website: <a href="'.$website_url.'" target="_blank">'.$website_title.'</a></p>'."\n\r";
-	}
-		
-	# Show Frequency list (Tax)
-	$frequency_html='';
-	$frequency_list = get_the_term_list( $post->ID, 'frequency', 'Show Frequency: ', ', ', '' );
-	if ( '' != $frequency_list ) {
-		$frequency_html= "<p>$frequency_list</p>\n";
-	}
-	# Podcasts (posts-to-posts)
-	//$connected = p2p_type( 'posts_to_shows' )->get_connected( $post->ID );	
  ?>
 				<?php echo $title_html ?>
 				<?php echo $img_html ?>
@@ -93,29 +50,6 @@ Theme Version: 0.5.13
 				<div class="entry-utility">
 					<?php echo $website_html; ?>
 					<?php echo $frequency_html; ?>
-<?php
-// Find connected pages
-
-if ( function_exists( 'p2p_type' ) && is_single() ){
-	$connected = p2p_type( 'posts_to_shows' )->get_connected( $post->ID );
-
-	// Display connected pages
-	if ( $connected->have_posts() ) :
-	$done=false;
-	?>
-	<h3>Latest Podcast:</h3>
-	<?php while ( $connected->have_posts() && !$done) : $connected->the_post(); $done=true; ?>
-		<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-		<p><?php the_excerpt() ?></p>
-	<?php endwhile; ?>
-
-	<?php 
-	// Prevent weirdness
-	wp_reset_postdata();
-
-	endif;
-}
-?>
 
 <?php  //for use in the loop, list 5 post titles related to first tag on current post
   $backup = $post;  // backup the current object
