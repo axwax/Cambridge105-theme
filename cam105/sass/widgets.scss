@@ -202,75 +202,26 @@ div#sidebar .widget h2{
 	padding-right:10px;
 }
 
+/* frontpage news */
 div#below-posts-widgets div#gigxrecentposts-7  {
 	margin: 0 10px 0 0;
 }
 
+/* frontpage podcasts */
 div#below-posts-widgets div#gigxrecentposts-3 {
 	margin: 0 0 0 0;
 }
-
-div#text-3{
-	color:$medium_grey_text;
- 	@include rounded (5px);
-	@include shadow (5px, $medium_grey_text);
-	@include gradient (top, $white_box_gradient1, $white_box_gradient2, $white_box_gradient2);	 
-	font: 1em Arial,Tahoma,sans-serif;
-	line-height:1.3em;
-	padding: 10px;
-}
-
-div#text-3  h2.widget-title{
-    background-color: transparent;
-    color: $white_text;
-    //font-family: 'HarabaraRegular',Arial,sans-serif;
-    //font-size: 20px;
-    //letter-spacing: 2px;
-    @include harabara;
-	margin: 0 0 10px;
-}
-div#text-3 a {
-color: $white_text;
-}
-
-
-
-
-.rounded_5{
-	background: none repeat scroll 0 0 $white_text;
-}
-
-#cam105_now_playing-3{
- 	@include rounded (5px);
-	@include shadow (5px, $medium_grey_text);
-	@include gradient (top, $white_box_gradient1, $white_box_gradient2, $white_box_gradient2);	 
-	color:$medium_grey_text;
-	font: 1em Arial,Tahoma,sans-serif;
-	line-height:1.3em;
-	padding: 10px;
-}
-#cam105_now_playing-3 h2{
- 	@include rounded (5px);
-	@include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
-	color:$white_text;
-	//font-family: 'HarabaraRegular',Arial,sans-serif;
-	//font-size: 20px;
-	@include harabara;
-}
-#yoast-breadcrumb-widget{
-	//display:none;
-}
+/////////////////////
 /* sidebar widgets */
+
+/* listen */
 .rounded_5
 {
  	@include rounded (5px);
+	background: none repeat scroll 0 0 $white_text;
 }
 
+/* tags */
 .tagcloud, .ctc{
 	margin-top:10px;
-}
-
-
-.pp_pic_holder a{
-	padding:0;
 }
