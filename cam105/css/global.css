@@ -1,1 +1,73 @@
-@font-face{font-family:'HarabaraRegular';src:url("type/harabara-webfont.eot");src:local("?"),url("../type/harabara-webfont.woff") format("woff"),url("../type/harabara-webfont.ttf") format("truetype"),url("../type/harabara-webfont.svg#webfontCLJ3VJzF") format("svg")}body{background:#444 top left repeat;font-family:Arial, Tahoma, sans-serif}#header{background-color:#83ae2c}#footer{background-color:#83ae2c}a:link{text-decoration:none;outline:none;color:#486d25;font-weight:bolder}a:visited{color:#486d25;font-weight:bolder}a:hover{color:#2b9417;text-decoration:underline;font-weight:bolder}a:active,a:focus{color:#000;font-weight:bolder}code,pre{color:#c33}.whitetext{color:#fff}.blacktext{color:#000}body{text-align:center}.container{text-align:left}ol{margin-left:2em}sup{vertical-align:text-top}sub{vertical-align:text-bottom}html > body p code{white-space:normal}hr{margin:-8px auto 11px}fieldset{padding-top:0}.small{font-size:.8em;margin-bottom:1.875em;line-height:1.5em}.wp-caption{background-color:#f3f3f3;border:1px solid #ddd;-webkit-border-radius:3px 5px 5px 5px;-moz-border-radius:3px 5px 5px 5px;border-radius:3px 5px 5px 5px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;margin:10px;padding:5px;text-align:center}.frontpagefeature,.single #content,.archive .shows,.page-template-news-archive-php .posts,.category-podcasts .post,.page .posts{color:#111;-webkit-border-radius:5px 5px 5px 5px;-moz-border-radius:5px 5px 5px 5px;border-radius:5px 5px 5px 5px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-moz-box-shadow:5px 5px 5px #333;-webkit-box-shadow:5px 5px 5px #333;box-shadow:5px 5px 5px #333;background-color:#fff;background-image:-webkit-linear-gradient(top, #fafafa, #fff);background-image:-moz-linear-gradient(top, #fafafa, #fff);background-image:-ms-linear-gradient(top, #fafafa, #fff);background-image:-o-linear-gradient(top, #fafafa, #fff);background-image:linear-gradient(top, #fafafa, #fff);margin:0 0 10px 0;overflow:hidden;padding:10px}.single #content h2,.archive .shows h2,.page .posts h2,.category .post h2{font-size:1.9em;letter-spacing:0.05em;font-weight:normal;margin-top:10px}.single #content p,.archive .shows p,.page .posts p,.category .posts p{font-size:1.3em;margin-bottom:10px;font-family:Arial, sans-serif}.home #content .posts{background:none;margin:0;overflow:hidden;padding:0;font-family:'HarabaraRegular',Arial,sans-serif;font-size:1.5em;font-weight:100;letter-spacing:0.1em;line-height:normal}.row:before,.row:after,.clearfix:before,.clearfix:after{content:"";display:table}.row:after,.clearfix:after{clear:both}.row,.clearfix{zoom:1}#breadcrumbs,div#sidebar .widget h2{-webkit-border-radius:5px 5px 5px 5px;-moz-border-radius:5px 5px 5px 5px;border-radius:5px 5px 5px 5px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;background-color:#486d25;background-image:-webkit-linear-gradient(top, #56822c, #453);background-image:-moz-linear-gradient(top, #56822c, #453);background-image:-ms-linear-gradient(top, #56822c, #453);background-image:-o-linear-gradient(top, #56822c, #453);background-image:linear-gradient(top, #56822c, #453);color:#fff;font-family:'HarabaraRegular',Arial,sans-serif;font-size:1.5em;font-weight:100;letter-spacing:0.1em;line-height:normal;margin-bottom:10px;padding:5px 10px}#breadcrumbs a,#breadcrumbs a:hover,div#sidebar .widget h2 a,div#sidebar .widget h2 a:hover{color:#fff;padding:0;font-weight:bold}#breadcrumbs a:hover,div#sidebar .widget h2 a:hover{border-bottom:1px solid #fff}
+/*
+Syntax error: File to import not found or unreadable: compass/reset.
+              Load paths:
+                /Users/axwax/VirtualBox VMs/xpshare/My Documents/homepage/cambridge105.gigx.co.uk/httpdocs/wp-content/themes/cam105
+                /Users/axwax/VirtualBox VMs/xpshare/My Documents/homepage/cambridge105.gigx.co.uk/httpdocs/wp-content/themes/cam105/sass
+        on line 4 of sass/global.scss
+
+1: @import "colours";
+2: @import "fonts";
+3: @import "mixins";
+4: @import "compass/typography/links";
+5: 
+6: /* Fonts */
+7: @font-face {
+8: 	@include harabara-setup;
+9: }
+
+Backtrace:
+sass/global.scss:4
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/import_node.rb:64:in `import'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/import_node.rb:25:in `imported_file'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/perform.rb:149:in `visit_import'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/base.rb:37:in `send'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/base.rb:53:in `map'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/perform.rb:27:in `visit_children'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/perform.rb:47:in `visit_root'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/base.rb:37:in `send'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/perform.rb:7:in `send'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/perform.rb:7:in `visit'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/root_node.rb:20:in `render'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/engine.rb:300:in `_render'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/engine.rb:247:in `render'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/plugin/compiler.rb:339:in `update_stylesheet'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/plugin/compiler.rb:202:in `update_stylesheets'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/plugin/compiler.rb:200:in `each'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/plugin/compiler.rb:200:in `update_stylesheets'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/plugin/compiler.rb:293:in `watch'
+/Users/axwax/.gem/ruby/1.8/gems/fssm-0.2.7/lib/fssm/path.rb:73:in `call'
+/Users/axwax/.gem/ruby/1.8/gems/fssm-0.2.7/lib/fssm/path.rb:73:in `run_callback'
+/Users/axwax/.gem/ruby/1.8/gems/fssm-0.2.7/lib/fssm/path.rb:55:in `callback_action'
+/Users/axwax/.gem/ruby/1.8/gems/fssm-0.2.7/lib/fssm/path.rb:35:in `update'
+/Users/axwax/.gem/ruby/1.8/gems/fssm-0.2.7/lib/fssm/state/file.rb:19:in `refresh'
+/Users/axwax/.gem/ruby/1.8/gems/fssm-0.2.7/lib/fssm/backends/polling.rb:17:in `run'
+/Users/axwax/.gem/ruby/1.8/gems/fssm-0.2.7/lib/fssm/backends/polling.rb:17:in `each'
+/Users/axwax/.gem/ruby/1.8/gems/fssm-0.2.7/lib/fssm/backends/polling.rb:17:in `run'
+/Users/axwax/.gem/ruby/1.8/gems/fssm-0.2.7/lib/fssm/backends/polling.rb:15:in `loop'
+/Users/axwax/.gem/ruby/1.8/gems/fssm-0.2.7/lib/fssm/backends/polling.rb:15:in `run'
+/Users/axwax/.gem/ruby/1.8/gems/fssm-0.2.7/lib/fssm/monitor.rb:26:in `run'
+/Users/axwax/.gem/ruby/1.8/gems/fssm-0.2.7/lib/fssm.rb:20:in `monitor'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/plugin/compiler.rb:265:in `watch'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/plugin.rb:107:in `send'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/plugin.rb:107:in `method_missing'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/exec.rb:421:in `watch_or_update'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/exec.rb:302:in `process_result'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/exec.rb:41:in `parse'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/exec.rb:21:in `parse!'
+/Users/axwax/.gem/ruby/1.8/gems/sass-3.1.12/bin/sass:8
+/Users/axwax/.gem/ruby/1.8/bin/sass:19:in `load'
+/Users/axwax/.gem/ruby/1.8/bin/sass:19
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: File to import not found or unreadable: compass/reset.\A               Load paths:\A                 /Users/axwax/VirtualBox VMs/xpshare/My Documents/homepage/cambridge105.gigx.co.uk/httpdocs/wp-content/themes/cam105\A                 /Users/axwax/VirtualBox VMs/xpshare/My Documents/homepage/cambridge105.gigx.co.uk/httpdocs/wp-content/themes/cam105/sass\A         on line 4 of sass/global.scss\A \A 1: @import \"colours\";\A 2: @import \"fonts\";\A 3: @import \"mixins\";\A 4: @import \"compass/reset\";\A 5: \A 6: /* Fonts */\A 7: @font-face {\A 8: 	@include harabara-setup;\A 9: }"; }

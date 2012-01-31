@@ -17,7 +17,7 @@
 	margin-top:0px;
 	margin-bottom:0px;
 	width:auto;
-	font: normal 1.5em Arial, Tahoma, sans-serif;
+	//font: normal 1.5em Arial, Tahoma, sans-serif;
 	color:$white_text;
 	padding-left:5px;
 	padding-bottom:1px;
@@ -60,7 +60,7 @@ div#sidebar .widget{
  	@include rounded (5px);
 	@include shadow (5px, $medium_grey_text);
 	@include gradient (top, $white_box_gradient1, $white_box_gradient2, $white_box_gradient2);	 
-	font: 1em Arial,Tahoma,sans-serif;
+	//font: 1em Arial,Tahoma,sans-serif;
 	line-height:1.3em;
 	padding: 10px;
 }
@@ -69,8 +69,9 @@ div#sidebar .widget h2{
  	@include rounded (5px);
 	@include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
 	color:$white_text;
-	font-family: 'HarabaraRegular',Arial,sans-serif;
-	font-size: 20px;
+	//font-family: 'HarabaraRegular',Arial,sans-serif;
+	//font-size: 20px;
+	@include harabara;
 }
 */
 
@@ -103,7 +104,7 @@ div#sidebar .widget h2{
 	margin-top:0px;
 	margin-bottom:10px;
 	width:auto;
-	font: normal 1.5em Arial, Tahoma, sans-serif;
+	//font: normal 1.5em Arial, Tahoma, sans-serif;
 	color:$white_text;
 	padding-left:5px;
 	padding-bottom:1px;
@@ -120,7 +121,7 @@ div#sidebar .widget h2{
 }
 
 .postdate, .postauthor, .postcategories {
-	font-size:90%;
+	//font-size:90%;
 	text-transform: lowercase;
 	margin-left: 0px;
 }
@@ -166,8 +167,6 @@ div#sidebar .widget h2{
 .widget_gigxrecentposts h2.widget-title {
     background-color: transparent;
     color:$white_text;
-	//font-family: 'HarabaraRegular',Arial,sans-serif;
-	//font-size: 20px;
 	@include harabara;
 	margin:0 0 10px 0;
 }
@@ -179,18 +178,18 @@ div#sidebar .widget h2{
 	@include shadow (5px, $medium_grey_text);
 	@include gradient (top, $white_box_gradient1, $white_box_gradient2, $white_box_gradient2);	 
 	color:$medium_grey_text;
-	font: 1em Arial,Tahoma,sans-serif;
+	//font: 1em Arial,Tahoma,sans-serif;
 	line-heigh:1.3em;
 	overflow:hidden;
 	margin:0 0 10px 0;
 	padding:10px;
 }
 .widget_gigxrecentposts ul.gigx-recent-posts li a{
-	font-size:1.2em;
+	//font-size:1.2em;
 }
 .widget_gigxrecentposts ul.gigx-recent-posts li span.date{
 	font-family: Arial,Tahoma,sans-serif;
-	font-size:10px;
+	//font-size:10px;
 	text-transform: lowercase;
 	letter-spacing: normal;
 }

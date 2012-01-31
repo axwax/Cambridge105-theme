@@ -1,6 +1,7 @@
 @import "colours";
 @import "fonts";
 @import "mixins";
+@import "compass/typography/links";
 
 /* Fonts */
 @font-face {
@@ -52,7 +53,11 @@ fieldset { padding-top:0; }
 /* ---------- */
 
 
-.small {font-size:.8em;margin-bottom:1.875em;line-height:1.5em;}
+.small {
+	font-size:.8em;
+	margin-bottom:1.875em;
+	line-height:1.5em;
+}
 
 .wp-caption {
     background-color: $caption_bg;
@@ -75,14 +80,14 @@ fieldset { padding-top:0; }
 }
 
 .single #content h2, .archive .shows h2, .page .posts h2, .category .post h2{
-    font-size: 1.9em;
+    //font-size: 1.9em;
     letter-spacing: 0.05em;
 	font-weight:normal;
 	margin-top:10px;
 }
 
 .single #content p, .archive .shows p, .page .posts p, .category .posts p{
-font-size: 1.3em;
+//font-size: 1.3em;
 margin-bottom:10px;
 font-family: Arial, sans-serif;
 }
@@ -103,8 +108,6 @@ div#sidebar .widget h2{
  	@include rounded (5px);
 	@include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
 	color:$white_text;
-	//font-family: Arial,sans-serif;
-    //font-size: 1.3em;	
 	@include harabara;	
 	margin-bottom: 10px;
 	padding:5px 10px;

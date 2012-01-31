@@ -106,14 +106,26 @@ blockquote,q{quotes:"" "";}
 
 /* BASIC TYPOGRAPHY */
 
-html { font-family:Arial, sans-serif;font-size:75%; }
+html {
+		font-family:Arial, sans-serif;
+		//font-size:75%;
+}
 strong, th, thead td, h1, h2, h3, h4, h5, h6 { font-weight: bold; }
 cite, em, dfn { font-style: italic; }
-code, kbd, samp, pre, tt, var { font-size: 92%; font-family: monaco, "Lucida Console", courier, monospace; }
+code, kbd, samp, pre, tt, var {
+		//font-size: 92%;
+		font-family: monaco, "Lucida Console", courier, monospace;
+}
 del { text-decoration: line-through; }
 ins, dfn { border-bottom: 1px solid; }
-small, sup, sub { font-size: 85%; }
-abbr, acronym { text-transform: uppercase; font-size: 85%; letter-spacing: .1em; }
+small, sup, sub {
+		//font-size: 85%;
+}
+abbr, acronym {
+		text-transform: uppercase;
+		//font-size: 85%;
+		letter-spacing: .1em;
+}
 a abbr, a acronym { border: none; }
 abbr[title], acronym[title], dfn[title] { cursor: help; border-bottom: 1px solid; }
 sup { vertical-align: super; }
@@ -125,7 +137,10 @@ sub { vertical-align: sub; }
 
 /* QUOTES */
 
-blockquote { font-style:italic;font-size:1.2em;}
+blockquote {
+		font-style:italic;
+		//font-size:1.2em;
+}
 blockquote *:first-child:before { content: "\201C"; }
 blockquote *:first-child:after { content: "\201D"; }
 
@@ -136,25 +151,44 @@ form {margin:10px;}
 form div {margin-bottom:.8em;}
 form p {padding:0;margin:0 0 20px 0;}
 fieldset { padding:1.4em; margin: 0 0 1.5em 0; border: 1px dotted;clear:both; }
-legend { font-weight: normal; font-size:1.2em;}
+legend {
+		font-weight: normal;
+		//font-size:1.2em;
+}
 label { font-weight:normal;float:left;padding-right:1px;}
 input, select {cursor:pointer;outline:none;}
 input[type='text'],input[type='password'] {cursor:text;}
 input.text, input.title, textarea, select {border:1px solid;margin:0.5em 0;padding:6px;}
 input.text:focus, input.title:focus, textarea:focus, select:focus {border:1px solid;}
 input.text, input.title { padding:5px;width:300px; }
-input.title { font-size:1.5em; }
+input.title {
+		//font-size:1.5em;
+}
 */
 
 /* BASE SIZES */
 
 /*h1, h2, h3, h4, h5, h6 {font-weight:normal;}*/
-h1 { font-size: 1.9em;}
-h2 { font-size: 1.7em;}
-h3 { font-size: 1.5em;}
-h4 { font-size: 1.2em;}
-h5 { font-size: 1em;}
-h6 { font-size: 0.9em;font-variant:small-caps;letter-spacing:1px; }
+h1 {
+		//font-size: 1.9em;
+}
+h2 {
+		//font-size: 1.7em;
+}
+h3 {
+		//font-size: 1.5em;
+}
+h4 {
+		//font-size: 1.2em;
+}
+h5 {
+		//font-size: 1em;
+}
+h6 {
+		//font-size: 0.9em;
+		font-variant:small-caps;
+		letter-spacing:1px;
+}
 
 /* LISTS */
 
@@ -237,7 +271,12 @@ img.alignright, img.right {display: inline; margin:0 0 8px 8px;}
    border-radius: 3px;
 }
 .wp-caption img {margin: 0; padding: 0; border: 0 none;}
-.wp-caption p.wp-caption-text {font-size: 11px; line-height: 17px; padding: 0 4px 5px; margin: 0;}
+.wp-caption p.wp-caption-text {
+		//font-size: 11px;
+		line-height: 17px;
+		padding: 0 4px 5px;
+		margin: 0;
+}
 /*-- End WordPress Rules --*/
 /*-- Secondary WordPress Rules --*/
 .gallery {clear: both;}
@@ -308,7 +347,7 @@ list-style-type:none;
 /* Comments */
 
 #comments {
-	font-size:1.2em;
+	//font-size:1.2em;
 }
 
 .commentlist {
@@ -361,13 +400,13 @@ ul.children li {
 .comment-meta, .reply {
 	margin:0;
 	padding:0;
-	font-size:0.8em;
+	//font-size:0.8em;
 }
 
 .comment-author cite {
 	font-style:normal;
 	font-weight:bold;
-	font-size:1.2em;
+	//font-size:1.2em;
 }
 
 
@@ -377,7 +416,7 @@ textarea#comment {
 }
 
 #comments div.navigation {
-	font-size:0.9em;
+	//font-size:0.9em;
 }
 
 /* Comment ends */
