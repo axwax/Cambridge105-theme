@@ -129,268 +129,456 @@ q, blockquote {
 a img {
   border: none; }
 
-/* global styles */
 /* TYPOGRAPHY
 -------------------------------------------------------------- */
 body {
-  color: #333333;
-  font-family: "Helvetica Neue", Hevetica, Arial, sans-serif;
-  font-size: 110%;
-  line-height: 1.4; }
+  font-family: Helvetica, Verdana, Arial, sans-serif;
+  color: #444444; }
 
-#content strong, #content b {
-  color: strengthen(#333333);
-  font-weight: bold; }
-#content em, #content i {
-  font-style: italic; }
-#content abbr, #content acronym {
-  border-bottom: 1px dotted soften(#333333, 2); }
-#content sub, #content sup {
-  font-size: 85%; }
-#content sub {
-  vertical-align: sub; }
-#content sup {
-  vertical-align: super; }
-#content span.caps {
-  font-size: 95%; }
-#content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
-  color: strengthen(#333333, 0.66);
-  margin: 1em 0; }
-#content h1 {
-  font-weight: bold;
-  font-size: 200%;
-  line-height: 1.099;
-  margin: 0.75em 0; }
-#content h2 {
-  font-weight: bold;
-  font-size: 170%;
-  line-height: 1.099; }
-#content h3 {
-  font-weight: bold;
-  font-size: 140%;
-  line-height: 1.169;
-  margin: 1.25em 0 0.5em; }
-#content h4 {
-  font-weight: bold;
-  font-size: 110%;
-  line-height: 1.26;
-  margin: 0.5em 0 0.5em; }
-#content h5 {
-  font-style: italic;
-  font-size: 110%;
-  line-height: 1.4;
-  margin: 0.65em 0; }
-#content h6 {
-  font-weight: bold;
-  margin-bottom: -0.75em; }
-#content p {
-  margin: 1em 0; }
-#content ul, #content ol, #content dl {
-  margin-top: 1em;
+/*--- Headings | Überschriften ------------------------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6 {
+  font-family: Calibri, "Trebuchet MS", Tahoma, Helvetica, Verdana, sans-serif;
+  font-weight: normal; }
+
+h1 {
+  font-size: 2.5em;
+  line-height: 0.6em;
+  margin-bottom: 0.6em; }
+
+/* 30px */
+h2 {
+  font-size: 2em;
+  line-height: 1em;
+  margin-bottom: 0.75em; }
+
+/* 24px */
+h3 {
+  font-size: 1.5em;
+  line-height: 1em;
   margin-bottom: 1em; }
-#content ul, #content ol, #content dd {
-  padding-left: 2.25em; }
-#content ul {
-  list-style: disc; }
-#content ol {
-  list-style: decimal; }
-#content li {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em; }
-#content dt {
-  margin-top: 1em; }
-#content dd {
+
+/* 18px */
+h4 {
+  font-size: 1.334em;
+  line-height: 1.125em;
+  margin-bottom: 1.125em; }
+
+/* 16px */
+h5, h6 {
+  font-size: 1.1667em;
+  line-height: 1.286em;
+  margin-bottom: 1.286em; }
+
+/* 14px */
+.sidebar h5, #comments-title, #pings-title, .widget-title,
+#footer h5 {
+  font-size: 1.5em;
+  line-height: 1em;
   margin-bottom: 1em; }
-#content code, #content dfn, #content kbd, #content samp, #content tt {
-  font-family: Monaco, "Andale Mono", "Lucida Console", monospace;
-  font-size: 95%;
-  color: soften(#333333); }
-#content pre {
-  background: soften(#333333);
-  color: #cccccc;
-  font-family: Monaco, "Andale Mono", "Lucida Console", monospace;
-  font-size: 95%;
-  line-height: 1.4;
-  margin: 1.5em 0;
-  padding: 1em; }
 
-/* BASIC TYPOGRAPHY */
-html {
-  font-family: Arial, sans-serif; }
+.page-title {
+  font-size: 1.5em;
+  line-height: 1em;
+  margin-bottom: 1em; }
 
-strong, th, thead td, h1, h2, h3, h4, h5, h6 {
-  font-weight: bold; }
-
-cite, em, dfn {
+.page-title span {
   font-style: italic; }
 
-code, kbd, samp, pre, tt, var {
-  font-family: monaco, "Lucida Console", courier, monospace; }
+/* --- general text formatting | Allgemeine Textauszeichnung ------------------------------------------ */
+p, ul, ol, dl, dd, dt, li, blockquote, pre {
+  font-size: 1em;
+  line-height: 1.5em;
+  margin-bottom: 1.5em; }
 
-del {
-  text-decoration: line-through; }
+/* --- Lists | Listen  -------------------------------------------------------------------------------- */
+ul ul, ul ul ul, ul ul ul ul, ol ul, ol ul ul, ol ul ul ul, ol ol, ol ol ol, li {
+  margin-bottom: 0; }
 
-ins, dfn {
-  border-bottom: 1px solid; }
-
-abbr, acronym {
-  text-transform: uppercase;
-  letter-spacing: .1em; }
-
-a abbr, a acronym {
-  border: none; }
-
-abbr[title], acronym[title], dfn[title] {
-  cursor: help;
-  border-bottom: 1px solid; }
-
-sup {
-  vertical-align: super; }
-
-sub {
-  vertical-align: sub; }
-
-.right {
-  text-align: right; }
-
-.smallcaps {
-  font-variant: small-caps; }
-
-/* QUOTES */
-blockquote {
-  font-style: italic; }
-
-blockquote *:first-child:before {
-  content: "\201C"; }
-
-blockquote *:first-child:after {
-  content: "\201D"; }
-
-/* FORMS */
-/*
-form {margin:10px;}
-form div {margin-bottom:.8em;}
-form p {padding:0;margin:0 0 20px 0;}
-fieldset { padding:1.4em; margin: 0 0 1.5em 0; border: 1px dotted;clear:both; }
-legend {
-		font-weight: normal;
-		/*font-size:1.2em; */
-}
-label { font-weight:normal;float:left;padding-right:1px;}
-input, select {cursor:pointer;outline:none;}
-input[type='text'],input[type='password'] {cursor:text;}
-input.text, input.title, textarea, select {border:1px solid;margin:0.5em 0;padding:6px;}
-input.text:focus, input.title:focus, textarea:focus, select:focus {border:1px solid;}
-input.text, input.title { padding:5px;width:300px; }
-input.title {
-		/*font-size:1.5em; */
-}
-*/
-/* BASE SIZES */
-/*h1, h2, h3, h4, h5, h6 {font-weight:normal;}*/
-h6 {
-  font-variant: small-caps;
-  letter-spacing: 1px; }
-
-/* LISTS */
-/*ul li { margin-left: .85em; }*/
-p ul li {
-  margin-left: .85em; }
+ul, ol, dl {
+  margin-left: 20px; }
 
 ul {
   list-style-type: disc; }
 
 ul ul {
-  list-style-type: square; }
-
-ul ul ul {
   list-style-type: circle; }
 
 ol {
-  list-style-position: outside;
   list-style-type: decimal; }
+
+ol ol {
+  list-style-type: lower-latin; }
+
+li {
+  margin-left: 20px; }
 
 dt {
   font-weight: bold; }
 
-/* TABLES */
-table {
-  border-top: 1px solid;
-  border-left: 1px solid; }
+dd {
+  margin: 0 0 1.5em 20px; }
 
-th, td {
-  border-bottom: 1px solid;
-  border-right: 1px solid; }
+blockquote, cite, q {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic; }
 
-/* MARGINS & PADDINGS */
-blockquote *:first-child {
-  margin: .8em 0; }
+blockquote {
+  margin-left: 20px;
+  margin-right: 20px;
+  color: #666; }
 
-p {
-  line-height: 1.5em; }
+strong, b {
+  font-weight: bold; }
 
-p, ul, ol, dl, pre, blockquote, address, table {
-  margin-bottom: 1.25em; }
+em, i {
+  font-style: italic; }
+
+big {
+  font-size: 1.1667em;
+  line-height: 1.286em;
+  margin-bottom: 1.286em; }
+
+small {
+  font-size: 0.9166em;
+  line-height: 1.636em;
+  margin-bottom: 1.636em; }
+
+pre, code, kbd, tt, samp, var {
+  font-size: 1em; }
+
+pre, code {
+  color: #000; }
+
+kbd, samp, var, tt {
+  color: #666;
+  font-weight: bold; }
+
+var, dfn {
+  font-style: italic; }
+
+acronym, abbr {
+  border-bottom: 1px #aaa dotted;
+  font-variant: small-caps;
+  letter-spacing: .07em;
+  cursor: help; }
+
+sub, sup {
+  font-size: 0.9166em;
+  line-height: 0; }
 
 hr {
-  margin: 1em auto;
-  clear: both;
-  width: 75%;
+  color: #fff;
+  background: transparent;
+  margin: 0 0 1.5em 0;
+  padding: 0 0 1.5em 0;
+  border: 0;
+  border-bottom: 1px #eeeeee solid; }
+
+/*--- Links ----------------------------------------------------------------------------------------- */
+a {
+  color: #4d87c7;
+  background: transparent;
+  text-decoration: none; }
+
+a:visited {
+  color: #036; }
+
+a:focus {
+  text-decoration: none;
+  color: #000; }
+
+a:hover,
+a:active {
+  color: #182e7a;
+  text-decoration: none; }
+
+/**
+* ------------------------------------------------------------------------------------------------- #
+*
+* Generic Content Classes
+*
+* (en) standard classes for positioning and highlighting
+* (de) Standardklassen zur Positionierung und Hervorhebung
+*
+* @section content-generic-classes
+*/
+/** we use it for the awaiting moderation message **/
+.info {
+  background: #f8f8f8;
+  color: #666;
+  padding: 10px;
+  margin-bottom: 1.5em;
+  font-size: 0.9167em; }
+
+/** we use it for post is password protected **/
+.warning {
+  background: #fee;
+  color: #400;
+  border: 1px #844 solid;
+  padding: 10px;
+  margin-bottom: 1.5em; }
+
+.hide {
+  display: none; }
+
+.float_left {
+  float: left; }
+
+.float_right {
+  float: right; }
+
+.alignleft {
+  float: left;
+  display: inline;
+  margin-right: 20px;
+  margin-bottom: 1em; }
+
+.alignright {
+  float: right;
+  display: inline;
+  margin-left: 20px;
+  margin-bottom: 1em; }
+
+.aligncenter, .center {
+  display: block;
   text-align: center;
-  height: 1px; }
+  margin: 0 auto 1em auto; }
 
-/* NOTE: Calulate header margins: TOP: 1.6em/size, BOTTOM: 1.6em/size/2 */
-h1 {
-  margin: 1em 0 .5em; }
+.alignnone {
+  margin: 0 0 1em 0; }
 
-h2 {
-  margin: 1.07em 0 .535em; }
+.txt-left {
+  text-align: left; }
 
-h3 {
-  margin: 1.14em 0 .57em; }
+.txt-center {
+  text-align: center; }
 
-h4 {
-  margin: 1.23em 0 .615em; }
+.txt-right {
+  text-align: right; }
 
-h5 {
-  margin: 1.33em 0 .67em; }
+/**
+* ------------------------------------------------------------------------------------------------- #
+*
+* Tables | Tabellen
+*
+* (en) Generic classes for table-width and design definition
+* (de) Generische Klassen für die Tabellenbreite und Gestaltungsvorschriften für Tabellen
+*
+* @section content-tables
+*/
+table {
+  width: auto;
+  border-collapse: collapse;
+  margin-bottom: 1.5em;
+  border-top: 1px #888 solid;
+  border-bottom: 1px #888 solid; }
 
-h6 {
-  margin: 1.6em 0 .8em; }
+table caption {
+  text-transform: uppercase; }
+
+table.full, .widget_calendar table {
+  width: 100%; }
+
+table.fixed {
+  table-layout: fixed; }
 
 th, td {
-  padding: .8em; }
+  padding: 0.5em; }
 
-caption {
-  padding-bottom: .8em; }
+thead th {
+  color: #000;
+  border-bottom: 1px #800 solid; }
 
-/* padding instead of margin for IE */
-blockquote {
-  padding: 0 1em;
-  margin: 1.6em 0; }
+tbody th {
+  background: #e0e0e0;
+  color: #333; }
 
-a {
-  position: relative;
-  padding: 0.3em 0 .1em 0; }
+tbody th[scope="row"], tbody th.sub {
+  background: #f0f0f0; }
 
-/* for larger click-area */
-dt {
-  margin-top: .8em;
-  margin-bottom: .4em; }
+tbody th {
+  border-bottom: 1px solid #fff;
+  text-align: left; }
 
-/* ul { margin:0;padding:0;list-style-type:none;}  */
-ol {
-  margin-left: 2.35em; }
+tbody td {
+  border-bottom: 1px solid #eee; }
 
-ol ol, ul ol {
-  margin-left: 2.5em; }
+tbody tr:hover th[scope="row"],
+tbody tr:hover tbody th.sub {
+  background: #f0e8e8; }
 
-/* for inheritance (is it needed?) */
-html {
-  height: 100%; }
+tbody tr:hover td {
+  background: #fff8f8; }
 
-body {
-  height: 100%; }
+/** Gallery **/
+.gallery {
+  margin: auto;
+  overflow: hidden;
+  width: 100%;
+  list-style-type: none; }
+
+.gallery-item {
+  float: left;
+  margin-left: 0;
+  text-align: center; }
+
+.gallery-item.last {
+  margin-left: -1px; }
+
+.gallery .gallery-caption {
+  margin-left: 0; }
+
+.gallery .first, .gallery br {
+  clear: both; }
+
+.col-2 {
+  width: 50%; }
+
+.col-3 {
+  width: 33.333%; }
+
+.col-4 {
+  width: 25%; }
+
+.col-5 {
+  width: 20%; }
+
+.col-6 {
+  width: 16.666%; }
+
+.col-7 {
+  width: 14.285%; }
+
+.col-8 {
+  width: 12.5%; }
+
+.col-9 {
+  width: 11.111%; }
+
+.wp-caption-text {
+  font-size: 0.9167em; }
+
+/* HTML5 Gallery */
+ul.gallery {
+  margin-left: 0; }
+
+li.gallery-item {
+  display: inline; }
+
+.gallery-icon, .gallery-caption {
+  margin-bottom: 1.5em; }
+
+.gallery figure {
+  display: inline-block; }
+
+.gallery figcaption {
+  margin-top: 1.5em; }
+
+.wp-smiley {
+  margin: 0; }
+
+.post, .type-attachment, .type-page {
+  margin: 0 0 1.5em 0;
+  overflow: hidden; }
+
+.entry-content {
+  overflow: hidden; }
+
+.postedit {
+  line-height: 1.5em;
+  margin-bottom: 1.5em; }
+
+.entry-meta {
+  font-size: 0.9167em;
+  line-height: 1.6364em;
+  margin-bottom: 1.636em; }
+
+.xf-layout2 .post-meta {
+  clear: both; }
+
+footer .post-meta {
+  clear: both;
+  margin-bottom: 1.5em; }
+
+.read-more {
+  line-height: 1.5em;
+  float: right; }
+
+.pagination {
+  overflow: hidden;
+  margin: 0 0 1.5em 0; }
+
+.next_link {
+  float: left; }
+
+.previous_link {
+  float: right; }
+
+.backto_link {
+  margin-top: 1.5em; }
+
+nav.backto_link {
+  margin-bottom: 1.5em; }
+
+.skip_top {
+  float: left;
+  display: inline;
+  margin-right: 2em; }
+
+.skip_top span {
+  text-align: left; }
+
+#authorbox {
+  overflow: hidden;
+  margin-bottom: 1.5em; }
+
+#authorbox img.avatar {
+  float: left;
+  margin: 0 20px 1em 0; }
+
+/**
+* Comments | Kommentare
+**/
+.commentlist, .pinglist {
+  margin-left: 0; }
+
+.commentlist li {
+  list-style-type: none;
+  overflow: hidden; }
+
+.commentlist .children {
+  margin-left: 0; }
+
+.comment-wrapper {
+  overflow: hidden;
+  padding: 10px; }
+
+.depth-1 {
+  margin-left: 0; }
+
+.depth-2, .depth-3, .depth-4, .depth-5, .depth-6, .depth-7,
+.depth-8, .depth-9, .depth-10 {
+  margin-left: 20px; }
+
+.jquery_tabs .comment-author {
+  zoom: 0!important; }
+
+cite.fn {
+  font-style: normal;
+  font-size: 1.1667em; }
+
+.comment-meta {
+  font-size: 0.9167em; }
+
+#comments time {
+  display: block;
+  font-size: 0.9167em; }
+
+.reply {
+  float: left; }
+
+ul, ol, dl {
+  margin-left: 0px; }
 
 /* link stylee */
 a {

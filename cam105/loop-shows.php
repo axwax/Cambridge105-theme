@@ -28,8 +28,8 @@ Theme Version: 0.5.11
 <?php 
 	 $postcount++; 
 	# Show Title (Shows CPT)
-	$title_tag='h1';
-	$single_title_tag='h2';
+	$title_tag='h2';
+	$single_title_tag='h1';
 	$title = the_title('', '', false);		
 	if ( $title && !is_singular() ) {
                 $permalink='';
