@@ -276,6 +276,7 @@ function add_podcast_callback() {
 		<form action="<?php echo get_admin_url('','edit.php'); ?>" method="get">
    		<input type="hidden" name="post_type" value="shows" />
    		<input type="hidden" name="page" value="add_podcast" />
+		<input type="text" id="selectshow" name="select_show" value=""/>
    		<?php wp_dropdown_pages(array('post_type' => 'shows')); ?>
 		<input type="text" class="scheduledate" name="podcast_date" value="<?php echo date("D, M d, Y"); ?>"/>
    		<input type="submit" name="submit" value="Add Podcast" />
@@ -338,6 +339,7 @@ function schedule_scripts() {
     wp_enqueue_script('jquery-ui', get_bloginfo('stylesheet_directory') . '/js/jquery-ui-1.8.9.custom.min.js', array('jquery'));
     wp_enqueue_script('ui-datepicker', get_bloginfo('stylesheet_directory') . '/js/jquery.ui.datepicker.min.js',array('jquery-ui'));
     wp_enqueue_script('ui-autocomplete', get_bloginfo('stylesheet_directory') . '/js/jquery.ui.autocomplete.min.js',array('jquery-ui'));
+	wp_enqueue_script( 'suggest' );
     wp_enqueue_script('gigx_podcast', get_bloginfo('stylesheet_directory').'/js/gigx-admin.js', array('jquery'));
 }
 

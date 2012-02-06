@@ -101,6 +101,7 @@ $(".scheduledate").datepicker({
     //numberOfMonths: 3,
 
     });
+$("#selectshow").suggest("/showslist");
 
 //$("#page_id").combobox();    
 });
