@@ -284,3 +284,26 @@ margin-left: 0 !important;
 	#adminmenu .wp-menu-arrow div {
 		@include gradient(right bottom, $green_title_gradient1, $green_title_gradient2,$dark_green);
 	}
+
+/* links */
+a, #the-comment-list p.comment-author strong a, #media-upload a.del-link, #media-items a.delete, .plugins a.delete, .ui-tabs-nav a {
+    color: $dark_green;
+}
+// adminbar text
+#wpadminbar .quicklinks .menupop ul li a, #wpadminbar .quicklinks .menupop ul li a strong, #wpadminbar .quicklinks .menupop.hover ul li a, #wpadminbar.nojs .quicklinks .menupop:hover ul li a {
+    color: $dark_green;
+}
+//more adminbar text
+#wpadminbar .ab-submenu .ab-item {
+    color: $dark_green;
+}
+
+// admin menu background
+#adminmenu .wp-submenu a:hover, #adminmenu .wp-submenu a:focus {
+    background-color: $light_yellow_bg;
+}
+
+//admin bar background
+#wpadminbar .menupop li:hover, #wpadminbar .menupop li.hover, #wpadminbar .quicklinks .menupop .ab-item:focus, #wpadminbar .quicklinks .ab-top-menu .menupop .ab-item:focus {
+    background-color: $light_yellow_bg;
+}

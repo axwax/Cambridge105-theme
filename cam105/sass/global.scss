@@ -68,7 +68,13 @@ fieldset { padding-top:0; }
     text-align: center;
 }
 
-.frontpagefeature, .single #content, .archive .shows, .page-template-news-archive-php .posts, .category-podcasts .post, .page .posts{
+.frontpagefeature,
+.single #content,
+.archive .shows,
+.page-template-news-archive-php .posts,
+.category-podcasts .post
+//.page .posts
+{
     color:#111;
 	@include rounded(5px);    
 	@include shadow(5px,#333);
@@ -121,4 +127,9 @@ div#sidebar .widget h2 a, div#sidebar .widget h2 a:hover{
 #breadcrumbs a:hover,
 div#sidebar .widget h2 a:hover{
 	border-bottom:1px solid $white_text;
+}
+
+/* Headers */
+h1,h2,h3 {
+	@include harabara;
 }
