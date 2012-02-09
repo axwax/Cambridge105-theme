@@ -40,7 +40,7 @@ function gigx_cpt_shows()
     'supports' => array('title','editor','thumbnail','sticky','custom-fields'),
     'taxonomies' => array( 'post_tag', 'category ')
   ); 
-  register_post_type('shows',$args);
+  register_post_type('show',$args);
 }
 
 # add filter to insure the text Show, or show, is displayed when user updates a show 
@@ -108,12 +108,12 @@ function create_shows_taxonomies()
     'menu_name' => __( 'Genres' ),
   ); 	
 
-  register_taxonomy('genres',array('shows'), array(
+  register_taxonomy('genre',array('show'), array(
     'hierarchical' => true,
     'labels' => $labels,
     'show_ui' => true,
     'query_var' => true,
-    'rewrite' => array( 'slug' => 'genres' ),
+    'rewrite' => array( 'slug' => 'genre' ),
   ));
     */
 
@@ -136,7 +136,7 @@ function create_shows_taxonomies()
     'menu_name' => __( 'Frequency' ),
   ); 
 
-  register_taxonomy('frequency','shows',array(
+  register_taxonomy('frequency','show',array(
     'hierarchical' => false,
     'labels' => $labels,
     'show_ui' => true,
