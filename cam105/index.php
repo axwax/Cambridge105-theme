@@ -16,6 +16,10 @@ get_header();
 
 	<div id="content">
 		<?php get_template_part( 'loop', $loop ); ?>
+		<?php
+			if(function_exists('genarate_ajax_pagination')) {
+				genarate_ajax_pagination('Read More', 'blue','loop-ajax'); 								 
+			} ?>
 	</div>
 
 <?php get_sidebar(); ?>
