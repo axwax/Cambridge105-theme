@@ -2,7 +2,7 @@
 /*
 File Description: Theme Functions
 Built By: GIGX
-Theme Version: 0.5.12
+Theme Version: 0.6.1
 */
 
 //error_reporting(E_ALL);
@@ -273,6 +273,68 @@ if ( ! function_exists( 'gigx_comment' ) ) :
     		<p>Pingback: <?php comment_author_link(); ?><?php edit_comment_link ( '(Edit)', ' ' ); ?></p>
     	<?php endif;
     }
+endif;
+
+/**
+ * Finds the first attached image for a given post.
+ * @author   Axel Minet <axel@gigx.co.uk>
+ * @version  2012-02-16
+ * @param int $post_id The Post's ID
+ * @return int The ID of the first attached image. 
+ **/
+if ( ! function_exists( 'gigx_find_image_attachment' ) ) :
+    function gigx_find_image_attachment($post_id=0){
+        $args = array(
+            'post_type' => 'attachment',
+            'numberposts' => null,
+            'post_status' => null,
+            'post_parent' => $post_id
+        );
+        $attachments = get_posts($args);
+        foreach( $attachments as $item ) {
+            $mime_types = explode( "/", get_post_mime_type( $item->ID ) );
+            if ( in_array( 'image', $mime_types ) ) {
+                return $item->ID; 
+            }
+        }
+        return 0;
+    }
+endif;
+/**
+ * Allows to unregister default and custom widgets.
+ *
+ * Removes all default widgets by default, but allows to define exceptions as well as custom widgets to remove.
+ * Usage Example:
+ * add_filter('gigx_add_default_widgets', function($widgetsToAdd) { return array('WP_Widget_Tag_Cloud','WP_Widget_Text');});
+ * add_filter('gigx_remove_custom_widgets', function($widgetsToRemove) { return array('gigx_custom_title','Shiba_Widget_Author');});
+ * @author   Axel Minet <axel@gigx.co.uk>
+ * @version  2012-02-16
+ **/
+if ( ! function_exists( 'gigx_unregister_widgets' ) ) :
+    function gigx_unregister_widgets() {
+        $widgetsNotToRemove = apply_filters( 'gigx_add_default_widgets', array() );
+        $otherWidgetsToRemove = apply_filters( 'gigx_remove_custom_widgets', array() );
+        $defaultWidgets = array(
+            'WP_Widget_Pages',
+            'WP_Widget_Calendar',
+            'WP_Widget_Archives',
+            'WP_Widget_Links',
+            'WP_Widget_Meta',
+            'WP_Widget_Search',
+            'WP_Widget_Categories',
+            'WP_Widget_Recent_Posts',
+            'WP_Widget_Recent_Comments',
+            'WP_Widget_RSS',
+            'WP_Widget_Text',
+            'WP_Widget_Tag_Cloud',
+        );
+        $widgetsToRemove = array_merge($defaultWidgets, $otherWidgetsToRemove);
+        $widgetsToRemove = array_diff($widgetsToRemove,$widgetsNotToRemove);
+        foreach ($widgetsToRemove as $widgetToRemove) {
+            unregister_widget($widgetToRemove);
+        }
+    }
+    add_action('widgets_init', 'gigx_unregister_widgets', 11);
 endif;
 
 ?>
