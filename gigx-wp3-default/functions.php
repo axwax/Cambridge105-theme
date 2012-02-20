@@ -9,7 +9,6 @@ Theme Version: 0.6.1
 
 # default variables
 if ( ! isset( $content_width ) ) $content_width = 640; 
-if ( ! isset( $jquery_version ) ) $jquery_version='1.4.4'; // change number to latest version
 
 # include components
 include 'functions/gigx_widgets.php';
@@ -21,61 +20,14 @@ if (!function_exists('gigx_excerpt')) include 'functions/gigx_excerpt.php';
 /** Tell WordPress to run gigx_setup() when the 'after_setup_theme' hook is run. */
 add_action( 'after_setup_theme', 'gigx_setup' );
 
-# load jquery version defined above
-//add_action( 'wp_head', current_jquery( $jquery_version ) );
-
 # admin style
 function gigx_admin_style() {
-	//wp_enqueue_style( TEMPLATEPATH . '/admin.css' );
-	$url = get_bloginfo('stylesheet_directory') . '/css/admin.css';
-	echo '<link rel="stylesheet" type="text/css" href="' . $url . '" />';
+    $url = get_bloginfo('stylesheet_directory') . '/css/admin.css';
+    echo '<link rel="stylesheet" type="text/css" href="' . $url . '" />';
 }
 add_action('admin_head', 'gigx_admin_style');
 
-####
-# Dashboard Widget
-add_action('wp_dashboard_setup', 'gigx_dashboard_widgets' );
-function gigx_dashboard_widgets() {
-	wp_add_dashboard_widget('gigx_dashboard_widget', 'GIGX Help and Support', 'gigx_dashboard_widget_function');
-	
-	// Globalize the metaboxes array, this holds all the widgets for wp-admin
 
-	global $wp_meta_boxes;
-  # remove useless widgets
-	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
-	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
-	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
-	
-	#remove plugin specific dashboard widgets
-  unset($wp_meta_boxes['dashboard']['normal']['core']['powerpress_dashboard_news']);
-	unset($wp_meta_boxes['dashboard']['normal']['core']['powerpress_dashboard_stats']);
-	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
-	unset($wp_meta_boxes['dashboard']['side']['core']['yoast_db_widget']);	                                                                	
-	
-	// Get the regular dashboard widgets array 
-	// (which has our new widget already but at the end)
-
-	$normal_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
-	
-	// Backup and delete our new dashboard widget from the end of the array
-
-	$example_widget_backup = array('gigx_dashboard_widget' => $normal_dashboard['gigx_dashboard_widget']);
-	unset($normal_dashboard['gigx_dashboard_widget']);
-
-	// Merge the two arrays together so our widget is at the beginning
-
-	$sorted_dashboard = array_merge($example_widget_backup, $normal_dashboard);
-
-	// Save the sorted array back into the original metaboxes 
-
-	$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
-} 
-# Display a default dashboard widget if there isn't one defined in child theme
-if (!function_exists ('gigx_dashboard_widget_function')){
-  function gigx_dashboard_widget_function(){
-    echo "yay";
-  }   
-}
 
 
 ### 
@@ -275,6 +227,7 @@ if ( ! function_exists( 'gigx_comment' ) ) :
     }
 endif;
 
+if ( ! function_exists( 'gigx_find_image_attachment' ) ) :
 /**
  * Finds the first attached image for a given post.
  * @author   Axel Minet <axel@gigx.co.uk>
@@ -282,7 +235,6 @@ endif;
  * @param int $post_id The Post's ID
  * @return int The ID of the first attached image. 
  **/
-if ( ! function_exists( 'gigx_find_image_attachment' ) ) :
     function gigx_find_image_attachment($post_id=0){
         $args = array(
             'post_type' => 'attachment',
@@ -300,6 +252,8 @@ if ( ! function_exists( 'gigx_find_image_attachment' ) ) :
         return 0;
     }
 endif;
+
+if ( ! function_exists( 'gigx_unregister_widgets' ) ) :
 /**
  * Allows to unregister default and custom widgets.
  *
@@ -310,7 +264,6 @@ endif;
  * @author   Axel Minet <axel@gigx.co.uk>
  * @version  2012-02-16
  **/
-if ( ! function_exists( 'gigx_unregister_widgets' ) ) :
     function gigx_unregister_widgets() {
         $widgetsNotToRemove = apply_filters( 'gigx_add_default_widgets', array() );
         $otherWidgetsToRemove = apply_filters( 'gigx_remove_custom_widgets', array() );
@@ -336,5 +289,95 @@ if ( ! function_exists( 'gigx_unregister_widgets' ) ) :
     }
     add_action('widgets_init', 'gigx_unregister_widgets', 11);
 endif;
+
+if ( ! function_exists( 'gigx_unregister_dashboard_widgets' ) ) :
+/**
+ * Allows to unregister default and custom dashboard widgets.
+ *
+ * Removes all default widgets by default, but allows to define exceptions as well as custom widgets to remove.
+ * Usage Example:
+ * add_filter('gigx_add_default_dashboard_widgets', function($widgetsToAdd) { return array('WP_Widget_Tag_Cloud','WP_Widget_Text');});
+ * add_filter('gigx_remove_custom_dashboard_widgets', function($widgetsToRemove) { return array('gigx_custom_title','Shiba_Widget_Author');});
+ * @author   Axel Minet <axel@gigx.co.uk>
+ * @version  2012-02-16
+ **/
+    function gigx_unregister_dashboard_widgets() {
+        $widgetsNotToRemove = apply_filters( 'gigx_add_default_dashboard_widgets', array() );
+        $otherWidgetsToRemove = apply_filters( 'gigx_remove_custom_dashboard_widgets', array() );
+        $defaultWidgets = array(
+            'BrowserNag' => array('dashboard_browser_nag', 'dashboard', 'normal'),             
+            'RightNow' => array('dashboard_right_now', 'dashboard', 'normal'),             
+            'RecentComments' => array('dashboard_recent_comments', 'dashboard', 'normal'),             
+            'IncomingLinks' => array('dashboard_incoming_links', 'dashboard', 'normal'),             
+            'Plugins' => array('dashboard_plugins', 'dashboard', 'normal'),             
+            'QuickPress' => array('dashboard_quick_press', 'dashboard', 'side'),
+            'RecentDrafts' => array('dashboard_recent_drafts', 'dashboard', 'side'),
+            'WordPressBlog' => array('dashboard_primary', 'dashboard', 'side'),
+            'OtherWordPressNews' => array('dashboard_secondary', 'dashboard', 'side'),
+        );
+        foreach ($widgetsNotToRemove as $value){
+            $widgetsNotToRemoveMulti[$value]=$defaultWidgets[$value];
+        }        
+        $widgetsToRemove = array_merge($defaultWidgets, $otherWidgetsToRemove);
+        //print_r($widgetsToRemove);
+        //print_r($widgetsNotToRemoveMulti);
+        $widgetsToRemove = array_diff_assoc($widgetsToRemove,$widgetsNotToRemoveMulti);
+        //print_r($widgetsToRemove);
+        //exit;        
+        foreach ($widgetsToRemove as $widgetToRemove => $widgetParams) {
+            list($widgetName, $page, $context) = $widgetParams;
+            remove_meta_box($widgetName, $page, $context);
+        }
+    }
+    add_action('wp_dashboard_setup', 'gigx_unregister_dashboard_widgets', 11);
+endif;
+add_filter('gigx_add_default_dashboard_widgets', function($widgetsToAdd) { return array('RightNow','IncomingLinks','RecentDrafts');});
+
+####
+# Dashboard Widget
+/*
+function gigx_dashboard_widgets() {
+	wp_add_dashboard_widget('gigx_dashboard_widget', 'GIGX Help and Support', 'gigx_dashboard_widget_function');
+	
+	// Globalize the metaboxes array, this holds all the widgets for wp-admin
+
+	global $wp_meta_boxes;
+  # remove useless widgets
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
+	
+	#remove plugin specific dashboard widgets
+  unset($wp_meta_boxes['dashboard']['normal']['core']['powerpress_dashboard_news']);
+	unset($wp_meta_boxes['dashboard']['normal']['core']['powerpress_dashboard_stats']);
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
+	unset($wp_meta_boxes['dashboard']['side']['core']['yoast_db_widget']);	                                                                	
+	
+	// Get the regular dashboard widgets array 
+	// (which has our new widget already but at the end)
+
+	$normal_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
+	
+	// Backup and delete our new dashboard widget from the end of the array
+
+	$example_widget_backup = array('gigx_dashboard_widget' => $normal_dashboard['gigx_dashboard_widget']);
+	unset($normal_dashboard['gigx_dashboard_widget']);
+
+	// Merge the two arrays together so our widget is at the beginning
+
+	$sorted_dashboard = array_merge($example_widget_backup, $normal_dashboard);
+
+	// Save the sorted array back into the original metaboxes 
+
+	$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
+} 
+add_action('wp_dashboard_setup', 'gigx_dashboard_widgets' );
+# Display a default dashboard widget if there isn't one defined in child theme
+if (!function_exists ('gigx_dashboard_widget_function')){
+  function gigx_dashboard_widget_function(){
+    echo "yay";
+  }   
+}
+*/
 
 ?>
