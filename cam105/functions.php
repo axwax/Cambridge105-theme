@@ -66,6 +66,15 @@ function gigx_dashboard_widget_function(){
 # not fully tested stuff:
 #
 
+// remove wp seo menu (wp 3.3+)
+function remove_yoast_seo_admin_bar() {
+	global $wp_admin_bar;
+	$wp_admin_bar->remove_menu('wpseo-menu');
+}
+// and we hook our function via
+add_action( 'wp_before_admin_bar_render', 'remove_yoast_seo_admin_bar' );
+//wpseo-menu
+
 /* podcast menu button test */
 add_action('admin_menu', 'register_podcast_submenu_page');
 
