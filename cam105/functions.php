@@ -44,6 +44,24 @@ add_filter('gigx_add_default_widgets', function($widgetsToAdd) { return array('W
 # remove specified custom widgets
 add_filter('gigx_remove_custom_widgets', function($widgetsToRemove) { return array('gigx_custom_title','Shiba_Widget_Author');});
 
+# remove all default dashboard widgets except the ones specified
+add_filter('gigx_add_default_dashboard_widgets', function($widgetsToAdd) { return array('RightNow','IncomingLinks','RecentDrafts');});
+# remove specified custom dashboard widgets
+add_filter('gigx_remove_custom_dashboard_widgets', function($widgetsToRemove) { return array('PowerpressNews' => array('powerpress_dashboard_news', 'dashboard', 'normal'),
+                                                                                             'PowerpressStats' => array('powerpress_dashboard_stats', 'dashboard', 'normal'),                                                                                             
+                                                                                             'YoastDB' => array('yoast_db_widget', 'dashboard', 'side'),                                                                                             
+                                                                                             'CForms' => array('cforms_dashboard', 'dashboard', 'normal')                                                                                            
+                                                                                             );
+                                                                              });
+
+# add gigx dashboard widget      
+function gigx_dashboard_widget_function(){
+    ?>
+    <p>Enjoy your new website. If you've got any questions or encounter any bugs, please contact me at <a href="mailto:axel@gigx.co.uk">axel@gigx.co.uk</a>.
+    I will add a list of useful links and tutorials below, as well as any messages about updates.<br/><a href="http://axwax.de" target="_blank">Axel</a></p>    
+    <?php wp_widget_rss_output('http://www.axwax.de/category/support/history/feed/', array('items' => 5, 'show_author' => 0, 'show_date' => 1, 'show_summary' => 1));
+}
+
 ################
 # not fully tested stuff:
 #
