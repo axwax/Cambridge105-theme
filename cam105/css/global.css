@@ -99,7 +99,8 @@ fieldset {
 .single #content,
 .archive .shows,
 .page-template-news-archive-php .posts,
-.category-podcasts .post {
+.category .post,
+.non_homepage .posts {
   color: #111;
   -webkit-border-radius: 5px 5px 5px 5px;
   -moz-border-radius: 5px 5px 5px 5px;
@@ -149,7 +150,8 @@ fieldset {
   zoom: 1; }
 
 #breadcrumbs,
-div#sidebar .widget h2 {
+div#sidebar .widget h2,
+div.navigation {
   -webkit-border-radius: 5px 5px 5px 5px;
   -moz-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
@@ -172,15 +174,32 @@ div#sidebar .widget h2 {
   margin-bottom: 10px;
   padding: 5px 10px; }
 
+div.navigation {
+  height: 30px; }
+
 #breadcrumbs a, #breadcrumbs a:hover,
-div#sidebar .widget h2 a, div#sidebar .widget h2 a:hover {
+div#sidebar .widget h2 a,
+div#sidebar .widget h2 a:hover,
+.navigation a {
   color: white;
   padding: 0;
   font-weight: bold; }
 
 #breadcrumbs a:hover,
-div#sidebar .widget h2 a:hover {
+div#sidebar .widget h2 a:hover,
+.navigation a:hover {
   border-bottom: 1px solid white; }
+
+.home #breadcrumbs {
+  display: none; }
+
+.nav-next {
+  float: left;
+  text-align: left; }
+
+.nav-previous {
+  float: right;
+  text-align: right; }
 
 /* Headers */
 h1, h2, h3 {

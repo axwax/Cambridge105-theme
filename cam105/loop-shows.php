@@ -1,8 +1,8 @@
 <?php
 /*
-File Description: The Loop for "Shows" Custom Post Type
+File Description: The Loop for "Shows" Custom Post Type (list as well as single shows)
 Author: Axel Minet
-Theme Version: 0.5.11
+Theme Version: 0.6.1
 */
 ?>
 
@@ -62,7 +62,13 @@ Theme Version: 0.5.11
 		if(isset($permalink)) $img_html= '<div class="wp-caption alignleft"><a href="' . esc_url($permalink) . '" title="' . esc_attr(the_title('', '', false)) . '"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$post->post_title.'" title="'.$post->post_title.'"/></a></div>';
                 else $img_html= '<div class="wp-caption alignleft"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$post->post_title.'" title="'.$post->post_title.'"/></div>';    
 	}
-
+   $tags= get_the_term_list( $post->ID, 'post_tag', '<div class="ctc show-tags">', '', '</div>' );
+   
+   //print_r($tags);
+   
+   //echo '<div class="ctc">';
+   //foreach ($tags as $tag) echo $tag;
+   //echo '</div>';
 	# Show genres list (Tax)
 	/*
 	$genres_html='';
@@ -89,10 +95,13 @@ Theme Version: 0.5.11
 	//$connected = p2p_type( 'posts_to_shows' )->get_connected( $post->ID );	
  ?>
 				<?php echo $title_html ?>
+            <?php if (is_single()) echo $tags ?>
 				<?php echo $img_html ?>
 				
                 <div class="entry" style="padding-top:10px;">
-                  <?php the_content('<p>Read the rest of this entry &raquo;</p>'); ?>
+                  <?php if (is_single()) the_content('<p>Read the rest of this entry &raquo;</p>');
+                  else echo gigx_excerpt (get_the_content(),get_the_excerpt(),false,500,$permalink,'(more...)',True);
+                  ?>
         		</div>
 				<div class="entry-utility">
 					<?php echo $website_html; ?>

@@ -29,13 +29,13 @@
 
 /* main page background */
 html, .wp-dialog {
-  background-color: #e2f59f !important; }
+  background-color: #e9ee9f !important; }
 
 /* new/edit post background */
 #post-body {
-  background: none repeat scroll 0 0 #e2f59f !important;
-  border-bottom-color: #e2f59f !important;
-  border-top-color: #e2f59f !important; }
+  background: none repeat scroll 0 0 #e9ee9f !important;
+  border-bottom-color: #e9ee9f !important;
+  border-top-color: #e9ee9f !important; }
 
 /* appearance/themes background and padding */
 .themes-php .wrap, .theme-install-php .wrap, .appearance_page_custom-background .wrap, .appearance_page_custom-header .wrap {
@@ -351,7 +351,7 @@ a, #the-comment-list p.comment-author strong a, #media-upload a.del-link, #media
   color: #486d25; }
 
 #adminmenu .wp-submenu a:hover, #adminmenu .wp-submenu a:focus {
-  background-color: #e2f59f; }
+  background-color: #e9ee9f; }
 
 #wpadminbar .menupop li:hover, #wpadminbar .menupop li.hover, #wpadminbar .quicklinks .menupop .ab-item:focus, #wpadminbar .quicklinks .ab-top-menu .menupop .ab-item:focus {
-  background-color: #e2f59f; }
+  background-color: #e9ee9f; }

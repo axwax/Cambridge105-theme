@@ -40,7 +40,7 @@ function gigx_cpt_shows()
     'supports' => array('title','editor','thumbnail','sticky','custom-fields'),
     'taxonomies' => array( 'post_tag', 'category ')
   ); 
-  register_post_type('show',$args);
+  register_post_type('shows',$args);
 }
 
 # add filter to insure the text Show, or show, is displayed when user updates a show 
@@ -48,7 +48,7 @@ add_filter('post_updated_messages', 'show_updated_messages');
 function show_updated_messages( $messages ) {
   global $post, $post_ID;
 
-  $messages['show'] = array(
+  $messages['shows'] = array(
     0 => '', # Unused. Messages start at index 1.
     1 => sprintf( __('Show updated. <a href="%s">View Show</a>'), esc_url( get_permalink($post_ID) ) ),
     2 => __('Custom field updated.'),
@@ -136,7 +136,7 @@ function create_shows_taxonomies()
     'menu_name' => __( 'Frequency' ),
   ); 
 
-  register_taxonomy('frequency','show',array(
+  register_taxonomy('frequency','shows',array(
     'hierarchical' => false,
     'labels' => $labels,
     'show_ui' => true,

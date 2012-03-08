@@ -1,8 +1,8 @@
 <?php
 /*
-File Description: The Loop for "Shows" Custom Post Type
+File Description: The Loop for Taxonomies (eg frequency)
 Author: Axel Minet
-Theme Version: 0.5.11
+Theme Version: 0.6.1
 */
 ?>
   	<?php wp_nav_menu( array( 'theme_location' => 'above-posts', 'sort_column' => 'menu_order', 'fallback_cb' => 'header_menu', 'container_class' => 'header-menu' ) ); ?>
@@ -17,13 +17,18 @@ Theme Version: 0.5.11
      ?>
        
     <div class="taxonomy list">
-        <?php /* Do we have posts, then start the loop, otherwise display 404 */ ?>
+        <?php
+        $postcount=0;
+        /* Do we have posts, then start the loop, otherwise display 404 */ ?>
       	<?php if (have_posts()) : ?>
           <?php /* Start the Loop */ ?>  	
       		<?php while (have_posts()) : the_post(); ?>
 				<div <?php post_class() ?> id="post-<?php the_ID(); ?>"> 		
-            
+<?php if ( function_exists('yoast_breadcrumb') && $postcount ==0) {
+	yoast_breadcrumb('<div id="breadcrumbs">','</div>');
+} ?>               
 <?php
+$postcount ++;
 	$title = the_title('', '', false);
 	$permalink = apply_filters('the_permalink', get_permalink());
 	echo '<div class="wp-caption alignleft">';

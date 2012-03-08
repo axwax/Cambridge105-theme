@@ -39,7 +39,7 @@
 
 /* below posts widget */
 div#below-posts-widgets{
-	margin:0 0 10px 0;
+	//margin:0 0 10px 0;
 	overflow:hidden;
 	padding:0;
 }
@@ -131,14 +131,16 @@ div#sidebar .widget h2{
 ///////////////////////
 /* specific widgets */
 
+@import "gigx-slides";
+
 /* gigx slides? */
 .gigx-slideshow {
-	height: 262px;
+	//height: 262px;
 }
 
 /* gigx_slides */
 .widget_gigx_slide_widget {
-    margin-bottom: 10px;
+   // margin-bottom: 10px;
 }
 
 /* wp_bannerize */
@@ -223,4 +225,28 @@ div#below-posts-widgets div#gigxrecentposts-3 {
 /* tags */
 .tagcloud, .ctc{
 	margin-top:10px;
+   text-align: center;
 }
+.tagcloud, .ctc {
+    //padding: 10px 0;
+}
+.tagcloud a, .ctc a {
+
+    border-radius: 0.9em 0.9em 0.9em 0.9em;
+    color: $medium_grey_text;
+    font-size: 0.8em;
+    line-height: 2em;
+    padding: 0.1em 0.8em;
+    white-space: nowrap;
+   @include gradient (top, $yellow_gradient2, $yellow_gradient1, $yellow_gradient1);	 
+	border: 2px solid $dark_green;
+    box-shadow: 0 0 7px #CCCCCC;
+}
+.tagcloud a:hover, .ctc a:hover {
+    text-decoration: none;
+	@include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
+	color:$white_text;
+	//@include harabara;
+    border: 2px solid $dark_green;
+}
+.show-tags a{margin:5px; padding: 4px 10px}

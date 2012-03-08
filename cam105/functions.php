@@ -40,7 +40,7 @@ add_filter('gigx_header_image_width', function($size) { return 510; });
 add_filter('gigx_header_image_height', function($size) { return 120; });
 
 # remove all default widgets except the ones specified
-add_filter('gigx_add_default_widgets', function($widgetsToAdd) { return array('WP_Widget_Tag_Cloud','WP_Widget_Text');});
+add_filter('gigx_add_default_widgets', function($widgetsToAdd) { return array('WP_Widget_Tag_Cloud','WP_Widget_Text','WP_Widget_Search');});
 # remove specified custom widgets
 add_filter('gigx_remove_custom_widgets', function($widgetsToRemove) { return array('gigx_custom_title','Shiba_Widget_Author');});
 
@@ -192,13 +192,11 @@ function query_post_type($query) {
     if ( is_category() || is_tag()) {
 
         $post_type = get_query_var('post_type');
-        //print_r($post_type);
-    
+        
         if ( $post_type )
             $post_type = $post_type;
         else
-            $post_type = $post_types;
-
+            $post_type = $post_types;    
         $query->set('post_type', $post_type);
 
     return $query;
@@ -209,7 +207,7 @@ function query_post_type($query) {
 
 /* remove tags from posts */
 function unregister_taxonomy(){
-    register_taxonomy('post_tag', array());
+    //register_taxonomy('post_tag', array());
 }
 add_action('init', 'unregister_taxonomy');
 

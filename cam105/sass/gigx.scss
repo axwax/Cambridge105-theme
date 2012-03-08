@@ -91,10 +91,13 @@ Theme Structure:
 
 /* RESET */
 @import "compass/reset";
-@import "xtreme";
+// @import "xtreme";
 
 // fixes for xtreme
-ul, ol, dl { margin-left:0px }
+// ul, ol, dl { margin-left:0px }
+
+	/* --- general text formatting | Allgemeine Textauszeichnung ------------------------------------------ */
+	p, ul, ol, dl, dd, dt, li, blockquote, pre { font-size: 1em; line-height: 1.5em; }
 	
 /* link stylee */
 a{

@@ -1,8 +1,8 @@
 <?php
 /*
-File Description: The default Loop
+File Description: The default Loop (used for posts, including podcasts)
 Author: Axel Minet
-Theme Version: 0.5.13
+Theme Version: 0.6.1
 */
 ?>
 
@@ -104,9 +104,12 @@ Theme Version: 0.5.13
       
       	<?php endif; ?>
     </div><!-- end of posts div -->
-    <div id="shows_pager"></div>
-
-  
+    
+    <?php /* Display navigation to next/previous pages when applicable */ ?>
+    	<div id="nav-below" class="navigation">
+    		<div class="nav-next"><?php next_posts_link("&laquo; older posts"); ?></div>
+    		<div class="nav-previous"><?php previous_posts_link("newer posts &raquo;"); ?></div>
+    	</div><!-- #nav-above -->
 
   	<?php if ( is_active_sidebar( 'below_posts_widgets' ) ) : // Widgets Below Posts ?>
     	<div id="below-posts-widgets">

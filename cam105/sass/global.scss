@@ -2,6 +2,10 @@
 @import "fonts";
 @import "mixins";
 
+//$purple: #eef6f7;
+//$purplelight: lighten($purple,4%);
+
+//h1{color: $purple; background-color: $purplelight;}
 
 /* Fonts */
 @font-face {
@@ -72,7 +76,8 @@ fieldset { padding-top:0; }
 .single #content,
 .archive .shows,
 .page-template-news-archive-php .posts,
-.category-podcasts .post
+.category .post,
+.non_homepage .posts
 //.page .posts
 {
     color:#111;
@@ -110,7 +115,9 @@ padding:0;
 
 // breadcrumbs
 #breadcrumbs,
-div#sidebar .widget h2{
+div#sidebar .widget h2,
+div.navigation
+{
  	@include rounded (5px);
 	@include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
 	color:$white_text;
@@ -118,15 +125,37 @@ div#sidebar .widget h2{
 	margin-bottom: 10px;
 	padding:5px 10px;
 }
+div.navigation{
+   height: 30px;
+}
+
 #breadcrumbs a, #breadcrumbs a:hover,
-div#sidebar .widget h2 a, div#sidebar .widget h2 a:hover{
+div#sidebar .widget h2 a,
+div#sidebar .widget h2 a:hover,
+.navigation a
+{
 	color: $white_text;
 	padding: 0;
 	font-weight: bold;
 }
 #breadcrumbs a:hover,
-div#sidebar .widget h2 a:hover{
+div#sidebar .widget h2 a:hover,
+.navigation a:hover
+{
 	border-bottom:1px solid $white_text;
+}
+
+.home #breadcrumbs{
+   display: none;
+}
+
+.nav-next{
+   float: left;
+   text-align: left;
+}
+.nav-previous{
+   float: right;
+   text-align: right;
 }
 
 /* Headers */

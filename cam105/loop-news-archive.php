@@ -2,7 +2,7 @@
 /*
 File Description: The Loop for the main News page 
 Author: Axel Minet
-Theme Version: 0.5.11
+Theme Version: 0.6.1
 */
 ?>
 

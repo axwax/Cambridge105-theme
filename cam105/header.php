@@ -8,6 +8,8 @@ Theme Version: 0.5.9
 global $wp_query;
 $post_id=$wp_query->post->ID;
 $is_single= $wp_query->is_single;
+if(!$wp_query->is_front_page() && $wp_query->is_page()) $bodyclass="non_homepage";
+//else $bodyclass="ax";
 #if ($is_single!=0) echo "single!";
 #$post_parent=$wp_query->post->post_parent;
 #if ($post_parent!=0) echo "child!";
@@ -35,7 +37,7 @@ if (!$fbimg) $fbimg= Array(get_bloginfo('stylesheet_directory').'/images/faceboo
 	<?php wp_head(); ?>
   </head>
   
-  <body <?php body_class(); ?>>
+  <body <?php body_class($bodyclass); ?>>
     <!--[if lte IE 6]><script src="<?php bloginfo('template_directory'); ?>/js/ie6/warning.js"></script><script>window.onload=function(){e("<?php bloginfo('template_directory'); ?>/js/ie6/")}</script><![endif]-->
 
     <div id="page">

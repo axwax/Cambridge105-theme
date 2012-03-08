@@ -27,7 +27,6 @@
 
 /* below posts widget */
 div#below-posts-widgets {
-  margin: 0 0 10px 0;
   overflow: hidden;
   padding: 0; }
 
@@ -115,14 +114,242 @@ div#sidebar .widget h2{
   margin-left: 0px; }
 
 /* specific widgets */
-/* gigx slides? */
+/*
+CSS for the gallery widget
+*/
+/* general slideshow styles */
 .gigx-slideshow {
-  height: 262px; }
+  background-color: #486d25;
+  padding: 10px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  /* useful if you don't want a bg color from leaking outside the border: */
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  width: 720px; }
 
+.gigx-slideshow a {
+  outline: 0; }
+
+.gigx-slideshow-wrapper {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  width: 720px;
+  height: 225px; }
+
+.gigx-slideshow-wrapper h2 {
+  color: white;
+  font: 19px Arial,Tahoma,sans-serif;
+  line-height: 24px;
+  margin: 0.8em 0 0.4em;
+  width: 400px; }
+
+.gigx-slideshow-wrapper h1 {
+  color: white;
+  font: 19px Arial,Tahoma,sans-serif;
+  line-height: 24px;
+  margin: 0.8em 0 0.4em; }
+
+.gigx-slideshow-wrapper p {
+  color: white;
+  font-weight: normal;
+  margin: 0.75em 30px 0 0; }
+
+/* single slide styles */
+.gigx-slideshow-wrapper .gigx-slide {
+  color: white;
+  /*margin-bottom:10px; */
+  overflow: hidden;
+  padding: 0px 0px 0px 10px;
+  display: none;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  /* useful if you don't want a bg color from leaking outside the border: */
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background-color: #769d28;
+  background-image: -webkit-linear-gradient(top, #769d28, #83ae2c);
+  background-image: -moz-linear-gradient(top, #769d28, #83ae2c);
+  background-image: -ms-linear-gradient(top, #769d28, #83ae2c);
+  background-image: -o-linear-gradient(top, #769d28, #83ae2c);
+  background-image: linear-gradient(top, #769d28, #83ae2c); }
+
+.gigx-slideshow-wrapper div.gigx-slide1 {
+  display: block; }
+
+.gigx-slideshow-wrapper .gigx-slide .gigx-slide-text {
+  width: 400px;
+  float: left; }
+
+.gigx-slide-text {
+  height: 225px;
+  overflow: hidden; }
+
+.gigx-slideshow-wrapper .gigx-slide img {
+  display: inline;
+  margin: 0;
+  padding: 0 0 0 10px;
+  float: right;
+  text-align: right; }
+
+/* slideshow tabs  styles */
+.gigx-slideshow-pager {
+  background: none repeat scroll 0 0 transparent;
+  float: left;
+  margin: 0;
+  padding: 0;
+  /*height: 26px;*/
+  height: 2.2em; }
+
+.gigx-slideshow-pagerbutton {
+  float: left;
+  list-style-type: none;
+  margin: 0 2px 0 0 !important;
+  padding: 0;
+  -webkit-border-radius: 0 0 5px 5px;
+  -moz-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+  /* useful if you don't want a bg color from leaking outside the border: */
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -moz-box-shadow: 5px 5px 5px #333333;
+  -webkit-box-shadow: 5px 5px 5px #333333;
+  box-shadow: 5px 5px 5px #333333;
+  background-color: #486d25;
+  background-image: -webkit-linear-gradient(top, #486d25, #2f4718);
+  background-image: -moz-linear-gradient(top, #486d25, #2f4718);
+  background-image: -ms-linear-gradient(top, #486d25, #2f4718);
+  background-image: -o-linear-gradient(top, #486d25, #2f4718);
+  background-image: linear-gradient(top, #486d25, #2f4718); }
+
+.gigx-slideshow-pagerbutton a {
+  /*background: no-repeat scroll right top #486D25;*/
+  color: #83ae2c;
+  display: block;
+  font: 14px "HarabaraRegular",Arial, Tahoma, sans-serif;
+  letter-spacing: 2px;
+  font-weight: 400;
+  padding: 5px 5px 0 5px;
+  text-align: center;
+  margin: 0;
+  height: 1.6em; }
+
+.gigx-slideshow-pagerbutton a:hover {
+  text-decoration: none; }
+
+.gigx-slideshow-pager li.activeSlide {
+  background: no-repeat scroll right top #83ae2c; }
+
+.gigx-slideshow-pager li.activeSlide a {
+  color: white; }
+
+/* jquery.clickable styling */
+.jsClickable {
+  cursor: pointer; }
+
+/* TipTip CSS - Version 1.2 */
+#tiptip_holder {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99999; }
+
+#tiptip_holder.tip_top {
+  padding-bottom: 5px; }
+
+#tiptip_holder.tip_bottom {
+  padding-top: 5px; }
+
+#tiptip_holder.tip_right {
+  padding-left: 5px; }
+
+#tiptip_holder.tip_left {
+  padding-right: 5px; }
+
+#tiptip_content {
+  font-size: 11px;
+  color: #fff;
+  text-shadow: 0 0 2px #000;
+  padding: 4px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: #191919;
+  background: rgba(25, 25, 25, 0.92);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(transparent), to(black));
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  box-shadow: 0 0 3px #555;
+  -webkit-box-shadow: 0 0 3px #555;
+  -moz-box-shadow: 0 0 3px #555; }
+
+#tiptip_arrow, #tiptip_arrow_inner {
+  position: absolute;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 6px;
+  height: 0;
+  width: 0; }
+
+#tiptip_holder.tip_top #tiptip_arrow {
+  border-top-color: #fff;
+  border-top-color: rgba(255, 255, 255, 0.35); }
+
+#tiptip_holder.tip_bottom #tiptip_arrow {
+  border-bottom-color: #fff;
+  border-bottom-color: rgba(255, 255, 255, 0.35); }
+
+#tiptip_holder.tip_right #tiptip_arrow {
+  border-right-color: #fff;
+  border-right-color: rgba(255, 255, 255, 0.35); }
+
+#tiptip_holder.tip_left #tiptip_arrow {
+  border-left-color: #fff;
+  border-left-color: rgba(255, 255, 255, 0.35); }
+
+#tiptip_holder.tip_top #tiptip_arrow_inner {
+  margin-top: -7px;
+  margin-left: -6px;
+  border-top-color: #191919;
+  border-top-color: rgba(25, 25, 25, 0.92); }
+
+#tiptip_holder.tip_bottom #tiptip_arrow_inner {
+  margin-top: -5px;
+  margin-left: -6px;
+  border-bottom-color: #191919;
+  border-bottom-color: rgba(25, 25, 25, 0.92); }
+
+#tiptip_holder.tip_right #tiptip_arrow_inner {
+  margin-top: -6px;
+  margin-left: -5px;
+  border-right-color: #191919;
+  border-right-color: rgba(25, 25, 25, 0.92); }
+
+#tiptip_holder.tip_left #tiptip_arrow_inner {
+  margin-top: -6px;
+  margin-left: -7px;
+  border-left-color: #191919;
+  border-left-color: rgba(25, 25, 25, 0.92); }
+
+/* Webkit Hacks  */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  #tiptip_content {
+    padding: 4px 8px 5px 8px;
+    background-color: rgba(45, 45, 45, 0.88); }
+
+  #tiptip_holder.tip_bottom #tiptip_arrow_inner {
+    border-bottom-color: rgba(45, 45, 45, 0.88); }
+
+  #tiptip_holder.tip_top #tiptip_arrow_inner {
+    border-top-color: rgba(20, 20, 20, 0.92); } }
+/* gigx slides? */
 /* gigx_slides */
-.widget_gigx_slide_widget {
-  margin-bottom: 10px; }
-
 /* wp_bannerize */
 .wp_bannerize {
   text-align: left;
@@ -226,4 +453,36 @@ div#below-posts-widgets div#gigxrecentposts-3 {
 
 /* tags */
 .tagcloud, .ctc {
-  margin-top: 10px; }
+  margin-top: 10px;
+  text-align: center; }
+
+.tagcloud a, .ctc a {
+  border-radius: 0.9em 0.9em 0.9em 0.9em;
+  color: #333333;
+  font-size: 0.8em;
+  line-height: 2em;
+  padding: 0.1em 0.8em;
+  white-space: nowrap;
+  background-color: #e9ee9f;
+  background-image: -webkit-linear-gradient(top, #c4cf25, #e9ee9f);
+  background-image: -moz-linear-gradient(top, #c4cf25, #e9ee9f);
+  background-image: -ms-linear-gradient(top, #c4cf25, #e9ee9f);
+  background-image: -o-linear-gradient(top, #c4cf25, #e9ee9f);
+  background-image: linear-gradient(top, #c4cf25, #e9ee9f);
+  border: 2px solid #486d25;
+  box-shadow: 0 0 7px #CCCCCC; }
+
+.tagcloud a:hover, .ctc a:hover {
+  text-decoration: none;
+  background-color: #486d25;
+  background-image: -webkit-linear-gradient(top, #56822c, #445533);
+  background-image: -moz-linear-gradient(top, #56822c, #445533);
+  background-image: -ms-linear-gradient(top, #56822c, #445533);
+  background-image: -o-linear-gradient(top, #56822c, #445533);
+  background-image: linear-gradient(top, #56822c, #445533);
+  color: white;
+  border: 2px solid #486d25; }
+
+.show-tags a {
+  margin: 5px;
+  padding: 4px 10px; }
