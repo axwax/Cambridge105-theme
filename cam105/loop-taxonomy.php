@@ -79,12 +79,14 @@ $postcount ++;
       	<?php endif; ?>
     </div><!-- end of posts div -->
 
-    <?php /* Display navigation to next/previous pages when applicable */ ?>
+    <?php /* Display navigation to next/previous pages when applicable */
+    if (get_next_posts_link() || get_previous_posts_link()) :
+    ?>
     	<div id="nav-below" class="navigation">
-    		<div class="nav-previous"><?php previous_posts_link(); ?></div>
-    		<div class="nav-next"><?php next_posts_link(); ?></div>
-    	</div><!-- #nav-above -->
-  
+    		<div class="nav-previous"><?php previous_posts_link("&laquo; previous page"); ?></div>
+    		<div class="nav-next"><?php next_posts_link("next page &raquo;"); ?></div>
+    	</div><!-- #nav-below -->
+    <?php endif; ?>	
 
   	<?php if ( is_active_sidebar( 'below_posts_widgets' ) ) : // Widgets Below Posts ?>
     	<div id="below-posts-widgets">
