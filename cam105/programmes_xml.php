@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Testplayer
+ * Template Name: Programmes XML
  *
  * Selectable from a dropdown menu on the edit page screen.
  */
