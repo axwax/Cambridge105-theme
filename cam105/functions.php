@@ -7,6 +7,15 @@ Theme Version: 0.6.1
 
 # experimental and utility functions (eg unregister custom post types/taxonomies)
 //include 'functions/experimental_functions.php';
+function mypo_parse_query_useronly( $wp_query ) {
+    if ( strpos( $_SERVER[ 'REQUEST_URI' ], '/wp-admin/edit.php' ) !== false ) {
+        if ( !current_user_can( 'administrator' ) ) {
+            global $current_user;
+            $wp_query->set( 'author', $current_user->id );
+        }
+    }
+}
+add_filter('parse_query', 'mypo_parse_query_useronly' );
 
 # include custom post types
 include 'functions/gigx_cpt_shows.php';
