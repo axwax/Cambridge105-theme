@@ -116,8 +116,9 @@ div#sidebar .widget h2{
 ////////////////////
 /* loop widgets */
 .post-title {
-	font-weight:bold;
-	margin:5px 0 5px;
+	//font-weight:bold;
+	//margin:5px 0 5px;
+   
 }
 
 .postdate, .postauthor, .postcategories {
@@ -230,7 +231,8 @@ div#below-posts-widgets div#gigxrecentposts-3 {
     line-height: 2em;
     padding: 0.1em 0.8em;
     white-space: nowrap;
-   @include gradient (top, $yellow_gradient2, $yellow_gradient1, $yellow_gradient1);	 
+   background-color: white;
+   //@include gradient (top, $yellow_gradient2, $yellow_gradient1, $yellow_gradient1);	 
 	border: 2px solid $dark_green;
     box-shadow: 0 0 7px #CCCCCC;
 }

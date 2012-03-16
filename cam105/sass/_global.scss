@@ -18,10 +18,10 @@ body {background:$background top left repeat;font-family:Arial, Tahoma, sans-ser
 #header {background-color:$main_green; }
 #footer {background-color:$main_green; }
 
-a:link {text-decoration: none;outline:none;color:$dark_green;font-weight:bolder;}
+a:link {text-decoration: none;outline:none;color:$dark_green;}
 a:visited {color: $dark_green; font-weight:bolder;}
-a:hover {color: $hover_green;text-decoration: underline;font-weight:bolder;}
-a:active, a:focus {color: $black_text; font-weight:bolder;}
+a:hover {color: $hover_green;text-decoration: underline;}
+a:active, a:focus {color: $black_text;}
 code, pre { color: #c33; } /* very optional, but still useful. W3C uses about the same colors for codes */
 
 /* Colour Scheme */
@@ -94,7 +94,8 @@ fieldset { padding-top:0; }
     //font-size: 1.9em;
     letter-spacing: 0.05em;
 	font-weight:normal;
-	margin-top:10px;
+	//margin-top:10px;
+	margin-bottom:10px;
 }
 
 .single #content p, .archive .shows p, .page .posts p, .category .posts p{
@@ -122,7 +123,7 @@ div.navigation
 	@include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
 	color:$white_text;
 	@include harabara;	
-	margin-bottom: 10px;
+	//margin-bottom: 10px;
 	padding:5px 10px;
 }
 div.navigation{
@@ -136,7 +137,7 @@ div#sidebar .widget h2 a:hover,
 {
 	color: $white_text;
 	padding: 0;
-	font-weight: bold;
+	//font-weight: bold;
 }
 #breadcrumbs a:hover,
 div#sidebar .widget h2 a:hover,
@@ -150,15 +151,21 @@ div#sidebar .widget h2 a:hover,
 }
 
 .nav-next{
-   float: left;
-   text-align: left;
-}
-.nav-previous{
    float: right;
    text-align: right;
+}
+.nav-previous{
+   float: left;
+   text-align: left;
 }
 
 /* Headers */
 h1,h2,h3 {
 	@include harabara;
+}
+
+.shows-image, .shows-thumb{
+   margin-right: 10px;
+   margin-bottom: 10px;
+   
 }

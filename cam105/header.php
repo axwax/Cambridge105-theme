@@ -4,7 +4,7 @@ File Description: Default Header
 Built By: GIGX
 Theme Version: 0.5.9
 */
-
+define ('GIGX_DEBUG', true);
 global $wp_query;
 $post_id=$wp_query->post->ID;
 $is_single= $wp_query->is_single;

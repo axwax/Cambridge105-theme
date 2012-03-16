@@ -7,6 +7,7 @@ Theme Version: 0.6.1
 
 # experimental and utility functions (eg unregister custom post types/taxonomies)
 //include 'functions/experimental_functions.php';
+// only show current user's posts
 function mypo_parse_query_useronly( $wp_query ) {
     if ( strpos( $_SERVER[ 'REQUEST_URI' ], '/wp-admin/edit.php' ) !== false ) {
         if ( !current_user_can( 'administrator' ) ) {
@@ -16,6 +17,40 @@ function mypo_parse_query_useronly( $wp_query ) {
     }
 }
 add_filter('parse_query', 'mypo_parse_query_useronly' );
+
+// remove excerpt more stuff
+function new_excerpt_more($more) {
+	return '';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
+
+// get image size
+function gigx_get_image_size( $imageSize ) {
+   $out = array();
+   switch($imageSize) {
+      case 'thumbnail':
+         $out['width'] = get_option( 'thumbnail_size_w' );
+         $out['height'] = get_option( 'thumbnail_size_h' );
+         $out['crop'] = get_option( 'thumbnail_crop' );
+      break;
+      case 'medium':
+         $out['width'] = get_option( 'medium_size_w' );
+         $out['height'] = get_option( 'medium_size_h' );
+         $out['crop'] = false;
+      break;
+      case 'large':
+         $out['width'] = get_option( 'large_size_w' );
+         $out['height'] = get_option( 'large_size_h' );
+         $out['crop'] = false;
+      break;
+      default:
+         global $_wp_additional_image_sizes;
+         if (isset($_wp_additional_image_sizes[$imageSize])) $out = $_wp_additional_image_sizes[$imageSize];         
+   }
+	if (!empty($out)) return $out;
+	else return false;
+}
+
 
 # include custom post types
 include 'functions/gigx_cpt_shows.php';
@@ -220,3 +255,23 @@ function unregister_taxonomy(){
 }
 add_action('init', 'unregister_taxonomy');
 
+
+function get_show_image($imageSize='shows-thumb', $showID=false, $showTitle = false, $phpThumbOptions='&zc=1&fltr[]=ric|5|5'){    
+   if (!function_exists('gigx_get_image_size')) return;
+   $imageSizeAttribs = gigx_get_image_size($imageSize);
+   $width = $imageSizeAttribs['width'];
+   $height = $imageSizeAttribs['height'];
+   if (!$showID) $showID = get_the_ID();
+   if (!$showTitle) $showTitle = get_the_title($showID);   
+   if(has_post_thumbnail($showID)) {
+      $img=wp_get_attachment_image_src(get_post_thumbnail_id($showID), $imageSize, false);    
+   }
+   else {
+      $img= wp_get_attachment_image_src (get_post_thumbnail_id(get_page_by_title('Default',false,'page')->ID), $imageSize, false);          
+   }
+   if (function_exists('getphpthumburl')) {
+      $img[0]=getphpthumburl($img[0],'w='.$width.'&h='.$height.$phpThumbOptions);
+   }
+   $img_html= '<img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$showTitle.'" title="'.$showTitle.'"/>';
+   return $img_html;
+}

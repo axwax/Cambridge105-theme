@@ -354,8 +354,7 @@ body {
 a:link {
   text-decoration: none;
   outline: none;
-  color: #486d25;
-  font-weight: bolder; }
+  color: #486d25; }
 
 a:visited {
   color: #486d25;
@@ -363,12 +362,10 @@ a:visited {
 
 a:hover {
   color: #2b9417;
-  text-decoration: underline;
-  font-weight: bolder; }
+  text-decoration: underline; }
 
 a:active, a:focus {
-  color: black;
-  font-weight: bolder; }
+  color: black; }
 
 code, pre {
   color: #c33; }
@@ -461,7 +458,7 @@ fieldset {
 .single #content h2, .archive .shows h2, .page .posts h2, .category .post h2 {
   letter-spacing: 0.05em;
   font-weight: normal;
-  margin-top: 10px; }
+  margin-bottom: 10px; }
 
 .single #content p, .archive .shows p, .page .posts p, .category .posts p {
   margin-bottom: 10px;
@@ -507,7 +504,6 @@ div.navigation {
   font-weight: 100;
   letter-spacing: 0.1em;
   line-height: normal;
-  margin-bottom: 10px;
   padding: 5px 10px; }
 
 div.navigation {
@@ -518,8 +514,7 @@ div#sidebar .widget h2 a,
 div#sidebar .widget h2 a:hover,
 .navigation a {
   color: white;
-  padding: 0;
-  font-weight: bold; }
+  padding: 0; }
 
 #breadcrumbs a:hover,
 div#sidebar .widget h2 a:hover,
@@ -530,12 +525,12 @@ div#sidebar .widget h2 a:hover,
   display: none; }
 
 .nav-next {
-  float: left;
-  text-align: left; }
-
-.nav-previous {
   float: right;
   text-align: right; }
+
+.nav-previous {
+  float: left;
+  text-align: left; }
 
 /* Headers */
 h1, h2, h3 {
@@ -544,6 +539,10 @@ h1, h2, h3 {
   font-weight: 100;
   letter-spacing: 0.1em;
   line-height: normal; }
+
+.shows-image, .shows-thumb {
+  margin-right: 10px;
+  margin-bottom: 10px; }
 
 /* structure */
 body {
@@ -909,10 +908,6 @@ div#sidebar .widget h2{
   color: white; }
 
 /* loop widgets */
-.post-title {
-  font-weight: bold;
-  margin: 5px 0 5px; }
-
 .postdate, .postauthor, .postcategories {
   text-transform: lowercase;
   margin-left: 0px; }
@@ -1457,12 +1452,7 @@ div#below-posts-widgets div#gigxrecentposts-3 {
   line-height: 2em;
   padding: 0.1em 0.8em;
   white-space: nowrap;
-  background-color: #e9ee9f;
-  background-image: -webkit-linear-gradient(top, #c4cf25, #e9ee9f);
-  background-image: -moz-linear-gradient(top, #c4cf25, #e9ee9f);
-  background-image: -ms-linear-gradient(top, #c4cf25, #e9ee9f);
-  background-image: -o-linear-gradient(top, #c4cf25, #e9ee9f);
-  background-image: linear-gradient(top, #c4cf25, #e9ee9f);
+  background-color: white;
   border: 2px solid #486d25;
   box-shadow: 0 0 7px #CCCCCC; }
 

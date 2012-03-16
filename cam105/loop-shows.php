@@ -42,26 +42,46 @@ Theme Version: 0.6.1
 	if ( $title && $title_tag && !is_page()) {
 		$title_html='<' . $title_tag . ' class="post-title">' . $title . '</' . $title_tag . '>'."\n\r";
 	}
+	if (is_singular()){
+      $img_html = '<div class="shows-image alignleft">' . get_show_image('shows-image') . '</div>';
+   }
+   else{
+      if(isset($permalink)){
+         $img_html = '<div class="shows-thumb alignleft"><a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '">' . get_show_image('shows-thumb') . '</a></div>';  
+      }     
+      else $img_html = '<div class="shows-thumb alignleft">' . get_show_image('shows-thumb') . '</div>';      
+   }
+
+/*
 	# Show Image (Post Thumbnail)
 	if (is_singular()){
 		if(has_post_thumbnail()) {
 			$img=wp_get_attachment_image_src (get_post_thumbnail_id(get_the_ID()),'shows-image',false);    
 		} else {
-			$img=get_bloginfo("template_url").'/images/shows-default.png';
+			//$img=get_bloginfo("template_url").'/images/shows-default.png';
+         $img= wp_get_attachment_image_src (get_post_thumbnail_id(get_page_by_title('Default',false,'page')->ID),'shows-image',false);          
 		}
 		//$img_html= '<div class="wp-caption alignleft"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$p->post_title.'"/><p class="wp-caption-text">'.get_the_title().'</p></div>';
-		$img_html= '<div class="wp-caption alignleft"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$post->post_title.'" title="'.$post->post_title.'"/></div>';
+		$width=300;
+      $height=225;
+      if (function_exists('getphpthumburl')) $img[0]=getphpthumburl($img[0],'w='.$width.'&h='.$height.'&zc=1&fltr[]=ric|5|5');
+		$img_html= '<div class="shows-thumb alignleft"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$post->post_title.'" title="'.$post->post_title.'"/></div>';
 	}
 	else{
 		if(has_post_thumbnail()) {
 			$img=wp_get_attachment_image_src (get_post_thumbnail_id(get_the_ID()),'shows-thumb',false);    
 		} else {
-			$img=get_bloginfo("template_url").'/images/shows-thumb-default.png';
+			//$img=get_bloginfo("template_url").'/images/shows-thumb-default.png';
+         $img= wp_get_attachment_image_src (get_post_thumbnail_id(get_page_by_title('Default',false,'page')->ID),'shows-thumb',false); 
 		}
 		//$img_html= '<div class="wp-caption alignleft"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$p->post_title.'" title="'.$p->post_title.'"/><p class="wp-caption-text">'.get_the_title().'</p></div>';
-		if(isset($permalink)) $img_html= '<div class="wp-caption alignleft"><a href="' . esc_url($permalink) . '" title="' . esc_attr(the_title('', '', false)) . '"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$post->post_title.'" title="'.$post->post_title.'"/></a></div>';
-                else $img_html= '<div class="wp-caption alignleft"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$post->post_title.'" title="'.$post->post_title.'"/></div>';    
+		$width=150;
+      $height=112;
+      if (function_exists('getphpthumburl')) $img[0]=getphpthumburl($img[0],'w='.$width.'&h='.$height.'&zc=1&fltr[]=ric|5|5');
+      if(isset($permalink)) $img_html= '<div class="shows-thumb alignleft"><a href="' . esc_url($permalink) . '" title="' . esc_attr(the_title('', '', false)) . '"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$post->post_title.'" title="'.$post->post_title.'"/></a></div>';
+      else $img_html= '<div class="shows-thumb alignleft"><img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$post->post_title.'" title="'.$post->post_title.'"/></div>';    
 	}
+*/	
    $tags= get_the_term_list( $post->ID, 'post_tag', '<div class="ctc show-tags">', '', '</div>' );
    
    //print_r($tags);
@@ -95,17 +115,16 @@ Theme Version: 0.6.1
 	//$connected = p2p_type( 'posts_to_shows' )->get_connected( $post->ID );	
  ?>
 				<?php echo $title_html ?>
-            <?php if (is_single()) echo $tags ?>
-				<?php echo $img_html ?>
+            <?php echo $img_html ?>
 				
-                <div class="entry" style="padding-top:10px;">
+                <div class="entry clearfix">
                   <?php if (is_single()) the_content('<p>Read the rest of this entry &raquo;</p>');
                   else echo gigx_excerpt (get_the_content(),get_the_excerpt(),false,500,$permalink,'(more...)',True);
                   ?>
         		</div>
 				<div class="entry-utility">
 					<?php echo $website_html; ?>
-					<?php echo $frequency_html; ?>
+					<?php if (is_single()) echo $frequency_html; ?>
 <?php
 // Find connected pages
 
@@ -129,7 +148,8 @@ if ( function_exists( 'p2p_type' ) && is_single() ){
 	endif;
 }
 ?>
-
+<?php if (is_single()) echo $tags ?>
+				
 <?php  //for use in the loop, list 5 post titles related to first tag on current post
   $backup = $post;  // backup the current object
   $tags = wp_get_post_tags($post->ID);
@@ -160,9 +180,6 @@ if ( function_exists( 'p2p_type' ) && is_single() ){
 					
 				</div>
 				<?php 
-				if(defined ('CUSTOM_POST_TYPE') && is_singular(CUSTOM_POST_TYPE)) {
-				  get_template_part(CUSTOM_POST_TYPE);
-				}
 
                 # below entry widgets
 				if ( is_active_sidebar( 'below_entry_widgets' ) ) : // Nothing here by default and design ?>
@@ -170,8 +187,15 @@ if ( function_exists( 'p2p_type' ) && is_single() ){
                 		  <?php dynamic_sidebar('below_entry_widgets'); ?>
                   	</div>
                 <?php endif; ?>  
+                  <?php /* Display navigation to next/previous pages when applicable */
+                  if ( (($wp_query->current_post + 1) >= ($wp_query->post_count)) && (get_next_posts_link() || get_previous_posts_link()) ) :
+                  ?>
+                    <div id="nav-below" class="navigation">
+                       <div class="nav-previous"><?php previous_posts_link("&laquo; previous page"); ?></div>
+                       <div class="nav-next"><?php next_posts_link("next page &raquo;"); ?></div>
+                    </div><!-- #nav-below -->
+                  <?php endif; ?>
         			</div>
-    
                <?php comments_template( '', true ); ?> 			
       		<?php endwhile; ?>
               
@@ -184,17 +208,9 @@ if ( function_exists( 'p2p_type' ) && is_single() ){
       	<?php endif; ?>
     </div><!-- end of posts div -->
     
-    <?php /* Display navigation to next/previous pages when applicable */
-    if (get_next_posts_link() || get_previous_posts_link()) :
-    ?>
-    	<div id="nav-below" class="navigation">
-    		<div class="nav-next"><?php next_posts_link("&laquo; older posts"); ?></div>
-    		<div class="nav-previous"><?php previous_posts_link("newer posts &raquo;"); ?></div>
-    	</div><!-- #nav-below -->
-    <?php endif; ?>	
   
   	<?php if ( is_active_sidebar( 'below_posts_widgets' ) ) : // Widgets Below Posts ?>
     	<div id="below-posts-widgets">
     		<?php dynamic_sidebar('below_posts_widgets'); ?>
     	</div>  
-    <?php endif; ?> 
+    <?php endif; ?>
