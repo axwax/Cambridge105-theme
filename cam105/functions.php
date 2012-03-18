@@ -255,7 +255,7 @@ function unregister_taxonomy(){
 }
 add_action('init', 'unregister_taxonomy');
 
-function get_show_image($imageSize='shows-thumb', $showID=false, $showTitle = false, $phpThumbOptions='&f=jpg&q=95&zc=1&fltr[]=ric|5|5'){    
+function get_show_image($imageSize='shows-thumb', $showID=false, $returnUrlOnly = false, $showTitle = false, $phpThumbOptions='&f=jpg&q=95&zc=1&fltr[]=ric|5|5'){    
    if (!function_exists('gigx_get_image_size')) return;
    $imageSizeAttribs = gigx_get_image_size($imageSize);
    $width = $imageSizeAttribs['width'];
@@ -268,9 +268,10 @@ function get_show_image($imageSize='shows-thumb', $showID=false, $showTitle = fa
    else {
       $img= wp_get_attachment_image_src (get_post_thumbnail_id(get_page_by_title('Default',false,'page')->ID), $imageSize, false);          
    }
-   if (function_exists('getphpthumburl')) {
+   if (function_exists('getphpthumburl') && $phpThumbOptions) {
       $img[0]=getphpthumburl($img[0],'w='.$width.'&h='.$height.$phpThumbOptions);
    }
+   if ($returnUrlOnly) return $img[0];
    $img_html= '<img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$showTitle.'" title="'.$showTitle.'"/>';
    return $img_html;
 }
