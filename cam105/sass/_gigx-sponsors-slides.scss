@@ -8,9 +8,12 @@ $sponsors_slideshow_bg: white;
 .gigx-sponsors-slideshow{
   clear: both;
   width: $sponsors_slideshow_width;
-  padding:0; 
+  padding:10px; 
   margin-bottom: 10px;
   display: none;       
+   background-color: $sponsors_slideshow_bg;
+   @include rounded(5px, 5px, 5px, 5px);
+   @include shadow(5px,#333);
 }   
 .gigx-sponsors-slideshow a {
   outline: 0;
@@ -18,12 +21,16 @@ $sponsors_slideshow_bg: white;
 }
 .gigx-sponsors-slideshow .widget-title{
   z-index: 1;
-  margin-bottom: 10px;  
+  margin-bottom: 10px;
+ 	@include rounded (5px);
+	@include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
+	color:$white_text;
+	@include harabara;	
+	margin-bottom: 10px;
+	padding:5px 10px;
+   height: 30px;  
 }
 .gigx-sponsors-slideshow-wrapper {
-   background-color: $sponsors_slideshow_bg;
-   @include rounded(5px, 5px, 5px, 5px);
-   @include shadow(5px,#333);
    margin: 0; 
    padding: 10px 0;   
 }

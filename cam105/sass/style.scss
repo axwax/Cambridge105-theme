@@ -1,3 +1,23 @@
+@import "colours";
+@import "fonts";
+@import "mixins";
+
+/* RESET */
+@import "compass/reset";
+
+// general text formatting
+p, ul, ol, dl, dd, dt, li, blockquote, pre { font-size: 1em; line-height: 1.5em; }
+// links
+a{
+	text-decoration: none!important;
+}
+a:hover{
+}
+// images
+img{
+   border:0;
+}
+
 @import "gigx";
 @import "global";
 @import "structure";

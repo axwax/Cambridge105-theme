@@ -86,7 +86,7 @@ fieldset { padding-top:0; }
 	@include gradient(top, $white_box_gradient1, $white_box_gradient2,$white_box_gradient2);	 
     margin:0 0 10px 0;
     overflow:hidden;
-    padding:10px;
+    padding:10px 10px 0 10px;
     //font-family: 'HarabaraRegular',Arial,sans-serif;
 }
 
@@ -99,9 +99,8 @@ fieldset { padding-top:0; }
 }
 
 .single #content p, .archive .shows p, .page .posts p, .category .posts p{
-//font-size: 1.3em;
-margin-bottom:10px;
-font-family: Arial, sans-serif;
+	margin-bottom:10px;
+	font-family: Arial, sans-serif;
 }
 .home #content .posts{
 background:none;
@@ -123,11 +122,15 @@ div.navigation
 	@include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
 	color:$white_text;
 	@include harabara;	
-	//margin-bottom: 10px;
+	margin-bottom: 10px;
 	padding:5px 10px;
 }
 div.navigation{
    height: 30px;
+}
+
+#breadcrumbs{
+	//margin-bottom: 10px;
 }
 
 #breadcrumbs a, #breadcrumbs a:hover,
@@ -137,7 +140,6 @@ div#sidebar .widget h2 a:hover,
 {
 	color: $white_text;
 	padding: 0;
-	//font-weight: bold;
 }
 #breadcrumbs a:hover,
 div#sidebar .widget h2 a:hover,

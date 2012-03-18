@@ -1,7 +1,3 @@
-@import "colours";
-@import "fonts";
-@import "mixins";
-
 /*
 Theme Name: GIGX Default
 Theme URI: http://gigx.co.uk/
@@ -85,37 +81,7 @@ Theme Structure:
 |P</body>
 -</html>
 	
-	
-
 */
-
-/* RESET */
-@import "compass/reset";
-// @import "xtreme";
-
-// fixes for xtreme
-// ul, ol, dl { margin-left:0px }
-
-	/* --- general text formatting | Allgemeine Textauszeichnung ------------------------------------------ */
-	p, ul, ol, dl, dd, dt, li, blockquote, pre { font-size: 1em; line-height: 1.5em; }
-	
-/* link stylee */
-a{
-	text-decoration: none!important;
-}
-a:hover{
-}
-
-/* images */
-img{
-border:0;
-}
-
-
-/* global styles */
-
-/* Wordpress global setup */
-
 
 
 /*-- WordPress Rules --*/
