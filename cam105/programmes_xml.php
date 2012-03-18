@@ -25,9 +25,11 @@ $args = array(
 $programmes=get_posts( $args );	
 echo '<programmes>'."\n\r";
 foreach($programmes as $post) : setup_postdata($post);
-	$img=wp_get_attachment_image_src (get_post_thumbnail_id($post->ID),'shows-thumb',false);  
-	$email=get_post_meta($post->ID, 'ShowEmail', True);	
-	echo '	<programme id="'.$post->post_name.'" image="'.$img[0].'" email="'.$email.'" />'."\n\r";
+	//$img=wp_get_attachment_image_src (get_post_thumbnail_id($post->ID),'shows-thumb',false);
+   //$img=$img[0];   
+	$img = get_show_image('shows-thumb', $showID=$post->ID, true);
+   $email=get_post_meta($post->ID, 'ShowEmail', True);	
+	echo '	<programme id="'.$post->post_name.'" image="'.$img.'" email="'.$email.'" />'."\n\r";
 endforeach;
 echo '</programmes>'."\n\r";
 //print_r($programmes);	
