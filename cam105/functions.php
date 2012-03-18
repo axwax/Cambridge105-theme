@@ -255,8 +255,7 @@ function unregister_taxonomy(){
 }
 add_action('init', 'unregister_taxonomy');
 
-
-function get_show_image($imageSize='shows-thumb', $showID=false, $showTitle = false, $phpThumbOptions='&zc=1&fltr[]=ric|5|5'){    
+function get_show_image($imageSize='shows-thumb', $showID=false, $showTitle = false, $phpThumbOptions='&f=jpg&q=95&zc=1&fltr[]=ric|5|5'){    
    if (!function_exists('gigx_get_image_size')) return;
    $imageSizeAttribs = gigx_get_image_size($imageSize);
    $width = $imageSizeAttribs['width'];
