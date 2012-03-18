@@ -56,7 +56,7 @@ Theme Version: 0.6.1
             foreach($news as $post) : setup_postdata($post); 
             $count++;
             ?>
-              <div class="twocol_content col_<?php echo $count; ?>" id="post-<?php the_ID(); ?>">
+              <div class="twocol-content col_<?php echo $count; ?>" id="post-<?php the_ID(); ?>">
                 
                 <?php
                 $img=wp_get_attachment_image_src (get_post_thumbnail_id(get_the_ID()),'shows-image',false);
@@ -89,7 +89,7 @@ Theme Version: 0.6.1
             foreach($news as $post) : setup_postdata($post); 
             $count++;
             ?>
-              <div class="twocol_content col_<?php echo $count; ?>" id="post-<?php the_ID(); ?>">
+              <div class="twocol-content col_<?php echo $count; ?>" id="post-<?php the_ID(); ?>">
                 
                 <?php
                 //$img=wp_get_attachment_image_src (get_post_thumbnail_id(get_the_ID()),'shows-image',false);
