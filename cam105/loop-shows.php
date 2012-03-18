@@ -54,13 +54,14 @@ Theme Version: 0.6.1
                   else $img_html = '<div class="shows-thumb alignleft">' . get_show_image('shows-thumb') . '</div>';      
                }
             
-               $tags= get_the_term_list( $post->ID, 'post_tag', '<div class="ctc show-tags">', '', '</div>' );
+               $tags= get_the_term_list( $post->ID, 'post_tag', '<div class="ctc show-tags">', ' ', '</div>' );
                
                # Show's Website (Custom Meta)
                $website_html='';
                $website_title=get_post_meta($post->ID, 'WebsiteTitle', True);
                $website_url=get_post_meta($post->ID, 'WebsiteURL', True);
-               if ( ('' != $website_title) and ('' != $website_url)  ) {
+               if  ('' != $website_url) {
+                  if (!$website_title) $website_title = $website_url;
                   $website_html='<p>Website: <a href="'.$website_url.'" target="_blank">'.$website_title.'</a></p>'."\n\r";
                }
                   
@@ -94,24 +95,29 @@ Theme Version: 0.6.1
                   endif;
                }	
              ?>
-				
-            <?php echo $img_html ?>
+            <?php if (is_single()) : ?>			
+               <div class="alignleft" style="width: 312px;">
+                     <?php echo $img_html ?>
+                     <?php if (is_single()) echo $website_html; ?>
+                     <?php if (is_single()) echo $frequency_html; ?>
+                     <?php if (is_single()) echo $tags ?>
+
+               </div>
+            <?php else : ?>
+               <?php echo $img_html ?>
+            <?php endif; ?>
+            
             <?php echo $title_html ?>			
-                <div class="entry clearfix">
-                  <?php if (is_single()) the_content('<p>Read the rest of this entry &raquo;</p>');
-                  else echo gigx_excerpt (get_the_content(),get_the_excerpt(),false,500,$permalink,'(more...)',True);
-                  ?>
-        		</div>
-				<div class="entry-utility">
-					<?php echo $website_html; ?>
-					<?php if (is_single()) echo $frequency_html; ?>
-               <?php if($podcasts_html): ?>
+            <div class="entry clearfix">
+               <?php if (is_single()) the_content('<p>Read the rest of this entry &raquo;</p>');
+                     else echo gigx_excerpt (get_the_content(),get_the_excerpt(),false,500,$permalink,'(more...)',True);
+               ?>
+               <?php if (is_single() && $podcasts_html): ?>
                   <h3>Latest Podcast:</h3>
                   <? echo $podcasts_html; ?>
-               <? endif; ?>
-               
-               <?php if (is_single()) echo $tags ?>
-                           
+               <? endif; ?>               
+            </div>
+	    <div class="entry-utility">                           
                <?php // related shows
                   //for use in the loop, list 5 post titles related to first tag on current post
                  $backup = $post;  // backup the current object
@@ -159,7 +165,7 @@ Theme Version: 0.6.1
                  wp_reset_query(); // to use the original query again
                ?>
 					
-				</div>
+	    </div>
 				<?php 
 
                 # below entry widgets

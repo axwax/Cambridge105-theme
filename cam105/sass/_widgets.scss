@@ -220,6 +220,9 @@ div#below-posts-widgets div#gigxrecentposts-3 {
 	margin-top:10px;
    text-align: center;
 }
+.tagcloud h2, .ctc h2{
+   text-align: left;
+}
 .tagcloud, .ctc {
     //padding: 10px 0;
 }
@@ -243,4 +246,5 @@ div#below-posts-widgets div#gigxrecentposts-3 {
 	//@include harabara;
     border: 2px solid $dark_green;
 }
-.show-tags a{margin:5px; padding: 4px 10px}
+.show-tags {margin: 0; width: 290px; text-align: center;float: left; }
+.show-tags a{margin:2px; padding: 4px 10px; line-height: 1em; display:inline-block;}
