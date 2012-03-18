@@ -14,7 +14,7 @@ Theme Version: 0.5.9
       <?php endif; ?>            
       <div id="footer" class="clearfix">
       	<p class="pleft blacktext smallcaps">&copy; <?php bloginfo('show'); ?> <?php echo date("Y"); ?></p>
-      	<p class="pright blacktext smallcaps">Design by Stewart Paske - Created by: <a href="http://gigx.co.uk/"><img src="<?php bloginfo('template_url'); ?>/images/gigx-logo36x11.png" width="36" height="11" alt="GIGX.co.uk" title="GIGX.co.uk"/></a></p>
+      	<p class="pright blacktext smallcaps">Design by Stewart Paske &amp; <a href="http://axwax.de/"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/axwax50x14.png" width="50" height="14" alt="AxWax.de" title="AxWax.de"/></a> - Hosted by: <a href="http://gigx.co.uk/"><img src="<?php bloginfo('template_url'); ?>/images/gigx-logo36x11.png" width="36" height="11" alt="GIGX.co.uk" title="GIGX.co.uk"/></a></p>
       </div>
     	<?php if ( is_active_sidebar( 'below_footer_widgets' ) ) : // Widgets Below Footer ?>
       	<div id="below-footer-widgets">
