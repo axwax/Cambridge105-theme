@@ -38,7 +38,7 @@ function gigx_cpt_shows()
     'menu_icon' => null,
     'show_in_nav_menus' => true,
     'supports' => array('title','editor','thumbnail','sticky','custom-fields'),
-    'taxonomies' => array( 'post_tag', 'category ')
+    'taxonomies' => array( 'post_tag')
   ); 
   register_post_type('shows',$args);
 }
