@@ -1,6 +1,9 @@
 @import "colours";
 @import "fonts";
 @import "mixins";
+$page_width: 1000px;
+$sidebar_width: 230px;
+
 
 /* structure */
 body{
@@ -20,7 +23,7 @@ body{
 
 #page #header #logo {
 /* padding-bottom: 1em; */
-     width: 1000px;
+     width: $page_width;
      margin:0 auto;
 }
 
@@ -34,7 +37,7 @@ body{
 #page #main {
   background-color:#444; 
   /*padding:0 10px 0px 10px;*/
-     width: 1000px;
+     width: $page_width;
      margin:0 auto;
   /* margin-bottom:10px; */
 }
@@ -47,16 +50,18 @@ body{
 
 #page #main #container #content{
   float:left;
-width: 720px;
+  //width: 720px;
+  width: 760px;
+  //width: $page_width - 10px - 10px - $sidebar_width - 10px;
 }
 .home #page #main #container #content{
+//width: 740px;
+}
+.single #page #main #container #content{
 width: 740px;
 }
-.non_homepage #page #main #container #content{
-width: 760px;
-}
 .non_homepage #page #main {
-width: 1020px;
+//width: 1020px;
 }
 
 
@@ -64,7 +69,7 @@ width: 1020px;
  display: block;
 	float: left; 
 	border: none;
-	width: 250px;
+	width: $sidebar_width;
 	margin-left: 10px;
 }
 #page #main #container  #sidebar .widget{
@@ -74,7 +79,7 @@ color:#000;
 
 #page #above-footer-widgets {
      /* margin-left: 80px; */
-     width: 1000px;
+     width: $page_width;
      margin:0 auto;
 }
 

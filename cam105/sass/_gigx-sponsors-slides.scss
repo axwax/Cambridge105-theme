@@ -1,7 +1,7 @@
 /*
 GIGX Sponsors Slides CSS
 */
-$sponsors_slideshow_width: 1020px;
+$sponsors_slideshow_width: 980px;
 $sponsors_slideshow_bg: white;
 
 /* general slideshow styles */
@@ -38,12 +38,12 @@ $sponsors_slideshow_bg: white;
   margin: 0 auto 0 auto;  
   padding: 0; 
   text-align: center;
-  width: $sponsors_slideshow_width - 180px;
+  width: $sponsors_slideshow_width - 140px;
 }    
 
 
 .gigx-sponsors-slider {
-  width: $sponsors_slideshow_width - 180px;
+  width: $sponsors_slideshow_width - 140px;
   margin: 0 auto 0 auto;  
   padding:0;
 }
