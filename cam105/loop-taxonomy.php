@@ -4,32 +4,26 @@ File Description: The Loop for Taxonomies (frequency and tag)
 Author: Axel Minet
 Theme Version: 0.6.2
 */
-?>
-  	<?php wp_nav_menu( array( 'theme_location' => 'above-posts', 'sort_column' => 'menu_order', 'fallback_cb' => 'header_menu', 'container_class' => 'header-menu' ) ); ?>
-  	<?php if ( is_active_sidebar( 'above_posts_widgets' ) ) : // Widgets Above Posts ?>
-    	<div id="above-posts-widgets">
-    		<?php dynamic_sidebar('above_posts_widgets'); ?>
-    	</div>  
-    <?php endif; ?>
-	<?php 
-            $categorydesc = category_description(); 
-            if ( ! empty( $categorydesc ) ) echo apply_filters( 'archive_meta', '<div class="archive-meta">' . $categorydesc . '</div>' );
-     ?>
+ 
+$categorydesc = category_description(); 
+if ( ! empty( $categorydesc ) ) {
+	echo apply_filters( 'archive_meta', '<div class="archive-meta">' . $categorydesc . '</div>' );
+} ?>
        
-    <div class="taxonomy list <?php if (is_tag()) echo "tag";
+<div class="taxonomy list <?php if (is_tag()) echo "tag";
                                     else {
                                        $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); echo $term->name;
                                     } ?>">
-        <?php
-        $postcount=0;
-        /* Do we have posts, then start the loop, otherwise display 404 */ ?>
-      	<?php if (have_posts()) : ?>
-          <?php /* Start the Loop */ ?>  	
-      		<?php while (have_posts()) : the_post(); ?>
-				<div <?php post_class() ?> id="post-<?php the_ID(); ?>"> 		
-<?php if ( function_exists('yoast_breadcrumb') && $postcount ==0) {
-	yoast_breadcrumb('<div id="breadcrumbs">','</div>');
-} ?>               
+	<?php
+   $postcount=0;
+   /* Do we have posts, then start the loop, otherwise display 404 */ ?>
+   <?php if (have_posts()) : ?>
+   <?php /* Start the Loop */ ?>  	
+      <?php while (have_posts()) : the_post(); ?>
+         <div <?php post_class() ?> id="post-<?php the_ID(); ?>"> 		
+            <?php if ( function_exists('yoast_breadcrumb') && $postcount ==0) {
+               yoast_breadcrumb('<div id="breadcrumbs">','</div>');
+            } ?>               
 <?php
    $postcount ++;
 	$title = the_title('', '', false);
@@ -72,10 +66,4 @@ Theme Version: 0.6.2
       		<?php get_search_form(); ?>
       
       	<?php endif; ?>
-    </div><!-- end of posts div -->
-
-  	<?php if ( is_active_sidebar( 'below_posts_widgets' ) ) : // Widgets Below Posts ?>
-    	<div id="below-posts-widgets">
-    		<?php dynamic_sidebar('below_posts_widgets'); ?>
-    	</div>  
-    <?php endif; ?>
+</div><!-- end of posts div -->

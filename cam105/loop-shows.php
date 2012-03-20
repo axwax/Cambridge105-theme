@@ -2,19 +2,10 @@
 /*
 File Description: The Loop for "Shows" Custom Post Type (list as well as single shows)
 Author: Axel Minet
-Theme Version: 0.6.1
+Theme Version: 0.6.2
 */
-?>
-   
-   <?php wp_nav_menu( array( 'theme_location' => 'above-posts', 'sort_column' => 'menu_order', 'fallback_cb' => 'header_menu', 'container_class' => 'header-menu' ) ); ?>
-
-   <?php if ( is_active_sidebar( 'above_posts_widgets' ) ) : // Widgets Above Posts ?>
-      <div id="above-posts-widgets">
-         <?php dynamic_sidebar('above_posts_widgets'); ?>
-      </div>  
-   <?php endif; ?>
-       
-   <div id="shows-container" class="shows-container">
+?>       
+<div id="shows-container" class="shows-container">
 		
       <?php /* Do we have posts, then start the loop, otherwise display 404 */
          $postcount=0;
@@ -93,7 +84,7 @@ Theme Version: 0.6.1
                      // Prevent weirdness
                      wp_reset_postdata();
                   endif;
-               }	
+               }
              ?>
             <?php if (is_single()) : ?>			
                <div class="alignleft" style="width: 312px;">
@@ -191,11 +182,4 @@ Theme Version: 0.6.1
             <p class="center">Sorry, but you are looking for something that isn't here.</p>
             <?php get_search_form(); ?>
          <?php endif; ?>
-   </div><!-- end of posts div -->
-    
-  
-   <?php if ( is_active_sidebar( 'below_posts_widgets' ) ) : // Widgets Below Posts ?>
-      <div id="below-posts-widgets">
-         <?php dynamic_sidebar('below_posts_widgets'); ?>
-      </div>  
-   <?php endif; ?>
+</div><!-- end of shows-container div -->

@@ -1,23 +1,11 @@
 <?php
-
-// error_reporting(E_ERROR);
-// ini_set('display_errors', '1');
-
 /*
-File Description: The Loop
+File Description: The Loop for schedule page
 Built By: GIGX
-Theme Version: 0.5.11
+Theme Version: 0.6.2
 */
 ?>
-
-  	<?php wp_nav_menu( array( 'theme_location' => 'above-posts', 'sort_column' => 'menu_order', 'fallback_cb' => 'header_menu', 'container_class' => 'header-menu' ) ); ?>
-    <?php if ( is_active_sidebar( 'above_posts_widgets' ) ) : // Widgets Above Posts ?>
-    	<div id="above-posts-widgets">
-    		<?php dynamic_sidebar('above_posts_widgets'); ?>
-    	</div>  
-    <?php endif; ?>
-      
-    <div class="posts">
+<div class="posts">
 <?
 
 require_once $_SERVER['DOCUMENT_ROOT']."/schedule_info/Schedule.class.php"; 
@@ -48,7 +36,7 @@ else
 	$sUrlSchedule = Schedule::GetGoogleScheduleURL(strtotime("last Monday $offset"), strtotime("this Sunday + 7 days $offset"));
 }
 $sUrlProgrammes = Schedule::GetProgrammesURL();
-print_r($sUrlProgrammes);
+//print_r($sUrlProgrammes);
 $sCloseLocation = "/images/x.gif";
 
 /////////////////////////////////////////////////
@@ -56,8 +44,7 @@ $sCloseLocation = "/images/x.gif";
 function draw_box($entry, $index, $sTop, $sLeft, $sHeight)
 {
 ?>
-	<!--<a href="/shows/<?=$entry["pid"]?>">-->
-	<a href="#">
+	<a href="<?=$entry["url"]?>">
 	<div class="show_box show_<?=$index?>" style="width: <?=$entry["width"]?>px; height: <?=$entry[$sHeight]?>px; top: <?=$entry[$sTop]?>px; left: <?=$entry[$sLeft]?>px">
 	<? if($entry["height"] > 25) : ?>
 		<div class="time_inner"><?=date("H:i", $entry["start"])." - ".date("H:i", $entry["end"])?></div>
@@ -453,8 +440,8 @@ h1#popup_title
 	float: left;
 	-moz-border-radius: 5px 5px 5px 5px;
 	border-radius: 5px 5px 5px 5px;
-	width: 100px;
-	height: 100px;
+	width: 150px;
+	height: 112px;
 	background-repeat: no-repeat;
 }
 
