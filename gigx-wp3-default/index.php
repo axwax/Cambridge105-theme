@@ -26,8 +26,25 @@ else {
 get_header();
 ?>
 	<div id="content">
+   
+      <?php wp_nav_menu( array( 'theme_location' => 'above-posts', 'sort_column' => 'menu_order', 'fallback_cb' => 'header_menu', 'container_class' => 'header-menu' ) ); ?>
+
+      <?php if ( is_active_sidebar( 'above_posts_widgets' ) ) : // Widgets Above Posts ?>
+         <div id="above-posts-widgets">
+            <?php dynamic_sidebar('above_posts_widgets'); ?>
+         </div>  
+      <?php endif; ?>
+      
 		<?php get_template_part( 'loop', $loop ); ?>
+      
+      <?php if ( is_active_sidebar( 'below_posts_widgets' ) ) : // Widgets Below Posts ?>
+         <div id="below-posts-widgets">
+            <?php dynamic_sidebar('below_posts_widgets'); ?>
+         </div>  
+      <?php endif; ?>      
+
 	</div>
+   
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
 <? if (GIGX_DEBUG === true) echo "<!-- ".$loop." -->\r\n";?>
