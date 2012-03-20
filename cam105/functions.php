@@ -67,7 +67,7 @@ function my_connection_types() {
             'from' => 'post',
             'to' => 'shows',
             'cardinality' => 'many-to-one',
-            'reciprocal' => false
+            'reciprocal' => true
     ) );
 }
 add_action('init', 'my_connection_types', 100);
@@ -226,6 +226,7 @@ function shows_alphabetical( $orderby )
   // alphabetical order by post title
      return "post_title ASC";
   }
+  else return $orderby;
 }  
 
   
