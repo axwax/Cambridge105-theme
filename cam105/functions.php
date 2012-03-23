@@ -276,3 +276,33 @@ function get_show_image($imageSize='shows-thumb', $showID=false, $returnUrlOnly 
    $img_html= '<img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$showTitle.'" title="'.$showTitle.'"/>';
    return $img_html;
 }
+
+/**
+ * works just like http://codex.wordpress.org/Function_Reference/get_the_term_list
+ * but has additional parameter exclude, which is an array of taxonomy IDs to exclude 
+ * @param array $exclude array of taxonomy IDs to exclude
+ **/
+function gigx_get_the_term_list( $id = 0, $taxonomy, $before = '', $sep = '', $after = '', $exclude = array() ) {
+	$terms = get_the_terms( $id, $taxonomy );
+
+	if ( is_wp_error( $terms ) )
+		return $terms;
+
+	if ( empty( $terms ) )
+		return false;
+
+	foreach ( $terms as $term ) {
+
+		if(!in_array($term->term_id,$exclude)) {
+			$link = get_term_link( $term, $taxonomy );
+			if ( is_wp_error( $link ) )
+				return $link;
+			$term_links[] = '<a href="' . $link . '" rel="tag">' . $term->name . '</a>';
+		}
+	}
+
+	$term_links = apply_filters( "term_links-$taxonomy", $term_links );
+
+	return $before . join( $sep, $term_links ) . $after;
+}
+
