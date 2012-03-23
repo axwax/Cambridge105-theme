@@ -7,8 +7,14 @@ Theme Version: 0.6.1
 
 # experimental and utility functions (eg unregister custom post types/taxonomies)
 //include 'functions/experimental_functions.php';
-// only show current user's posts
-function mypo_parse_query_useronly( $wp_query ) {
+
+
+## filters and actions
+
+/**
+ * filter to only show current user's posts in posts admin (only for any non-admins)
+ **/
+function gigx_parse_query_useronly( $wp_query ) {
     if ( strpos( $_SERVER[ 'REQUEST_URI' ], '/wp-admin/edit.php' ) !== false ) {
         if ( !current_user_can( 'administrator' ) ) {
             global $current_user;
@@ -16,41 +22,48 @@ function mypo_parse_query_useronly( $wp_query ) {
         }
     }
 }
-add_filter('parse_query', 'mypo_parse_query_useronly' );
+add_filter('parse_query', 'gigx_parse_query_useronly' );
 
-// remove excerpt more stuff
-function new_excerpt_more($more) {
+/**
+ * filter to remove "more" string from end of the_excerpt
+ **/
+function gigx_excerpt_more($more) {
 	return '';
 }
-add_filter('excerpt_more', 'new_excerpt_more');
+add_filter('excerpt_more', 'gigx_excerpt_more');
 
-// get image size
-function gigx_get_image_size( $imageSize ) {
-   $out = array();
-   switch($imageSize) {
-      case 'thumbnail':
-         $out['width'] = get_option( 'thumbnail_size_w' );
-         $out['height'] = get_option( 'thumbnail_size_h' );
-         $out['crop'] = get_option( 'thumbnail_crop' );
-      break;
-      case 'medium':
-         $out['width'] = get_option( 'medium_size_w' );
-         $out['height'] = get_option( 'medium_size_h' );
-         $out['crop'] = false;
-      break;
-      case 'large':
-         $out['width'] = get_option( 'large_size_w' );
-         $out['height'] = get_option( 'large_size_h' );
-         $out['crop'] = false;
-      break;
-      default:
-         global $_wp_additional_image_sizes;
-         if (isset($_wp_additional_image_sizes[$imageSize])) $out = $_wp_additional_image_sizes[$imageSize];         
-   }
-	if (!empty($out)) return $out;
-	else return false;
+/**
+ * sort shows alphabetically (leaving other posts/post types untouched)
+ **/
+function shows_alphabetical( $orderby )
+{
+  if( !is_admin() && is_post_type_archive( "shows" ) ){
+  // alphabetical order by post title
+     return "post_title ASC";
+  }
+  else return $orderby;
+}  
+add_filter('posts_orderby', 'shows_alphabetical' );
+
+/**
+ * fix for custom post type tag archives
+ **/               
+function query_post_type($query) {
+    $post_types = get_post_types();
+    if ( is_category() || is_tag()) {
+
+        $post_type = get_query_var('post_type');
+        
+        if ( $post_type )
+            $post_type = $post_type;
+        else
+            $post_type = $post_types;    
+        $query->set('post_type', $post_type);
+
+    return $query;
+    }
 }
-
+add_filter('pre_get_posts', 'query_post_type');
 
 # include custom post types
 include 'functions/gigx_cpt_shows.php';
@@ -98,6 +111,7 @@ add_filter('gigx_remove_custom_dashboard_widgets', function($widgetsToRemove) { 
                                                                                              );
                                                                               });
 
+
 # add gigx dashboard widget      
 function gigx_dashboard_widget_function(){
     ?>
@@ -106,9 +120,102 @@ function gigx_dashboard_widget_function(){
     <?php wp_widget_rss_output('http://www.axwax.de/category/support/history/feed/', array('items' => 5, 'show_author' => 0, 'show_date' => 1, 'show_summary' => 1));
 }
 
+## new functions
+
+/**
+ * gets size and crop behaviour of a custom or standard "image size"
+ * @param string $imageSize image size to query
+ * @return array $out['width'],$out['height'],$out['crop']
+ **/
+function gigx_get_image_size( $imageSize ) {
+   $out = array();
+   switch($imageSize) {
+      case 'thumbnail':
+         $out['width'] = get_option( 'thumbnail_size_w' );
+         $out['height'] = get_option( 'thumbnail_size_h' );
+         $out['crop'] = get_option( 'thumbnail_crop' );
+      break;
+      case 'medium':
+         $out['width'] = get_option( 'medium_size_w' );
+         $out['height'] = get_option( 'medium_size_h' );
+         $out['crop'] = false;
+      break;
+      case 'large':
+         $out['width'] = get_option( 'large_size_w' );
+         $out['height'] = get_option( 'large_size_h' );
+         $out['crop'] = false;
+      break;
+      default:
+         global $_wp_additional_image_sizes;
+         if (isset($_wp_additional_image_sizes[$imageSize])) $out = $_wp_additional_image_sizes[$imageSize];         
+   }
+	if (!empty($out)) return $out;
+	else return false;
+}
+
+/**
+ * works just like http://codex.wordpress.org/Function_Reference/get_the_term_list
+ * but has additional parameter exclude, which is an array of taxonomy IDs to exclude 
+ * @param array $exclude array of taxonomy IDs to exclude
+ **/
+function gigx_get_the_term_list( $id = 0, $taxonomy, $before = '', $sep = '', $after = '', $exclude = array() ) {
+	$terms = get_the_terms( $id, $taxonomy );
+
+	if ( is_wp_error( $terms ) )
+		return $terms;
+
+	if ( empty( $terms ) )
+		return false;
+
+	foreach ( $terms as $term ) {
+
+		if(!in_array($term->term_id,$exclude)) {
+			$link = get_term_link( $term, $taxonomy );
+			if ( is_wp_error( $link ) )
+				return $link;
+			$term_links[] = '<a href="' . $link . '" rel="tag">' . $term->name . '</a>';
+		}
+	}
+
+	$term_links = apply_filters( "term_links-$taxonomy", $term_links );
+
+	return $before . join( $sep, $term_links ) . $after;
+}
+
+/**
+ * returns a show's featured image if available, or featured image from "Default" page if not
+ * returned image has rounded corners unless $phpThumbOptions is set to false
+ **/
+function get_show_image($imageSize='shows-thumb', $showID=false, $returnUrlOnly = false, $showTitle = false, $phpThumbOptions='&f=jpg&q=95&zc=1&fltr[]=ric|5|5'){    
+   if (!function_exists('gigx_get_image_size')) return;
+   $imageSizeAttribs = gigx_get_image_size($imageSize);
+   $width = $imageSizeAttribs['width'];
+   $height = $imageSizeAttribs['height'];
+   if (!$showID) $showID = get_the_ID();
+   if (!$showTitle) $showTitle = get_the_title($showID);   
+   if(has_post_thumbnail($showID)) {
+      $img=wp_get_attachment_image_src(get_post_thumbnail_id($showID), $imageSize, false);    
+   }
+   else {
+      $img= wp_get_attachment_image_src (get_post_thumbnail_id(get_page_by_title('Default',false,'page')->ID), $imageSize, false);          
+   }
+   if (function_exists('getphpthumburl') && $phpThumbOptions) {
+      $img[0]=getphpthumburl($img[0],'w='.$width.'&h='.$height.$phpThumbOptions);
+   }
+   if ($returnUrlOnly) return $img[0];
+   $img_html= '<img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$showTitle.'" title="'.$showTitle.'"/>';
+   return $img_html;
+}
+
 ################
 # not fully tested stuff:
 #
+
+/* remove tags from posts */
+function unregister_taxonomy(){
+    //register_taxonomy('post_tag', array());
+}
+add_action('init', 'unregister_taxonomy');
 
 // remove wp seo menu (wp 3.3+)
 function remove_yoast_seo_admin_bar() {
@@ -217,92 +324,13 @@ add_action( 'admin_init', 'schedule_scripts', 1000 );
 //add_action( 'admin_print_scripts-post-new.php', 'schedule_scripts', 1000 );
 # end podcasts
 
-// sort shows alphabetically 
-add_filter('posts_orderby', 'shows_alphabetical' );
 
-function shows_alphabetical( $orderby )
-{
-  if( !is_admin() && is_post_type_archive( "shows" ) ){
-  // alphabetical order by post title
-     return "post_title ASC";
-  }
-  else return $orderby;
-}  
 
   
-/* fix for custom post type tag archives */               
-add_filter('pre_get_posts', 'query_post_type');
-function query_post_type($query) {
-    $post_types = get_post_types();
-    if ( is_category() || is_tag()) {
-
-        $post_type = get_query_var('post_type');
-        
-        if ( $post_type )
-            $post_type = $post_type;
-        else
-            $post_type = $post_types;    
-        $query->set('post_type', $post_type);
-
-    return $query;
-    }
-}
 
 
 
-/* remove tags from posts */
-function unregister_taxonomy(){
-    //register_taxonomy('post_tag', array());
-}
-add_action('init', 'unregister_taxonomy');
 
-function get_show_image($imageSize='shows-thumb', $showID=false, $returnUrlOnly = false, $showTitle = false, $phpThumbOptions='&f=jpg&q=95&zc=1&fltr[]=ric|5|5'){    
-   if (!function_exists('gigx_get_image_size')) return;
-   $imageSizeAttribs = gigx_get_image_size($imageSize);
-   $width = $imageSizeAttribs['width'];
-   $height = $imageSizeAttribs['height'];
-   if (!$showID) $showID = get_the_ID();
-   if (!$showTitle) $showTitle = get_the_title($showID);   
-   if(has_post_thumbnail($showID)) {
-      $img=wp_get_attachment_image_src(get_post_thumbnail_id($showID), $imageSize, false);    
-   }
-   else {
-      $img= wp_get_attachment_image_src (get_post_thumbnail_id(get_page_by_title('Default',false,'page')->ID), $imageSize, false);          
-   }
-   if (function_exists('getphpthumburl') && $phpThumbOptions) {
-      $img[0]=getphpthumburl($img[0],'w='.$width.'&h='.$height.$phpThumbOptions);
-   }
-   if ($returnUrlOnly) return $img[0];
-   $img_html= '<img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" alt="'.$showTitle.'" title="'.$showTitle.'"/>';
-   return $img_html;
-}
 
-/**
- * works just like http://codex.wordpress.org/Function_Reference/get_the_term_list
- * but has additional parameter exclude, which is an array of taxonomy IDs to exclude 
- * @param array $exclude array of taxonomy IDs to exclude
- **/
-function gigx_get_the_term_list( $id = 0, $taxonomy, $before = '', $sep = '', $after = '', $exclude = array() ) {
-	$terms = get_the_terms( $id, $taxonomy );
 
-	if ( is_wp_error( $terms ) )
-		return $terms;
-
-	if ( empty( $terms ) )
-		return false;
-
-	foreach ( $terms as $term ) {
-
-		if(!in_array($term->term_id,$exclude)) {
-			$link = get_term_link( $term, $taxonomy );
-			if ( is_wp_error( $link ) )
-				return $link;
-			$term_links[] = '<a href="' . $link . '" rel="tag">' . $term->name . '</a>';
-		}
-	}
-
-	$term_links = apply_filters( "term_links-$taxonomy", $term_links );
-
-	return $before . join( $sep, $term_links ) . $after;
-}
 
