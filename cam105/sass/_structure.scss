@@ -253,3 +253,15 @@ color:#000;
 .single-shows #content {
   min-height:500px;
 }
+
+
+// single posts //
+.single-post img.alignleft {
+  border: 1px solid $medium_grey;
+  margin: 5px 10px 0 0;
+}
+
+.entry a:hover {
+  text-decoration: underline;
+  border-bottom: 1px solid $hover_green;
+}

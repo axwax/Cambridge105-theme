@@ -20,7 +20,7 @@ body {background:$background top left repeat;font-family:Arial, Tahoma, sans-ser
 
 a:link {text-decoration: none;outline:none;color:$dark_green;}
 a:visited {color: $dark_green; font-weight:bolder;}
-a:hover {color: $hover_green;text-decoration: underline;}
+a:hover {color: $hover_green; text-decoration: underline;}
 a:active, a:focus {color: $black_text;}
 code, pre { color: #c33; } /* very optional, but still useful. W3C uses about the same colors for codes */
 
@@ -162,12 +162,14 @@ div#sidebar .widget h2 a:hover,
 }
 
 /* Headers */
-h1,h2,h3 {
+h1,h2 {
 	@include harabara;
+}
+h3 {
+	font: bold 1.2em sans-serif;
 }
 
 .shows-image, .shows-thumb{
    margin-right: 10px;
-   margin-bottom: 10px;
-   
+   margin-bottom: 10px; 
 }

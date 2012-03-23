@@ -4,7 +4,7 @@ $background: #444444;
 
 $main_green: #83ae2c;
 $dark_green: #486D25;
-$hover_green: #2b9417;
+$hover_green: darken($dark_green,20%);
 
 $yellow: #edea00;
 $red: #ff0000;
