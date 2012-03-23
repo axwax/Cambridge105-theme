@@ -44,9 +44,19 @@ Theme Version: 0.6.2
                   }     
                   else $img_html = '<div class="shows-thumb alignleft">' . get_show_image('shows-thumb') . '</div>';      
                }
+            $posttags = get_the_tags($post->ID);
+            $excludeTags = array();
+            if ($posttags) {
+               foreach($posttags as $tag){
+                  if (substr($tag->name,0,1)=="_"){
+                     $excludeTags[]=$tag->term_id;
+                  }
+               }
+            }
             
-               $tags= get_the_term_list( $post->ID, 'post_tag', '<div class="ctc show-tags">', ' ', '</div>' );
-               
+            if (function_exists('gigx_get_the_term_list')) $tags= gigx_get_the_term_list( $post->ID, 'post_tag', '<div class="ctc show-tags">', ' ', '</div>',$excludeTags );
+            else $tags= gigx_get_the_term_list( $post->ID, 'post_tag', '<div class="ctc show-tags">', ' ', '</div>' );
+
                # Show's Website (Custom Meta)
                $website_html='';
                $website_title=get_post_meta($post->ID, 'WebsiteTitle', True);
@@ -124,9 +134,20 @@ Theme Version: 0.6.2
                      'post__not_in' => array($post->ID),
                      'showposts'=>4,
                      'ignore_sticky_posts'=>1,
-                     'post_type'=>'shows'
+                     'post_type'=>'shows',
+                     'orderby'=> 'rand'
                    );
-                   $my_query = new WP_Query($args);
+                   //$my_query = new WP_Query($args);
+function related_order($input) {
+   return 'COUNT(wp_term_relationships.object_id) DESC';
+   
+return 'COUNT(wp_term_relationships.object_id) DESC, wp_posts.post_date DESC';
+}
+
+add_filter('posts_orderby', 'related_order');
+$my_query = new WP_Query($args);
+remove_filter('posts_orderby', 'related_order');
+                   
                    if( $my_query->have_posts()  && is_single()) {
                      ?><h2 class="related-shows">Related Shows:</h2>
                   <div class="fourcol">
