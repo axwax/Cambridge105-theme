@@ -1,0 +1,80 @@
+// gradient (first, second, fallback, image)
+//   parameters:
+//   start_position:gradient start position
+//   first:         first colour
+//   second:        second colour
+//   fallback:      fallback colour (optional)
+//   image:         fallback image url (optional)
+
+@mixin gradient($start_position, $first, $second, $fallback: default, $image: none, $important: false) {
+   @if $important != false {
+      @if $fallback == default {
+         background-color: $first !important;
+      } @else {
+         background-color: $fallback !important; 
+      }
+      @if $image != none {
+         background-image: url($image) !important;
+      }
+      // background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($first), to($second));
+      background-image: -webkit-linear-gradient($start_position, $first, $second) !important;
+      background-image:    -moz-linear-gradient($start_position, $first, $second) !important;
+      background-image:     -ms-linear-gradient($start_position, $first, $second) !important;
+      background-image:      -o-linear-gradient($start_position, $first, $second) !important;
+      background-image:         linear-gradient($start_position, $first, $second) !important;
+   }
+   @else {
+      @if $fallback == default {
+         background-color: $first;
+      } @else {
+         background-color: $fallback; 
+      }
+      @if $image != none {
+         background-image: url($image);
+      }
+      // background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($first), to($second));
+      background-image: -webkit-linear-gradient($start_position, $first, $second);
+      background-image:    -moz-linear-gradient($start_position, $first, $second);
+      background-image:     -ms-linear-gradient($start_position, $first, $second);
+      background-image:      -o-linear-gradient($start_position, $first, $second);
+      background-image:         linear-gradient($start_position, $first, $second);
+   }   
+   
+}
+
+/////////////////////////////
+// shadow (distance, colour)
+//   parameters:
+//   distance: 5px
+//   colour:   #333
+
+@mixin shadow($distance: 5px, $colour: #333) {
+   -moz-box-shadow: $distance $distance $distance $colour; 
+   -webkit-box-shadow: $distance $distance $distance $colour; 
+   box-shadow: $distance $distance $distance $colour;
+}
+
+/////////////////////////////
+// rounded (tl,tr,br,bl)
+//   parameters:
+//   tl: 5px
+//   tr: 5px
+//   br: 5px
+//   bl: 5px
+@mixin rounded($radius_top_left: 5px, $radius_top_right: 5px, $radius_bottom_right: 5px, $radius_bottom_left: 5px ) {
+  -webkit-border-radius: $radius_top_left $radius_top_right $radius_bottom_left $radius_bottom_right; // Saf3-4, iOS 1-3.2, Android <e;1.6 
+     -moz-border-radius: $radius_top_left $radius_top_right $radius_bottom_left $radius_bottom_right; // FF1-3.6
+          border-radius: $radius_top_left $radius_top_right $radius_bottom_left $radius_bottom_right; // Opera 10.5, IE9, Saf5, Chrome, FF4, iOS 4, Android 2.1+ 
+
+  /* useful if you don't want a bg color from leaking outside the border: */
+  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+}
+
+/////////////////////////////
+// clearfix()
+@mixin clearfix() {
+	 /* Nicolas Gallagher's micro clearfix */
+	 .row:before, .row:after, .clearfix:before, .clearfix:after { content:""; display:table; }
+	 .row:after, .clearfix:after { clear: both; }
+	 .row, .clearfix { zoom: 1; }
+}

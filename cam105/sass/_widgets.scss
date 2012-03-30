@@ -1,0 +1,255 @@
+@import "colours";
+@import "fonts";
+@import "mixins";
+
+///////////////////
+/* default styles for all widgets */
+.widget-container{
+	margin-top:10px;
+	background-color: #ccc;
+}
+
+.sub-title,
+.widget-title {
+	background-color:$dark_green;
+	color:$white_text;
+	overflow:hidden;
+	margin-top:0px;
+	margin-bottom:0px;
+	width:auto;
+	//font: normal 1.5em Arial, Tahoma, sans-serif;
+	color:$white_text;
+	padding-left:5px;
+	padding-bottom:1px;
+}
+
+/////////////
+/* widget areas */
+
+#below-header-widgets{
+	float: left;
+	margin:20px 0px 10px 0px;
+	position:relative;
+	left: 10px;
+}
+
+.above-entry-widgets{
+	padding-bottom:10px;
+}
+
+/* below posts widget */
+div#below-posts-widgets{
+	//margin:0 0 10px 0;
+	overflow:hidden;
+	padding:0;
+}
+div#below-posts-widgets div.widget{
+	//width: 345px;
+	width: 355px;
+	float: left;
+	min-height:382px;
+	position:relative;
+	display:block;
+}
+
+#below-posts-widgets{	
+	margin-bottom: 10px;
+}
+
+div#sidebar .widget{
+	color:$medium_grey_text;
+ 	@include rounded (5px);
+	@include shadow (5px, $medium_grey_text);
+	@include gradient (top, $white_box_gradient1, $white_box_gradient2, $white_box_gradient2);	 
+	//font: 1em Arial,Tahoma,sans-serif;
+	line-height:1.3em;
+	padding: 10px;
+}
+/*
+div#sidebar .widget h2{
+ 	@include rounded (5px);
+	@include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
+	color:$white_text;
+	//font-family: 'HarabaraRegular',Arial,sans-serif;
+	//font-size: 20px;
+	@include harabara;
+}
+*/
+
+////////////////////////////////
+/* default wordpress widgets */
+/* search widget */
+#searchsubmit{
+	background:none repeat scroll 0 0 $dark_green;
+	color:$white_text;
+	padding:1px;
+}
+.widget_gce_widget h2{
+	margin-bottom:11px;
+} 
+.widget_links h2{
+	margin-bottom:10px;
+} 
+.blogroll li{
+	border-bottom: 1px dotted #BBBBBB;
+}
+.blogroll li a{
+	padding:0;
+}
+
+///////////////////
+/* page widgets */
+.page-title {
+	background-color:$dark_green;
+	overflow:hidden;
+	margin-top:0px;
+	margin-bottom:10px;
+	width:auto;
+	//font: normal 1.5em Arial, Tahoma, sans-serif;
+	color:$white_text;
+	padding-left:5px;
+	padding-bottom:1px;
+}
+.page-title a {
+	color:$white_text;
+}
+
+////////////////////
+/* loop widgets */
+.post-title {
+	//font-weight:bold;
+	//margin:5px 0 5px;
+   
+}
+
+.postdate, .postauthor, .postcategories {
+	//font-size:90%;
+	text-transform: lowercase;
+	margin-left: 0px;
+}
+
+
+
+///////////////////////
+/* specific widgets */
+
+@import "gigx-slides";
+
+@import "gigx-sponsors-slides";
+
+/* wp_bannerize */
+.wp_bannerize {  
+    text-align: left;
+    display:block;      	
+}
+.wp_bannerize a{
+    margin:0;
+    padding:0;
+}
+.wp_bannerize img{
+    margin:0;
+    padding:0;
+}
+
+/* gigx recent posts */
+.widget_gigxrecentposts{
+	color:$medium_grey_text;
+ 	@include rounded (5px);
+	@include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
+	margin:0;
+	overflow:hidden;
+	padding:10px 10px 0 10px;
+}
+.widget_gigxrecentposts h2.widget-title {
+    background-color: transparent;
+    color:$white_text;
+	@include harabara;
+	margin:0 0 10px 0;
+}
+.widget_gigxrecentposts h2.widget-title a{
+	color:$white_text;
+}
+.widget_gigxrecentposts ul.gigx-recent-posts li{
+ 	@include rounded (5px);
+	@include shadow (5px, $medium_grey_text);
+	@include gradient (top, $white_box_gradient1, $white_box_gradient2, $white_box_gradient2);	 
+	color:$medium_grey_text;
+	//font: 1em Arial,Tahoma,sans-serif;
+	line-heigh:1.3em;
+	overflow:hidden;
+	margin:0 0 10px 0;
+	padding:10px;
+}
+.widget_gigxrecentposts ul.gigx-recent-posts li a{
+	//font-size:1.2em;
+}
+.widget_gigxrecentposts ul.gigx-recent-posts li span.date{
+	font-family: Arial,Tahoma,sans-serif;
+	//font-size:10px;
+	text-transform: lowercase;
+	letter-spacing: normal;
+}
+.widget_gigxrecentposts img.recent-posts-thumb {
+	float: left;
+	text-align: left;
+	display: inline;
+	margin:0;
+	padding-right:10px;
+}
+
+/* frontpage news */
+div#below-posts-widgets div#gigxrecentposts-7  {
+	margin: 0 10px 0 0;
+}
+
+/* frontpage podcasts */
+div#below-posts-widgets div#gigxrecentposts-3 {
+	margin: 0 0 0 0;
+}
+/////////////////////
+/* sidebar widgets */
+
+/* listen */
+.rounded_5
+{
+ 	@include rounded (5px);
+	background: none repeat scroll 0 0 $white_text;
+}
+
+/* tags */
+.tagcloud, .ctc{
+	margin-top:10px;
+   text-align: center;
+}
+.tagcloud h2, .ctc h2{
+   text-align: left;
+}
+.tagcloud, .ctc {
+    //padding: 10px 0;
+}
+.tagcloud a, .ctc a {
+
+    border-radius: 0.9em 0.9em 0.9em 0.9em;
+    color: $medium_grey_text;
+    font-size: 0.8em;
+    line-height: 2em;
+    padding: 0.1em 0.8em;
+    white-space: nowrap;
+   background-color: white;
+   //@include gradient (top, $yellow_gradient2, $yellow_gradient1, $yellow_gradient1);	 
+	border: 2px solid $dark_green;
+    box-shadow: 0 0 7px #CCCCCC;
+}
+.tagcloud a:hover, .ctc a:hover {
+    text-decoration: none;
+	@include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
+	color:$white_text;
+	//@include harabara;
+    border: 2px solid $dark_green;
+}
+.show-tags {margin: 0; width: 290px; text-align: center;float: left; }
+.show-tags a{margin:2px; padding: 4px 10px; line-height: 1em; display:inline-block;}
+
+#toc {
+   width: auto !important;
+}

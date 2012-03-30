@@ -1,0 +1,57 @@
+// colours
+
+$background: #444444;
+
+$main_green: #83ae2c;
+$dark_green: #486D25;
+$hover_green: darken($dark_green,20%);
+
+$yellow: #edea00;
+$red: #ff0000;
+
+$link_focus: #d54e21;
+
+
+// text colours
+$black_text: #000000;
+$dark_grey_text: #111111;
+$medium_grey_text: #333333;
+$blue_text: #01466d;
+$white_text: #ffffff;
+
+
+// background colours
+$light_yellow_bg: #e9ee9f;
+$admin_bg: #eaf2fa;
+$caption_bg: #f3f3f3;
+$caption_border: #dddddd;
+$medium_grey: #646464;
+$light_grey: lighten($medium_grey,50%);
+
+
+// gradient colours 
+$white_box_gradient1: #fafafa;
+$white_box_gradient2: $white_text;
+
+$grey_box_gradient1: #f9f9f9;
+$grey_box_gradient2: $caption_bg;
+
+$green_box_gradient1: #445533;
+$green_box_gradient2: #56822c;
+
+$green_title_gradient1: #56822c; 
+$green_title_gradient2: $main_green;
+
+$yellow_gradient1: $light_yellow_bg;
+$yellow_gradient2: darken($light_yellow_bg,30%);
+
+// slideshow colours
+    $slideshow_bg: $dark_green;
+    $slide_text_colour: $white_text;
+    $slide_text_gradient_1: #769d28;
+    $slide_text_gradient_2: $main_green;
+    $pagerbutton_gradient_1: $dark_green;
+    $pagerbutton_gradient_2: darken($dark_green,10%);
+    $tab_text_colour: $white_text;  
+    $active_tab_text_colour: $slide_text_colour;
+    

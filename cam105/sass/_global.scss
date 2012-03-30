@@ -1,0 +1,175 @@
+@import "colours";
+@import "fonts";
+@import "mixins";
+
+//$purple: #eef6f7;
+//$purplelight: lighten($purple,4%);
+
+//h1{color: $purple; background-color: $purplelight;}
+
+/* Fonts */
+@font-face {
+	@include harabara-setup;
+}
+
+/* COLORS */
+
+body {background:$background top left repeat;font-family:Arial, Tahoma, sans-serif;}
+#header {background-color:$main_green; }
+#footer {background-color:$main_green; }
+
+a:link {text-decoration: none;outline:none;color:$dark_green;}
+a:visited {color: $dark_green; font-weight:bolder;}
+a:hover {color: $hover_green; text-decoration: underline;}
+a:active, a:focus {color: $black_text;}
+code, pre { color: #c33; } /* very optional, but still useful. W3C uses about the same colors for codes */
+
+/* Colour Scheme */
+
+
+
+/* Text colours */
+.whitetext {
+	color: $white_text;
+}
+.blacktext {
+	color: $black_text;
+}
+
+
+
+/* IE HACKS
+-------------------------------------------------------------- */
+
+body { text-align:center; }
+.container { text-align:left; }
+ol { margin-left:2em; }
+sup { vertical-align:text-top; }
+sub { vertical-align:text-bottom; }
+html>body p code { white-space:normal; }
+hr { margin:-8px auto 11px; }
+fieldset { padding-top:0; }
+
+/* Utility Classes */
+/* --------------- */
+
+/* WP Styling */
+/* ---------- */
+
+
+.small {
+	font-size:.8em;
+	margin-bottom:1.875em;
+	line-height:1.5em;
+}
+
+.wp-caption {
+    background-color: $caption_bg;
+    border: 1px solid $caption_border;
+    @include rounded(3px);    
+	margin: 10px;
+    padding: 5px;
+    text-align: center;
+}
+
+.frontpagefeature,
+.single #content,
+.archive .shows,
+.page-template-news-archive-php .posts,
+.category .post,
+.non_homepage .posts
+//.page .posts
+{
+    color:#111;
+	@include rounded(5px);    
+	@include shadow(5px,#333);
+	@include gradient(top, $white_box_gradient1, $white_box_gradient2,$white_box_gradient2);	 
+    margin:0 0 10px 0;
+    overflow:hidden;
+    padding:10px 10px 0 10px;
+    //font-family: 'HarabaraRegular',Arial,sans-serif;
+}
+
+.single #content h2, .archive .shows h2, .page .posts h2, .category .post h2{
+    //font-size: 1.9em;
+    letter-spacing: 0.05em;
+	font-weight:normal;
+	//margin-top:10px;
+	margin-bottom:10px;
+}
+
+.single #content p, .archive .shows p, .page .posts p, .category .posts p{
+	margin-bottom:10px;
+	font-family: Arial, sans-serif;
+}
+.home #content .posts{
+background:none;
+margin:0 ;
+overflow:hidden;
+padding:0;
+	//@include harabara;
+     /* width: 740px; */
+}
+
+@include clearfix();
+
+// breadcrumbs
+#breadcrumbs,
+div#sidebar .widget h2,
+div.navigation
+{
+ 	@include rounded (5px);
+	@include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
+	color:$white_text;
+	@include harabara;	
+	margin-bottom: 10px;
+	padding:5px 10px;
+}
+div.navigation{
+   height: 30px;
+}
+
+#breadcrumbs{
+	//margin-bottom: 10px;
+}
+
+#breadcrumbs a, #breadcrumbs a:hover,
+div#sidebar .widget h2 a,
+div#sidebar .widget h2 a:hover,
+.navigation a
+{
+	color: $white_text;
+	padding: 0;
+}
+#breadcrumbs a:hover,
+div#sidebar .widget h2 a:hover,
+.navigation a:hover
+{
+	border-bottom:1px solid $white_text;
+}
+
+.home #breadcrumbs{
+   display: none;
+}
+
+.nav-next{
+   float: right;
+   text-align: right;
+}
+.nav-previous{
+   float: left;
+   text-align: left;
+}
+
+/* Headers */
+h1,h2 {
+	@include harabara;
+}
+h3 {
+	font: bold 1.2em sans-serif;
+}
+
+.shows-image, .shows-thumb{
+   margin-right: 10px;
+   margin-bottom: 10px; 
+}

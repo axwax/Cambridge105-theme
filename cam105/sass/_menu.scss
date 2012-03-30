@@ -1,0 +1,95 @@
+@import "colours";
+@import "fonts";
+@import "mixins";
+$menu_font_size: 20px;
+$submenu_font_size: 15px;
+$menu_padding: 7px;
+$menu_width: 1000px;
+
+/* Menu */
+.header-menu {
+	height: $menu_font_size + (2 * $menu_padding);
+   @include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
+	}
+
+.header-menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	z-index: 20;
+}
+
+.header-menu ul.menu{
+	width: $menu_width;
+	position: relative;
+	margin: 0 auto;
+}
+
+.header-menu ul ul {
+width: 100%;
+}
+
+.header-menu a {
+	display: block;
+	font-family: 'HarabaraRegular',Arial,sans-serif;
+	font-size: $menu_font_size;
+	color: #ffffff;
+	padding: $menu_padding;
+	text-decoration: none;
+   @include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 		
+  letter-spacing: 2px;
+  height: $menu_font_size;
+}
+
+.header-menu ul li {
+   margin-left:0;
+	font-size: $menu_font_size;
+   line-height: $menu_font_size;
+}
+
+.header-menu ul ul li a {
+	font-size: $submenu_font_size;
+   line-height: $submenu_font_size;
+	padding: $menu_padding 10px;
+	background: #486D25;
+}
+
+.header-menu a:hover {
+	color: #000;
+	background: #ffffff;
+	border: none; 
+}
+
+.header-menu li {
+	position: relative;
+	float: left;
+}
+
+
+
+.header-menu ul ul li {
+	width: 200px; 
+}
+
+.header-menu ul ul ul {
+	position: absolute;
+	top: 0;
+	left: 100%;    
+}
+
+div.header-menu ul ul,
+div.header-menu ul li:hover ul ul,
+div.header-menu ul ul li:hover ul ul
+{
+	display: none;
+}
+
+div.header-menu ul li:hover ul,
+div.header-menu ul ul li:hover ul,
+div.header-menu ul ul ul li:hover ul
+{
+	display: block; 
+}         
+
+/* End Menu */

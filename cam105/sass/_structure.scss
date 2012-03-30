@@ -1,0 +1,267 @@
+@import "colours";
+@import "fonts";
+@import "mixins";
+$page_width: 1000px;
+$sidebar_width: 230px;
+
+
+/* structure */
+body{
+  margin: 0;
+  padding: 0;
+  
+}
+
+#page {
+  text-align: left;
+}
+
+#page #header {
+     /*width: 1000px;
+     margin:0 auto;*/
+}
+
+#page #header #logo {
+/* padding-bottom: 1em; */
+     width: $page_width;
+     margin:0 auto;
+}
+
+#page .header-menu {
+    /* clear: both;
+     width: 1000px;
+     margin:0 auto; */
+     /* padding: 0pt 80px; */
+}
+
+#page #main {
+  background-color:#444; 
+  /*padding:0 10px 0px 10px;*/
+     width: $page_width;
+     margin:0 auto;
+  /* margin-bottom:10px; */
+}
+
+#page #main #container {
+  background-color: #444;
+  margin-top:10px; 
+  
+}
+
+#page #main #container #content{
+  float:left;
+  //width: 720px;
+  width: 760px;
+  //width: $page_width - 10px - 10px - $sidebar_width - 10px;
+}
+.home #page #main #container #content{
+//width: 740px;
+}
+.single #page #main #container #content{
+width: 740px;
+}
+.non_homepage #page #main {
+//width: 1020px;
+}
+
+
+#page #main #container #sidebar{
+ display: block;
+	float: left; 
+	border: none;
+	width: $sidebar_width;
+	margin-left: 10px;
+}
+#page #main #container  #sidebar .widget{
+  margin-bottom:10px;
+color:#000;
+}
+
+#page #above-footer-widgets {
+     /* margin-left: 80px; */
+     width: $page_width;
+     margin:0 auto;
+}
+
+#page #footer{
+  /*
+  padding:0 10px 0 10px;
+  width: 1000px;
+  margin:0 auto;
+  */
+}
+#page #footer {
+  padding:0 10px 0 10px;
+}
+
+
+/* multi column */
+
+/* 2 columns */
+.twocol{
+
+	margin:0 0 10px 0;
+	overflow:hidden;
+	padding:0;
+}
+
+.twocol div.twocol-content{
+  /*
+	background-color:#486D25;
+	color:#fff;
+    border-radius: 5px;
+    -moz-border-radius: 5px;    
+
+    background-image: -moz-linear-gradient(top, #56822c, #445533); 
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #56822c),color-stop(1, #445533));
+	min-height:170px;
+	position:relative;
+  */
+	font: 1em Arial,Tahoma,sans-serif;
+	line-height:1.3em;
+    /*width: 345px; */
+	width: 330px;
+	padding: 10px;
+	float: left;
+	display:block;
+}
+.twocol div .wp-caption {
+  margin: 0 0 10px 0;
+}
+.twocol div img{margin:0;padding:0;}
+.twocol div span{
+	font-weight:600;
+	display:block;
+/*
+	padding: 0px 0px 0px 50px;
+	position:absolute; top:50%; height:180px; margin-top:-90px;
+	*/
+}	
+.twocol-1 {
+	margin: 0 10px 0 0;
+}
+
+.twocol-2 {
+	margin: 0 0 0 0;
+}
+
+.twocol-content h2 {
+    border-bottom: 1px solid #333333;
+}
+.twocol-content ul {
+    margin: 9px 0 9px 9px;
+    padding: 3px 0 0 18px;
+}
+.twocol-content ul li {
+    line-height: 18px;
+}
+
+/* 3 columns */
+
+.threecol{
+  margin:0 0 10px 0;
+  overflow:hidden;
+  padding:0;
+}
+
+.threecol div.threecol-content{
+  padding: 10px 10px 0 10px;
+  float: left;
+  position:relative;
+  display:block;
+  width: (680px /3);
+
+}
+.threecol div img{
+  margin:0;
+  padding:0;
+}
+.threecol div span{
+  font-weight:600;
+  display:block;
+  position:absolute;
+  padding: 0px 0px 0px 50px;
+  margin-top:-90px;
+  top:50%;
+  height:180px;
+}	
+.threecol-1 {
+  margin: 0 10px 0 0;
+}
+.threecol-2 {
+  margin: 0 10px 0 0;
+}
+.threecol-3 {
+  margin: 0 0 0 0;
+}
+
+// threecol styling
+.threecol-frontpage div.threecol-content{
+  color: $white_text;
+  @include rounded(5px);
+  @include gradient(top, $green_box_gradient2, $green_box_gradient1, $dark_green);
+  font: 1em Arial,Tahoma,sans-serif;
+  min-height:265px;
+}
+.threecol-frontpage div.threecol-content p{
+  line-height:1.3em;
+}
+
+/* 4 columns */
+
+.fourcol{
+  margin:0 0 10px 0;
+  overflow:hidden;
+  padding:0;
+}
+
+.fourcol div.fourcol-content{
+  padding: 10px;
+  float: left;
+  position:relative;
+  display:block;
+  width: 160px;
+
+}
+.fourcol div img{
+  margin:0;
+  padding:0;
+}
+/*	
+.fourcol-1 {
+  margin: 0 10px 0 0;
+}
+.fourcol-2 {
+  margin: 0 10px 0 0;
+}
+.fourcol-3 {
+  margin: 0 10px 0 0;
+}
+.fourcol-4 {
+  margin: 0 0 0 0;
+}*/
+
+.fourcol .shows-thumb{
+  margin: 0 5px 10px 5px;
+}
+.fourcol .thumb-caption{
+  margin: 0 0 0 5px;
+}
+
+/* end multi columns */
+
+.single-shows #content {
+  min-height:500px;
+}
+
+
+// single posts //
+.single-post img.alignleft {
+  border: 1px solid $medium_grey;
+  margin: 5px 10px 0 0;
+}
+
+.entry a:hover {
+  text-decoration: underline;
+  border-bottom: 1px solid $hover_green;
+}
