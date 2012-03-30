@@ -1,11 +1,4 @@
 <?php
-/*
-File Description: Cambridge105 custom functions
-Author: Axel Minet
-Theme Version: 0.5.11
-*/
-# include custom post types
-include 'gigx_cpt_shows.php';
 # add facebook thumbnail size
       	add_image_size( 'facebook-thumb', 130, 130, true );
 
@@ -41,28 +34,13 @@ function gigx_find_image_attachment($post_id=0){
   	}
   	return 0;
 }
-# remove default widgets
-// unregister all default WP Widgets
-function unregister_default_wp_widgets() {
-    unregister_widget('WP_Widget_Pages');
-    unregister_widget('WP_Widget_Calendar');
-    unregister_widget('WP_Widget_Archives');
-    unregister_widget('WP_Widget_Links');
-    unregister_widget('WP_Widget_Meta');
-    unregister_widget('WP_Widget_Search');
-    unregister_widget('WP_Widget_Categories');
-    unregister_widget('WP_Widget_Recent_Posts');
-    unregister_widget('WP_Widget_Recent_Comments');
-    unregister_widget('WP_Widget_RSS');
-    unregister_widget('WP_Widget_Tag_Cloud');
-}
-add_action('widgets_init', 'unregister_default_wp_widgets', 1);
 
-# style select box for editor
-/* Custom CSS styles on WYSIWYG Editor */
-add_filter('gigx_editor_styles','cam105_editor_styles');
-function cam105_editor_styles($styles){
-    $styles.=',105Box=cam105_box';
-    return $styles;
-}
-?>
+# untested
+// allow contributors to upload files
+	if ( current_user_can('contributor') && !current_user_can('upload_files') )
+		add_action('admin_init', 'allow_contributor_uploads');
+	function allow_contributor_uploads() {
+		$contributor = get_role('contributor');
+		$contributor->add_cap('upload_files');
+	}
+	?>
