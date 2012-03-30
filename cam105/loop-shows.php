@@ -4,6 +4,13 @@ File Description: The Loop for "Shows" Custom Post Type (list as well as single 
 Author: Axel Minet
 Theme Version: 0.6.2
 */
+
+function related_order($input) {
+   return 'COUNT(wp_term_relationships.object_id) DESC';
+   
+   //return 'COUNT(wp_term_relationships.object_id) DESC, wp_posts.post_date DESC';
+}
+
 ?>       
 <div id="shows-container" class="shows-container">
 		
@@ -138,15 +145,10 @@ Theme Version: 0.6.2
                      'orderby'=> 'rand'
                    );
                    //$my_query = new WP_Query($args);
-function related_order($input) {
-   return 'COUNT(wp_term_relationships.object_id) DESC';
-   
-return 'COUNT(wp_term_relationships.object_id) DESC, wp_posts.post_date DESC';
-}
 
-add_filter('posts_orderby', 'related_order');
-$my_query = new WP_Query($args);
-remove_filter('posts_orderby', 'related_order');
+                  add_filter('posts_orderby', 'related_order');
+                  $my_query = new WP_Query($args);
+                  remove_filter('posts_orderby', 'related_order');
                    
                    if( $my_query->have_posts()  && is_single()) {
                      ?><h2 class="related-shows">Related Shows:</h2>
@@ -195,7 +197,8 @@ remove_filter('posts_orderby', 'related_order');
                     </div><!-- #nav-below -->
                   <?php endif; ?>
         			</div>
-               <?php comments_template( '', true ); ?> 			
+               <?php comments_template( '', true ); ?>
+               <?php if (is_single()) edit_post_link('edit', '<p>', '</p>'); ?>
       		<?php endwhile; ?>
               
          <?php else : ?>      	

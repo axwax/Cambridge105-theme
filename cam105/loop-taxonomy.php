@@ -1,13 +1,13 @@
 <?php
 /*
-File Description: The Loop for Taxonomies (frequency and tag)
+File Description: The Loop for Taxonomies (frequency, tag and categories (eg podcasts))
 Author: Axel Minet
 Theme Version: 0.6.2
 */
  
 $categorydesc = category_description(); 
 if ( ! empty( $categorydesc ) ) {
-	echo apply_filters( 'archive_meta', '<div class="archive-meta">' . $categorydesc . '</div>' );
+	//echo apply_filters( 'archive_meta', '<div class="archive-meta">' . $categorydesc . '</div>' );
 } ?>
        
 <div class="taxonomy list <?php if (is_tag()) echo "tag";
@@ -38,7 +38,7 @@ if ( ! empty( $categorydesc ) ) {
                 	</div>  
                 <?php endif; ?>
         				<div class="entry"> 
-        					<?php the_content('more &raquo;'); ?>
+        					<?php echo gigx_excerpt (get_the_content(),get_the_excerpt(),false,500,$permalink,'(more...)',True); ?>
         				</div>        				
         		<!--		<p class="postmetadata"><?php the_tags('Tags: ', ', ', '<br />'); ?> Posted by <?php if (function_exists('author_exposed')) {author_exposed(get_the_author_meta('display_name'));}   ?> in <?php the_category(', ') ?> | <?php edit_post_link('Edit', '', ' | '); ?>  <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;', '% Comments &#187;'); ?></p>  -->
               	<?php if ( is_active_sidebar( 'below_entry_widgets' ) ) : // Nothing here by default and design ?>

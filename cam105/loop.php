@@ -57,7 +57,8 @@ Theme Version: 0.6.1
                   <?php endif; ?>					 
         			</div>
     
-               <?php comments_template( '', true ); ?> 			
+               <?php comments_template( '', true ); ?>
+               <?php if (is_single()) edit_post_link('edit', '<p>', '</p>'); ?>
       		<?php endwhile; ?>
               
       	<?php else : ?>
