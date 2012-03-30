@@ -25,7 +25,7 @@ else {
 }
 get_header();
 ?>
-	<div id="content">
+	<div id="content" class="main_columns">
    
       <?php wp_nav_menu( array( 'theme_location' => 'above-posts', 'sort_column' => 'menu_order', 'fallback_cb' => 'header_menu', 'container_class' => 'header-menu' ) ); ?>
 

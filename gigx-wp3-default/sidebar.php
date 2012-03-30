@@ -4,7 +4,7 @@ File Description: The Sidebar
 Built By: GIGX
 Theme Version: 0.5.12
 */
-?><div id="sidebar">
+?><div id="sidebar" class="main_columns">
 	<div id="sidebar-right">   
 		<?php if ( function_exists('dynamic_sidebar') && dynamic_sidebar('main_sidebar') ) : else : ?>	    
 	    <div id="archives" class="widget widget_recent">
