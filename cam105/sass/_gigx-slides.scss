@@ -2,9 +2,11 @@
 CSS for the gallery widget
 */
 
-$slideshow_width: 720px;
+$slideshow_width: 740px;
 $slideshow_height: 225px;
-$slide_text_width: 400px;
+$slide_image_width: 300px;
+$slideshow_padding: 10px;
+$slide_text_width: $slideshow_width - (2 * $slideshow_padding) - $slide_image_width;
 
 /* general slideshow styles */
 .gigx-slideshow{
