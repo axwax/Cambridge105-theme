@@ -66,7 +66,7 @@ function query_post_type($query) {
 add_filter('pre_get_posts', 'query_post_type');
 
 # include custom post types
-include 'functions/gigx_cpt_shows.php';
+include 'functions/gigx-cpt-shows.php';
 
 # posts to posts stuff #
 # (linking podcasts to shows) #

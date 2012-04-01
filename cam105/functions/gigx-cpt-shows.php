@@ -144,5 +144,5 @@ function create_shows_taxonomies()
     'rewrite' => array( 'slug' => 'frequency' ),
   ));
 }
-
+//include('gigx-shows-custom-columns.php');
 ?>
