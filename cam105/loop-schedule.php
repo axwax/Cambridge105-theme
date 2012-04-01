@@ -6,7 +6,10 @@ Theme Version: 0.6.2
 */
 ?>
 <div class="posts">
-<?
+                  <?php if ( function_exists('yoast_breadcrumb') && $postcount ==0) {
+                     yoast_breadcrumb('<div id="breadcrumbs">','</div>');
+                  } ?>
+                  <?
 
 require_once $_SERVER['DOCUMENT_ROOT']."/schedule_info/Schedule.class.php"; 
 
@@ -330,7 +333,7 @@ $j.fn.disableSelection = function() {
 #schedule_container
 {
 	padding: 0px;
-	margin: 0px;
+	margin: 0 0 10px 0;
 	font-family: sans-serif;
 	font-size: 10px;
 	line-height: 13px;	
