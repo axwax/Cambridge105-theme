@@ -160,6 +160,7 @@ for($i = 0; $i < 24; $i++)
 
 ?>
 <script type="text/javascript">
+
 var shows = <?=json_encode($rawEntries)?>;
 var offset = <?=$startHour?>;
 var sImagePrefix = '<?=$sImagesPrefix?>';
@@ -213,9 +214,11 @@ $j(function()
 		var nAdditionalWidth = 0;
 		if(show.image != null)
 		{
-			$j("#popup_image").css("background-image", "url('" + sImagePrefix + show.image + "')");
-			$j("#popup_image").show();
+			$j("#popup_image").css("background-image", "url('" + sImagePrefix + show.image + "')")
+				.show();
+			
 			nAdditionalWidth += 105;
+				
 			$j("#popup_description_inner").css("margin-left", 105);
 		}
 		else
@@ -223,6 +226,14 @@ $j(function()
 			$j("#popup_description_inner").css("margin-left", 0);
 			$j("#popup_image").hide();
 		}
+		
+		$j('#popup_title_inner, #popup_image')
+			.css('cursor', 'pointer')
+			.click(function()
+			{
+				window.location = show.url;
+			});		
+		
 		var nWidth = 275 + nAdditionalWidth;
 		var nTop =  parseInt($j(this).css("top")) + 0;
 		var nCentre = parseInt($j(this).css("left")) + (parseInt($j(this).css("width")) / 2);
