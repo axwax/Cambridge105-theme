@@ -1,1 +1,357 @@
-.wp-admin #wphead{height:42px}.wp-admin #wphead h1{font-size:28px}.wrap h2{font-size:22px;line-height:28px;padding:9px 15px 2px 0}.curtime #timestamp{background-image:none}.curtime #timestamp{background-position:left top;background-repeat:no-repeat;padding-left:0}html,.wp-dialog{background-color:#e9ee9f !important}#post-body{background:none repeat scroll 0 0 #e9ee9f !important;border-bottom-color:#e9ee9f !important;border-top-color:#e9ee9f !important}.themes-php .wrap,.theme-install-php .wrap,.appearance_page_custom-background .wrap,.appearance_page_custom-header .wrap{background-color:#f3f3f3 !important;background-image:-webkit-linear-gradient(center top, #f9f9f9, #f3f3f3) !important;background-image:-moz-linear-gradient(center top, #f9f9f9, #f3f3f3) !important;background-image:-ms-linear-gradient(center top, #f9f9f9, #f3f3f3) !important;background-image:-o-linear-gradient(center top, #f9f9f9, #f3f3f3) !important;background-image:linear-gradient(center top, #f9f9f9, #f3f3f3) !important;padding:0 10px !important}.themes-php .nav-tab-active,.theme-install-php .nav-tab-active{font-weight:bold}.themes-php .nav-tab:hover,.theme-install-php .nav-tab:hover{text-decoration:underline}#menu-management .nav-tab,.menu-edit #post-body{background-color:#f3f3f3 !important;background-image:-webkit-linear-gradient(center top, #f9f9f9, #f3f3f3) !important;background-image:-moz-linear-gradient(center top, #f9f9f9, #f3f3f3) !important;background-image:-ms-linear-gradient(center top, #f9f9f9, #f3f3f3) !important;background-image:-o-linear-gradient(center top, #f9f9f9, #f3f3f3) !important;background-image:linear-gradient(center top, #f9f9f9, #f3f3f3) !important}.item-type,.postbox-title-action a{color:#fff !important}.item-controls{padding:7px 0 !important}.mceIframeContainer{background-color:#fff}#widget-list .widget-top,.widget .widget-top,.postbox h3,.stuffbox h3,.widefat thead tr th,.widefat tfoot tr th,h3.dashboard-widget-title,h3.dashboard-widget-title span,h3.dashboard-widget-title small,.find-box-head,.sidebar-name,#nav-menu-header,#nav-menu-footer,.menu-item-handle,#fullscreen-topbar{background-color:#486d25;background-image:-webkit-linear-gradient(bottom, #56822c, #83ae2c);background-image:-moz-linear-gradient(bottom, #56822c, #83ae2c);background-image:-ms-linear-gradient(bottom, #56822c, #83ae2c);background-image:-o-linear-gradient(bottom, #56822c, #83ae2c);background-image:linear-gradient(bottom, #56822c, #83ae2c);color:#fff !important;text-shadow:none !important;font:13px/18px Georgia,"Times New Roman","Bitstream Charter",Times,serif !important}.metabox-prefs,h1#site-heading a,.widefat thead tr th,.widefat tfoot tr th,h3.dashboard-widget-title,h3.dashboard-widget-title span,h3.dashboard-widget-title small,.find-box-head,#wphead{background:#83ae2c !important;color:#fff !important}.widefat th{color:#112845 !important;text-shadow:none !important}.widefat thead tr th a,.widefat tfoot tr th a{color:#fff !important;font-weight:normal}.wp-admin #wphead{margin:0 0 0 -15px !important;border-color:#486d25 !important}#wphead h1{padding-top:5px}#header-logo{margin:5px 7px 0 15px !important}#screen-options-wrap,#contextual-help-wrap{background-color:#83ae2c;border-color:#486d25;color:#fff}#screen-options-link-wrap,#contextual-help-link-wrap{border-right:1px solid transparent;border-left:1px solid transparent;border-bottom:1px solid transparent;background-color:#486d25;background-image:-webkit-linear-gradient(center bottom, #56822c, #83ae2c);background-image:-moz-linear-gradient(center bottom, #56822c, #83ae2c);background-image:-ms-linear-gradient(center bottom, #56822c, #83ae2c);background-image:-o-linear-gradient(center bottom, #56822c, #83ae2c);background-image:linear-gradient(center bottom, #56822c, #83ae2c)}#screen-meta-links a.show-settings{text-shadow:none !important;color:#fff !important}#screen-meta-links a.show-settings,.toggle-arrow{background:transparent url(../images/arrows-dark.png) no-repeat right 3px}#screen-meta-links .screen-meta-active a.show-settings{background:transparent url(../images/arrows-dark.png) no-repeat right -33px}.meta-box-sortables .postbox:hover .handlediv{background:transparent url(../images/arrows-dark.png) no-repeat 6px 7px}#user_info_arrow{background:transparent url(../images/arrows-dark.png) no-repeat 6px 5px}#user_info:hover #user_info_arrow,#user_info.active #user_info_arrow{background:transparent url(../images/arrows.png) no-repeat 6px 5px}#update-nag,.update-nag{margin-left:0 !important}#poststuff #editor-toolbar{background:#83ae2c !important;color:#fff !important}.podcast_form{color:#111;border-radius:5px;-moz-border-radius:5px;-moz-box-shadow:5px 5px 5px #333;-webkit-box-shadow:5px 5px 5px #333;box-shadow:5px 5px 5px #333;background-color:#fff;background-image:-webkit-linear-gradient(top, #fafafa, #fff);background-image:-moz-linear-gradient(top, #fafafa, #fff);background-image:-ms-linear-gradient(top, #fafafa, #fff);background-image:-o-linear-gradient(top, #fafafa, #fff);background-image:linear-gradient(top, #fafafa, #fff);margin:20px 0 10px 0;overflow:hidden;padding:10px}#adminmenu div.wp-menu-image{float:left;width:1px;height:28px}#adminmenu .wp-menu-image a{display:none}#wp-admin-bar-wp-logo{display:none}#adminmenuback,#adminmenuwrap{background-color:#83ae2c;border-color:#486d25;border-right-color:#ddd}#adminmenu li.wp-menu-separator{display:none}#adminmenu div.separator{border-color:#0e6ac8}#adminmenu a.menu-top,.folded #adminmenu li.menu-top,#adminmenu .wp-submenu .wp-submenu-head{border-top-color:#486d25;border-bottom-color:#000}#adminmenu a{color:#fff}#adminmenu .wp-submenu a{color:#777}#adminmenu a:hover,#adminmenu li.menu-top>a:focus,#adminmenu ul.wp-submenu a:hover{color:#fff}#adminmenu li.menu-top:hover>a,#adminmenu li.menu-top.focused>a,#adminmenu li.menu-top>a:focus{background-color:#486d25;text-shadow:0 -1px 0 rgba(0,0,0,0.4)}#adminmenu li.wp-not-current-submenu:hover>a{border-top-color:#000;border-bottom-color:#000}#adminmenu li.wp-not-current-submenu .wp-menu-arrow{border-top-color:#000;border-bottom-color:#000;background:#486d25}#adminmenu li.wp-not-current-submenu .wp-menu-arrow div{background:#486d25;border-color:#000}#collapse-menu{color:rgba(255,255,255,0.3)}#collapse-menu:hover{color:#fff}#collapse-menu:hover #collapse-button{border-color:rgba(255,255,255,0.4);background-color:#486d25;background-image:-webkit-linear-gradient(center bottom, #333, #486d25);background-image:-moz-linear-gradient(center bottom, #333, #486d25);background-image:-ms-linear-gradient(center bottom, #333, #486d25);background-image:-o-linear-gradient(center bottom, #333, #486d25);background-image:linear-gradient(center bottom, #333, #486d25)}#collapse-button{border-color:rgba(255,255,255,0.2);background-color:#000;background-image:-webkit-linear-gradient(center bottom, #111, #000);background-image:-moz-linear-gradient(center bottom, #111, #000);background-image:-ms-linear-gradient(center bottom, #111, #000);background-image:-o-linear-gradient(center bottom, #111, #000);background-image:linear-gradient(center bottom, #111, #000)}#adminmenu .awaiting-mod,#adminmenu .update-plugins,#sidemenu a .update-plugins,#rightnow .reallynow{background-color:#464646;box-shadow:0 1px 0 rgba(255,255,255,0.5);color:#FFFFFF}.folded #adminmenu .wp-submenu-head{border-bottom-color:#ccc;border-top-color:#ccc}.folded #adminmenu li.wp-has-current-submenu,.folded #adminmenu li.current.menu-top{border-bottom-color:#6D6D6D;border-top-color:#808080}#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu,#adminmenu li.current a.menu-top,#adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head{border-bottom-color:#56822c;border-top-color:#83ae2c;color:#FFFFFF;text-shadow:0 -1px 0 #333}#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu,#adminmenu li.current a.menu-top,.folded #adminmenu li.wp-has-current-submenu,.folded #adminmenu li.current.menu-top,#adminmenu .wp-menu-arrow,#adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head{background-color:#486d25;background-image:-webkit-linear-gradient(center bottom, #56822c, #83ae2c);background-image:-moz-linear-gradient(center bottom, #56822c, #83ae2c);background-image:-ms-linear-gradient(center bottom, #56822c, #83ae2c);background-image:-o-linear-gradient(center bottom, #56822c, #83ae2c);background-image:linear-gradient(center bottom, #56822c, #83ae2c)}#adminmenu .wp-menu-arrow div{background-color:#486d25;background-image:-webkit-linear-gradient(right bottom, #56822c, #83ae2c);background-image:-moz-linear-gradient(right bottom, #56822c, #83ae2c);background-image:-ms-linear-gradient(right bottom, #56822c, #83ae2c);background-image:-o-linear-gradient(right bottom, #56822c, #83ae2c);background-image:linear-gradient(right bottom, #56822c, #83ae2c)}a,#the-comment-list p.comment-author strong a,#media-upload a.del-link,#media-items a.delete,.plugins a.delete,.ui-tabs-nav a{color:#486d25}#wpadminbar .quicklinks .menupop ul li a,#wpadminbar .quicklinks .menupop ul li a strong,#wpadminbar .quicklinks .menupop.hover ul li a,#wpadminbar.nojs .quicklinks .menupop:hover ul li a{color:#486d25}#wpadminbar .ab-submenu .ab-item{color:#486d25}#adminmenu .wp-submenu a:hover,#adminmenu .wp-submenu a:focus{background-color:#e9ee9f}#wpadminbar .menupop li:hover,#wpadminbar .menupop li.hover,#wpadminbar .quicklinks .menupop .ab-item:focus,#wpadminbar .quicklinks .ab-top-menu .menupop .ab-item:focus{background-color:#e9ee9f}
+/*Increase Site Title Size (by Otto)*/
+.wp-admin #wphead {
+  height: 42px; }
+
+.wp-admin #wphead h1 {
+  font-size: 28px;
+  /* font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;  */ }
+
+/* remove icon next to page title */
+/*
+.wp-admin .icon32 {
+	display:none;
+}
+*/
+/*Reduce Page Heading Size*/
+.wrap h2 {
+  font-size: 22px;
+  line-height: 28px;
+  padding: 9px 15px 2px 0; }
+
+/*Remove pointless publish icon*/
+.curtime #timestamp {
+  background-image: none; }
+
+.curtime #timestamp {
+  background-position: left top;
+  background-repeat: no-repeat;
+  padding-left: 0; }
+
+/* main page background */
+html, .wp-dialog {
+  background-color: #e9ee9f !important; }
+
+/* new/edit post background */
+#post-body {
+  background: none repeat scroll 0 0 #e9ee9f !important;
+  border-bottom-color: #e9ee9f !important;
+  border-top-color: #e9ee9f !important; }
+
+/* appearance/themes background and padding */
+.themes-php .wrap, .theme-install-php .wrap, .appearance_page_custom-background .wrap, .appearance_page_custom-header .wrap {
+  background-color: #f3f3f3 !important;
+  background-image: -webkit-linear-gradient(center top, #f9f9f9, #f3f3f3) !important;
+  background-image: -moz-linear-gradient(center top, #f9f9f9, #f3f3f3) !important;
+  background-image: -ms-linear-gradient(center top, #f9f9f9, #f3f3f3) !important;
+  background-image: -o-linear-gradient(center top, #f9f9f9, #f3f3f3) !important;
+  background-image: linear-gradient(center top, #f9f9f9, #f3f3f3) !important;
+  padding: 0 10px !important; }
+
+.themes-php .nav-tab-active, .theme-install-php .nav-tab-active {
+  font-weight: bold; }
+
+.themes-php .nav-tab:hover, .theme-install-php .nav-tab:hover {
+  text-decoration: underline; }
+
+/*
+
+.themes-php .nav-tab:hover, .themes-php .nav-tab-active {
+    border-color: $red;
+    border-width: 1px;
+	background-color: $caption_bg !important;	
+}
+.themes-php .nav-tab {
+background-color: $main_green;
+}
+*/
+/* appearance/menus background */
+#menu-management .nav-tab, .menu-edit #post-body {
+  background-color: #f3f3f3 !important;
+  background-image: -webkit-linear-gradient(center top, #f9f9f9, #f3f3f3) !important;
+  background-image: -moz-linear-gradient(center top, #f9f9f9, #f3f3f3) !important;
+  background-image: -ms-linear-gradient(center top, #f9f9f9, #f3f3f3) !important;
+  background-image: -o-linear-gradient(center top, #f9f9f9, #f3f3f3) !important;
+  background-image: linear-gradient(center top, #f9f9f9, #f3f3f3) !important; }
+
+/* appearance/menus header item type text */
+.item-type, .postbox-title-action a {
+  color: white !important; }
+
+/* appearance/menus header item type position */
+.item-controls {
+  padding: 7px 0 !important; }
+
+/* mce Editor background */
+.mceIframeContainer {
+  background-color: white; }
+
+/* dark green font for menu headings, links, tabs etc */
+/*
+a, #poststuff #edButtonPreview, #poststuff #edButtonHTML, #the-comment-list p.comment-author strong a, #media-upload a.del-link, #media-items a.delete, .plugins a.delete, .ui-tabs-nav a {
+	color: $dark_green !important;
+}
+*/
+/* main green bg on boxes & widget headers */
+.widget .widget-top, .postbox h3, .stuffbox h3 {
+  /*
+  	background: $main_green !important;
+  	color: $white_text !important;
+  	text-shadow: none !important;
+  	font:13px/18px Georgia,"Times New Roman","Bitstream Charter",Times,serif !important;
+  */ }
+
+/* more widget headers */
+#widget-list .widget-top,
+.widget .widget-top,
+.postbox h3,
+.stuffbox h3,
+.widefat thead tr th,
+.widefat tfoot tr th,
+h3.dashboard-widget-title,
+h3.dashboard-widget-title span,
+h3.dashboard-widget-title small,
+.find-box-head,
+.sidebar-name,
+#nav-menu-header,
+#nav-menu-footer,
+.menu-item-handle,
+#fullscreen-topbar {
+  background-color: #486d25;
+  background-image: -webkit-linear-gradient(bottom, #56822c, #83ae2c);
+  background-image: -moz-linear-gradient(bottom, #56822c, #83ae2c);
+  background-image: -ms-linear-gradient(bottom, #56822c, #83ae2c);
+  background-image: -o-linear-gradient(bottom, #56822c, #83ae2c);
+  background-image: linear-gradient(bottom, #56822c, #83ae2c);
+  color: white !important;
+  text-shadow: none !important;
+  font: 13px/18px Georgia, "Times New Roman", "Bitstream Charter", Times, serif !important; }
+
+/* main green bg on table headers */
+.metabox-prefs, h1#site-heading a, .widefat thead tr th, .widefat tfoot tr th, h3.dashboard-widget-title, h3.dashboard-widget-title span, h3.dashboard-widget-title small, .find-box-head, #wphead {
+  background: #83ae2c !important;
+  color: white !important; }
+
+/* table headers */
+.widefat th {
+  color: #112845 !important;
+  text-shadow: none !important; }
+
+/* White Font for Links on Table Headers */
+.widefat thead tr th a, .widefat tfoot tr th a {
+  color: white !important;
+  /* font-size:11px; */
+  font-weight: normal; }
+
+/* main header */
+.wp-admin #wphead {
+  margin: 0 0 0 -15px !important;
+  border-color: #486d25 !important; }
+
+#wphead h1 {
+  padding-top: 5px; }
+
+/* header logo fix */
+#header-logo {
+  margin: 5px 7px 0 15px !important; }
+
+/* screen options */
+#screen-options-wrap, #contextual-help-wrap {
+  background-color: #83ae2c;
+  border-color: #486d25;
+  color: white; }
+
+/* screen options & help button */
+#screen-options-link-wrap,
+#contextual-help-link-wrap {
+  border-right: 1px solid transparent;
+  border-left: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  background-color: #486d25;
+  background-image: -webkit-linear-gradient(center bottom, #56822c, #83ae2c);
+  background-image: -moz-linear-gradient(center bottom, #56822c, #83ae2c);
+  background-image: -ms-linear-gradient(center bottom, #56822c, #83ae2c);
+  background-image: -o-linear-gradient(center bottom, #56822c, #83ae2c);
+  background-image: linear-gradient(center bottom, #56822c, #83ae2c); }
+
+/* screen options & help button text */
+#screen-meta-links a.show-settings {
+  text-shadow: none !important;
+  color: white !important; }
+
+/* screen options & help button arrow */
+#screen-meta-links a.show-settings,
+.toggle-arrow {
+  background: transparent url(../images/arrows-dark.png) no-repeat right 3px; }
+
+/* screen options & help button arrow */
+#screen-meta-links .screen-meta-active a.show-settings {
+  background: transparent url(../images/arrows-dark.png) no-repeat right -33px; }
+
+/* post box header arrow */
+.meta-box-sortables .postbox:hover .handlediv {
+  background: transparent url(../images/arrows-dark.png) no-repeat 6px 7px; }
+
+/* user info arrow (top-right corner) */
+#user_info_arrow {
+  background: transparent url(../images/arrows-dark.png) no-repeat 6px 5px; }
+
+#user_info:hover #user_info_arrow,
+#user_info.active #user_info_arrow {
+  background: transparent url(../images/arrows.png) no-repeat 6px 5px; }
+
+/* update nag position fix*/
+#update-nag, .update-nag {
+  margin-left: 0 !important; }
+
+/* editor toolbar background */
+#poststuff #editor-toolbar {
+  background: #83ae2c !important;
+  color: white !important; }
+
+/* podcast form */
+.podcast_form {
+  color: #111111;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -moz-box-shadow: 5px 5px 5px #333333;
+  -webkit-box-shadow: 5px 5px 5px #333333;
+  box-shadow: 5px 5px 5px #333333;
+  background-color: white;
+  background-image: -webkit-linear-gradient(top, #fafafa, white);
+  background-image: -moz-linear-gradient(top, #fafafa, white);
+  background-image: -ms-linear-gradient(top, #fafafa, white);
+  background-image: -o-linear-gradient(top, #fafafa, white);
+  background-image: linear-gradient(top, #fafafa, white);
+  margin: 20px 0 10px 0;
+  overflow: hidden;
+  padding: 10px; }
+
+/* new adminmenu (sidebar)*/
+#adminmenu div.wp-menu-image {
+  float: left;
+  width: 1px;
+  height: 28px; }
+
+#adminmenu .wp-menu-image a {
+  display: none; }
+
+#wp-admin-bar-wp-logo {
+  display: none; }
+
+#adminmenuback, #adminmenuwrap {
+  background-color: #83ae2c;
+  border-color: #486d25;
+  border-right-color: #ddd; }
+
+#adminmenu li.wp-menu-separator {
+  display: none; }
+
+#adminmenu div.separator {
+  border-color: #0e6ac8; }
+
+#adminmenu a.menu-top, .folded #adminmenu li.menu-top, #adminmenu .wp-submenu .wp-submenu-head {
+  border-top-color: #486d25;
+  border-bottom-color: #000; }
+
+#adminmenu a {
+  color: #fff; }
+
+#adminmenu .wp-submenu a {
+  color: #777; }
+
+#adminmenu a:hover, #adminmenu li.menu-top > a:focus, #adminmenu ul.wp-submenu a:hover {
+  color: #fff; }
+
+#adminmenu li.menu-top:hover > a, #adminmenu li.menu-top.focused > a, #adminmenu li.menu-top > a:focus {
+  background-color: #486d25;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4); }
+
+#adminmenu li.wp-not-current-submenu:hover > a {
+  border-top-color: #000;
+  border-bottom-color: #000; }
+
+#adminmenu li.wp-not-current-submenu .wp-menu-arrow {
+  border-top-color: #000;
+  border-bottom-color: #000;
+  background: #486d25; }
+
+#adminmenu li.wp-not-current-submenu .wp-menu-arrow div {
+  background: #486d25;
+  border-color: #000; }
+
+#collapse-menu {
+  color: rgba(255, 255, 255, 0.3); }
+
+#collapse-menu:hover {
+  color: white; }
+
+#collapse-menu:hover #collapse-button {
+  border-color: rgba(255, 255, 255, 0.4);
+  background-color: #486d25;
+  background-image: -webkit-linear-gradient(center bottom, #333333, #486d25);
+  background-image: -moz-linear-gradient(center bottom, #333333, #486d25);
+  background-image: -ms-linear-gradient(center bottom, #333333, #486d25);
+  background-image: -o-linear-gradient(center bottom, #333333, #486d25);
+  background-image: linear-gradient(center bottom, #333333, #486d25); }
+
+#collapse-button {
+  border-color: rgba(255, 255, 255, 0.2);
+  background-color: black;
+  background-image: -webkit-linear-gradient(center bottom, #111111, black);
+  background-image: -moz-linear-gradient(center bottom, #111111, black);
+  background-image: -ms-linear-gradient(center bottom, #111111, black);
+  background-image: -o-linear-gradient(center bottom, #111111, black);
+  background-image: linear-gradient(center bottom, #111111, black); }
+
+#adminmenu .awaiting-mod, #adminmenu .update-plugins, #sidemenu a .update-plugins, #rightnow .reallynow {
+  background-color: #464646;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  color: #FFFFFF; }
+
+.folded #adminmenu .wp-submenu-head {
+  border-bottom-color: #ccc;
+  border-top-color: #ccc; }
+
+.folded #adminmenu li.wp-has-current-submenu, .folded #adminmenu li.current.menu-top {
+  border-bottom-color: #6D6D6D;
+  border-top-color: #808080; }
+
+/* currently selected submenu */
+#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu, #adminmenu li.current a.menu-top, #adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head {
+  border-bottom-color: #56822c;
+  border-top-color: #83ae2c;
+  color: #FFFFFF;
+  text-shadow: 0 -1px 0 #333333; }
+
+#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu, #adminmenu li.current a.menu-top, .folded #adminmenu li.wp-has-current-submenu, .folded #adminmenu li.current.menu-top, #adminmenu .wp-menu-arrow, #adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head {
+  background-color: #486d25;
+  background-image: -webkit-linear-gradient(center bottom, #56822c, #83ae2c);
+  background-image: -moz-linear-gradient(center bottom, #56822c, #83ae2c);
+  background-image: -ms-linear-gradient(center bottom, #56822c, #83ae2c);
+  background-image: -o-linear-gradient(center bottom, #56822c, #83ae2c);
+  background-image: linear-gradient(center bottom, #56822c, #83ae2c); }
+
+/* arrow */
+#adminmenu .wp-menu-arrow div {
+  background-color: #486d25;
+  background-image: -webkit-linear-gradient(right bottom, #56822c, #83ae2c);
+  background-image: -moz-linear-gradient(right bottom, #56822c, #83ae2c);
+  background-image: -ms-linear-gradient(right bottom, #56822c, #83ae2c);
+  background-image: -o-linear-gradient(right bottom, #56822c, #83ae2c);
+  background-image: linear-gradient(right bottom, #56822c, #83ae2c); }
+
+/* links */
+a, #the-comment-list p.comment-author strong a, #media-upload a.del-link, #media-items a.delete, .plugins a.delete, .ui-tabs-nav a {
+  color: #486d25; }
+
+#wpadminbar .quicklinks .menupop ul li a, #wpadminbar .quicklinks .menupop ul li a strong, #wpadminbar .quicklinks .menupop.hover ul li a, #wpadminbar.nojs .quicklinks .menupop:hover ul li a {
+  color: #486d25; }
+
+#wpadminbar .ab-submenu .ab-item {
+  color: #486d25; }
+
+#adminmenu .wp-submenu a:hover, #adminmenu .wp-submenu a:focus {
+  background-color: #e9ee9f; }
+
+#wpadminbar .menupop li:hover, #wpadminbar .menupop li.hover, #wpadminbar .quicklinks .menupop .ab-item:focus, #wpadminbar .quicklinks .ab-top-menu .menupop .ab-item:focus {
+  background-color: #e9ee9f; }

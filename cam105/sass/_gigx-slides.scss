@@ -70,7 +70,7 @@ $slide_text_width: $slideshow_width - (2 * $slideshow_padding) - $slide_image_wi
 }
 .gigx-slide-text{
 	height: $slideshow_height;
-	overflow: hidden;
+	overflow: auto;
 }
 
 .gigx-slideshow-wrapper .gigx-slide img {

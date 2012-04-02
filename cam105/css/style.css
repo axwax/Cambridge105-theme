@@ -1036,7 +1036,7 @@ CSS for the gallery widget
 
 .gigx-slide-text {
   height: 225px;
-  overflow: hidden; }
+  overflow: auto; }
 
 .gigx-slideshow-wrapper .gigx-slide img {
   display: inline;
