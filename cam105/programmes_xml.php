@@ -28,7 +28,7 @@ foreach($programmes as $post) : setup_postdata($post);
 	//$img=wp_get_attachment_image_src (get_post_thumbnail_id($post->ID),'shows-thumb',false);
    //$img=$img[0];   
 	$img = get_show_image('shows-thumb', $showID=$post->ID, true);
-   $email=get_post_meta($post->ID, 'ShowEmail', True);	
+   $email=get_post_meta($post->ID, 'show_email', True);	
 	echo '	<programme id="'.$post->post_name.'" image="'.$img.'" email="'.$email.'" />'."\n\r";
 endforeach;
 echo '</programmes>'."\n\r";
