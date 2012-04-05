@@ -50,7 +50,8 @@ if (!$fbimg) $fbimg= Array(get_bloginfo('stylesheet_directory').'/images/faceboo
 
         <?php wp_nav_menu( array( 'theme_location' => 'above-header', 'sort_column' => 'menu_order', 'fallback_cb' => 'header_menu', 'container_class' => 'header-menu' ) ); ?>
 
-        <div id="header">
+        <div id="header" class="clearfix">
+	  <div id="header-container">  
         	<div id="logo">
   				<a href="<?php echo home_url();?>"><?php
 					if (get_header_image()) : ?>
@@ -66,7 +67,7 @@ if (!$fbimg) $fbimg= Array(get_bloginfo('stylesheet_directory').'/images/faceboo
             	</div>
             </div>  
           <?php endif; ?>  
- 
+	  </div><!-- end of header container div --> 
         </div><!-- end of header div -->
 
           <?php wp_nav_menu( array( 'theme_location' => 'below-header', 'sort_column' => 'menu_order', 'fallback_cb' => 'header_menu', 'container_class' => 'header-menu' ) ); ?>
