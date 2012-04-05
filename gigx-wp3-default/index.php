@@ -9,12 +9,19 @@ define('CUSTOM_POST_TYPE',get_post_type());
 if(CUSTOM_POST_TYPE=='page'){
    $loop = $post->post_name;  // page name
 }
+elseif (is_404()) {
+   $loop = "404";
+}
+elseif (is_search()) {
+   $loop = 'search';
+   if (!locate_template( 'loop-'.$loop.'.php', false, false )) $loop="taxonomy";
+}
 elseif (is_tag()) {
-	$loop = 'tag';
+   $loop = 'tag';
    if (!locate_template( 'loop-'.$loop.'.php', false, false )) $loop="taxonomy";
 }
 elseif (is_category()) {
-	$loop = 'category';
+   $loop = 'category';
    if (!locate_template( 'loop-'.$loop.'.php', false, false )) $loop="taxonomy";
 }
 elseif (is_tax()) {
