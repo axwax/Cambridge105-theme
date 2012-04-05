@@ -192,11 +192,12 @@ function get_show_image($imageSize='shows-thumb', $showID=false, $returnUrlOnly 
    $width = $imageSizeAttribs['width'];
    $height = $imageSizeAttribs['height'];
    if (!$showID) $showID = get_the_ID();
-   if (!$showTitle) $showTitle = get_the_title($showID);   
+   if (!$showTitle) $showTitle = get_the_title($showID);
+   $img = array();
    if(has_post_thumbnail($showID)) {
       $img=wp_get_attachment_image_src(get_post_thumbnail_id($showID), $imageSize, false);    
    }
-   else {
+   if(empty($img)) {
       $img= wp_get_attachment_image_src (get_post_thumbnail_id(get_page_by_title('Default',false,'page')->ID), $imageSize, false);          
    }
    if (function_exists('getphpthumburl') && $phpThumbOptions) {
