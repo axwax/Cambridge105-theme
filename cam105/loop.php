@@ -34,11 +34,24 @@ Theme Version: 0.6.1
 	if ( $title && $title_tag && !is_page()) {
 		$title_html='<' . $title_tag . ' class="post-title">' . $title . '</' . $title_tag . '>'."\n\r";
 	}
- ?>
-				<?php echo $title_html ?>
-                <div class="entry" style="padding-top:10px;">
+         if (in_category( "podcasts")) {
+            $img_html = '<div class="shows-image alignleft">' . get_show_image('shows-image') . '</div>';
+            if (is_single()) {			
+               $leftcol = '<div class="alignleft" style="width: 312px;">';
+               $leftcol.= $img_html;
+               $leftcol.= $website_html;
+               $leftcol.= $frequency_html;
+               $leftcol.= $tags;
+               $leftcol.= '</div>';
+            else {
+               $leftcol = $img_html;
+            }
+            echo $leftcol;
+         } ?>   
+            <?php echo $title_html ?>			
+            <div class="entry clearfix">
                   <?php the_content('<p>Read the rest of this entry &raquo;</p>'); ?>
-        		</div>
+            </div>
 				<?php 
                 # below entry widgets
 				if ( is_active_sidebar( 'below_entry_widgets' ) ) : // Nothing here by default and design ?>
