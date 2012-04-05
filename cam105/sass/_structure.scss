@@ -21,10 +21,18 @@ body{
      margin:0 auto;*/
 }
 
-#page #header #logo {
+#page #header #header-container {
 /* padding-bottom: 1em; */
      width: $page_width;
      margin:0 auto;
+}
+#page #header #header-container #logo{
+   float: left;
+   width:510px;
+}
+#page #header #header-container #below-header-widgets-container{
+   float: left;
+   width:490px;
 }
 
 #page .header-menu {
@@ -57,7 +65,9 @@ body{
 .home #page #main #container #content{
 //width: 740px;
 }
-.single #page #main #container #content{
+.single #page #main #container #content,
+.error404 #page #main #container #content,
+{
 width: 740px;
 }
 .non_homepage #page #main {
@@ -255,13 +265,3 @@ color:#000;
 }
 
 
-// single posts //
-.single-post img.alignleft {
-  border: 1px solid $medium_grey;
-  margin: 5px 10px 0 0;
-}
-
-.entry a:hover {
-  text-decoration: underline;
-  border-bottom: 1px solid $hover_green;
-}
