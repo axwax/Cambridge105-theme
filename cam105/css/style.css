@@ -166,28 +166,6 @@ img.alignright, img.right {
   display: inline;
   margin: 0 0 8px 8px; }
 
-.wp-caption {
-  border: 1px solid #ddd;
-  text-align: center;
-  background-color: #f3f3f3;
-  padding-top: 4px;
-  margin: 10px;
-  /* optional rounded corners for browsers that support it */
-  -moz-border-radius: 3px;
-  -khtml-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px; }
-
-.wp-caption img {
-  margin: 0;
-  padding: 0;
-  border: 0 none; }
-
-.wp-caption p.wp-caption-text {
-  line-height: 17px;
-  padding: 0 4px 5px;
-  margin: 0; }
-
 /*-- End WordPress Rules --*/
 /*-- Secondary WordPress Rules --*/
 .gallery {
@@ -408,25 +386,43 @@ fieldset {
   line-height: 1.5em; }
 
 .wp-caption {
+  text-align: left; }
+
+.wp-caption img {
+  border: 1px solid #bbbbbb;
+  margin: 5px 0 0 0; }
+
+.wp-caption a:hover, .entry .wp-caption a:hover {
+  text-decoration: none;
+  border-bottom: 0; }
+
+.wp-caption p.wp-caption-text {
+  font-size: .8em;
+  line-height: 1.5em;
+  padding: 3px 4px 3px 4px;
+  margin: 0 8px 0 0;
   background-color: #f3f3f3;
-  border: 1px solid #dddddd;
-  -webkit-border-radius: 3px 5px 5px 5px;
-  -moz-border-radius: 3px 5px 5px 5px;
-  border-radius: 3px 5px 5px 5px;
-  /* useful if you don't want a bg color from leaking outside the border: */
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  margin: 10px;
-  padding: 5px;
-  text-align: center; }
+  border-left: 1px solid #bbbbbb;
+  border-right: 1px solid #bbbbbb;
+  border-bottom: 1px solid #bbbbbb; }
+
+.single-post img.alignleft {
+  border: 1px solid #bbbbbb;
+  margin: 5px 10px 0 0; }
+
+.entry a:hover {
+  text-decoration: underline; }
 
 .frontpagefeature,
 .single #content,
-.archive .shows,
+.error404 #content,
 .page-template-news-archive-php .posts,
+.non_homepage .posts,
 .category .post,
-.non_homepage .posts {
+.archive .shows,
+.search-results .post,
+.search-results .shows,
+.search-no-results .posts {
   color: #111;
   -webkit-border-radius: 5px 5px 5px 5px;
   -moz-border-radius: 5px 5px 5px 5px;
@@ -448,6 +444,9 @@ fieldset {
   overflow: hidden;
   padding: 10px 10px 0 10px; }
 
+.search-results .gigx_slide {
+  display: none; }
+
 .single #content h2, .archive .shows h2, .page .posts h2, .category .post h2 {
   letter-spacing: 0.05em;
   font-weight: normal;
@@ -461,8 +460,7 @@ fieldset {
   background: none;
   margin: 0;
   overflow: hidden;
-  padding: 0;
-  /* width: 740px; */ }
+  padding: 0; }
 
 /* Nicolas Gallagher's micro clearfix */
 .row:before, .row:after, .clearfix:before, .clearfix:after {
@@ -492,16 +490,16 @@ div.navigation {
   background-image: -o-linear-gradient(top, #56822c, #445533);
   background-image: linear-gradient(top, #56822c, #445533);
   color: white;
-  font-family: 'HarabaraRegular',Arial,sans-serif;
-  font-size: 1.5em;
+  font-family: Arial, sans-serif;
+  font-size: 1em;
   font-weight: 100;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   line-height: normal;
   margin-bottom: 10px;
   padding: 5px 10px; }
 
 div.navigation {
-  height: 30px; }
+  height: 20px; }
 
 #breadcrumbs a, #breadcrumbs a:hover,
 div#sidebar .widget h2 a,
@@ -541,6 +539,9 @@ h3 {
   margin-right: 10px;
   margin-bottom: 10px; }
 
+#searchform div {
+  margin-bottom: 10px; }
+
 /* structure */
 body {
   margin: 0;
@@ -553,10 +554,18 @@ body {
   /*width: 1000px;
   margin:0 auto;*/ }
 
-#page #header #logo {
+#page #header #header-container {
   /* padding-bottom: 1em; */
   width: 1000px;
   margin: 0 auto; }
+
+#page #header #header-container #logo {
+  float: left;
+  width: 510px; }
+
+#page #header #header-container #below-header-widgets-container {
+  float: left;
+  width: 490px; }
 
 #page .header-menu {
   /* clear: both;
@@ -579,7 +588,8 @@ body {
   float: left;
   width: 760px; }
 
-.single #page #main #container #content {
+.single #page #main #container #content,
+.error404 #page #main #container #content {
   width: 740px; }
 
 #page #main #container #sidebar {
@@ -762,14 +772,6 @@ body {
 .single-shows #content {
   min-height: 500px; }
 
-.single-post img.alignleft {
-  border: 1px solid #646464;
-  margin: 5px 10px 0 0; }
-
-.entry a:hover {
-  text-decoration: underline;
-  border-bottom: 1px solid #16210b; }
-
 /* Menu */
 .header-menu {
   height: 34px;
@@ -869,10 +871,36 @@ div.header-menu ul ul ul li:hover ul {
 
 /* widget areas */
 #below-header-widgets {
-  float: left;
   margin: 20px 0px 10px 0px;
   position: relative;
-  left: 10px; }
+  left: 100px; }
+
+#below-header-widgets h2 {
+  -webkit-border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  /* useful if you don't want a bg color from leaking outside the border: */
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background-color: #486d25;
+  background-image: -webkit-linear-gradient(top, #56822c, #445533);
+  background-image: -moz-linear-gradient(top, #56822c, #445533);
+  background-image: -ms-linear-gradient(top, #56822c, #445533);
+  background-image: -o-linear-gradient(top, #56822c, #445533);
+  background-image: linear-gradient(top, #56822c, #445533);
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+  font-weight: 100;
+  letter-spacing: 0.05em;
+  line-height: normal;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  width: 200px; }
+
+#below-header-widgets #s {
+  width: 200px; }
 
 .above-entry-widgets {
   padding-bottom: 10px; }
@@ -976,6 +1004,7 @@ CSS for the gallery widget
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
+  margin-bottom: 10px;
   width: 740px; }
 
 .gigx-slideshow a {
@@ -1239,14 +1268,13 @@ GIGX Sponsors Slides CSS
   background-image: -o-linear-gradient(top, #56822c, #445533);
   background-image: linear-gradient(top, #56822c, #445533);
   color: white;
-  font-family: 'HarabaraRegular',Arial,sans-serif;
-  font-size: 1.5em;
+  font-family: Arial, sans-serif;
+  font-size: 1em;
   font-weight: 100;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   line-height: normal;
   margin-bottom: 10px;
-  padding: 5px 10px;
-  height: 30px; }
+  padding: 5px 10px; }
 
 .gigx-sponsors-slideshow-wrapper {
   margin: 0;
@@ -1555,3 +1583,29 @@ div#below-posts-widgets div#gigxrecentposts-3 {
 
 #toc {
   width: auto !important; }
+
+#s {
+  position: absolute;
+  z-index: 2000; }
+
+span.list_item_container {
+  height: 37px;
+  padding: 3px;
+  display: block;
+  min-width: 200px; }
+
+span.image {
+  width: 50px;
+  height: 37px;
+  float: left;
+  display: block; }
+
+span.image img {
+  width: 50px;
+  height: 37px; }
+
+span.label {
+  display: block; }
+
+.ui-autocomplete .ui-menu-item a:hover {
+  cursor: pointer; }
