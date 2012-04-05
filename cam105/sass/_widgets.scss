@@ -27,10 +27,23 @@
 /* widget areas */
 
 #below-header-widgets{
-	float: left;
 	margin:20px 0px 10px 0px;
 	position:relative;
-	left: 10px;
+	//left: 10px;
+        left: 100px;
+}
+#below-header-widgets h2{
+ 	@include rounded (5px);
+	@include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
+	color:$white_text;
+	//@include harabara;
+	@include arial;
+	margin-bottom: 10px;
+	padding:5px 10px;
+        width: 200px;
+}
+#below-header-widgets #s{
+   width: 200px;
 }
 
 .above-entry-widgets{
@@ -252,4 +265,32 @@ div#below-posts-widgets div#gigxrecentposts-3 {
 
 #toc {
    width: auto !important;
+}
+
+//search
+#s{
+   position: absolute;
+   z-index: 2000;
+}
+span.list_item_container {
+    height: 37px;
+    padding: 3px;
+   display:block;
+   min-width: 200px;
+}
+span.image {
+    width: 50px;
+    height: 37px;
+    float: left;
+   display:block;
+}
+span.image img {
+    width: 50px;
+    height: 37px;
+}
+span.label {
+   display:block;
+}
+.ui-autocomplete .ui-menu-item a:hover {
+   cursor: pointer; 
 }
