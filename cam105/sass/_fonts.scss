@@ -11,3 +11,10 @@
 	letter-spacing: 0.1em;
 	line-height: normal;
 }
+@mixin arial {
+	font-family: Arial, sans-serif;
+	font-size: 1em;
+	font-weight: 100;
+	letter-spacing: 0.05em;
+	line-height: normal;
+}
