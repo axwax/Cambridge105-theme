@@ -24,10 +24,10 @@ $white_text: #ffffff;
 $light_yellow_bg: #e9ee9f;
 $admin_bg: #eaf2fa;
 $caption_bg: #f3f3f3;
-$caption_border: #dddddd;
+$caption_border: #bbbbbb;
 $medium_grey: #646464;
 $light_grey: lighten($medium_grey,50%);
-
+$lightest_grey: lighten($medium_grey,70%);
 
 // gradient colours 
 $white_box_gradient1: #fafafa;
