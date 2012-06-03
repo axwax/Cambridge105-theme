@@ -43,6 +43,7 @@ Theme Version: 0.6.1
                $leftcol.= $frequency_html;
                $leftcol.= $tags;
                $leftcol.= '</div>';
+            }
             else {
                $leftcol = $img_html;
             }
