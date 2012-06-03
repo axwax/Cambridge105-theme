@@ -264,4 +264,29 @@ color:#000;
   min-height:500px;
 }
 
+.single-shows .entry {
+   margin-bottom: 10px;
+}
 
+.single #content h2.related-shows{
+   //margin: 10px 0 0 15px;
+   margin: 10px 0 0 0px;
+}
+.single #content h2.latest-podcast{
+   margin-top: 30px;
+}
+
+
+h1.post-title,
+h2.post-title{
+   font-weight: bold;
+   font-size: 1.4em;
+   margin: 0 0 10px 0;
+}
+
+/* adverisers page */
+#advertisers img {
+  border: 1px solid #CFCFCF;
+  margin-left: 10px;
+  padding: 5px;
+}

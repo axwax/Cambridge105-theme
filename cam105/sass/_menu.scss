@@ -31,15 +31,17 @@ width: 100%;
 }
 
 .header-menu a {
+	@include harabara;
 	display: block;
-	font-family: 'HarabaraRegular',Arial,sans-serif;
+	//font-family: 'HarabaraRegular',Arial,sans-serif;
 	font-size: $menu_font_size;
 	color: #ffffff;
 	padding: $menu_padding;
 	text-decoration: none;
    @include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 		
-  letter-spacing: 2px;
+  //letter-spacing: 2px;
   height: $menu_font_size;
+  //text-transform:lowercase;
 }
 
 .header-menu ul li {

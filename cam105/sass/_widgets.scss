@@ -33,14 +33,9 @@
         left: 100px;
 }
 #below-header-widgets h2{
- 	@include rounded (5px);
-	@include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
-	color:$white_text;
-	//@include harabara;
-	@include arial;
-	margin-bottom: 10px;
-	padding:5px 10px;
-        width: 200px;
+      @include widget-header();
+      margin-bottom: 10px;
+      width: 200px;
 }
 #below-header-widgets #s{
    width: 200px;
@@ -80,12 +75,7 @@ div#sidebar .widget{
 }
 /*
 div#sidebar .widget h2{
- 	@include rounded (5px);
-	@include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
-	color:$white_text;
-	//font-family: 'HarabaraRegular',Arial,sans-serif;
-	//font-size: 20px;
-	@include harabara;
+   @include widget-header();
 }
 */
 
@@ -174,11 +164,13 @@ div#sidebar .widget h2{
 	padding:10px 10px 0 10px;
 }
 .widget_gigxrecentposts h2.widget-title {
-    background-color: transparent;
-    color:$white_text;
-	@include harabara;
-	margin:0 0 10px 0;
+      background-color: transparent;
+      color:$white_text;
+      @include harabara;
+      margin:0 0 10px 0;
+       text-transform:lowercase;       
 }
+
 .widget_gigxrecentposts h2.widget-title a{
 	color:$white_text;
 }
@@ -192,17 +184,18 @@ div#sidebar .widget h2{
 	overflow:hidden;
 	margin:0 0 10px 0;
 	padding:10px;
+        list-style-type: none;
 }
 .widget_gigxrecentposts ul.gigx-recent-posts li a{
 	//font-size:1.2em;
 }
 .widget_gigxrecentposts ul.gigx-recent-posts li span.date{
-	font-family: Arial,Tahoma,sans-serif;
+	//font-family: Arial,Tahoma,sans-serif;
 	//font-size:10px;
 	text-transform: lowercase;
 	letter-spacing: normal;
 }
-.widget_gigxrecentposts img.recent-posts-thumb {
+.widget_gigxrecentposts img {
 	float: left;
 	text-align: left;
 	display: inline;
@@ -210,6 +203,17 @@ div#sidebar .widget h2{
 	padding-right:10px;
 }
 
+
+#latest_podcast.widget_gigxrecentposts {background: transparent;padding:0 10px 0 5px;}
+#latest_podcast.widget_gigxrecentposts h2.widget-title {@include arial;text-transform: none;}
+#latest_podcast.widget_gigxrecentposts h2.widget-title a {color: $black_text;}
+#latest_podcast.widget_gigxrecentposts ul.gigx-recent-posts li {
+ 	@include rounded (0);
+	@include shadow (0, $white_text);
+	background: transparent;
+        margin-bottom:0;
+        padding-bottom:0;
+}
 /* frontpage news */
 div#below-posts-widgets div#gigxrecentposts-7  {
 	margin: 0 10px 0 0;
@@ -257,7 +261,7 @@ div#below-posts-widgets div#gigxrecentposts-3 {
     text-decoration: none;
 	@include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
 	color:$white_text;
-	//@include harabara;
+	//@include harabara-header;
     border: 2px solid $dark_green;
 }
 .show-tags {margin: 0; width: 290px; text-align: center;float: left; }

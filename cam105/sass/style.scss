@@ -19,6 +19,10 @@ img{
    border:0;
 }
 
+strong, b, strong *, b * { font-weight: bold !important; }
+em, i, em *, i * { font-style: italic !important; }
+
+
 @import "gigx";
 @import "global";
 @import "structure";

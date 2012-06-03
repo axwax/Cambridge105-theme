@@ -1,3 +1,13 @@
+/*
+@mixin harabara {
+	font-family: 'HarabaraRegular',Arial,sans-serif;
+	font-size: 1.5em;
+	font-weight: 100;
+	letter-spacing: 0.1em;
+	line-height: normal;
+	text-transform:lowercase;
+}
+*/
 /* RESET */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -52,6 +62,12 @@ a {
 
 img {
   border: 0; }
+
+strong, b, strong *, b * {
+  font-weight: bold !important; }
+
+em, i, em *, i * {
+  font-style: italic !important; }
 
 /*
 Theme Name: GIGX Default
@@ -305,6 +321,16 @@ textarea#comment {
   margin-top: 0px; }
 
 /* gigx_box shortcode style */
+/*
+@mixin harabara {
+	font-family: 'HarabaraRegular',Arial,sans-serif;
+	font-size: 1.5em;
+	font-weight: 100;
+	letter-spacing: 0.1em;
+	line-height: normal;
+	text-transform:lowercase;
+}
+*/
 /* Fonts */
 @font-face {
   font-family: 'HarabaraRegular';
@@ -420,6 +446,7 @@ fieldset {
 .non_homepage .posts,
 .category .post,
 .archive .shows,
+.archive .posts,
 .search-results .post,
 .search-results .shows,
 .search-no-results .posts {
@@ -449,12 +476,11 @@ fieldset {
 
 .single #content h2, .archive .shows h2, .page .posts h2, .category .post h2 {
   letter-spacing: 0.05em;
-  font-weight: normal;
+  font-weight: bold;
   margin-bottom: 10px; }
 
 .single #content p, .archive .shows p, .page .posts p, .category .posts p {
-  margin-bottom: 10px;
-  font-family: Arial, sans-serif; }
+  margin-bottom: 10px; }
 
 .home #content .posts {
   background: none;
@@ -475,7 +501,15 @@ fieldset {
 
 #breadcrumbs,
 div#sidebar .widget h2,
-div.navigation {
+div.navigation,
+div.pagerbox,
+h2.related-shows {
+  font-family: 'HarabaraRegular',Arial,sans-serif;
+  font-size: 20px;
+  font-weight: 100;
+  letter-spacing: 2.5px;
+  line-height: 20px;
+  text-transform: lowercase;
   -webkit-border-radius: 5px 5px 5px 5px;
   -moz-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
@@ -490,15 +524,11 @@ div.navigation {
   background-image: -o-linear-gradient(top, #56822c, #445533);
   background-image: linear-gradient(top, #56822c, #445533);
   color: white;
-  font-family: Arial, sans-serif;
-  font-size: 1em;
-  font-weight: 100;
-  letter-spacing: 0.05em;
-  line-height: normal;
-  margin-bottom: 10px;
-  padding: 5px 10px; }
+  padding: 4px 10px 6px 10px;
+  margin-bottom: 10px; }
 
-div.navigation {
+div.navigation,
+div.pagerbox {
   height: 20px; }
 
 #breadcrumbs a, #breadcrumbs a:hover,
@@ -526,10 +556,10 @@ div#sidebar .widget h2 a:hover,
 
 /* Headers */
 h1, h2 {
-  font-family: 'HarabaraRegular',Arial,sans-serif;
-  font-size: 1.5em;
-  font-weight: 100;
-  letter-spacing: 0.1em;
+  font-family: Arial,Tahoma,sans-serif;
+  font-size: 1.2em;
+  font-weight: 400;
+  letter-spacing: 0.05em;
   line-height: normal; }
 
 h3 {
@@ -542,6 +572,16 @@ h3 {
 #searchform div {
   margin-bottom: 10px; }
 
+/*
+@mixin harabara {
+	font-family: 'HarabaraRegular',Arial,sans-serif;
+	font-size: 1.5em;
+	font-weight: 100;
+	letter-spacing: 0.1em;
+	line-height: normal;
+	text-transform:lowercase;
+}
+*/
 /* structure */
 body {
   margin: 0;
@@ -772,6 +812,37 @@ body {
 .single-shows #content {
   min-height: 500px; }
 
+.single-shows .entry {
+  margin-bottom: 10px; }
+
+.single #content h2.related-shows {
+  margin: 10px 0 0 0px; }
+
+.single #content h2.latest-podcast {
+  margin-top: 30px; }
+
+h1.post-title,
+h2.post-title {
+  font-weight: bold;
+  font-size: 1.4em;
+  margin: 0 0 10px 0; }
+
+/* adverisers page */
+#advertisers img {
+  border: 1px solid #CFCFCF;
+  margin-left: 10px;
+  padding: 5px; }
+
+/*
+@mixin harabara {
+	font-family: 'HarabaraRegular',Arial,sans-serif;
+	font-size: 1.5em;
+	font-weight: 100;
+	letter-spacing: 0.1em;
+	line-height: normal;
+	text-transform:lowercase;
+}
+*/
 /* Menu */
 .header-menu {
   height: 34px;
@@ -798,8 +869,13 @@ body {
   width: 100%; }
 
 .header-menu a {
-  display: block;
   font-family: 'HarabaraRegular',Arial,sans-serif;
+  font-size: 20px;
+  font-weight: 100;
+  letter-spacing: 2.5px;
+  line-height: 20px;
+  text-transform: lowercase;
+  display: block;
   font-size: 20px;
   color: #ffffff;
   padding: 7px;
@@ -810,7 +886,6 @@ body {
   background-image: -ms-linear-gradient(top, #56822c, #445533);
   background-image: -o-linear-gradient(top, #56822c, #445533);
   background-image: linear-gradient(top, #56822c, #445533);
-  letter-spacing: 2px;
   height: 20px; }
 
 .header-menu ul li {
@@ -852,6 +927,16 @@ div.header-menu ul ul ul li:hover ul {
   display: block; }
 
 /* End Menu */
+/*
+@mixin harabara {
+	font-family: 'HarabaraRegular',Arial,sans-serif;
+	font-size: 1.5em;
+	font-weight: 100;
+	letter-spacing: 0.1em;
+	line-height: normal;
+	text-transform:lowercase;
+}
+*/
 /* default styles for all widgets */
 .widget-container {
   margin-top: 10px;
@@ -876,6 +961,12 @@ div.header-menu ul ul ul li:hover ul {
   left: 100px; }
 
 #below-header-widgets h2 {
+  font-family: 'HarabaraRegular',Arial,sans-serif;
+  font-size: 20px;
+  font-weight: 100;
+  letter-spacing: 2.5px;
+  line-height: 20px;
+  text-transform: lowercase;
   -webkit-border-radius: 5px 5px 5px 5px;
   -moz-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
@@ -890,13 +981,8 @@ div.header-menu ul ul ul li:hover ul {
   background-image: -o-linear-gradient(top, #56822c, #445533);
   background-image: linear-gradient(top, #56822c, #445533);
   color: white;
-  font-family: Arial, sans-serif;
-  font-size: 1em;
-  font-weight: 100;
-  letter-spacing: 0.05em;
-  line-height: normal;
+  padding: 4px 10px 6px 10px;
   margin-bottom: 10px;
-  padding: 5px 10px;
   width: 200px; }
 
 #below-header-widgets #s {
@@ -943,12 +1029,7 @@ div#sidebar .widget {
 
 /*
 div#sidebar .widget h2{
- 	@include rounded (5px);
-	@include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
-	color:$white_text;
-	/*font-family: 'HarabaraRegular',Arial,sans-serif; */
-	/*font-size: 20px; */
-	@include harabara;
+   @include widget-header();
 }
 */
 /* default wordpress widgets */
@@ -1225,6 +1306,9 @@ CSS for the gallery widget
 
   #tiptip_holder.tip_top #tiptip_arrow_inner {
     border-top-color: rgba(20, 20, 20, 0.92); } }
+.hovered {
+  cursor: pointer; }
+
 /*
 GIGX Sponsors Slides CSS
 */
@@ -1253,7 +1337,12 @@ GIGX Sponsors Slides CSS
 
 .gigx-sponsors-slideshow .widget-title {
   z-index: 1;
-  margin-bottom: 10px;
+  font-family: 'HarabaraRegular',Arial,sans-serif;
+  font-size: 20px;
+  font-weight: 100;
+  letter-spacing: 2.5px;
+  line-height: 20px;
+  text-transform: lowercase;
   -webkit-border-radius: 5px 5px 5px 5px;
   -moz-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
@@ -1268,13 +1357,8 @@ GIGX Sponsors Slides CSS
   background-image: -o-linear-gradient(top, #56822c, #445533);
   background-image: linear-gradient(top, #56822c, #445533);
   color: white;
-  font-family: Arial, sans-serif;
-  font-size: 1em;
-  font-weight: 100;
-  letter-spacing: 0.05em;
-  line-height: normal;
-  margin-bottom: 10px;
-  padding: 5px 10px; }
+  padding: 4px 10px 6px 10px;
+  margin-bottom: 10px; }
 
 .gigx-sponsors-slideshow-wrapper {
   margin: 0;
@@ -1475,11 +1559,13 @@ GIGX Sponsors Slides CSS
   background-color: transparent;
   color: white;
   font-family: 'HarabaraRegular',Arial,sans-serif;
-  font-size: 1.5em;
+  font-size: 20px;
   font-weight: 100;
-  letter-spacing: 0.1em;
-  line-height: normal;
-  margin: 0 0 10px 0; }
+  letter-spacing: 2.5px;
+  line-height: 20px;
+  text-transform: lowercase;
+  margin: 0 0 10px 0;
+  text-transform: lowercase; }
 
 .widget_gigxrecentposts h2.widget-title a {
   color: white; }
@@ -1505,19 +1591,49 @@ GIGX Sponsors Slides CSS
   line-heigh: 1.3em;
   overflow: hidden;
   margin: 0 0 10px 0;
-  padding: 10px; }
+  padding: 10px;
+  list-style-type: none; }
 
 .widget_gigxrecentposts ul.gigx-recent-posts li span.date {
-  font-family: Arial,Tahoma,sans-serif;
   text-transform: lowercase;
   letter-spacing: normal; }
 
-.widget_gigxrecentposts img.recent-posts-thumb {
+.widget_gigxrecentposts img {
   float: left;
   text-align: left;
   display: inline;
   margin: 0;
   padding-right: 10px; }
+
+#latest_podcast.widget_gigxrecentposts {
+  background: transparent;
+  padding: 0 10px 0 5px; }
+
+#latest_podcast.widget_gigxrecentposts h2.widget-title {
+  font-family: Arial,Tahoma,sans-serif;
+  font-size: 1.2em;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  line-height: normal;
+  text-transform: none; }
+
+#latest_podcast.widget_gigxrecentposts h2.widget-title a {
+  color: black; }
+
+#latest_podcast.widget_gigxrecentposts ul.gigx-recent-posts li {
+  -webkit-border-radius: 0 5px 5px 5px;
+  -moz-border-radius: 0 5px 5px 5px;
+  border-radius: 0 5px 5px 5px;
+  /* useful if you don't want a bg color from leaking outside the border: */
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -moz-box-shadow: 0 0 0 white;
+  -webkit-box-shadow: 0 0 0 white;
+  box-shadow: 0 0 0 white;
+  background: transparent;
+  margin-bottom: 0;
+  padding-bottom: 0; }
 
 /* frontpage news */
 div#below-posts-widgets div#gigxrecentposts-7 {

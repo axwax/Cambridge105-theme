@@ -102,7 +102,8 @@ fieldset { padding-top:0; }
 .page-template-news-archive-php .posts,
 .non_homepage .posts,
 .category .post,
-.archive .shows, // single show archive result
+.archive .shows, // single + multiple show archive result
+.archive .posts, // single + multiple show archive result
 .search-results .post, // single post search result
 .search-results .shows, // single show search result
 .search-no-results .posts
@@ -122,13 +123,14 @@ fieldset { padding-top:0; }
 
 .single #content h2, .archive .shows h2, .page .posts h2, .category .post h2{
 	letter-spacing: 0.05em;
-	font-weight:normal;
+	//font-weight:normal;
+	font-weight:bold;
 	margin-bottom:10px;
 }
 
 .single #content p, .archive .shows p, .page .posts p, .category .posts p{
 	margin-bottom:10px;
-	font-family: Arial, sans-serif;
+	//font-family: Arial, sans-serif;
 }
 .home #content .posts{
 	background:none;
@@ -142,17 +144,15 @@ fieldset { padding-top:0; }
 // breadcrumbs
 #breadcrumbs,
 div#sidebar .widget h2,
-div.navigation
+div.navigation,
+div.pagerbox,
+h2.related-shows
 {
- 	@include rounded (5px);
-	@include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
-	color:$white_text;
-	//@include harabara;
-	@include arial;
+	@include widget-header();
 	margin-bottom: 10px;
-	padding:5px 10px;
 }
-div.navigation{
+div.navigation,
+div.pagerbox{
    //height: 30px;
    height: 20px;
 }
@@ -191,7 +191,7 @@ div#sidebar .widget h2 a:hover,
 
 /* Headers */
 h1,h2 {
-	@include harabara;
+	@include arial;
 }
 h3 {
 	font: bold 1.2em sans-serif;

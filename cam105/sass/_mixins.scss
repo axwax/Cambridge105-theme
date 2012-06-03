@@ -78,3 +78,11 @@
 	 .row:after, .clearfix:after { clear: both; }
 	 .row, .clearfix { zoom: 1; }
 }
+
+@mixin widget-header(){
+         @include harabara;
+         @include rounded (5px);
+         @include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
+         color:$white_text;
+         padding:4px 10px 6px 10px;   
+}

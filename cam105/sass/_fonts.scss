@@ -4,17 +4,28 @@
 	src: local('?'), url('../type/harabara-webfont.woff') format('woff'), url('../type/harabara-webfont.ttf') format('truetype'), url('../type/harabara-webfont.svg#webfontCLJ3VJzF') format('svg');
 }
 
+/*
 @mixin harabara {
 	font-family: 'HarabaraRegular',Arial,sans-serif;
 	font-size: 1.5em;
 	font-weight: 100;
 	letter-spacing: 0.1em;
 	line-height: normal;
+	text-transform:lowercase;
 }
+*/
 @mixin arial {
-	font-family: Arial, sans-serif;
-	font-size: 1em;
-	font-weight: 100;
+	font-family: Arial,Tahoma,sans-serif;
+	font-size: 1.2em;
+	font-weight: 400;
 	letter-spacing: 0.05em;
 	line-height: normal;
+}
+@mixin harabara {
+	font-family: 'HarabaraRegular',Arial,sans-serif;
+	font-size: 20px;
+	font-weight: 100;
+	letter-spacing: 2.5px;
+	line-height: 20px;
+	text-transform:lowercase;
 }
