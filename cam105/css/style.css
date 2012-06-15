@@ -707,20 +707,16 @@ body {
   margin: 0 0 0 0; }
 
 .twocol-content h2.latest-podcast {
-	margin: 0 0 10px 0 !important;
-  }
-
-.twocol-content ul {
-  }
+  margin: 0 0 10px 0 !important; }
 
 .twocol-content ul li {
-	margin:0;
-	padding: 10px 0 0 0 !important;
-	line-height: 18px; 
-}
+  margin: 0;
+  padding: 10px 0 0 0 !important;
+  line-height: 18px; }
+
 .twocol-content p img {
-margin: 0 10px 0 0;
-}
+  margin: 0 10px 0 0; }
+
 /* 3 columns */
 .threecol {
   margin: 0 0 10px 0;
@@ -995,8 +991,6 @@ div.header-menu ul ul ul li:hover ul {
 
 .above-entry-widgets {
   padding-bottom: 10px; }
-
-
 
 div#sidebar .widget {
   color: #333333;
@@ -1717,62 +1711,70 @@ span.label {
 
 .ui-autocomplete .ui-menu-item a:hover {
   cursor: pointer; }
-  
-  
-/* stuff to add */  
+
+/* stuff to add */
 .navigation {
-	text-align: center;
-}
+  text-align: center; }
+
 .navigation a.next {
-	float: right;
-}
-.navigation a.prev{
-	float:left;
-}
+  float: right; }
+
+.navigation a.prev {
+  float: left; }
+
 div.navigation {
-	color: #83ae2c;
-}
+  color: #83ae2c; }
 
 /* search */
 div#below-posts-widgets .widget_search {
   background-clip: padding-box;
-  background-color: white;
-  background-image: -moz-linear-gradient(center top , #FAFAFA, white);
+  -webkit-border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
+  /* useful if you don't want a bg color from leaking outside the border: */
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -moz-box-shadow: 5px 5px 5px #333333;
+  -webkit-box-shadow: 5px 5px 5px #333333;
   box-shadow: 5px 5px 5px #333333;
+  background-color: white;
+  background-image: -webkit-linear-gradient(center top, #fafafa, white);
+  background-image: -moz-linear-gradient(center top, #fafafa, white);
+  background-image: -ms-linear-gradient(center top, #fafafa, white);
+  background-image: -o-linear-gradient(center top, #fafafa, white);
+  background-image: linear-gradient(center top, #fafafa, white);
   line-height: 1.3em;
-  padding: 10px;
-}
+  padding: 10px; }
+
 div#below-posts-widgets .widget_search h2.widget-title {
-	font-family: 'HarabaraRegular',Arial,sans-serif;
-	font-size: 20px;
-	font-weight: 100;
-	letter-spacing: 2.5px;
-	line-height: 20px;
-	text-transform: lowercase;
-	-webkit-border-radius: 5px 5px 5px 5px;
-	-moz-border-radius: 5px 5px 5px 5px;
-	border-radius: 5px 5px 5px 5px;
-	/* useful if you don't want a bg color from leaking outside the border: */
-	-moz-background-clip: padding;
-	-webkit-background-clip: padding-box;
-	background-clip: padding-box;
-	background-color: #486d25;
-	background-image: -webkit-linear-gradient(top, #56822c, #445533);
-	background-image: -moz-linear-gradient(top, #56822c, #445533);
-	background-image: -ms-linear-gradient(top, #56822c, #445533);
-	background-image: -o-linear-gradient(top, #56822c, #445533);
-	background-image: linear-gradient(top, #56822c, #445533);
-	color: white;
-	padding: 4px 10px 6px 10px;
-	margin-bottom: 10px;
-}
-  
+  font-family: 'HarabaraRegular',Arial,sans-serif;
+  font-size: 20px;
+  font-weight: 100;
+  letter-spacing: 2.5px;
+  line-height: 20px;
+  text-transform: lowercase;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  /* useful if you don't want a bg color from leaking outside the border: */
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background-color: #486d25;
+  background-image: -webkit-linear-gradient(top, #56822c, #445533);
+  background-image: -moz-linear-gradient(top, #56822c, #445533);
+  background-image: -ms-linear-gradient(top, #56822c, #445533);
+  background-image: -o-linear-gradient(top, #56822c, #445533);
+  background-image: linear-gradient(top, #56822c, #445533);
+  color: white;
+  padding: 4px 10px 6px 10px;
+  margin-bottom: 10px; }
+
 #searchsubmit {
-    background: none repeat scroll 0 0 transparent;
-    color: transparent;
-    padding: 0;
-}  
+  background: none repeat scroll 0 0 transparent;
+  color: transparent;
+  padding: 0; }
 
 /* below posts widget on home page */
 .home div#below-posts-widgets {

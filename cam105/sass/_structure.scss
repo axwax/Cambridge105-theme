@@ -155,15 +155,18 @@ color:#000;
 	margin: 0 0 0 0;
 }
 
-.twocol-content h2 {
-    border-bottom: 1px solid #333333;
+.twocol-content h2.latest-podcast {
+    margin: 0 0 10px 0 !important;
 }
 .twocol-content ul {
-    margin: 9px 0 9px 9px;
-    padding: 3px 0 0 18px;
 }
 .twocol-content ul li {
+    margin:0;
+    padding: 10px 0 0 0 !important;
     line-height: 18px;
+}
+.twocol-content p img {
+margin: 0 10px 0 0;
 }
 
 /* 3 columns */
