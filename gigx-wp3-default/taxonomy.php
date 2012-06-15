@@ -2,7 +2,7 @@
 /*
 File Description: The template used to display custom Taxonomies
 Built By: GIGX
-Theme Version: 0.5.12
+Theme Version: 0.6.2
 */
 ?>
 
