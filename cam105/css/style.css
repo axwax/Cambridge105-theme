@@ -53,6 +53,9 @@ a {
 img {
   border: 0; }
 
+strong, b, strong *, b * { font-weight: bold !important; }
+em, i, em *, i * { font-style: italic !important; }
+
 /*
 Theme Name: GIGX Default
 Theme URI: http://gigx.co.uk/
@@ -420,13 +423,22 @@ fieldset {
   margin: 10px;
   padding: 5px;
   text-align: center; }
+  
+.wp-caption a:hover, .entry .wp-caption a:hover {
+  text-decoration: none;
+  border-bottom: 0; }  
 
 .frontpagefeature,
 .single #content,
-.archive .shows,
+.error404 #content,
 .page-template-news-archive-php .posts,
+.non_homepage .posts,
 .category .post,
-.non_homepage .posts {
+.archive .shows,
+.archive .post,
+.search-results .post,
+.search-results .shows,
+.search-no-results .posts {
   color: #111;
   -webkit-border-radius: 5px 5px 5px 5px;
   -moz-border-radius: 5px 5px 5px 5px;
@@ -447,6 +459,9 @@ fieldset {
   margin: 0 0 10px 0;
   overflow: hidden;
   padding: 10px 10px 0 10px; }
+
+.search-results .gigx_slide {
+  display: none; }
 
 .single #content h2, .archive .shows h2, .page .posts h2, .category .post h2 {
   letter-spacing: 0.05em;
@@ -541,6 +556,9 @@ h3 {
   margin-right: 10px;
   margin-bottom: 10px; }
 
+#searchform div {
+  margin-bottom: 10px; }
+
 /* structure */
 body {
   margin: 0;
@@ -579,7 +597,8 @@ body {
   float: left;
   width: 760px; }
 
-.single #page #main #container #content {
+.single #page #main #container #content,
+.error404 #page #main #container #content {
   width: 740px; }
 
 #page #main #container #sidebar {
@@ -721,6 +740,16 @@ body {
 
 .threecol-frontpage div.threecol-content p {
   line-height: 1.3em; }
+  
+  .threecol-frontpage div.threecol-content a,
+  .threecol-frontpage div.threecol-content a:hover,
+  .threecol-frontpage div.threecol-content a:visited{
+    color: #fff;
+    font-weight: 300;
+  }
+  .threecol-frontpage div.threecol-content a:hover{  
+    border-bottom: 1px solid #ffffff;
+  }
 
 /* 4 columns */
 .fourcol {
@@ -976,6 +1005,7 @@ CSS for the gallery widget
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
+  margin-bottom: 10px;
   width: 740px; }
 
 .gigx-slideshow a {
@@ -1036,7 +1066,7 @@ CSS for the gallery widget
 
 .gigx-slide-text {
   height: 225px;
-  overflow: hidden; }
+  overflow: auto; }
 
 .gigx-slideshow-wrapper .gigx-slide img {
   display: inline;
