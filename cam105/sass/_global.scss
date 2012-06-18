@@ -72,14 +72,22 @@ fieldset { padding-top:0; }
     text-align: center;
 }
 
+.wp-caption a:hover, .entry .wp-caption a:hover {
+	text-decoration: none;
+	border-bottom: 0; 
+}  
+
 .frontpagefeature,
 .single #content,
-.archive .shows,
+.error404 #content,
 .page-template-news-archive-php .posts,
+.non_homepage .posts,
 .category .post,
-.non_homepage .posts
-//.page .posts
-{
+.archive .shows,
+.archive .post,
+.search-results .post,
+.search-results .shows,
+.search-no-results .posts {
     color:#111;
 	@include rounded(5px);    
 	@include shadow(5px,#333);
@@ -88,6 +96,10 @@ fieldset { padding-top:0; }
     overflow:hidden;
     padding:10px 10px 0 10px;
     //font-family: 'HarabaraRegular',Arial,sans-serif;
+}
+
+.search-results .gigx_slide {
+	display: none; 
 }
 
 .single #content h2, .archive .shows h2, .page .posts h2, .category .post h2{
@@ -172,4 +184,8 @@ h3 {
 .shows-image, .shows-thumb{
    margin-right: 10px;
    margin-bottom: 10px; 
+}
+
+#searchform div {
+	margin-bottom: 10px; 
 }

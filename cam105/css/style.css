@@ -53,8 +53,11 @@ a {
 img {
   border: 0; }
 
-strong, b, strong *, b * { font-weight: bold !important; }
-em, i, em *, i * { font-style: italic !important; }
+strong, b, strong *, b * {
+  font-weight: bold !important; }
+
+em, i, em *, i * {
+  font-style: italic !important; }
 
 /*
 Theme Name: GIGX Default
@@ -423,10 +426,10 @@ fieldset {
   margin: 10px;
   padding: 5px;
   text-align: center; }
-  
+
 .wp-caption a:hover, .entry .wp-caption a:hover {
   text-decoration: none;
-  border-bottom: 0; }  
+  border-bottom: 0; }
 
 .frontpagefeature,
 .single #content,
@@ -572,7 +575,6 @@ body {
   margin:0 auto;*/ }
 
 #page #header #logo {
-  /* padding-bottom: 1em; */
   width: 1000px;
   margin: 0 auto; }
 
@@ -740,16 +742,15 @@ body {
 
 .threecol-frontpage div.threecol-content p {
   line-height: 1.3em; }
-  
-  .threecol-frontpage div.threecol-content a,
-  .threecol-frontpage div.threecol-content a:hover,
-  .threecol-frontpage div.threecol-content a:visited{
-    color: #fff;
-    font-weight: 300;
-  }
-  .threecol-frontpage div.threecol-content a:hover{  
-    border-bottom: 1px solid #ffffff;
-  }
+
+.threecol-frontpage div.threecol-content a,
+.threecol-frontpage div.threecol-content a:hover,
+.threecol-frontpage div.threecol-content a:visited {
+  color: #fff;
+  font-weight: 300; }
+
+.threecol-frontpage div.threecol-content a:hover {
+  border-bottom: 1px solid #ffffff; }
 
 /* 4 columns */
 .fourcol {

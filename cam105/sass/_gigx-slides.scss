@@ -13,7 +13,7 @@ $slide_text_width: $slideshow_width - (2 * $slideshow_padding) - $slide_image_wi
     background-color:$slideshow_bg;
     padding:10px;
 	@include rounded(5px);  
-	//margin-bottom: 10px;
+	margin-bottom: 10px;
     width: $slideshow_width;	
 }
 .gigx-slideshow a {
@@ -70,7 +70,7 @@ $slide_text_width: $slideshow_width - (2 * $slideshow_padding) - $slide_image_wi
 }
 .gigx-slide-text{
 	height: $slideshow_height;
-	overflow: hidden;
+	overflow: auto;
 }
 
 .gigx-slideshow-wrapper .gigx-slide img {

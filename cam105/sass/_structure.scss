@@ -22,7 +22,6 @@ body{
 }
 
 #page #header #logo {
-/* padding-bottom: 1em; */
      width: $page_width;
      margin:0 auto;
 }
@@ -57,8 +56,9 @@ body{
 .home #page #main #container #content{
 //width: 740px;
 }
-.single #page #main #container #content{
-width: 740px;
+.single #page #main #container #content,
+.error404 #page #main #container #content {
+	width: 740px;
 }
 .non_homepage #page #main {
 //width: 1020px;
@@ -206,6 +206,15 @@ color:#000;
 .threecol-frontpage div.threecol-content p{
   line-height:1.3em;
 }
+  .threecol-frontpage div.threecol-content a,
+ .threecol-frontpage div.threecol-content a:hover,
+ .threecol-frontpage div.threecol-content a:visited{
+   color: #fff;
+   font-weight: 300;
+ }
+ .threecol-frontpage div.threecol-content a:hover{  
+   border-bottom: 1px solid #ffffff;
+ }
 
 /* 4 columns */
 
