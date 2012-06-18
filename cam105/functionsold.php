@@ -192,12 +192,11 @@ function get_show_image($imageSize='shows-thumb', $showID=false, $returnUrlOnly 
    $width = $imageSizeAttribs['width'];
    $height = $imageSizeAttribs['height'];
    if (!$showID) $showID = get_the_ID();
-   if (!$showTitle) $showTitle = get_the_title($showID);
-   $img = array();
+   if (!$showTitle) $showTitle = get_the_title($showID);   
    if(has_post_thumbnail($showID)) {
       $img=wp_get_attachment_image_src(get_post_thumbnail_id($showID), $imageSize, false);    
    }
-   if(empty($img)) {
+   else {
       $img= wp_get_attachment_image_src (get_post_thumbnail_id(get_page_by_title('Default',false,'page')->ID), $imageSize, false);          
    }
    if (function_exists('getphpthumburl') && $phpThumbOptions) {
@@ -251,7 +250,7 @@ function add_podcast_callback() {
 		<form action="<?php echo get_admin_url('','edit.php'); ?>" method="get">
    		<input type="hidden" name="post_type" value="shows" />
    		<input type="hidden" name="page" value="add_podcast" />
-		<!--<input type="text" id="selectshow" name="select_show" value=""/>-->
+		<input type="text" id="selectshow" name="select_show" value=""/>
    		<?php wp_dropdown_pages(array('post_type' => 'shows')); ?>
 		<input type="text" class="scheduledate" name="podcast_date" value="<?php echo date("D, M d, Y"); ?>"/>
    		<input type="submit" name="submit" value="Add Podcast" />
@@ -267,13 +266,15 @@ function add_podcast_callback() {
 		$show_slug=get_post($showID)->post_name;
 		$show_thumb=get_post_thumbnail_id( $showID );
 		$author=get_userdatabylogin($show_slug);
-		$podcast_date = strtotime($_GET['podcast_date']);
 		if (isset($author)) $authorID=$author->ID;
         if (!$authorID) $authorID=$user_ID;
 		$post = array( // add a new post to the wordpress database
-			'post_title' => $show_title.' '.date('d/m/Y',$podcast_date),
-			'post_name' => $show_slug.'-'.date('d-m-Y',$podcast_date),
+			'post_title' => $show_title.' '.date('d/m/Y',time()),
+			'post_name' => $show_slug.'-'.date('d-m-Y',time()),
 			'post_status' => 'draft', // set post status to draft - we don't want the new post to appear live yet.
+			'post_date_gmt' => date('Y-m-d H:i:s',time()),
+			'post_date' => get_date_from_gmt( date('Y-m-d H:i:s',time()) ),
+			//'post_author' => $user_ID, // set post author to current logged on user.
 			'post_author' => $authorID, // set post author to current logged on user.
 			'post_type' => 'post', // set post type to post.
 			'post_category' => array(get_cat_ID( 'Podcasts' )) // set category to the category/categories parsed in your previous array
@@ -285,14 +286,13 @@ function add_podcast_callback() {
 	//print_r($post_details);
 		$post_id = $post_details->ID; // extract the post id from the post details
 		update_post_meta($post_id, '_thumbnail_id', $show_thumb);
-		//$connected = p2p_type( 'posts_to_shows' )->get_connected( get_queried_object_id() );
-		if (function_exists('p2p_type'))p2p_type('posts_to_shows')->connect($post_id, $showID);
+		$connected = p2p_type( 'posts_to_shows' )->get_connected( get_queried_object_id() );
 		//echo "post:$post_id show:$showID connected:$connected";
 		//echo "type:".p2p_type('posts_to_shows')->connect($post_id, $showID);
 		$post_redirect = 'http://'.$_SERVER['SERVER_NAME'].'/wp-admin/post.php?action=edit&post='.$post_id; // construct url for editing of post
 	//echo 'ax'.$post_id.$post_redirect;
 		echo '<div class="podcast_form">Podcast post created. <a href="'.$post_redirect.'">Click here to edit</a></div>';
-		//wp_redirect($post_redirect);// redirect to edit page for new post.
+		wp_redirect($post_redirect);// redirect to edit page for new post.
 		exit;
 	}
 
@@ -313,7 +313,7 @@ function schedule_scripts() {
     wp_enqueue_script('jquery-ui', get_bloginfo('stylesheet_directory') . '/js/jquery-ui-1.8.9.custom.min.js', array('jquery'));
     wp_enqueue_script('ui-datepicker', get_bloginfo('stylesheet_directory') . '/js/jquery.ui.datepicker.min.js',array('jquery-ui'));
     wp_enqueue_script('ui-autocomplete', get_bloginfo('stylesheet_directory') . '/js/jquery.ui.autocomplete.min.js',array('jquery-ui'));
-    wp_enqueue_script( 'suggest' );
+	wp_enqueue_script( 'suggest' );
     wp_enqueue_script('gigx_podcast', get_bloginfo('stylesheet_directory').'/js/gigx-admin.js', array('jquery'));
 }
 
@@ -325,6 +325,20 @@ add_action( 'admin_init', 'schedule_scripts', 1000 );
 # end podcasts
 
 
+#### custom search form ####
+function gigx_search_form( $form ) {
+
+    $form = '<form role="search" method="get" id="searchform" action="' . home_url( '/' ) . '" >
+    <div><label class="screen-reader-text" for="s">' . __('Search for:') . '</label>
+    <input type="text" value="' . get_search_query() . '" name="s" id="s" />
+    <input type="submit" id="searchsubmit" value="'. esc_attr__('Search') .'" />
+    </div>
+    </form>';
+
+    return $form;
+}
+
+add_filter( 'get_search_form', 'gigx_search_form' );
 
   
 

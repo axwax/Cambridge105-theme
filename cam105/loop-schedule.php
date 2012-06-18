@@ -1,24 +1,15 @@
 <?php
-
-// error_reporting(E_ERROR);
-// ini_set('display_errors', '1');
-
 /*
-File Description: The Loop
+File Description: The Loop for schedule page
 Built By: GIGX
-Theme Version: 0.5.11
+Theme Version: 0.6.2
 */
 ?>
-
-  	<?php wp_nav_menu( array( 'theme_location' => 'above-posts', 'sort_column' => 'menu_order', 'fallback_cb' => 'header_menu', 'container_class' => 'header-menu' ) ); ?>
-    <?php if ( is_active_sidebar( 'above_posts_widgets' ) ) : // Widgets Above Posts ?>
-    	<div id="above-posts-widgets">
-    		<?php dynamic_sidebar('above_posts_widgets'); ?>
-    	</div>  
-    <?php endif; ?>
-      
-    <div class="posts">
-<?
+<div class="posts">
+                  <?php if ( function_exists('yoast_breadcrumb') && $postcount ==0) {
+                     yoast_breadcrumb('<div id="breadcrumbs">','</div>');
+                  } ?>
+                  <?
 
 require_once $_SERVER['DOCUMENT_ROOT']."/schedule_info/Schedule.class.php"; 
 
@@ -29,7 +20,16 @@ if(!$week) $week = 0;
 $now = "now";
 //$now = "2011-08-01 06:00";
 $displayHeight = 60 * 13;
-$offset = "$week week";
+
+$offset = "";
+if($week > 0)
+{
+	$offset = "+ $week week";
+}
+elseif($week < 0)
+{
+	$offset = "$week week";
+}
 $width = 7 * 100;
 $height = 60 * 24;
 $startHour = 6;
@@ -45,9 +45,10 @@ if($week == 0)
 }
 else
 {
-	$sUrlSchedule = Schedule::GetGoogleScheduleURL(strtotime("last Monday $offset"), strtotime("this Sunday + 7 days $offset"));
+	$sUrlSchedule = Schedule::GetGoogleScheduleURL(strtotime("- 7 days $offset"), strtotime("+ 7 days $offset"));
 }
 $sUrlProgrammes = Schedule::GetProgrammesURL();
+
 $sCloseLocation = "/images/x.gif";
 
 /////////////////////////////////////////////////
@@ -55,8 +56,7 @@ $sCloseLocation = "/images/x.gif";
 function draw_box($entry, $index, $sTop, $sLeft, $sHeight)
 {
 ?>
-	<!--<a href="/shows/<?=$entry["pid"]?>">-->
-	<a href="#">
+	<a href="<?=$entry["url"]?>">
 	<div class="show_box show_<?=$index?>" style="width: <?=$entry["width"]?>px; height: <?=$entry[$sHeight]?>px; top: <?=$entry[$sTop]?>px; left: <?=$entry[$sLeft]?>px">
 	<? if($entry["height"] > 25) : ?>
 		<div class="time_inner"><?=date("H:i", $entry["start"])." - ".date("H:i", $entry["end"])?></div>
@@ -89,6 +89,7 @@ $boxWidth = $width / 7;
 
 foreach($entries as &$entry)
 {
+	
 	if($entry["end"] > $startDate && $entry["start"] < $endDate)
 	{
 		// get number of seconds into the day
@@ -169,342 +170,16 @@ for($i = 0; $i < 24; $i++)
 
 ?>
 <script type="text/javascript">
+
 var shows = <?=json_encode($rawEntries)?>;
 var offset = <?=$startHour?>;
 var sImagePrefix = '<?=$sImagesPrefix?>';
 var week = <?=$week?>;
-
-var $j = jQuery;
-
-$j(function()
-{
-	$j("#popup").click(function(event)
-	{
-		event.stopPropagation();
-	}).disableSelection();
-	
-	$j("#close").click(function()
-	{
-		$j(".selected").removeClass("selected");
-		$j("#popup").hide();
-	});
-
-	$j(".show_box").each(function(i, o)
-	{
-		$j(o).unwrap();
-	});
-		
-	$j(".show_box").click(function(event)
-	{
-		event.stopPropagation();
-	
-		$j(".selected").removeClass("selected");
-		$j(this).addClass("selected");
-	
-		var regex = /show_([0-9]+)/gi;
-		var oMatch = regex.exec($j(this).attr("class"));
-		var show = shows[oMatch[1]];
-		
-		$j("#popup_title_inner").text(show.start_text + " - " + show.end_text + ": " + show.title);
-		
-		var sDesc = show.desc;
-		if(sDesc && show.email_user)
-		{
-			sDesc += '<br /><br />';
-		}
-		if(show.email_user)
-		{
-			var sEmail = show.email_user + '@' + show.email_domain;
-			sDesc += 'Email: <a href="mailto:' + sEmail + '">' + sEmail + '</a>';
-		}
-		
-		$j("#popup_description_inner").html(sDesc);
-		var nAdditionalWidth = 0;
-		if(show.image != null)
-		{
-			$j("#popup_image").css("background-image", "url('" + sImagePrefix + show.image + "')");
-			$j("#popup_image").show();
-			nAdditionalWidth += 105;
-			$j("#popup_description_inner").css("margin-left", 105);
-		}
-		else
-		{
-			$j("#popup_description_inner").css("margin-left", 0);
-			$j("#popup_image").hide();
-		}
-		var nWidth = 275 + nAdditionalWidth;
-		var nTop =  parseInt($j(this).css("top")) + 0;
-		var nCentre = parseInt($j(this).css("left")) + (parseInt($j(this).css("width")) / 2);
-		
-		$j("#popup").css({ top: nTop, left: nCentre, width: 0 }).show();
-		
-		var nTitleWidth = $j("#popup_title_inner").width() + 10;
-		if(nWidth < nTitleWidth)
-		{
-			nWidth = nTitleWidth;
-		}
-		nWidth += 25;
-		var nLeft = nCentre - (nWidth / 2) + 0;
-		
-		var nEdge = $j("#schedule").width() - 27;	
-		
-		if(nLeft + nWidth > nEdge)
-		{
-			nLeft = (nEdge - nWidth);
-		}
-		
-		if(nLeft < 0)
-		{
-			nLeft = 0;
-		}
-		
-		$j("#popup_description_inner").width(nWidth - nAdditionalWidth - 10);
-		$j("#popup").animate({ top: nTop, left: nLeft, width: nWidth });
-	}).disableSelection();
-	
-	$j(document).click(function(event)
-	{
-		$j("#close").click();
-	});
-	
-	$j(".grid_box").disableSelection();
-	
-	$j("#popup").hide();
-	
-	if(week == 0)
-	{
-		$j('#now_line').css('opacity', 0.4);
-		update_now_line();
-		$j("#schedule")[0].scrollTop = parseInt($j('#now_line').css('top')) - 150;
-	}
-	else
-	{
-		$j("#now_line").hide();
-	}
-	
-	var asShows = [];
-	for(i = 0; i < shows.length; i++)
-	{
-		var oShow = shows[i];
-		if(oShow.image != null && asShows[oShow.image] == null)
-		{
-			asShows[oShow.image] = 1;
-			$j("#schedule").append('<img src="' + sImagePrefix + oShow.image + '" style="display: none" />');
-		}
-	}
-});
-
-function update_now_line()
-{
-	var dtNow = new Date();
-	
-	var nNowSecs = dtNow.getHours() * 60 * 60 + dtNow.getMinutes() * 60;
-	nNowSecs -= offset * 60 * 60;
-	nNowSecs += dtNow.getTimezoneOffset() * 60;
-	nNowSecs += <?=date('Z')?>;
-	
-	if(nNowSecs < 0)
-	{
-		nNowSecs += (24 * 60 * 60);
-	}
-	
-	var htmlLastBox = $j(".grid_box").last();
-	var dPxPerSec = (parseInt(htmlLastBox.css('top')) + htmlLastBox.height()) / 60 / 60 / 24;
-	
-	$j('#now_line').css({ top: parseInt(dPxPerSec * nNowSecs), width: $j("#schedule").width() - 20 });
-	
-	$j(".show_box").removeClass("show_box_current");
-	for(var i = 0; i < shows.length; i++)
-	{
-		var oShow = shows[i];
-		var dtStart = new Date(oShow.start_utc);
-		var dtEnd = new Date(oShow.end_utc);
-		
-		if(dtNow >= dtStart && dtNow < dtEnd)
-		{
-			$j(".show_" + i).addClass("show_box_current");
-		}
-	}
-	
-	setTimeout(update_now_line, 60000);
-}
-
-$j.fn.disableSelection = function() {
-    $j(this).attr('unselectable', 'on')
-           .css('-moz-user-select', 'none')
-           .each(function() { 
-               this.onselectstart = function() { return false; };
-            });
-};
+var nTimezone = <?=date('Z')?>
 
 </script>
-<style type="text/css">
-#schedule_container
-{
-	padding: 0px;
-	margin: 0px;
-	font-family: sans-serif;
-	font-size: 10px;
-	line-height: 13px;	
-}
-
-div.time_inner
-{
-	padding: 2px;
-	background-color: #486D25;
-	color: white;
-}
-
-div.title_inner
-{
-	font-weight: bold;
-	padding: 0px 2px 2px;
-}
-
-div.show_box
-{
-	overflow: hidden; 
-	background-color: white; 
-	border: 1px solid gray; 
-	position: absolute; 
-	border-radius: 5px 5px 5px 5px;
-	-moz-border-radius: 5px;
-	cursor: pointer;
-}
-
-div.show_box_current
-{
-	background-color: #E2F59F;
-}
-
-div.selected
-{
-	background-color: #f9f9f9;
-}
-
-div.day_box
-{
-	overflow: hidden; 
-	background-color: white; 	
-	position: absolute; 
-	border: 1px solid gray; 
-	text-align: center;
-}
-
-div.day_box_inner
-{
-	padding: 5px;
-}
-
-div.grid_box
-{
-	border: 1px solid silver;
-	background-color: #eee;
-	color: #ddd;
-}
-
-div.grid_box_alt
-{
-	background-color: #E8E8E8;
-}
-
-div#popup
-{
-	position: absolute;
-	background-color: white;
-	border: 1px solid black; 
-	-moz-border-radius: 15px 15px 15px 15px;	
-	border-radius: 15px 15px 15px 15px;	
-	overflow: hidden;
-}
-
-h1#popup_title
-{
-	margin-top: 0px;
-	margin-bottom: 0px;
-	background-color: #486D25;
-	font-size: 14px !important;
-	color: white;
-	padding: 5px;
-	-moz-border-radius: 15px 15px 0px 0px;
-	border-radius: 15px 15px 0px 0px;	
-}
-
-#popup_title_inner
-{
-	white-space: nowrap;
-	font-size: 14px !important;
-}
-
-#popup_description
-{
-	padding: 5px;
-}
-
-#popup_description_inner
-{
-	font-size: 10px;
-}
-
-#popup_image
-{
-	margin: 5px;
-	float: left;
-	-moz-border-radius: 5px 5px 5px 5px;
-	border-radius: 5px 5px 5px 5px;
-	width: 100px;
-	height: 100px;
-	background-repeat: no-repeat;
-}
-
-.nowrap
-{
-	white-space: nowrap;
-}
-
-#now_line
-{
-	background-color: red;
-	height: 3px;
-	position: absolute;
-}
-
-#schedule_inner
-{
-	position: relative;
-}
-
-.today
-{
-	background-color: #FFE491 !important;
-}
-
-.grid_today
-{
-	background-color: #FEFFDE !important;
-}
-
-#close
-{
-	position: absolute;
-	right: 10px;
-	top: 7px;
-	cursor: pointer;
-}
-#last_week, #next_week
-{
-	font-size: 12px;
-	font-weight: bold;
-	display: inline-block;
-	margin-bottom: 5px;
-}
-
-#next_week
-{
-	float: right;
-}
-
-</style>
+<script type="text/javascript" src="/wp-content/themes/cam105/js/schedule.js"></script>
+<link rel="stylesheet" type="text/css" href="/wp-content/themes/cam105/css/schedule.css"/>
 <div id="schedule_container">
 <a href="?week=<?=($week + 1)?>" id="next_week">Next Week &gt;</a>
 <a href="?week=<?=($week - 1)?>" id="last_week">&lt; Last Week</a>
@@ -540,13 +215,11 @@ foreach($grid_boxes as $grid_box)
 foreach($entries as $i=>&$entry)
 {
 	if($entry["display"] && !$entry["nonstop"])
-	//if($entry["display"])
 	{
 		draw_box($entry, $i, "top", "left", "height");
 	}
 	
 	if($entry["display2"] && !$entry["nonstop"])
-	//if($entry["display2"])
 	{
 		draw_box($entry, $i, "top2", "left2", "height2");
 	}

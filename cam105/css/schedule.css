@@ -1,0 +1,165 @@
+#schedule_container
+{
+	padding: 0px;
+	margin: 0 0 10px 0;
+	font-family: sans-serif;
+	font-size: 10px;
+	line-height: 13px;	
+}
+
+div.time_inner
+{
+	padding: 2px;
+	background-color: #486D25;
+	color: white;
+}
+
+div.title_inner
+{
+	font-weight: bold;
+	padding: 0px 2px 2px;
+}
+
+div.show_box
+{
+	overflow: hidden; 
+	background-color: white; 
+	border: 1px solid gray; 
+	position: absolute; 
+	border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px;
+	cursor: pointer;
+	color: black;
+}
+
+div.show_box_current
+{
+	background-color: #E2F59F;
+}
+
+div.selected
+{
+	background-color: #f9f9f9;
+}
+
+div.day_box
+{
+	overflow: hidden; 
+	background-color: white; 	
+	position: absolute; 
+	border: 1px solid gray; 
+	text-align: center;
+}
+
+div.day_box_inner
+{
+	padding: 5px;
+}
+
+div.grid_box
+{
+	border: 1px solid silver;
+	background-color: #eee;
+	color: #ddd;
+}
+
+div.grid_box_alt
+{
+	background-color: #E8E8E8;
+}
+
+div#popup
+{
+	position: absolute;
+	background-color: white;
+	border: 1px solid black; 
+	-moz-border-radius: 15px 15px 15px 15px;	
+	border-radius: 15px 15px 15px 15px;	
+	overflow: hidden;
+}
+
+h1#popup_title
+{
+	margin-top: 0px;
+	margin-bottom: 0px;
+	background-color: #486D25;
+	font-size: 14px !important;
+	color: white;
+	padding: 5px;
+	-moz-border-radius: 15px 15px 0px 0px;
+	border-radius: 15px 15px 0px 0px;	
+}
+
+#popup_title_inner
+{
+	white-space: nowrap;
+	font-size: 14px !important;
+}
+
+#popup_description
+{
+	padding: 5px;
+}
+
+#popup_description_inner
+{
+	font-size: 10px;
+}
+
+#popup_image
+{
+	margin: 5px;
+	float: left;
+	-moz-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+	width: 150px;
+	height: 112px;
+	background-repeat: no-repeat;
+}
+
+.nowrap
+{
+	white-space: nowrap;
+}
+
+#now_line
+{
+	background-color: red;
+	height: 3px;
+	position: absolute;
+}
+
+#schedule_inner
+{
+	position: relative;
+}
+
+.today
+{
+	background-color: #FFE491 !important;
+}
+
+.grid_today
+{
+	background-color: #FEFFDE !important;
+}
+
+#close
+{
+	position: absolute;
+	right: 10px;
+	top: 7px;
+	cursor: pointer;
+}
+#last_week, #next_week
+{
+	font-size: 12px;
+	font-weight: bold;
+	display: inline-block;
+	margin-bottom: 5px;
+}
+
+#next_week
+{
+	float: right;
+}

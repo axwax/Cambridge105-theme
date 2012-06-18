@@ -28,8 +28,8 @@ if ( ! empty( $categorydesc ) ) {
    $postcount ++;
 	$title = the_title('', '', false);
 	$permalink = apply_filters('the_permalink', get_permalink());
-   $img_html = '<div class="shows-thumb alignleft"><a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '">' . get_show_image('shows-thumb') . '</a></div>';  
-   echo $img_html;       	
+         $img_html = '<div class="shows-thumb alignleft"><a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '">' . get_show_image('shows-thumb') . '</a></div>';  
+         echo $img_html;       	
  ?>
 
               	<?php if ( is_active_sidebar( 'above_entry_widgets' ) ) : // Nothing here by default and design ?>

@@ -52,17 +52,11 @@ if (!$fbimg) $fbimg= Array(get_bloginfo('stylesheet_directory').'/images/faceboo
 
         <div id="header">
         	<div id="logo">
-				<?php /* marathon hour counter */
-				      $hour_number = ceil((time() - strtotime('2012-06-01 15:00')) / 60 / 60); 
-					  if($hour_number <= 105){?>
-				<div style="height: 120px; width: 230px; float: right; position: relative"><img style="position: absolute; height: 120px; left: 35px; opacity: 0.4; z-index: 100" src="http://cambridge105.fm/wp-content/uploads/2012/05/marathonslide.png" />
-				<div style="position: absolute; text-align: center; font-family: Harabara,HarabaraRegular; font-size: 3em; line-height: 0.8em; padding-top: 0.4em; z-index: 121; color: white; opacity: 1; width: 100%;opacity: 1.9;text-shadow: 0px 0px 8px black;letter-spacing: 3px;text-decoration:none"><a style="color: white" href="/shows/marathon">hour<br /><?php echo $hour_number ?></a></div></div>							
-				<?php }/* end */ ?>
   				<a href="<?php echo home_url();?>"><?php
 					if (get_header_image()) : ?>
   						<img src="<?php header_image(); ?>" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" alt="<?php bloginfo('show'); ?>" />
   					<?php endif; ?>
-				</a>
+				</a>	
         	</div> 
 
           <?php if ( is_active_sidebar( 'below_header_widgets' ) ) : // Widgets Below Header ?>

@@ -227,14 +227,6 @@ h3.dashboard-widget-title small,
   padding: 10px; }
 
 /* new adminmenu (sidebar)*/
-#adminmenu div.wp-menu-image {
-  float: left;
-  width: 1px;
-  height: 28px; }
-
-#adminmenu .wp-menu-image a {
-  display: none; }
-
 #wp-admin-bar-wp-logo {
   display: none; }
 
