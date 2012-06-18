@@ -37,7 +37,7 @@ function gigx_cpt_shows()
     'menu_position' => 5,
     //'menu_icon' => get_bloginfo('stylesheet_directory') . '/images/shows16x16.png',
     'show_in_nav_menus' => true,
-    'supports' => array('title','editor','thumbnail','sticky','custom-fields'),
+    'supports' => array('title','editor','thumbnail','sticky','custom-fields','revisions'),
     'taxonomies' => array( 'post_tag')
   );
   add_action('admin_head', 'shows_icon');
