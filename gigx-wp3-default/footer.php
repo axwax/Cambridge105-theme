@@ -2,7 +2,7 @@
 /*
 File Description: Default Footer
 Built By: GIGX
-Theme Version: 0.5
+Theme Version: 0.5.12
 */
 ?>
         </div><!-- end of container-->

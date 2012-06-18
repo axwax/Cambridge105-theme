@@ -2,18 +2,9 @@
 /*
 File Description: The Loop
 Built By: GIGX
-Theme Version: 0.5
+Theme Version: 0.6.2
 */
-?>
-
-  	<?php wp_nav_menu( array( 'theme_location' => 'above-posts', 'sort_column' => 'menu_order', 'fallback_cb' => 'header_menu', 'container_class' => 'header-menu' ) ); ?>
-    <?php if ( is_active_sidebar( 'above_posts_widgets' ) ) : // Widgets Above Posts ?>
-    	<div id="above-posts-widgets">
-    		<?php dynamic_sidebar('above_posts_widgets'); ?>
-    	</div>  
-    <?php endif; ?>
-
-      
+?>   
     <div class="posts">
 
         <?php /* Do we have posts, then start the loop, otherwise display 404 */ ?>
@@ -62,10 +53,3 @@ Theme Version: 0.5
     		<div class="nav-previous"><?php previous_posts_link(); ?></div>
     		<div class="nav-next"><?php next_posts_link(); ?></div>
     	</div><!-- #nav-above -->
-  
-
-  	<?php if ( is_active_sidebar( 'below_posts_widgets' ) ) : // Widgets Below Posts ?>
-    	<div id="below-posts-widgets">
-    		<?php dynamic_sidebar('below_posts_widgets'); ?>
-    	</div>  
-    <?php endif; ?>
