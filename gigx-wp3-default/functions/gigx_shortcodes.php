@@ -2,7 +2,7 @@
 /*
 File Description: Shortcodes
 Built By: GIGX
-Theme Version: 0.5.12
+Theme Version: 0.6.2
 
 This needs sorting out - I just copied and pasted it in case we want to have our own shortcodes
 it isn't actually tested

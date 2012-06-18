@@ -2,7 +2,7 @@
 /*
 File Description: Theme Functions
 Built By: GIGX
-Theme Version: 0.6.1
+Theme Version: 0.6.2
 */
 
 //error_reporting(E_ALL);

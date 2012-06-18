@@ -1,6 +1,6 @@
 <?php
 /* 
-Version: 0.1
+Version: 0.6.2
 Author: Axel Minet
 */
 
