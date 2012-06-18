@@ -37,7 +37,7 @@ function gigx_cpt_shows()
     'menu_position' => 5,
     'menu_icon' => null,
     'show_in_nav_menus' => true,
-    'supports' => array('title','editor','thumbnail','sticky','custom-fields'),
+    'supports' => array('title','editor','thumbnail','sticky','custom-fields','revisions'),
     'taxonomies' => array( 'post_tag')
   ); 
   register_post_type('shows',$args);
