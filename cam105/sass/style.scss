@@ -6,8 +6,8 @@
 @import "reset"; // reset/_utilities.scss from compass
 @include global-reset;
 
-// general text formatting
-p, ul, ol, dl, dd, dt, li, blockquote, pre { font-size: 1em; line-height: 1.5em; }
+// general text formatting - MAIN FONT SIZE!!!
+p, ul, ol, dl, dd, dt, li, blockquote, pre { font-size: 0.93em; line-height: 1.2em; }
 // links
 a{
 	text-decoration: none!important;
@@ -19,6 +19,7 @@ img{
    border:0;
 }
 
+// bold,italic
 strong, b, strong *, b * { font-weight: bold !important; }
 em, i, em *, i * { font-style: italic !important; }
 
