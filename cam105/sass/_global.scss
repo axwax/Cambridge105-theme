@@ -105,6 +105,7 @@ fieldset { padding-top:0; }
 .archive .shows, // single + multiple show archive result
 .archive .posts, // single + multiple show archive result
 .search-results .post, // single post search result
+.search-results .page, // page search result
 .search-results .shows, // single show search result
 .search-no-results .posts
 //.page .posts
@@ -189,6 +190,7 @@ div#sidebar .widget h2 a:hover,
    text-align: left;
 }
 
+/** HTML Elements **/
 /* Headers */
 h1,h2 {
 	@include arial;
@@ -197,9 +199,42 @@ h3 {
 	font: bold 1.2em sans-serif;
 }
 
+
+blockquote,q {
+	display: block;
+	//border: 1px dashed #dee9f6;
+	//background: #f4f5f7 url(images/blockquote.gif) no-repeat 0 3px;
+	padding: 12px 12px 8px 24px;
+	//margin-bottom: 8px;
+	//color: #555;
+}
+
 .shows-image, .shows-thumb{
    margin-right: 10px;
    margin-bottom: 10px; 
 }
 
 #searchform div{margin-bottom: 10px;}
+
+// buttons:
+.more {
+	@include rounded (0.9em, 0.9em, 0.9em, 0.9em);
+	border: 2px solid $dark_green;
+	@include boxshadow(0, 0, 7px, #ccc);
+	//box-shadow: 0 0 7px #CCCCCC;
+	color: $medium_grey_text;
+	font-size: 0.8em;
+	line-height: 2em;
+	padding: 0.1em 0.8em;
+	white-space: nowrap;
+	background-color: $white_text;
+	margin-bottom:10px;
+	@include clearfix();
+}
+
+.more:hover{
+	text-decoration: none;
+	@include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
+	color:$white_text;
+	border: 2px solid $dark_green;	
+}
