@@ -49,9 +49,13 @@
 //   colour:   #333
 
 @mixin shadow($distance: 5px, $colour: #333) {
-   -moz-box-shadow: $distance $distance $distance $colour; 
-   -webkit-box-shadow: $distance $distance $distance $colour; 
-   box-shadow: $distance $distance $distance $colour;
+   @include boxshadow($distance $distance $distance $colour);
+}
+
+@mixin boxshadow($distancex: 5px, $distancey: 5px, $blurradius: 5px, $colour: #333) {
+   -moz-box-shadow: $distancex $distancey $blurradius $colour; 
+   -webkit-box-shadow: $distancex $distancey $blurradius $colour; 
+   box-shadow: $distancex $distancey $blurradius $colour;
 }
 
 /////////////////////////////
@@ -77,4 +81,12 @@
 	 .row:before, .row:after, .clearfix:before, .clearfix:after { content:""; display:table; }
 	 .row:after, .clearfix:after { clear: both; }
 	 .row, .clearfix { zoom: 1; }
+}
+
+@mixin widget-header(){
+         @include harabara;
+         @include rounded (5px);
+         @include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
+         color:$white_text;
+         padding:4px 10px 6px 10px;   
 }
