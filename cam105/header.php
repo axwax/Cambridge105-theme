@@ -22,9 +22,18 @@ if($is_single!=0){
   if (!$fbimg) $fbimg=wp_get_attachment_image_src (gigx_find_image_attachment($post_id),'facebook-thumb',false);
 }
 if (!$fbimg) $fbimg= Array(get_bloginfo('stylesheet_directory').'/images/facebookdefault.gif');
+
+function load_external_jQuery() 
+{ // load external file  
+	wp_deregister_script( 'jquery' ); // deregisters the default WordPress jQuery  
+	wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', array(), null); // register the external file  
+	wp_enqueue_script('jquery'); // enqueue the external file  
+}  
+add_action('wp_enqueue_scripts', 'load_external_jQuery'); // initiate the function 
 	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php diag("BEGIN HTML") ?>
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
 
   <head profile="http://gmpg.org/xfn/11">
@@ -37,9 +46,11 @@ if (!$fbimg) $fbimg= Array(get_bloginfo('stylesheet_directory').'/images/faceboo
 	<?php wp_head(); ?>
   </head>
   
+  <?php diag("BEGIN BODY") ?>
   <body <?php body_class($bodyclass); ?>>
     <!--[if lte IE 6]><script src="<?php bloginfo('template_directory'); ?>/js/ie6/warning.js"></script><script>window.onload=function(){e("<?php bloginfo('template_directory'); ?>/js/ie6/")}</script><![endif]-->
 
+	<?php diag("BEGIN PAGE") ?>
     <div id="page">
 
       	<?php if ( is_active_sidebar( 'above_header_widgets' ) ) : // Widgets Above Header ?>
@@ -50,14 +61,9 @@ if (!$fbimg) $fbimg= Array(get_bloginfo('stylesheet_directory').'/images/faceboo
 
         <?php wp_nav_menu( array( 'theme_location' => 'above-header', 'sort_column' => 'menu_order', 'fallback_cb' => 'header_menu', 'container_class' => 'header-menu' ) ); ?>
 
+		<?php diag("BEGIN HEADER") ?>
         <div id="header">
         	<div id="logo">
-				<?php /* marathon hour counter */
-				      $hour_number = ceil((time() - strtotime('2012-06-01 15:00')) / 60 / 60); 
-					  if($hour_number <= 105){?>
-				<div style="height: 120px; width: 230px; float: right; position: relative"><img style="position: absolute; height: 120px; left: 35px; opacity: 0.4; z-index: 100" src="http://cambridge105.fm/wp-content/uploads/2012/05/marathonslide.png" />
-				<div style="position: absolute; text-align: center; font-family: Harabara,HarabaraRegular; font-size: 3em; line-height: 0.8em; padding-top: 0.4em; z-index: 121; color: white; opacity: 1; width: 100%;opacity: 1.9;text-shadow: 0px 0px 8px black;letter-spacing: 3px;text-decoration:none"><a style="color: white" href="/shows/marathon">hour<br /><?php echo $hour_number ?></a></div></div>							
-				<?php }/* end */ ?>
   				<a href="<?php echo home_url();?>"><?php
 					if (get_header_image()) : ?>
   						<img src="<?php header_image(); ?>" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" alt="<?php bloginfo('show'); ?>" />
@@ -74,11 +80,12 @@ if (!$fbimg) $fbimg= Array(get_bloginfo('stylesheet_directory').'/images/faceboo
           <?php endif; ?>  
  
         </div><!-- end of header div -->
+		<?php diag("END HEADER") ?>
 
           <?php wp_nav_menu( array( 'theme_location' => 'below-header', 'sort_column' => 'menu_order', 'fallback_cb' => 'header_menu', 'container_class' => 'header-menu' ) ); ?>
 
 		  <div id="main" class="clearfix">
      
-  
+		<?php diag("BEGIN CONTAINER") ?>
         <div id="container">
         
