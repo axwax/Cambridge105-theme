@@ -6,6 +6,7 @@ Theme Version: 0.5.9
 */
 ?>
         </div><!-- end of container--> 
+		<?php diag("END CONTAINER") ?>
       </div><!-- end of main -->
     	<?php if ( is_active_sidebar( 'above_footer_widgets' ) ) : // Widgets Above Footer ?>
       	<div id="above-footer-widgets" class="clearfix">
@@ -24,4 +25,5 @@ Theme Version: 0.5.9
     </div> <!-- end of page--> 
     <?php wp_footer(); ?>
   </body>
+  <?php diag("END HTML") ?>
 </html>

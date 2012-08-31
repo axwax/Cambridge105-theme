@@ -6,6 +6,7 @@ Theme Version: 0.6.1
 */
 ?>
 
+<?php diag("BEGIN POSTS") ?>
 <div class="posts">
 <?php if ( function_exists('yoast_breadcrumb') ) {
 	yoast_breadcrumb('<p id="breadcrumbs">','</p>');
@@ -86,3 +87,4 @@ Theme Version: 0.6.1
       
       	<?php endif; ?>
 </div><!-- end of posts div -->
+<?php diag("END POSTS") ?>
