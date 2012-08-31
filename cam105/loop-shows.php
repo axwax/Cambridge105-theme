@@ -108,7 +108,7 @@ function related_order($input) {
                      <?php echo $img_html ?>
                      <?php if (is_single()) echo $website_html; ?>
                      <?php if (is_single()) echo $frequency_html; ?>
-                     <?php if (is_single()) echo $tags ?>
+                     <?php //if (is_single()) echo $tags ?>
 
                </div>
             <?php else : ?>
