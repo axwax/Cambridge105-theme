@@ -1,0 +1,51 @@
+///// search
+
+//search
+#s{
+   position: absolute;
+   z-index: 19;
+   width: 204px;
+}
+
+div#below-posts-widgets .widget_search {
+ background-clip: padding-box;
+ 	@include rounded (5px);
+	@include shadow (5px, $medium_grey_text);
+	@include gradient (center top, $white_box_gradient1, $white_box_gradient2, $white_box_gradient2);	 
+	line-height:1.3em;
+	padding: 10px;
+
+}
+div#below-posts-widgets .widget_search h2.widget-title {
+   @include widget-header();
+	margin-bottom: 10px;
+}
+ 
+#searchsubmit {
+   background: none repeat scroll 0 0 transparent;
+   color: transparent;
+   padding: 0;
+}  
+
+.ui-autocomplete span.list_item_container {
+    height: 37px;
+    padding: 3px;
+   display:block;
+   min-width: 200px;
+}
+.ui-autocomplete span.image {
+    width: 50px;
+    height: 37px;
+    float: left;
+   display:block;
+}
+.ui-autocomplete span.image img {
+    width: 50px;
+    height: 37px;
+}
+.ui-autocomplete span.label {
+   display:block;
+}
+.ui-autocomplete .ui-menu-item a:hover {
+   cursor: pointer; 
+}

@@ -2,11 +2,6 @@
 @import "fonts";
 @import "mixins";
 
-//$purple: #eef6f7;
-//$purplelight: lighten($purple,4%);
-
-//h1{color: $purple; background-color: $purplelight;}
-
 /* Fonts */
 @font-face {
 	@include harabara-setup;
