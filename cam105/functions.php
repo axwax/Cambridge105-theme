@@ -349,7 +349,23 @@ function gigx_pagination($prev = 'Ç', $next = 'È') {
 };
   
 
+# include help files
+include 'functions/gigx-help.php';
 
+# custom mail sender:
+/**
+* How to change the user notification email address for WordPress the proper way
+*/
+add_filter('wp_mail_from', 'my_custom_mail_from');
+add_filter('wp_mail_from_name', 'my_custom_mail_from_name');
+
+function my_custom_mail_from($email) {
+return "me@mysite.com";
+}
+
+function my_custom_mail_from_name($name) {
+return "John Doe";
+}
 
 
 
