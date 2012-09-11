@@ -2,7 +2,7 @@
 function gigx_help( $contextual_help, $screen_id) {
     
    # Uncomment this to see actual screen
-   echo 'Screen ID = '.$screen_id.'<br />';
+   //echo 'Screen ID = '.$screen_id.'<br />';
      
     switch( $screen_id ) {
         case 'tools' :
