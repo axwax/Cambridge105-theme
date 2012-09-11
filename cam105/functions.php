@@ -93,8 +93,8 @@ add_image_size( 'shows-thumb', 150, 112, true );
 add_image_size( 'facebook-thumb', 130, 130, true );
 	
 # change header image size
-add_filter('gigx_header_image_width', function($size) { return 510; });
-add_filter('gigx_header_image_height', function($size) { return 120; });
+add_filter('gigx_header_image_width', function($size) { return 468; });
+add_filter('gigx_header_image_height', function($size) { return 110; });
 
 # remove all default widgets except the ones specified
 add_filter('gigx_add_default_widgets', function($widgetsToAdd) { return array('WP_Widget_Tag_Cloud','WP_Widget_Text','WP_Widget_Search');});
@@ -367,6 +367,67 @@ function my_custom_mail_from_name($name) {
 return "John Doe";
 }
 
+######### media uploader
+
+## add new tab
+## http://axcoto.com/blog/article/tag/media_upload_tabs
+    function axcoto_genify_media_menu($tabs) {
+    $newtab = array('genify' => __('Axcoto Genify', 'axcotogenify'));
+    return array_merge($tabs, $newtab);
+    }
+    //add_filter('media_upload_tabs', 'axcoto_genify_media_menu');
+    
+    # Must start with media, otherwise css won't get loaded
+    function media_axcoto_genify_process() {
+    media_upload_header();
+    echo 'hello';
+    }
+    function axcoto_genify_menu_handle() {
+	    return wp_iframe( 'media_axcoto_genify_process');
+    }
+    //add_action('media_upload_genify', 'axcoto_genify_menu_handle');
+
+## remove existing tabs
+## http://shibashake.com/wordpress-theme/how-to-hook-into-the-media-upload-popup-interface
+    //add_filter('media_upload_tabs', 'my_plugin_image_tabs', 10, 1);
+     
+    function my_plugin_image_tabs($_default_tabs) {
+	    unset($_default_tabs['type']);
+	    unset($_default_tabs['type_url']);
+	    unset($_default_tabs['gallery']);
+     
+	    return($_default_tabs);	
+    }
+
+
+## new action button
+    //add_filter('attachment_fields_to_edit', 'my_plugin_action_button', 20, 2);
+    function my_plugin_action_button($form_fields, $post) {
+     
+	    $send = "<input type='submit' class='button' name='send[$post->ID]' value='" . esc_attr__( 'Upload to Rackspace Cloud' ) . "' />";
+     
+	    $form_fields['buttons'] = array('tr' => "\t\t<tr class='submit'><td></td><td class='savesend'>$send</td></tr>\n");
+	    $form_fields['context'] = array( 'input' => 'hidden', 'value' => 'shiba-gallery-default-image' );
+	    return $form_fields;
+    }
+    
+## action to execute
+    //add_filter('media_send_to_editor', 'my_plugin_image_selected', 10, 3); 
+    function my_plugin_image_selected($html, $send_id, $attachment) {
+	    ?>
+	    <script type="text/javascript">
+	    /* <![CDATA[ */
+	    var win = window.dialogArguments || opener || parent || top;
+     
+	    win.jQuery( '#title' ).val('<?php echo $send_id;?>');
+	    // submit the form
+	    //win.jQuery( '#shiba-gallery_options' ).submit();
+	    /* ]]> */
+	    </script>
+	    <?php
+	    echo "yay";
+	    exit();
+    }  
 
 
 
