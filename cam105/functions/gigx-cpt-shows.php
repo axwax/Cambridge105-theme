@@ -35,9 +35,9 @@ function gigx_cpt_shows()
     'exclude_from_search' => false,
     'hierarchical' => true,          //maybe change back
     'menu_position' => 5,
-    //'menu_icon' => get_bloginfo('stylesheet_directory') . '/images/shows16x16.png',
+    'menu_icon' => get_stylesheet_directory_uri() . '/images/shows16x16.png',
     'show_in_nav_menus' => true,
-    'supports' => array('title','editor','thumbnail','sticky','custom-fields','revisions'),
+    'supports' => array('title','editor','thumbnail','sticky','custom-fields'),
     'taxonomies' => array( 'post_tag')
   );
   add_action('admin_head', 'shows_icon');
@@ -52,11 +52,12 @@ function shows_icon() {
   <style>
   <?php if (($_GET['post_type'] == 'shows') || ($post_type == 'shows')) : ?>
   #icon-edit { background:transparent url('<?php echo $url .'/images/shows32x32.png';?>') no-repeat; }		
-  <?php endif; ?>
+  <?php endif; ?><?php
+  /*
   #menu-posts-shows .wp-menu-image{background: url("<?php echo $url .'/images/shows-menu-icon.png';?>") no-repeat 6px -17px !important;}
-  #menu-posts-shows:hover div.wp-menu-image,#menu-posts-shows.wp-has-current-submenu div.wp-menu-image{background-position:6px 7px!important;}	    	
-  
-  </style>
+  #menu-posts-shows:hover div.wp-menu-image,#menu-posts-shows.wp-has-current-submenu div.wp-menu-image{background-position:6px 7px!important;}
+  */
+  ?></style>
   <?php
 }
 
