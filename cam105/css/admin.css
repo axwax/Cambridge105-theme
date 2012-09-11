@@ -1,7 +1,9 @@
 /*Increase Site Title Size (by Otto)*/
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\000035}}
 .wp-admin #wphead {
   height: 42px; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\000038}}
 .wp-admin #wphead h1 {
   font-size: 28px;
   /* font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;  */ }
@@ -13,31 +15,37 @@
 }
 */
 /*Reduce Page Heading Size*/
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\0000321}}
 .wrap h2 {
   font-size: 22px;
   line-height: 28px;
   padding: 9px 15px 2px 0; }
 
 /*Remove pointless publish icon*/
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\0000329}}
 .curtime #timestamp {
   background-image: none; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\0000332}}
 .curtime #timestamp {
   background-position: left top;
   background-repeat: no-repeat;
   padding-left: 0; }
 
 /* main page background */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\0000339}}
 html, .wp-dialog {
   background-color: #e9ee9f !important; }
 
 /* new/edit post background */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\0000344}}
 #post-body {
   background: none repeat scroll 0 0 #e9ee9f !important;
   border-bottom-color: #e9ee9f !important;
   border-top-color: #e9ee9f !important; }
 
 /* appearance/themes background and padding */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\0000351}}
 .themes-php .wrap, .theme-install-php .wrap, .appearance_page_custom-background .wrap, .appearance_page_custom-header .wrap {
   background-color: #f3f3f3 !important;
   background-image: -webkit-linear-gradient(center top, #f9f9f9, #f3f3f3) !important;
@@ -47,9 +55,11 @@ html, .wp-dialog {
   background-image: linear-gradient(center top, #f9f9f9, #f3f3f3) !important;
   padding: 0 10px !important; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\0000358}}
 .themes-php .nav-tab-active, .theme-install-php .nav-tab-active {
   font-weight: bold; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\0000361}}
 .themes-php .nav-tab:hover, .theme-install-php .nav-tab:hover {
   text-decoration: underline; }
 
@@ -65,6 +75,7 @@ background-color: $main_green;
 }
 */
 /* appearance/menus background */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\0000378}}
 #menu-management .nav-tab, .menu-edit #post-body {
   background-color: #f3f3f3 !important;
   background-image: -webkit-linear-gradient(center top, #f9f9f9, #f3f3f3) !important;
@@ -74,14 +85,17 @@ background-color: $main_green;
   background-image: linear-gradient(center top, #f9f9f9, #f3f3f3) !important; }
 
 /* appearance/menus header item type text */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\0000383}}
 .item-type, .postbox-title-action a {
   color: white !important; }
 
 /* appearance/menus header item type position */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\0000387}}
 .item-controls {
   padding: 7px 0 !important; }
 
 /* mce Editor background */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\0000393}}
 .mceIframeContainer {
   background-color: white; }
 
@@ -92,6 +106,7 @@ a, #poststuff #edButtonPreview, #poststuff #edButtonHTML, #the-comment-list p.co
 }
 */
 /* main green bg on boxes & widget headers */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003105}}
 .widget .widget-top, .postbox h3, .stuffbox h3 {
   /*
   	background: $main_green !important;
@@ -101,6 +116,7 @@ a, #poststuff #edButtonPreview, #poststuff #edButtonHTML, #the-comment-list p.co
   */ }
 
 /* more widget headers */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003129}}
 #widget-list .widget-top,
 .widget .widget-top,
 .postbox h3,
@@ -127,40 +143,48 @@ h3.dashboard-widget-title small,
   font: 13px/18px Georgia, "Times New Roman", "Bitstream Charter", Times, serif !important; }
 
 /* main green bg on table headers */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003138}}
 .metabox-prefs, h1#site-heading a, .widefat thead tr th, .widefat tfoot tr th, h3.dashboard-widget-title, h3.dashboard-widget-title span, h3.dashboard-widget-title small, .find-box-head, #wphead {
   background: #83ae2c !important;
   color: white !important; }
 
 /* table headers */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003144}}
 .widefat th {
   color: #112845 !important;
   text-shadow: none !important; }
 
 /* White Font for Links on Table Headers */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003149}}
 .widefat thead tr th a, .widefat tfoot tr th a {
   color: white !important;
   /* font-size:11px; */
   font-weight: normal; }
 
 /* main header */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003158}}
 .wp-admin #wphead {
   margin: 0 0 0 -15px !important;
   border-color: #486d25 !important; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003162}}
 #wphead h1 {
   padding-top: 5px; }
 
 /* header logo fix */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003167}}
 #header-logo {
   margin: 5px 7px 0 15px !important; }
 
 /* screen options */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003172}}
 #screen-options-wrap, #contextual-help-wrap {
   background-color: #83ae2c;
   border-color: #486d25;
-  color: white; }
+  color: black; }
 
 /* screen options & help button */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003180}}
 #screen-options-link-wrap,
 #contextual-help-link-wrap {
   border-right: 1px solid transparent;
@@ -174,41 +198,50 @@ h3.dashboard-widget-title small,
   background-image: linear-gradient(center bottom, #56822c, #83ae2c); }
 
 /* screen options & help button text */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003188}}
 #screen-meta-links a.show-settings {
   text-shadow: none !important;
   color: white !important; }
 
 /* screen options & help button arrow */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003195}}
 #screen-meta-links a.show-settings,
 .toggle-arrow {
   background: transparent url(../images/arrows-dark.png) no-repeat right 3px; }
 
 /* screen options & help button arrow */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003200}}
 #screen-meta-links .screen-meta-active a.show-settings {
   background: transparent url(../images/arrows-dark.png) no-repeat right -33px; }
 
 /* post box header arrow */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003205}}
 .meta-box-sortables .postbox:hover .handlediv {
   background: transparent url(../images/arrows-dark.png) no-repeat 6px 7px; }
 
 /* user info arrow (top-right corner) */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003210}}
 #user_info_arrow {
   background: transparent url(../images/arrows-dark.png) no-repeat 6px 5px; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003214}}
 #user_info:hover #user_info_arrow,
 #user_info.active #user_info_arrow {
   background: transparent url(../images/arrows.png) no-repeat 6px 5px; }
 
 /* update nag position fix*/
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003219}}
 #update-nag, .update-nag {
   margin-left: 0 !important; }
 
 /* editor toolbar background */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003224}}
 #poststuff #editor-toolbar {
   background: #83ae2c !important;
   color: white !important; }
 
 /* podcast form */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003230}}
 .podcast_form {
   color: #111111;
   border-radius: 5px;
@@ -227,56 +260,71 @@ h3.dashboard-widget-title small,
   padding: 10px; }
 
 /* new adminmenu (sidebar)*/
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003247}}
 #wp-admin-bar-wp-logo {
   display: none; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003248}}
 #adminmenuback, #adminmenuwrap {
   background-color: #83ae2c;
   border-color: #486d25;
   border-right-color: #ddd; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003249}}
 #adminmenu li.wp-menu-separator {
   display: none; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003250}}
 #adminmenu div.separator {
   border-color: #0e6ac8; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003251}}
 #adminmenu a.menu-top, .folded #adminmenu li.menu-top, #adminmenu .wp-submenu .wp-submenu-head {
   border-top-color: #486d25;
   border-bottom-color: #000; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003252}}
 #adminmenu a {
   color: #fff; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003253}}
 #adminmenu .wp-submenu a {
   color: #777; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003254}}
 #adminmenu a:hover, #adminmenu li.menu-top > a:focus, #adminmenu ul.wp-submenu a:hover {
   color: #fff; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003255}}
 #adminmenu li.menu-top:hover > a, #adminmenu li.menu-top.focused > a, #adminmenu li.menu-top > a:focus {
   background-color: #486d25;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4); }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003256}}
 #adminmenu li.wp-not-current-submenu:hover > a {
   border-top-color: #000;
   border-bottom-color: #000; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003257}}
 #adminmenu li.wp-not-current-submenu .wp-menu-arrow {
   border-top-color: #000;
   border-bottom-color: #000;
   background: #486d25; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003258}}
 #adminmenu li.wp-not-current-submenu .wp-menu-arrow div {
   background: #486d25;
   border-color: #000; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003259}}
 #collapse-menu {
   color: rgba(255, 255, 255, 0.3); }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003260}}
 #collapse-menu:hover {
   color: white; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003261}}
 #collapse-menu:hover #collapse-button {
   border-color: rgba(255, 255, 255, 0.4);
   background-color: #486d25;
@@ -286,6 +334,7 @@ h3.dashboard-widget-title small,
   background-image: -o-linear-gradient(center bottom, #333333, #486d25);
   background-image: linear-gradient(center bottom, #333333, #486d25); }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003262}}
 #collapse-button {
   border-color: rgba(255, 255, 255, 0.2);
   background-color: black;
@@ -295,26 +344,31 @@ h3.dashboard-widget-title small,
   background-image: -o-linear-gradient(center bottom, #111111, black);
   background-image: linear-gradient(center bottom, #111111, black); }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003263}}
 #adminmenu .awaiting-mod, #adminmenu .update-plugins, #sidemenu a .update-plugins, #rightnow .reallynow {
   background-color: #464646;
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   color: #FFFFFF; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003264}}
 .folded #adminmenu .wp-submenu-head {
   border-bottom-color: #ccc;
   border-top-color: #ccc; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003265}}
 .folded #adminmenu li.wp-has-current-submenu, .folded #adminmenu li.current.menu-top {
   border-bottom-color: #6D6D6D;
   border-top-color: #808080; }
 
 /* currently selected submenu */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003274}}
 #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu, #adminmenu li.current a.menu-top, #adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head {
   border-bottom-color: #56822c;
   border-top-color: #83ae2c;
   color: #FFFFFF;
   text-shadow: 0 -1px 0 #333333; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003280}}
 #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu, #adminmenu li.current a.menu-top, .folded #adminmenu li.wp-has-current-submenu, .folded #adminmenu li.current.menu-top, #adminmenu .wp-menu-arrow, #adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head {
   background-color: #486d25;
   background-image: -webkit-linear-gradient(center bottom, #56822c, #83ae2c);
@@ -324,6 +378,7 @@ h3.dashboard-widget-title small,
   background-image: linear-gradient(center bottom, #56822c, #83ae2c); }
 
 /* arrow */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003284}}
 #adminmenu .wp-menu-arrow div {
   background-color: #486d25;
   background-image: -webkit-linear-gradient(right bottom, #56822c, #83ae2c);
@@ -333,17 +388,22 @@ h3.dashboard-widget-title small,
   background-image: linear-gradient(right bottom, #56822c, #83ae2c); }
 
 /* links */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003289}}
 a, #the-comment-list p.comment-author strong a, #media-upload a.del-link, #media-items a.delete, .plugins a.delete, .ui-tabs-nav a {
   color: #486d25; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003293}}
 #wpadminbar .quicklinks .menupop ul li a, #wpadminbar .quicklinks .menupop ul li a strong, #wpadminbar .quicklinks .menupop.hover ul li a, #wpadminbar.nojs .quicklinks .menupop:hover ul li a {
   color: #486d25; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003297}}
 #wpadminbar .ab-submenu .ab-item {
   color: #486d25; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003302}}
 #adminmenu .wp-submenu a:hover, #adminmenu .wp-submenu a:focus {
   background-color: #e9ee9f; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/axwax\/Dropbox\/homepage\/cambridge105\.gigx\.co\.uk\/httpdocs\/wp-content\/themes\/cam105\/sass\/admin\.scss}line{font-family:\00003307}}
 #wpadminbar .menupop li:hover, #wpadminbar .menupop li.hover, #wpadminbar .quicklinks .menupop .ab-item:focus, #wpadminbar .quicklinks .ab-top-menu .menupop .ab-item:focus {
   background-color: #e9ee9f; }

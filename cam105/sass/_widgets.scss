@@ -30,7 +30,7 @@
 	margin:20px 0px 10px 0px;
 	position:relative;
 	//left: 10px;
-        left: 100px;
+        left: 0px;
 }
 #below-header-widgets h2{
       @include widget-header();
@@ -81,45 +81,17 @@ div#sidebar .widget h2{
 	padding:0;
 }
 
-///////////////////
-/* page widgets */
-.page-title {
-	background-color:$dark_green;
-	overflow:hidden;
-	margin-top:0px;
-	margin-bottom:10px;
-	width:auto;
-	//font: normal 1.5em Arial, Tahoma, sans-serif;
-	color:$white_text;
-	padding-left:5px;
-	padding-bottom:1px;
-}
-.page-title a {
-	color:$white_text;
-}
-
-////////////////////
-/* loop widgets */
-.post-title {
-	//font-weight:bold;
-	//margin:5px 0 5px;
-   
-}
-
-.postdate, .postauthor, .postcategories {
-	//font-size:90%;
-	text-transform: lowercase;
-	margin-left: 0px;
-}
-
-
-
 ///////////////////////
 /* specific widgets */
 
 @import "gigx-slides";
 
 @import "gigx-sponsors-slides";
+
+@import "gigx-share-buttons";
+
+@import "join-us";
+
 
 /* wp_bannerize */
 .wp_bannerize {  
@@ -185,7 +157,7 @@ div#sidebar .widget h2{
 }
 
 
-#latest_podcast.widget_gigxrecentposts {background: transparent;padding:0 10px 0 5px;}
+#latest_podcast.widget_gigxrecentposts {background: transparent;padding:10px 10px 0 5px;}
 #latest_podcast.widget_gigxrecentposts h2.widget-title {@include arial;text-transform: none;}
 #latest_podcast.widget_gigxrecentposts h2.widget-title a {color: $black_text;}
 #latest_podcast.widget_gigxrecentposts ul.gigx-recent-posts li {
@@ -256,6 +228,7 @@ div#below-posts-widgets div#gigxrecentposts-3 {
 #s{
    position: absolute;
    z-index: 2000;
+   width: 204px;
 }
 span.list_item_container {
     height: 37px;
@@ -329,3 +302,113 @@ div#below-posts-widgets .widget_search h2.widget-title {
 
 .home #below-posts-widgets {
  margin-bottom: 10px; }
+ 
+ // testimonials widget
+.testimonials_widget {
+   clear: both;
+   padding:10px; 
+   margin-bottom: 10px;
+   background-color: white;
+   @include rounded(5px, 5px, 5px, 5px);
+   @include shadow(5px,#333);
+}
+.testimonials_widget .widget-title{
+      z-index: 1;
+      @include widget-header();
+      margin-bottom: 10px;
+}
+
+div#sidebar .widget h3{
+	@include widget-header();
+	margin-bottom: 10px;	
+}
+
+// hungryfeed
+.hungryfeed_item_title{
+	display: none;
+}
+.hungryfeed_feed_title{
+	margin: 20px 0 5px 0;
+}
+div.hungryfeed_item_description td{
+	padding: 0 40px 7px 0;
+}
+
+// GIGX Latest Tweet
+.tweet_time {
+    display: block;
+    font-weight: bold;
+    padding-bottom: 0.1em;
+}
+
+.tweet,
+.query {
+	font: 120% Georgia, serif;
+	color: #085258;
+}
+
+.tweet_list {
+	-webkit-border-radius: 0.5em;
+	-moz-border-radius: 0.5em;
+	border-radius: 0.5em;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	overflow-y: hidden;
+	//background-color: #8ADEE2;
+}
+
+.widget ul.tweet_list li {
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding: 0.5em;
+	list-style-type: none;
+
+	color: $white_text;
+	@include rounded(5px);
+	@include gradient(top, $green_box_gradient2, $green_box_gradient1, $dark_green);
+	margin-bottom: 10px;
+	
+}
+
+.tweet_list li a {
+	//color: #0C717A;
+}
+
+.tweet_list .tweet_even {
+	//background-color: #91E5E7;
+}
+
+.tweet_list .tweet_avatar {
+	padding-right: .5em;
+	float: left;
+}
+
+.tweet_list .tweet_avatar img {
+	vertical-align: middle;
+}
+.tweet_retweet{
+	@extend .more;
+	margin-left: 10px;
+}
+.tweet_text a{
+	color: $white_text;
+}
+.tweet_text a:hover{
+	border-bottom: 1px dotted;
+}
+.tweet_text a.tweet_hashtag {
+	//color: $yellow;
+}
+
+.gigx-latest-tweets{
+	display: none;
+}
+#gigx-latest-tweets-tweets ul.tweet_list {
+	height: 150px;
+	overflow: hidden;
+}
+#gigx-latest-tweets-tweets .tweet_list li {
+	height: 150px;
+}
+
