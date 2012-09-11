@@ -11,7 +11,9 @@ Theme Version: 0.6.1
 	yoast_breadcrumb('<p id="breadcrumbs">','</p>');
 } ?>       
         <?php /* Do we have posts, then start the loop, otherwise display 404 */
-        
+        if (is_author()) {
+		echo get_userdata(get_query_var('author'));
+	}
         ?>
       	<?php if (have_posts()) : ?>
           <?php /* Start the Loop */ ?>  	
@@ -48,7 +50,18 @@ Theme Version: 0.6.1
                $leftcol = $img_html;
             }
             echo $leftcol;
-         } ?>   
+         }
+	 //elseif (!is_page()) $title_html .= '<span class="postdate">Posted by ' . get_the_author() . ' on '. get_the_time('jS F Y') .'</span>';
+	elseif (!is_page()) {
+		$title_html .= '<span class="postdate">';
+		$title_html .= get_the_date();
+		$title_html .= ' by ' . get_the_author();
+		$title_html .= '</span>';
+		
+		//$title_html .= '<a href="' . get_author_posts_url(get_the_author_meta( 'ID' )) . '">' . get_the_author_meta('display_name') . '</a>';           
+		//$title_html .= ' on '. get_the_time('jS F Y') .'</span>';
+	}
+	 ?>   
             <?php echo $title_html ?>			
             <div class="entry clearfix">
                   <?php the_content('<p>Read the rest of this entry &raquo;</p>'); ?>

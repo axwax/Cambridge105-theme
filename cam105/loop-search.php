@@ -31,22 +31,19 @@ Theme Version: 0.6.1
                 	</div>  
                 <?php endif; ?>
         				<div class="entry"> 
-        					<?php echo gigx_excerpt (get_the_content(),get_the_excerpt(),false,500,$permalink,'(more...)',True); ?>
+        					<?php echo gigx_excerpt (get_the_content(),get_the_excerpt(),false,500,$permalink,'more',True); ?>
         				</div>        				
-        		<!--		<p class="postmetadata"><?php the_tags('Tags: ', ', ', '<br />'); ?> Posted by <?php if (function_exists('author_exposed')) {author_exposed(get_the_author_meta('display_name'));}   ?> in <?php the_category(', ') ?> | <?php edit_post_link('Edit', '', ' | '); ?>  <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;', '% Comments &#187;'); ?></p>  -->
               	<?php if ( is_active_sidebar( 'below_entry_widgets' ) ) : // Nothing here by default and design ?>
                     <div class="below-entry-widgets">
                 		  <?php dynamic_sidebar('below_entry_widgets'); ?>
                   	</div>
                 <?php endif; ?>  
-                  <?php /* Display navigation to next/previous pages when applicable */
-                  if ( (($wp_query->current_post + 1) >= ($wp_query->post_count)) && (get_next_posts_link() || get_previous_posts_link()) ) :
-                  ?>
-                    <div id="nav-below" class="navigation">
-                       <div class="nav-previous"><?php previous_posts_link("&laquo; previous page"); ?></div>
-                       <div class="nav-next"><?php next_posts_link("next page &raquo;"); ?></div>
-                    </div><!-- #nav-below -->
-                  <?php endif; ?>	               
+		<?php /* Display navigation to next/previous pages when applicable */
+		if ( (($wp_query->current_post + 1) >= ($wp_query->post_count)) && (get_next_posts_link() || get_previous_posts_link()) ) : ?>
+			<div id="nav-below" class="navigation">
+				<?php gigx_pagination("&laquo; previous page", "next page &raquo;"); ?>
+			</div><!-- #nav-below --><?php 
+		endif; ?>             
                </div>
     
                <?php comments_template( '', true ); ?> 			

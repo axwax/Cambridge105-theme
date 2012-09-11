@@ -38,7 +38,7 @@ if ( ! empty( $categorydesc ) ) {
                 	</div>  
                 <?php endif; ?>
         				<div class="entry"> 
-        					<?php echo gigx_excerpt (get_the_content(),get_the_excerpt(),false,500,$permalink,'(more...)',True); ?>
+        					<?php echo gigx_excerpt (get_the_content(),get_the_excerpt(),false,500,$permalink,'more',True); ?>
         				</div>        				
         		<!--		<p class="postmetadata"><?php the_tags('Tags: ', ', ', '<br />'); ?> Posted by <?php if (function_exists('author_exposed')) {author_exposed(get_the_author_meta('display_name'));}   ?> in <?php the_category(', ') ?> | <?php edit_post_link('Edit', '', ' | '); ?>  <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;', '% Comments &#187;'); ?></p>  -->
               	<?php if ( is_active_sidebar( 'below_entry_widgets' ) ) : // Nothing here by default and design ?>

@@ -93,10 +93,20 @@ function related_order($input) {
 			if ( '' != $frequency_list ) {
 				$frequency_html= "<p>$frequency_list</p>\n";
 			}
+			
+			$schedule = new Schedule(Schedule::GetCachedScheduleURL(), Schedule::GetProgrammesURL());
+			$is_current = false;
+			$nextshowing = $schedule->GetNextShowing($post->post_name, &$is_current);
+			
+			$nextonair_html='';
+			if($nextshowing)
+			{
+				$nextonair_html = '<p>Next On Air: '.date('D jS M: ga', $nextshowing['start']).'</p>';
+			}
 
 			# Current / next episode
 			$nowplaying_html='';
-			$schedule = new Schedule(Schedule::GetCachedScheduleURL(), Schedule::GetProgrammesURL());
+			
 			$now = $schedule->GetCurrentShow();
 			//if($now['pid']== basename(get_permalink())){
 			if($now['pid']== $post->post_name){
@@ -153,7 +163,8 @@ function related_order($input) {
 						<?php if (is_single()) echo $twitter_html; ?>
 						<?php if (is_single()) echo $facebook_html; ?>
 						<?php if (is_single()) echo $frequency_html; ?>
-						<?php if (is_single()) echo $tags ?>
+						<?php if (is_single()) echo $nextonair_html; ?>
+						<?php //if (is_single()) echo $tags ?>
 					</div>
 				<?php else : ?>
 					<?php echo $img_html ?>
@@ -163,7 +174,7 @@ function related_order($input) {
 				<div class="entry clearfix">
 					<?php 
 					if (is_single()) the_content('<p>Read the rest of this entry &raquo;</p>');
-					else echo gigx_excerpt (get_the_content(),get_the_excerpt(),false,500,$permalink,'(more...)',True);
+					else echo gigx_excerpt (get_the_content(),get_the_excerpt(),false,500,$permalink,'more',True);
 					?>               
 				</div>
 				<div class="entry-utility">
@@ -264,7 +275,7 @@ function related_order($input) {
 				<input type="submit" id="searchsubmit" value="'. esc_attr__('Search') .'" />
 				</div>
 				</form>';
-				if (is_single()) echo $form;
+				//if (is_single()) echo $form;
 			?>
 			<?php if (is_single()) edit_post_link('edit', '<p>', '</p>'); ?><?php 
 		endwhile;
