@@ -22,8 +22,8 @@ add_action( 'after_setup_theme', 'gigx_setup' );
 
 # admin style
 function gigx_admin_style() {
-    $url = get_bloginfo('stylesheet_directory') . '/css/admin.css';
-    echo '<link rel="stylesheet" type="text/css" href="' . $url . '" />';
+    $url = get_stylesheet_directory_uri() . '/css/admin.css';
+    if (fopen($url, "r")) echo '<link rel="stylesheet" type="text/css" href="' . $url . '" />';
 }
 add_action('admin_head', 'gigx_admin_style');
 
