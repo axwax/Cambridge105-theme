@@ -22,8 +22,7 @@ add_action( 'after_setup_theme', 'gigx_setup' );
 
 # admin style
 function gigx_admin_style() {
-    $url = get_stylesheet_directory_uri() . '/css/admin.css';
-    if (fopen($url, "r")) echo '<link rel="stylesheet" type="text/css" href="' . $url . '" />';
+    echo load_theme_stylesheet('css/admin.css');
 }
 add_action('admin_head', 'gigx_admin_style');
 
@@ -365,6 +364,36 @@ if (!function_exists ('gigx_dashboard_widget_function')){
   function gigx_dashboard_widget_function(){
     echo "yay";
   }   
+}
+
+// 2012-10-01
+/**
+ * Load a stylesheet from either parent or child theme.
+ *
+ * Searches in the stylesheet directory before the template directory.
+ * Returns <link rel="stylesheet"/> tag including the full URI of the stylesheet,
+ * or false if no stylesheet can be found.
+ * Example: load_theme_stylesheet('css/admin.css');
+ *
+ * @since 0.6.2
+ *
+ * @param string $file Relative path for stylesheet file to search for.
+ * @return string The URI of the file if one is located.
+ */
+if (!function_exists('load_theme_stylesheet')) { 
+    function load_theme_stylesheet( $file = '' ) {
+	    $file = ltrim( $file, '/' );
+    
+	    if ( empty( $file ) || ( false !== strpos( $file, '..' ) ) ) {
+		    $url = get_stylesheet_directory_uri();
+	    } elseif ( is_child_theme() && file_exists( trailingslashit( get_stylesheet_directory() ) . $file ) ) {
+		    $url = trailingslashit( get_stylesheet_directory_uri() ) . $file;
+	    } elseif ( file_exists( trailingslashit( get_template_directory() ) . $file )) {
+		    $url = trailingslashit( get_template_directory_uri() ) . $file;
+	    } else return false;
+	    $out = '<link rel="stylesheet" type="text/css" href="' . $url . '" />';
+	    return $out;
+    }
 }
 
 
