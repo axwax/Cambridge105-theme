@@ -88,6 +88,8 @@ div#sidebar .widget h2{
 
 @import "gigx-sponsors-slides";
 
+@import "testimonials-widget";
+
 @import "gigx-share-buttons";
 
 @import "join-us";
@@ -302,21 +304,6 @@ div#below-posts-widgets .widget_search h2.widget-title {
 
 .home #below-posts-widgets {
  margin-bottom: 10px; }
- 
- // testimonials widget
-.testimonials_widget {
-   clear: both;
-   padding:10px; 
-   margin-bottom: 10px;
-   background-color: white;
-   @include rounded(5px, 5px, 5px, 5px);
-   @include shadow(5px,#333);
-}
-.testimonials_widget .widget-title{
-      z-index: 1;
-      @include widget-header();
-      margin-bottom: 10px;
-}
 
 div#sidebar .widget h3{
 	@include widget-header();
