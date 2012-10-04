@@ -11,10 +11,8 @@ function related_order($input) {
    return 'COUNT(wp_term_relationships.object_id) DESC';   
    //return 'COUNT(wp_term_relationships.object_id) DESC, wp_posts.post_date DESC';
 }
-?>
-       
+?>       
 <div id="shows-container" class="shows-container">
-
 	<?php /* Do we have posts, then start the loop, otherwise display 404 */
 	$postcount=0;
 	if (have_posts()) :
