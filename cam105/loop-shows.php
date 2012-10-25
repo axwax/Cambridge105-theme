@@ -122,30 +122,49 @@ function related_order($input) {
 
 				// Display connected pages
 				if ( $connected->have_posts() ) :
-					$done=false;
-					while ( $connected->have_posts() && !$done) :
-						$connected->the_post();
-						$done=true;
-						$title = the_title('', '', false);
-						$permalink = apply_filters('the_permalink', get_permalink());
-						//$podcasts_html = '<h4><a href="' . esc_url($permalink) . '">' . $title . '</a></h4>';
-						//$podcasts_html .= '<p>' . gigx_excerpt (get_the_content(),get_the_excerpt(),false,500,$permalink,'(more...)',True) . '</p>';
-
-						$podcasts_html = '  <h2 class="related-shows latest-podcast">Latest Podcast:</h2>';
-						$podcasts_html.= '<div id="latest_podcast" class="widget widget_gigxrecentposts"><p>';
-						//$podcasts_html.= '  <h2 class="widget-title"><a href="' . esc_url($permalink) . '">Latest Podcast:</a></h2>';
-						//$podcasts_html.= '  <ul class="gigx-recent-posts">';
-						//$podcasts_html.= '    <li>';
-						$podcasts_html.= '      <a href="' . esc_url($permalink) . '" title="'.esc_attr($title).'">';   
-						$podcasts_html.=          get_show_image('shows-thumb');
-						$podcasts_html.=          $title;
-						$podcasts_html.= '      </a>';
-						//$podcasts_html.= '      <br/>' . gigx_excerpt (get_the_content(),get_the_excerpt(),false,500,$permalink,'(more...)',True) ;
-						$podcasts_html.= '      <br/>' . get_the_content();
-						//$podcasts_html.= '    </li>';
-						//$podcasts_html.= '  </ul>';
-						$podcasts_html.= '</p></div>';                       
+					$first=false;
+					$podcastcount = 0;
+					$podcasts_html = "";
+				       $podcasts_html.= '  <h2 class="related-shows latest-podcast">Listen Again:</h2>';
+				       $podcasts_html.= '<div id="latest_podcast" class="widget widget_gigxrecentposts">';
+					  					
+					while ( $connected->have_posts() && $podcastcount<5) :
+					  $podcastcount++;
+					  $connected->the_post();
+					  $title = the_title('', '', false);
+					  $permalink = apply_filters('the_permalink', get_permalink());
+					  
+					  if(!$first){
+					     $podcasts_html.= '      <div class="twocol">';
+					     $podcasts_html.= '      <div class="twocol-1 twocol-content">';
+					     
+					     $podcasts_html.= '      <p><a href="' . esc_url($permalink) . '" title="'.esc_attr($title).'">';   
+					     $podcasts_html.=          get_show_image('shows-thumb');
+					     $podcasts_html.=          $title;
+					     $podcasts_html.= '      </a>';
+					     global $more; $more = 0;
+					     //$podcasts_html.= '      <br/>' . gigx_excerpt (get_the_content(),get_the_excerpt(),false,500,$permalink,'more',True);
+					     $podcasts_html.= '      <br/>' . get_the_content('[...]');
+					     //$podcasts_html.= '      <br/>' . get_the_excerpt();
+					     $podcasts_html.=  do_shortcode('[powerpress]');
+					     $podcasts_html.= '      </p></div>';
+					     $podcasts_html.= '      <div class="twocol-2 twocol-content">Previous Shows:<ul >';
+					     
+					     
+					     $first=true;
+					  }
+					  else{
+					     $podcasts_html.= '      <li><a href="' . esc_url($permalink) . '" title="'.esc_attr($title).'">';   
+					     $podcasts_html.=          $title;
+					     $podcasts_html.= '      </a>';
+					     $podcasts_html.=  do_shortcode('[powerpress]');
+					     $podcasts_html.= '      </li>';
+					     //global $more; $more = 0;
+					     //$podcasts_html.= '      <br/>' . gigx_excerpt (get_the_content(),get_the_excerpt(),false,100,$permalink,'more',True);
+					     
+					  }
 					endwhile;
+					$podcasts_html.= '</ul></div></div></div>';
 					// Prevent weirdness
 					wp_reset_postdata();
 				endif;
