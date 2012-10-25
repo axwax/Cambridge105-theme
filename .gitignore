@@ -4,3 +4,5 @@ Thumbs.db
 .DS_Store
 *.scssc
 .gitignore
+# don't track generated style.css
+style.css
