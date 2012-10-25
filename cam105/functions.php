@@ -348,4 +348,11 @@ include 'functions/gigx-help.php';
 
 
 
-
+# enqueue frontpage js
+function gigx_frontpage_scripts() {
+    wp_deregister_script( 'gigx-tooltip-js' );
+    wp_register_script( 'gigx-tooltip-js', get_bloginfo('stylesheet_directory') . '/js/jquery.tipTip.minified.js', array( 'jquery' ), '1.4', true );
+    wp_enqueue_script( 'gigx-tooltip-js' );
+    
+}
+add_action('wp_enqueue_scripts', 'gigx_frontpage_scripts');
