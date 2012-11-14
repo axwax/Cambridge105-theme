@@ -97,8 +97,8 @@ add_image_size( 'shows-thumb', 150, 112, true );
 add_image_size( 'facebook-thumb', 130, 130, true );
 	
 # change header image size
-add_filter('gigx_header_image_width', function($size) { return 510; });
-add_filter('gigx_header_image_height', function($size) { return 120; });
+add_filter('gigx_header_image_width', function($size) { return 468; });
+add_filter('gigx_header_image_height', function($size) { return 110; });
 
 # remove all default widgets except the ones specified
 add_filter('gigx_add_default_widgets', function($widgetsToAdd) { return array('WP_Widget_Tag_Cloud','WP_Widget_Text','WP_Widget_Search');});
