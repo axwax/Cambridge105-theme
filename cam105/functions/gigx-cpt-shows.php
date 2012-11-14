@@ -35,12 +35,29 @@ function gigx_cpt_shows()
     'exclude_from_search' => false,
     'hierarchical' => true,          //maybe change back
     'menu_position' => 5,
-    'menu_icon' => null,
+    'menu_icon' => get_stylesheet_directory_uri() . '/images/shows16x16.png',
     'show_in_nav_menus' => true,
     'supports' => array('title','editor','thumbnail','sticky','custom-fields','revisions'),
     'taxonomies' => array( 'post_tag')
-  ); 
+  );
+  add_action('admin_head', 'shows_icon');
   register_post_type('shows',$args);
+}
+
+function shows_icon() {
+  global $post_type;
+  $url = get_bloginfo('stylesheet_directory');
+  ?>
+  <style>
+  <?php if (($_GET['post_type'] == 'shows') || ($post_type == 'shows')) : ?>
+  #icon-edit { background:transparent url('<?php echo $url .'/images/shows32x32.png';?>') no-repeat; }		
+  <?php endif; ?><?php
+  /*
+  #menu-posts-shows .wp-menu-image{background: url("<?php echo $url .'/images/shows-menu-icon.png';?>") no-repeat 6px -17px !important;}
+  #menu-posts-shows:hover div.wp-menu-image,#menu-posts-shows.wp-has-current-submenu div.wp-menu-image{background-position:6px 7px!important;}
+  */
+  ?></style>
+  <?php
 }
 
 # add filter to insure the text Show, or show, is displayed when user updates a show 
