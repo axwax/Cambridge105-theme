@@ -60,9 +60,11 @@ add_action('wp_enqueue_scripts', 'load_external_jQuery'); // initiate the functi
         <?php endif; ?>      
 
         <?php wp_nav_menu( array( 'theme_location' => 'above-header', 'sort_column' => 'menu_order', 'fallback_cb' => 'header_menu', 'container_class' => 'header-menu' ) ); ?>
-
+	
+        <div id="header" class="clearfix">
+	  <div id="header-container">  
 		<?php diag("BEGIN HEADER") ?>
-        <div id="header">
+
         	<div id="logo">
   				<a href="<?php echo home_url();?>"><?php
 					if (get_header_image()) : ?>
@@ -78,13 +80,14 @@ add_action('wp_enqueue_scripts', 'load_external_jQuery'); // initiate the functi
             	</div>
             </div>  
           <?php endif; ?>  
- 
+	  </div><!-- end of header container div -->  
         </div><!-- end of header div -->
 		<?php diag("END HEADER") ?>
 
           <?php wp_nav_menu( array( 'theme_location' => 'below-header', 'sort_column' => 'menu_order', 'fallback_cb' => 'header_menu', 'container_class' => 'header-menu' ) ); ?>
 
 		  <div id="main" class="clearfix">
+     
      
 		<?php diag("BEGIN CONTAINER") ?>
         <div id="container">
