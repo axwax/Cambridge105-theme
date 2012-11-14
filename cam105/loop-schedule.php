@@ -168,6 +168,15 @@ for($i = 0; $i < 24; $i++)
 	}
 }
 
+foreach($rawEntries as &$show)
+{
+	unset($show["type"]);
+	unset($show["tweet"]);
+	unset($show["message_enabled"]);
+	unset($show["start"]);
+	unset($show["end"]);
+}
+
 ?>
 <script type="text/javascript">
 
