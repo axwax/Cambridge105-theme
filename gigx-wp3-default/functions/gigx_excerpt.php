@@ -1,10 +1,10 @@
 <?php
 /* 
-Version: 0.6.2
+Version: 0.1
 Author: Axel Minet
 */
 
-function gigx_excerpt ($content='',$excerpt='',$striphtml=false, $extract_length=200, $link='', $getmore_text='(more...)',$autop=False){
+function gigx_excerpt ($content='',$excerpt='',$striphtml=false, $extract_length=200, $link='', $getmore_text='(more...)',$autop=False, $findLastFullStop = true){
 	if ( $excerpt != '' ) {  // uses text from the exceprt field in post screen
 	// do something
 	$text=$excerpt;
@@ -24,7 +24,7 @@ function gigx_excerpt ($content='',$excerpt='',$striphtml=false, $extract_length
 			//
 			//	Strip leading and trailing tags from the entry.
 			//
-			$textnew=gigx_truncate($text, $extract_length, '', false, true,'<br><b><i><u><strong><span><a><em>');
+			$textnew=gigx_truncate($text, $extract_length, "", false, true,'<br><b><i><u><strong><span><a><em>');
 			if(strlen($textnew)<strlen($text)) {  // extract is shorter than original text
 				  $gotmore=true;
 				  $text=$textnew;
@@ -34,9 +34,12 @@ function gigx_excerpt ($content='',$excerpt='',$striphtml=false, $extract_length
 		if ($gotmore) { // if extract is shorter than full post then...
 			//
 			//	Check for adding the onwards link... only needed if some truncation took place.
-			//
+			//		
 			if (!empty($link)) {
-				$text .= ' <a href="'. $link . "\">$getmore_text</a>";
+				if (substr($text,-1,1) == "\n") {
+					$text = substr($text,0,-1);
+				}
+				$text .= "&hellip;" . ' <a class="more" href="'. $link . "\">$getmore_text</a>";
 			} 
 		}
 	
@@ -59,7 +62,7 @@ function gigx_excerpt ($content='',$excerpt='',$striphtml=false, $extract_length
  * @return string Trimmed string.
  * Modified by kvs, http://www.securityhacking.tk
  */
-    function gigx_truncate($text, $length = 100, $ending = '...', $exact = false, $considerHtml = true, $allowedTags='<br><b><i><u><p><strong><span><div><em>') {
+    function gigx_truncate($text, $length = 100, $ending = '...', $exact = false, $considerHtml = true, $allowedTags='<br><b><i><u><p><strong><span><div><em>', $findLastFullStop = true) {
         if ($considerHtml) {
             if($allowedTags) $text=strip_tags($text,$allowedTags);
             // if the plain text is shorter than the maximum length, return the whole text
@@ -115,6 +118,10 @@ function gigx_excerpt ($content='',$excerpt='',$striphtml=false, $extract_length
                         }
                     }
                     $truncate .= substr($line_matchings[2], 0, $left+$entities_length);
+		    if ($findLastFullStop) {
+			$truncate = findLastFullStop($truncate);
+		    }
+		    
                     // maximum lenght is reached, so get off the loop
                     break;
                 } else {
@@ -144,6 +151,10 @@ function gigx_excerpt ($content='',$excerpt='',$striphtml=false, $extract_length
                 if($doingtag){$truncate.=">";}
             }
         }
+	if ($findLastFullStop) {
+		$truncate = findLastFullStop($truncate);
+	}
+	
         // add the defined ending to the text
         $truncate .= $ending;
         if($considerHtml) {
@@ -153,5 +164,13 @@ function gigx_excerpt ($content='',$excerpt='',$striphtml=false, $extract_length
             }
         }
         return $truncate;
+    }
+    function findLastFullStop($inputString){
+	$lastFullStopPos = array(strrpos($inputString, '.'), strrpos($inputString, '!'), strrpos($inputString, '?'));
+	//print_r($lastFullStopPos);
+	rsort($lastFullStopPos, SORT_NUMERIC);
+	//print_r($lastFullStopPos);
+	if(is_numeric($lastFullStopPos[0])) $truncate = substr($inputString, 0, $lastFullStopPos[0]);
+	return $truncate;
     }
 ?>
