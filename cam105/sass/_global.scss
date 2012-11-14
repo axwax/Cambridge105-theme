@@ -2,6 +2,11 @@
 @import "fonts";
 @import "mixins";
 
+//$purple: #eef6f7;
+//$purplelight: lighten($purple,4%);
+
+//h1{color: $purple; background-color: $purplelight;}
+
 /* Fonts */
 @font-face {
 	@include harabara-setup;
@@ -58,19 +63,38 @@ fieldset { padding-top:0; }
 	line-height:1.5em;
 }
 
-.wp-caption {
-    background-color: $caption_bg;
-    border: 1px solid $caption_border;
-    @include rounded(3px);    
-	margin: 10px;
-    padding: 5px;
-    text-align: center;
+.wp-caption {  
+	text-align: left;
 }
-
+.wp-caption img{
+	border: 1px solid $caption_border;
+	margin: 5px 0 0 0;
+}
 .wp-caption a:hover, .entry .wp-caption a:hover {
 	text-decoration: none;
-	border-bottom: 0; 
-}  
+	border-bottom: 0;
+}
+
+.wp-caption p.wp-caption-text {
+	font-size:.8em;
+	line-height:1.5em;
+	padding: 3px 4px 3px 4px;
+	margin: 0 8px 0 0;
+	background-color: $caption_bg;
+	border-left: 1px solid $caption_border;
+	border-right: 1px solid $caption_border;
+	border-bottom: 1px solid $caption_border;	
+}
+
+// single posts //
+.single-post img.alignleft {
+	border: 1px solid $caption_border;
+	margin: 5px 10px 0 0;
+}
+
+.entry a:hover {
+	text-decoration: underline;
+}
 
 .frontpagefeature,
 .single #content,
@@ -78,44 +102,42 @@ fieldset { padding-top:0; }
 .page-template-news-archive-php .posts,
 .non_homepage .posts,
 .category .post,
-.archive .shows,
-.archive .post,
-.search-results .post,
-.search-results .shows,
-.search-no-results .posts {
-    color:#111;
+.archive .shows, // single + multiple show archive result
+.archive .posts, // single + multiple show archive result
+.search-results .post, // single post search result
+.search-results .page, // page search result
+.search-results .shows, // single show search result
+.search-no-results .posts
+//.page .posts
+{
+	color:#111;
 	@include rounded(5px);    
 	@include shadow(5px,#333);
 	@include gradient(top, $white_box_gradient1, $white_box_gradient2,$white_box_gradient2);	 
-    margin:0 0 10px 0;
-    overflow:hidden;
-    padding:10px 10px 0 10px;
-    //font-family: 'HarabaraRegular',Arial,sans-serif;
+	margin:0 0 10px 0;
+	overflow:hidden;
+	padding:10px 10px 0 10px;
 }
-
-.search-results .gigx_slide {
-	display: none; 
+.search-results .gigx_slide { // single slide search result
+	display: none;
 }
 
 .single #content h2, .archive .shows h2, .page .posts h2, .category .post h2{
-    //font-size: 1.9em;
-    letter-spacing: 0.05em;
-	font-weight:normal;
-	//margin-top:10px;
+	letter-spacing: 0.05em;
+	//font-weight:normal;
+	font-weight:bold;
 	margin-bottom:10px;
 }
 
 .single #content p, .archive .shows p, .page .posts p, .category .posts p{
 	margin-bottom:10px;
-	font-family: Arial, sans-serif;
+	//font-family: Arial, sans-serif;
 }
 .home #content .posts{
-background:none;
-margin:0 ;
-overflow:hidden;
-padding:0;
-	//@include harabara;
-     /* width: 740px; */
+	background:none;
+	margin:0 ;
+	overflow:hidden;
+	padding:0;
 }
 
 @include clearfix();
@@ -123,17 +145,17 @@ padding:0;
 // breadcrumbs
 #breadcrumbs,
 div#sidebar .widget h2,
-div.navigation
+div.navigation,
+div.pagerbox,
+h2.related-shows
 {
- 	@include rounded (5px);
-	@include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
-	color:$white_text;
-	@include harabara;	
+	@include widget-header();
 	margin-bottom: 10px;
-	padding:5px 10px;
 }
-div.navigation{
-   height: 30px;
+div.navigation,
+div.pagerbox{
+   //height: 30px;
+   height: 20px;
 }
 
 #breadcrumbs{
@@ -168,12 +190,23 @@ div#sidebar .widget h2 a:hover,
    text-align: left;
 }
 
+/** HTML Elements **/
 /* Headers */
 h1,h2 {
-	@include harabara;
+	@include arial;
 }
 h3 {
 	font: bold 1.2em sans-serif;
+}
+
+
+blockquote,q {
+	display: block;
+	//border: 1px dashed #dee9f6;
+	//background: #f4f5f7 url(images/blockquote.gif) no-repeat 0 3px;
+	padding: 12px 12px 8px 24px;
+	//margin-bottom: 8px;
+	//color: #555;
 }
 
 .shows-image, .shows-thumb{
@@ -181,6 +214,27 @@ h3 {
    margin-bottom: 10px; 
 }
 
-#searchform div {
-	margin-bottom: 10px; 
+#searchform div{margin-bottom: 10px;}
+
+// buttons:
+.more {
+	@include rounded (0.9em, 0.9em, 0.9em, 0.9em);
+	border: 2px solid $dark_green;
+	@include boxshadow(0, 0, 7px, #ccc);
+	//box-shadow: 0 0 7px #CCCCCC;
+	color: $medium_grey_text;
+	font-size: 0.8em;
+	line-height: 2em;
+	padding: 0.1em 0.8em;
+	white-space: nowrap;
+	background-color: $white_text;
+	margin-bottom:10px;
+	@include clearfix();
+}
+
+.more:hover{
+	text-decoration: none;
+	@include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
+	color:$white_text;
+	border: 2px solid $dark_green;	
 }

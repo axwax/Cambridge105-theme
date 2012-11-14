@@ -172,7 +172,7 @@ font-weight:normal;
 #screen-options-wrap, #contextual-help-wrap {
     background-color: $main_green;
     border-color: $dark_green;
-	color: $white_text;
+	color: $black_text;
 }
 
 /* screen options & help button */
@@ -242,8 +242,8 @@ margin-left: 0 !important;
 
 /* new adminmenu (sidebar)*/
 
-	#adminmenu div.wp-menu-image {float: left;width: 1px;height: 28px;}
-	#adminmenu .wp-menu-image a{display: none;}
+	//#adminmenu div.wp-menu-image {float: left;width: 1px;height: 28px;}
+	//#adminmenu .wp-menu-image a{display: none;}
 	#wp-admin-bar-wp-logo{display: none;}
 	#adminmenuback, #adminmenuwrap {background-color: $main_green;border-color: $dark_green;border-right-color: #ddd;}
 	#adminmenu li.wp-menu-separator {display: none;}

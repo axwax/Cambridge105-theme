@@ -1,0 +1,18 @@
+ // testimonials widget CSS
+ 
+ $testimonials_widget_bg: white;
+
+.Testimonials_Widget_Widget{
+    clear: both;
+    padding:10px; 
+    margin-bottom: 10px;
+    background-color: $sponsors_slideshow_bg;
+    @include rounded(5px, 5px, 5px, 5px);
+    @include shadow(5px,#333);
+}
+
+.Testimonials_Widget_Widget .widget-title{
+      z-index: 1;
+      @include widget-header();
+      margin-bottom: 10px;
+}

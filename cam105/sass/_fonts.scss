@@ -12,12 +12,9 @@
 }
 @mixin harabara {
 	font-family: 'HarabaraRegular',Arial,sans-serif;
-	font-size: 1.5em;
-	//font-size: 20px;
+	font-size: 20px;
 	font-weight: 100;
-	letter-spacing: 0.1em;
-	//letter-spacing: 2.5px;
-	line-height: normal;
-	//line-height: 20px;
-	//text-transform:lowercase;
+	letter-spacing: 2.5px;
+	line-height: 20px;
+	text-transform:lowercase;
 }

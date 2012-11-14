@@ -20,15 +20,9 @@ $sponsors_slideshow_bg: white;
   padding: 0;  
 }
 .gigx-sponsors-slideshow .widget-title{
-  z-index: 1;
-  margin-bottom: 10px;
- 	@include rounded (5px);
-	@include gradient (top, $green_box_gradient2, $green_box_gradient1, $dark_green);	 
-	color:$white_text;
-	@include harabara;	
-	margin-bottom: 10px;
-	padding:5px 10px;
-   height: 30px;  
+      z-index: 1;
+      @include widget-header();
+      margin-bottom: 10px;
 }
 .gigx-sponsors-slideshow-wrapper {
    margin: 0; 
