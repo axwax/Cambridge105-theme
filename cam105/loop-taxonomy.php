@@ -28,8 +28,8 @@ if ( ! empty( $categorydesc ) ) {
    $postcount ++;
 	$title = the_title('', '', false);
 	$permalink = apply_filters('the_permalink', get_permalink());
-         $img_html = '<div class="shows-thumb alignleft"><a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '">' . get_show_image('shows-thumb') . '</a></div>';  
-         echo $img_html;       	
+   $img_html = '<div class="shows-thumb alignleft"><a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '">' . get_show_image('shows-thumb') . '</a></div>';  
+   echo $img_html;       	
  ?>
 
               	<?php if ( is_active_sidebar( 'above_entry_widgets' ) ) : // Nothing here by default and design ?>
@@ -37,8 +37,8 @@ if ( ! empty( $categorydesc ) ) {
                 		<?php dynamic_sidebar('above_entry_widgets'); ?>
                 	</div>  
                 <?php endif; ?>
-        				<div class="entry"> 
-        					<?php echo gigx_excerpt (get_the_content(),get_the_excerpt(),false,500,$permalink,'(more...)',True); ?>
+        				<div class="entry clearfix"> 
+        					<?php echo gigx_excerpt (get_the_content(),get_the_excerpt(),false,500,$permalink,'more',True); ?>
         				</div>        				
         		<!--		<p class="postmetadata"><?php the_tags('Tags: ', ', ', '<br />'); ?> Posted by <?php if (function_exists('author_exposed')) {author_exposed(get_the_author_meta('display_name'));}   ?> in <?php the_category(', ') ?> | <?php edit_post_link('Edit', '', ' | '); ?>  <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;', '% Comments &#187;'); ?></p>  -->
               	<?php if ( is_active_sidebar( 'below_entry_widgets' ) ) : // Nothing here by default and design ?>
@@ -50,8 +50,7 @@ if ( ! empty( $categorydesc ) ) {
                   if ( (($wp_query->current_post + 1) >= ($wp_query->post_count)) && (get_next_posts_link() || get_previous_posts_link()) ) :
                   ?>
                     <div id="nav-below" class="navigation">
-                       <div class="nav-previous"><?php previous_posts_link("&laquo; previous page"); ?></div>
-                       <div class="nav-next"><?php next_posts_link("next page &raquo;"); ?></div>
+                       <?php gigx_pagination("&laquo; previous page", "next page &raquo;"); ?>
                     </div><!-- #nav-below -->
                   <?php endif; ?>	               
                </div>
