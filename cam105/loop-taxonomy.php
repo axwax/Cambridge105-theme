@@ -50,8 +50,7 @@ if ( ! empty( $categorydesc ) ) {
                   if ( (($wp_query->current_post + 1) >= ($wp_query->post_count)) && (get_next_posts_link() || get_previous_posts_link()) ) :
                   ?>
                     <div id="nav-below" class="navigation">
-                       <div class="nav-previous"><?php previous_posts_link("&laquo; previous page"); ?></div>
-                       <div class="nav-next"><?php next_posts_link("next page &raquo;"); ?></div>
+                       <?php gigx_pagination("&laquo; previous page", "next page &raquo;"); ?>
                     </div><!-- #nav-below -->
                   <?php endif; ?>	               
                </div>
