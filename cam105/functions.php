@@ -346,6 +346,19 @@ function gigx_pagination($prev = 'Ç', $next = 'È') {
 # include help files
 include 'functions/gigx-help.php';
 
+function hwl_home_pagesize( $query ) {
+    if ( is_home() ) {
+        //Display only 1 post for the original blog archive
+        //$query->query_vars['posts_per_page'] = 1;
+        return;
+    }
+    if ( is_post_type_archive('shows') ){
+        //Display 50 posts for a custom post type called 'movie'
+        $query->query_vars['posts_per_page'] = 10;
+        return;
+    }
+}
+add_action('pre_get_posts', 'hwl_home_pagesize', 1);
 
 
 # enqueue frontpage js
