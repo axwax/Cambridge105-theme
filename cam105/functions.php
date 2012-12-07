@@ -259,7 +259,13 @@ function add_podcast_callback() {
 		$showID=$_GET['page_id'];
 		$show_title=get_post($showID)->post_title;
 		$show_slug=get_post($showID)->post_name;
-		$show_thumb=get_post_thumbnail_id( $showID );
+      $cat=get_category_by_slug($show_slug)->term_id;
+      if(!$cat) {
+            $new_cat = array('cat_name' => $show_title, 'category_nicename' => $show_slug, 'category_parent' => get_cat_ID( 'Podcasts' ));
+            wp_insert_category($new_cat);
+            $cat = get_cat_ID($show_title);
+      }
+      $show_thumb=get_post_thumbnail_id( $showID );
 		$author=get_userdatabylogin($show_slug);
 		$podcast_date = strtotime($_GET['podcast_date']);
 
@@ -271,23 +277,24 @@ function add_podcast_callback() {
 			'post_status' => 'draft', // set post status to draft - we don't want the new post to appear live yet.
 			'post_author' => $authorID, // set post author to current logged on user.
 			'post_type' => 'post', // set post type to post.
-			'post_category' => array(get_cat_ID( 'Podcasts' )) // set category to the category/categories parsed in your previous array
+			'post_category' => array(get_cat_ID( 'Podcasts' ), $cat) // set category to the category/categories parsed in your previous array
 		);
 	
-		$insert_post = wp_insert_post($post,true); // insert the post into the wp db
-	//print_r($insert_post);
-		$post_details = get_post($insert_post); // get all the post details from new post
-	//print_r($post_details);
-		$post_id = $post_details->ID; // extract the post id from the post details
-		update_post_meta($post_id, '_thumbnail_id', $show_thumb);
-		//$connected = p2p_type( 'posts_to_shows' )->get_connected( get_queried_object_id() );
-		if (function_exists('p2p_type'))p2p_type('posts_to_shows')->connect($post_id, $showID);
-		//echo "post:$post_id show:$showID connected:$connected";
-		//echo "type:".p2p_type('posts_to_shows')->connect($post_id, $showID);
-		$post_redirect = 'http://'.$_SERVER['SERVER_NAME'].'/wp-admin/post.php?action=edit&post='.$post_id; // construct url for editing of post
-	//echo 'ax'.$post_id.$post_redirect;
-		echo '<div class="podcast_form">Podcast post created. <a href="'.$post_redirect.'">Click here to edit</a></div>';
-		//wp_redirect($post_redirect);// redirect to edit page for new post.
+		if($cat)
+      {
+         $insert_post = wp_insert_post($post,true); // insert the post into the wp db
+         $post_details = get_post($insert_post); // get all the post details from new post
+         $post_id = $post_details->ID; // extract the post id from the post details
+         update_post_meta($post_id, '_thumbnail_id', $show_thumb);
+         if (function_exists('p2p_type'))p2p_type('posts_to_shows')->connect($post_id, $showID);
+         $post_redirect = 'http://'.$_SERVER['SERVER_NAME'].'/wp-admin/post.php?action=edit&post='.$post_id; // construct url for editing of post
+         echo '<div class="notice">Podcast post created. <a href="'.$post_redirect.'">Click here to edit</a></div>';
+         //wp_redirect($post_redirect);// redirect to edit page for new post.
+      }
+      else{
+         echo '<div class="error">Error creating category for ' . $show_title . '</div>';
+         
+      }
 		exit;
 	}
 
@@ -358,7 +365,7 @@ function hwl_home_pagesize( $query ) {
         return;
     }
 }
-add_action('pre_get_posts', 'hwl_home_pagesize', 1);
+//add_action('pre_get_posts', 'hwl_home_pagesize', 1);
 
 
 # enqueue frontpage js
