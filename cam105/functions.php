@@ -279,7 +279,13 @@ function add_podcast_callback() {
 			'post_type' => 'post', // set post type to post.
 			'post_category' => array(get_cat_ID( 'Podcasts' ), $cat) // set category to the category/categories parsed in your previous array
 		);
-	
+
+      echo '<div class="wrap">';
+      echo '   <div id="icon-edit" class="icon32 icon32-posts-post">';
+      echo '      <br/>';
+      echo '   </div>';
+      echo '   <h2>Add New Podcast</h2>';
+      
 		if($cat)
       {
          $insert_post = wp_insert_post($post,true); // insert the post into the wp db
@@ -288,13 +294,19 @@ function add_podcast_callback() {
          update_post_meta($post_id, '_thumbnail_id', $show_thumb);
          if (function_exists('p2p_type'))p2p_type('posts_to_shows')->connect($post_id, $showID);
          $post_redirect = 'http://'.$_SERVER['SERVER_NAME'].'/wp-admin/post.php?action=edit&post='.$post_id; // construct url for editing of post
-         echo '<div class="notice">Podcast post created. <a href="'.$post_redirect.'">Click here to edit</a></div>';
+         echo '<div class="updated">Podcast post created. <a href="'.$post_redirect.'">Click here to edit</a></div>';
          //wp_redirect($post_redirect);// redirect to edit page for new post.
       }
       else{
-         echo '<div class="error">Error creating category for ' . $show_title . '</div>';
-         
+         echo '<div class="error">Error creating category for ' . $show_title .'!';
+         echo '<form action="' . get_admin_url('','edit.php') . '" method="get">';
+   		echo '<input type="hidden" name="page_id" value="' . $showID . '" />';
+         echo '<input type="hidden" name="podcast_date" value="' . date('d-m-Y',$podcast_date) . '" />';
+         echo '<input type="submit" name="submit" value="Click here to retry" />';
+   		echo '</form>';
+         echo '</div>';         
       }
+      echo '</div>'; // end wrap     
 		exit;
 	}
 
