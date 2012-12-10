@@ -221,7 +221,8 @@ function remove_yoast_seo_admin_bar() {
 add_action( 'wp_before_admin_bar_render', 'remove_yoast_seo_admin_bar' );
 //wpseo-menu
 
-/* podcast menu button test */
+/***********************/
+/* Add Podcast Section */
 add_action('admin_menu', 'register_podcast_submenu_page');
 
 function register_podcast_submenu_page() {
@@ -309,7 +310,6 @@ function add_podcast_callback() {
       echo '</div>'; // end wrap     
 		exit;
 	}
-
 }
 
 # enqueue jquery UI for podcasts
