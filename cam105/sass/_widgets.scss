@@ -27,11 +27,10 @@
 /* widget areas */
 
 #below-header-widgets{
-	margin:27px 0px 10px 0px;
+	margin:20px 0px 10px 0px;
 	position:relative;
 	//left: 10px;
         left: 0px;
-	text-align:right;
 }
 #below-header-widgets h2{
       @include widget-header();
@@ -98,7 +97,7 @@ div#sidebar .widget h2{
 
 /* wp_bannerize */
 .wp_bannerize {  
-    text-align: right;
+    text-align: left;
     display:block;      	
 }
 .wp_bannerize a{
