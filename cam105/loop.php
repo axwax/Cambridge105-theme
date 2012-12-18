@@ -37,11 +37,34 @@ Theme Version: 0.6.1
 		$title_html='<' . $title_tag . ' class="post-title">' . $title . '</' . $title_tag . '>'."\n\r";
 	}
          if (in_category( "podcasts")) {
+	    $show_img = get_show_image('shows-image',false,true,false,false);
             $img_html = '<div class="shows-image alignleft">' . get_show_image('shows-image') . '</div>';
-            if (is_single()) {			
+            if (is_single()) {
+		
+		if ( function_exists( 'p2p_type' ) && is_single() ){
+			$connected = p2p_type( 'posts_to_shows' )->set_direction( 'from' )->get_connected( get_the_ID());
+			//echo get_the_ID();die;
+				if ( $connected->have_posts() ) {
+				//echo get_the_ID();die;
+				$show_html = '';
+				while ( $connected->have_posts()) {
+					$connected->the_post();
+					$title = the_title('', '', false);
+					$permalink = apply_filters('the_permalink', get_permalink());
+					$show_html.= '      <p class="wp-caption-text"><a href="' . esc_url($permalink) . '" title="'.esc_attr($title).'">';   
+					//$show_html.=          get_show_image('shows-thumb');
+					$show_html.=          $title;
+					$show_html.= '      </a>';
+					//$show_html.= '      <br/>' . get_the_content('[...]');
+					$show_html.= '      </p>';
+					$img_html = '<div class="wp-caption alignleft" style="width: 310px"><a href="' . esc_url($permalink) . '" title="'.esc_attr($title).'"><img src="' . $show_img . '" alt="' . esc_attr($title) . '" width="300" height="225"/></a>'.$show_html.'</div>';
+				}
+				wp_reset_postdata();
+			}
+		}
                $leftcol = '<div class="alignleft" style="width: 312px;">';
                $leftcol.= $img_html;
-               $leftcol.= $website_html;
+               //$leftcol.= $show_html;
                $leftcol.= $frequency_html;
                $leftcol.= $tags;
                $leftcol.= '</div>';
