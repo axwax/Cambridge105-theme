@@ -38,6 +38,7 @@ add_action('wp_enqueue_scripts', 'load_external_jQuery'); // initiate the functi
 
   <head profile="http://gmpg.org/xfn/11">
     <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
+    <meta property="fb:app_id" content="134459063259922" />
     <title><?php wp_title(''); ?></title>
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/style.css" type="text/css" media="screen" />
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
