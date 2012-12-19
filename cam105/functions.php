@@ -269,6 +269,7 @@ function add_podcast_callback() {
             $new_cat = array('cat_name' => $show_title, 'category_nicename' => $show_slug, 'category_parent' => get_cat_ID( 'Podcasts' ));
             wp_insert_category($new_cat);
             $cat = get_cat_ID($show_title);
+	    $newcat = true;
       }
       $show_thumb=get_post_thumbnail_id( $showID );
 		$author=get_userdatabylogin($show_slug);
@@ -299,7 +300,11 @@ function add_podcast_callback() {
          update_post_meta($post_id, '_thumbnail_id', $show_thumb);
          if (function_exists('p2p_type'))p2p_type('posts_to_shows')->connect($post_id, $showID);
          $post_redirect = 'http://'.$_SERVER['SERVER_NAME'].'/wp-admin/post.php?action=edit&post='.$post_id; // construct url for editing of post
-         echo '<div class="updated">Podcast post created. <a href="'.$post_redirect.'">Click here to edit</a></div>';
+         echo '<div class="updated">';
+	 
+	 if ($newcat) echo '<p>New category created. <a href="http://'.$_SERVER['SERVER_NAME'].'/wp-admin/admin.php?page=powerpress/powerpressadmin_categoryfeeds.php" target="_blank">Click here to set up Category Podcast</a> (Opens in a new Window)</p>';
+	 echo '<p>Podcast post created. <a href="'.$post_redirect.'">Click here to edit</a></p>';
+	 echo '</div>';
          //wp_redirect($post_redirect);// redirect to edit page for new post.
       }
       else{
