@@ -234,7 +234,8 @@ add_filter( 'wpseo_use_page_analysis', '__return_false' );
 add_action('admin_menu', 'register_podcast_submenu_page');
 
 function register_podcast_submenu_page() {
-	add_submenu_page( 'edit.php?post_type=shows', 'New Podcast', 'New Podcast', 'edit_posts', 'add_podcast', 'add_podcast_callback' ); 
+   $page = add_submenu_page( 'edit.php?post_type=shows', 'New Podcast', 'New Podcast', 'edit_posts', 'add_podcast', 'add_podcast_callback' );
+   add_action('admin_print_scripts-' . $page, 'schedule_podcast_scripts');
 }
 
 function add_podcast_callback() {
@@ -332,23 +333,20 @@ function schedule_styles() {
     //wp_enqueue_style('ui-datepicker', get_bloginfo('stylesheet_directory') . '/css/jquery-ui-1.8.9.custom.css');
     wp_enqueue_style('jquery.ui.theme', get_bloginfo('stylesheet_directory') . '/css/smoothness/jquery-ui-1.8.16.custom.css');
 }
+add_action( 'admin_init', 'schedule_styles', 1000 );
 
-function schedule_scripts() {
-    //global $post_type;
-    //if( 'gigx_schedule' != $post_type ) return;
-    #wp_deregister_script('jquery-ui-core');
-    wp_enqueue_script('jquery-ui', get_bloginfo('stylesheet_directory') . '/js/jquery-ui-1.8.9.custom.min.js', array('jquery'));
-    wp_enqueue_script('ui-datepicker', get_bloginfo('stylesheet_directory') . '/js/jquery.ui.datepicker.min.js',array('jquery-ui'));
-    wp_enqueue_script('ui-autocomplete', get_bloginfo('stylesheet_directory') . '/js/jquery.ui.autocomplete.min.js',array('jquery-ui'));
-    wp_enqueue_script( 'suggest' );
-    wp_enqueue_script('gigx_podcast', get_bloginfo('stylesheet_directory').'/js/gigx-admin.js', array('jquery'));
+function schedule_podcast_scripts() {
+   wp_enqueue_script('jquery');
+   wp_enqueue_script('jquery-ui-core', false, array('jquery'));
+   wp_enqueue_script('jquery-ui-widget', false, array('jquery-ui-core'));
+   wp_enqueue_script('jquery-ui-datepicker', false, array('jquery-ui-widget'));
+   wp_enqueue_script('gigx_podcast', get_bloginfo('stylesheet_directory').'/js/gigx-admin.js', array('jquery-ui-widget', 'suggest'));
 }
 
-add_action( 'admin_init', 'schedule_styles', 1000 );
+
 //add_action( 'admin_print_styles-post-new.php', 'schedule_styles', 1000 );
 
-add_action( 'admin_init', 'schedule_scripts', 1000 );
-//add_action( 'admin_print_scripts-post-new.php', 'schedule_scripts', 1000 );
+add_action('admin_enqueue_scripts','schedule_scripts');
 # end podcasts
 
 
@@ -391,6 +389,68 @@ function hwl_home_pagesize( $query ) {
     }
 }
 //add_action('pre_get_posts', 'hwl_home_pagesize', 1);
+
+
+/*
+Enques jQuery from Google CDN. 
+Uses the currently registred WordPress jQuery version.
+*/
+function appglobe_jquery_enqueue() { 
+
+   /* 
+   Probably not necessary if called with the 'wp_enqueue_scripts' action.
+   */
+   if (is_admin()) return; 
+
+   global $wp_scripts; 
+
+   /*
+   Change  this flag to have the CDN script  
+   triggered by wp_footer instead of wp_head.
+   If Google CDN is unavailable for some reason the flag 
+   will be ignored and the local WordPress 
+   jQuery gets enqueued and included in the head
+   by the wp_head function.
+   */
+   $cdn_script_in_footer = false; 
+   /*
+   Register jQuery from Google CDN.
+   */
+   if (is_a($wp_scripts, 'WP_Scripts') && isset($wp_scripts->registered['jquery'])) {
+      /* 
+      The WordPress jQuery version. 
+      */
+      $registered_jquery_version = $wp_scripts -> registered[jquery] -> ver; 
+
+      if($registered_jquery_version) {
+         /* 
+         The jQuery Google CDN URL. 
+         Makes a check for HTTP on top of SSL/TLS (HTTPS) 
+         to make sure the URL is correct.
+         */
+         $google_jquery_url = ($_SERVER['SERVER_PORT'] == 443 ? "https" : "http") . 
+         "://ajax.googleapis.com/ajax/libs/jquery/$registered_jquery_version/jquery.min.js";
+
+         /* 
+         Get the HTTP header response for the this URL, and check that its ok. 
+         If ok, include jQuery from Google CDN. 
+         */
+         if(200 === wp_remote_retrieve_response_code(wp_remote_head($google_jquery_url))) {
+         wp_deregister_script('jquery');
+         wp_register_script('jquery', $google_jquery_url , false, null, $cdn_script_in_footer);
+         }
+      }
+   }
+   /* 
+   Enqueue jQuery from Google if available. 
+   Fall back to the local WordPress default.
+   If the local WordPress jQuery is called, it will get 
+   included in the header no matter what the 
+   $cdn_script_in_footer flag above is set to.
+   */
+   wp_enqueue_script('jquery'); 
+}
+add_action('wp_enqueue_scripts', 'appglobe_jquery_enqueue', 11);
 
 
 # enqueue frontpage js

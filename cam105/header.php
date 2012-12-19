@@ -21,16 +21,7 @@ if($is_single!=0){
   $fbimg=wp_get_attachment_image_src (get_post_thumbnail_id($post_id),'facebook-thumb',false);
   if (!$fbimg) $fbimg=wp_get_attachment_image_src (gigx_find_image_attachment($post_id),'facebook-thumb',false);
 }
-if (!$fbimg) $fbimg= Array(get_bloginfo('stylesheet_directory').'/images/facebookdefault.gif');
-
-function load_external_jQuery() 
-{ // load external file  
-	wp_deregister_script( 'jquery' ); // deregisters the default WordPress jQuery  
-	wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', array(), null); // register the external file  
-	wp_enqueue_script('jquery'); // enqueue the external file  
-}  
-add_action('wp_enqueue_scripts', 'load_external_jQuery'); // initiate the function 
-	
+if (!$fbimg) $fbimg= Array(get_bloginfo('stylesheet_directory').'/images/facebookdefault.gif');	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php diag("BEGIN HTML") ?>
