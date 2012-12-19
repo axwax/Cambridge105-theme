@@ -8,6 +8,10 @@ Theme Version: 0.6.1
 # experimental and utility functions (eg unregister custom post types/taxonomies)
 //include 'functions/experimental_functions.php';
 
+function diag($str)
+{
+	echo "<!-- $str ".microtime(true)." -->\r\n";
+}
 
 ## filters and actions
 
