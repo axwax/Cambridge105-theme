@@ -231,7 +231,8 @@ function remove_yoast_seo_admin_bar() {
 add_action( 'wp_before_admin_bar_render', 'remove_yoast_seo_admin_bar' );
 //wpseo-menu
 
-/* podcast menu button test */
+/***********************/
+/* Add Podcast Section */
 add_action('admin_menu', 'register_podcast_submenu_page');
 
 function register_podcast_submenu_page() {
@@ -269,9 +270,17 @@ function add_podcast_callback() {
 		$showID=$_GET['page_id'];
 		$show_title=get_post($showID)->post_title;
 		$show_slug=get_post($showID)->post_name;
-		$show_thumb=get_post_thumbnail_id( $showID );
+      $cat=get_category_by_slug($show_slug)->term_id;
+      if(!$cat) {
+            $new_cat = array('cat_name' => $show_title, 'category_nicename' => $show_slug, 'category_parent' => get_cat_ID( 'Podcasts' ));
+            wp_insert_category($new_cat);
+            $cat = get_cat_ID($show_title);
+	    $newcat = true;
+      }
+      $show_thumb=get_post_thumbnail_id( $showID );
 		$author=get_userdatabylogin($show_slug);
 		$podcast_date = strtotime($_GET['podcast_date']);
+
 		if (isset($author)) $authorID=$author->ID;
         if (!$authorID) $authorID=$user_ID;
 		$post = array( // add a new post to the wordpress database
@@ -280,26 +289,42 @@ function add_podcast_callback() {
 			'post_status' => 'draft', // set post status to draft - we don't want the new post to appear live yet.
 			'post_author' => $authorID, // set post author to current logged on user.
 			'post_type' => 'post', // set post type to post.
-			'post_category' => array(get_cat_ID( 'Podcasts' )) // set category to the category/categories parsed in your previous array
+			'post_category' => array(get_cat_ID( 'Podcasts' ), $cat) // set category to the category/categories parsed in your previous array
 		);
-	
-		$insert_post = wp_insert_post($post,true); // insert the post into the wp db
-	//print_r($insert_post);
-		$post_details = get_post($insert_post); // get all the post details from new post
-	//print_r($post_details);
-		$post_id = $post_details->ID; // extract the post id from the post details
-		update_post_meta($post_id, '_thumbnail_id', $show_thumb);
-		//$connected = p2p_type( 'posts_to_shows' )->get_connected( get_queried_object_id() );
-		if (function_exists('p2p_type'))p2p_type('posts_to_shows')->connect($post_id, $showID);
-		//echo "post:$post_id show:$showID connected:$connected";
-		//echo "type:".p2p_type('posts_to_shows')->connect($post_id, $showID);
-		$post_redirect = 'http://'.$_SERVER['SERVER_NAME'].'/wp-admin/post.php?action=edit&post='.$post_id; // construct url for editing of post
-	//echo 'ax'.$post_id.$post_redirect;
-		echo '<div class="podcast_form">Podcast post created. <a href="'.$post_redirect.'">Click here to edit</a></div>';
-		//wp_redirect($post_redirect);// redirect to edit page for new post.
+
+      echo '<div class="wrap">';
+      echo '   <div id="icon-edit" class="icon32 icon32-posts-post">';
+      echo '      <br/>';
+      echo '   </div>';
+      echo '   <h2>Add New Podcast</h2>';
+      
+		if($cat)
+      {
+         $insert_post = wp_insert_post($post,true); // insert the post into the wp db
+         $post_details = get_post($insert_post); // get all the post details from new post
+         $post_id = $post_details->ID; // extract the post id from the post details
+         update_post_meta($post_id, '_thumbnail_id', $show_thumb);
+         if (function_exists('p2p_type'))p2p_type('posts_to_shows')->connect($post_id, $showID);
+         $post_redirect = 'http://'.$_SERVER['SERVER_NAME'].'/wp-admin/post.php?action=edit&post='.$post_id; // construct url for editing of post
+         echo '<div class="updated">';
+	 
+	 if ($newcat) echo '<p>New category created. <a href="http://'.$_SERVER['SERVER_NAME'].'/wp-admin/admin.php?page=powerpress/powerpressadmin_categoryfeeds.php" target="_blank">Click here to set up Category Podcast</a> (Opens in a new Window)</p>';
+	 echo '<p>Podcast post created. <a href="'.$post_redirect.'">Click here to edit</a></p>';
+	 echo '</div>';
+         //wp_redirect($post_redirect);// redirect to edit page for new post.
+      }
+      else{
+         echo '<div class="error">Error creating category for ' . $show_title .'!';
+         echo '<form action="' . get_admin_url('','edit.php') . '" method="get">';
+   		echo '<input type="hidden" name="page_id" value="' . $showID . '" />';
+         echo '<input type="hidden" name="podcast_date" value="' . date('d-m-Y',$podcast_date) . '" />';
+         echo '<input type="submit" name="submit" value="Click here to retry" />';
+   		echo '</form>';
+         echo '</div>';         
+      }
+      echo '</div>'; // end wrap     
 		exit;
 	}
-
 }
 
 # enqueue jquery UI for podcasts
@@ -350,13 +375,31 @@ function gigx_pagination($prev = 'Ç', $next = 'È') {
 
     echo paginate_links( $pagination );
 };
-
-
   
 
+# include help files
+include 'functions/gigx-help.php';
+
+function hwl_home_pagesize( $query ) {
+    if ( is_home() ) {
+        //Display only 1 post for the original blog archive
+        //$query->query_vars['posts_per_page'] = 1;
+        return;
+    }
+    if ( is_post_type_archive('shows') ){
+        //Display 50 posts for a custom post type called 'movie'
+        $query->query_vars['posts_per_page'] = 10;
+        return;
+    }
+}
+//add_action('pre_get_posts', 'hwl_home_pagesize', 1);
 
 
-
-
-
-
+# enqueue frontpage js
+function gigx_frontpage_scripts() {
+    wp_deregister_script( 'gigx-tooltip-js' );
+    wp_register_script( 'gigx-tooltip-js', get_bloginfo('stylesheet_directory') . '/js/jquery.tipTip.minified.js', array( 'jquery' ), '1.4', true );
+    wp_enqueue_script( 'gigx-tooltip-js' );
+    
+}
+add_action('wp_enqueue_scripts', 'gigx_frontpage_scripts');
