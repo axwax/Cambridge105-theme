@@ -143,8 +143,8 @@ function related_order($input) {
 					     $podcasts_html.=          $title;
 					     $podcasts_html.= '      </a>';
 					     global $more; $more = 0;
-					     //$podcasts_html.= '      <br/>' . gigx_excerpt (get_the_content(),get_the_excerpt(),false,500,$permalink,'more',True);
-					     $podcasts_html.= '      <br/>' . get_the_content('[...]');
+					     $podcasts_html.= '      <br/>' . gigx_excerpt (get_the_content(),get_the_excerpt(),false,500,$permalink,'more',False);
+					     //$podcasts_html.= '      <br/>' . get_the_content('[...]');
 					     //$podcasts_html.= '      <br/>' . get_the_excerpt();
 					     $podcasts_html.=  do_shortcode('[powerpress]');
 					     $podcasts_html.= '      </p></div>';
