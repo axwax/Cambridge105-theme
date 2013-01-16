@@ -95,6 +95,9 @@ add_image_size( 'shows-thumb', 150, 112, true );
 
 # add facebook thumbnail size
 add_image_size( 'facebook-thumb', 130, 130, true );
+
+# add frontpage boxes
+add_image_size( 'frontpage-thumb', 225, 170, true );
 	
 # change header image size
 add_filter('gigx_header_image_width', function($size) { return 468; });
