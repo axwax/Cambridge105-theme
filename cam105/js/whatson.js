@@ -130,6 +130,11 @@
 		getData();
 	});
 	
+	$('#postcodeClearButton').live('click', function(e)
+	{
+		$('#postcode').val('').change();
+	});
+	
 	function init()
 	{
 		var oLatlng = new google.maps.LatLng(52.205, 0.119); // cambridge
@@ -315,7 +320,7 @@
 				
 				var oInfoWindow = new google.maps.InfoWindow({
 					content: sContent,
-					maxWidth: 400
+					maxWidth: 300
 				});			
 					
 				google.maps.event.addListener(oMarker, 'click', function() 

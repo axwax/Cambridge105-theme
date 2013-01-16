@@ -1,3 +1,4 @@
+<script type="text/javascript" src="/wp-content/themes/cam105/js/jquery-ui-1.8.9.custom.min.js"></script>
 <script type="text/javascript" src="/wp-content/themes/cam105/js/whatson.js"></script>
 <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
 
@@ -83,6 +84,7 @@
 #whatsons .infoWindow
 {
 	margin-right: 10px;
+	height: 300px;
 }
 
 #whatsons .infoWindow p.address
@@ -238,7 +240,8 @@
 	
 }
 
-#whatsons #postcodeGoButton
+#whatsons #postcodeGoButton,
+#whatsons #postcodeClearButton
 {
 	cursor: pointer;
 }
@@ -250,6 +253,7 @@
 	display: block;
 	padding: 5px;
 	margin: 5px 5px 0px 5px;
+	font-size: 1.3em;
 }
 
 #whatsons #error
@@ -273,6 +277,8 @@
 
 <div id="whatsons">
 
+<?php //echo '<p style="color: red; font-weight: bold">The What\'s On page is currently undergoing maintenance.</p>'; ?>
+
 <img src="/wp-content/themes/cam105/images/loading.gif" class="ajaxloader done" />
 
 <div id="top">
@@ -287,13 +293,14 @@
 	<select id="radius">
 		<option value="0.5">within &frac12; mile</option>
 		<option value="1">within 1 mile</option>
-		<option value="2">within 2 miles</option>
+		<option value="2" selected="selected">within 2 miles</option>
 		<option value="3">within 3 miles</option>
-		<option value="4">within 5 miles</option>
+		<option value="5">within 5 miles</option>
 		<option value="10">within 10 miles</option>
 		<option value="15">within 15 miles</option>
 	</select>
-	<img src="/wp-includes/images/go.png" id="postcodeGoButton" />
+	<img src="/wp-content/themes/cam105/images/go.png" id="postcodeGoButton" />
+	<img src="/wp-content/themes/cam105/images/round_delete.png" id="postcodeClearButton" />
 </div>
 
 <div class="clear"></div>
@@ -338,9 +345,13 @@ Please enable Javascript to enhance your What's On experience!
 
 <div class="clear"></div>
 
+<div>
+If you have an event you would like us to publish, <a href="http://cambridge105.fm/whatson-form/">send us your What's On</a>.
+</div>
+
 <div class="logos">
 
-<a href="http://www.localsecrets.com"><img src="/wp-content/themes/cam105/images/localsecrets50.png" border="0" /></a>
+<a target="_blank" href="http://www.localsecrets.com"><img src="/wp-content/themes/cam105/images/localsecrets50.png" border="0" /></a>
 
 </div>
 
