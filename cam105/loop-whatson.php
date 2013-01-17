@@ -1,4 +1,4 @@
-<script type="text/javascript" src="/wp-content/themes/cam105/js/jquery-ui-1.8.9.custom.min.js"></script>
+<script type="text/javascript" src="/wp-content/themes/cam105/js/jquery.ui.datepicker.min.js"></script>
 <script type="text/javascript" src="/wp-content/themes/cam105/js/whatson.js"></script>
 <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
 
