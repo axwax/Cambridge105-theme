@@ -216,12 +216,6 @@ function get_show_image($imageSize='shows-thumb', $showID=false, $returnUrlOnly 
 # not fully tested stuff:
 #
 
-/* remove tags from posts */
-function unregister_taxonomy(){
-    //register_taxonomy('post_tag', array());
-}
-add_action('init', 'unregister_taxonomy');
-
 // remove wp seo menu (wp 3.3+)
 function remove_yoast_seo_admin_bar() {
 	global $wp_admin_bar;
@@ -230,6 +224,10 @@ function remove_yoast_seo_admin_bar() {
 // and we hook our function via
 add_action( 'wp_before_admin_bar_render', 'remove_yoast_seo_admin_bar' );
 //wpseo-menu
+
+// remove wpseo columns
+add_filter( 'wpseo_use_page_analysis', '__return_false' );
+// end wpseo columns
 
 /***********************/
 /* Add Podcast Section */
