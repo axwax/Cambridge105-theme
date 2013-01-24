@@ -256,7 +256,7 @@ margin: 0 10px 0 0;
 }
 
 .fourcol div.fourcol-content{
-  padding: 10px;
+  padding: 10px 11px 0 11px;
   float: left;
   position:relative;
   display:block;
@@ -267,19 +267,41 @@ margin: 0 10px 0 0;
   margin:0;
   padding:0;
 }
-/*	
+
+.fourcol div span{
+  font-weight:600;
+  display:block;
+  position:absolute;
+  padding: 0px 0px 0px 50px;
+  margin-top:-90px;
+  top:50%;
+  height:180px;
+}	
+
 .fourcol-1 {
-  margin: 0 10px 0 0;
+  margin: 0 11px 0 0;
 }
 .fourcol-2 {
   margin: 0 10px 0 0;
 }
 .fourcol-3 {
-  margin: 0 10px 0 0;
+  margin: 0 11px 0 0;
 }
 .fourcol-4 {
   margin: 0 0 0 0;
-}*/
+}
+
+// fourcol styling
+.fourcol-frontpage div.fourcol-content{
+  color: $white_text;
+  @include rounded(5px);
+  @include gradient(top, $green_box_gradient2, $green_box_gradient1, $dark_green);
+  font: 1em Arial,Tahoma,sans-serif;
+  min-height:265px;
+}
+.threecol-frontpage div.threecol-content p{
+  line-height:1.3em;
+}
 
 .fourcol .shows-thumb{
   margin: 0 5px 10px 5px;
