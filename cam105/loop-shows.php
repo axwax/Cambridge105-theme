@@ -68,26 +68,26 @@ function related_order($input) {
 			if  ('' != $website_url) {
 				if (!$website_title) $website_title = $website_url;
 				//$website_html='<p>Website: <a href="'.$website_url.'" target="_blank">'.$website_title.'</a></p>'."\n\r";
-				$website_html='<p><a href="'.$website_url.'" target="_blank">External Show Website</a></p>'."\n\r";
+				$website_html='<p><a href="'.$website_url.'" target="_blank"><img src="' . get_bloginfo('stylesheet_directory').'/images/website-icon-small.png" width="16" height="16" alt="External Show Website" title="External Show Website" /> External Show Website</a></p>'."\n\r";
 			}
 
 			# Show's Twitter (Custom Meta)
 			$twitter_html='';
 			$twitter_handle=get_post_meta($post->ID, 'show_twitter_handle', True);
 			if  ('' != $twitter_handle) {
-				$twitter_html='<p><a href="http://twitter.com/'.$twitter_handle.'" target="_blank"><img src="http://cambridge105.fm/wp-content/uploads/2011/11/twitter-icon-small.png" width="16" height="16" alt="Twitter Profile" title="Twitter Profile" /> Twitter Profile</a></p>'."\n\r";
+				$twitter_html='<p><a href="http://twitter.com/'.$twitter_handle.'" target="_blank"><img src="' . get_bloginfo('stylesheet_directory').'/images/twitter-icon-small.png" width="16" height="16" alt="Twitter Profile" title="Twitter Profile" /> Twitter Profile</a></p>'."\n\r";
 			}
 
 			# Show's Facebook (Custom Meta)
 			$facebook_html='';
 			$facebook_url=get_post_meta($post->ID, 'show_facebook_url', True);
 			if  ('' != $facebook_url) {
-				$facebook_html='<p><a href="'.$facebook_url.'" target="_blank"><img src="http://cambridge105.fm/wp-content/uploads/2011/11/facebook-icon-small.png" width="16" height="16" alt="Facebook Page" title="Facebook Page" /> Facebook Page</a></p>'."\n\r";
+				$facebook_html='<p><a href="'.$facebook_url.'" target="_blank"><img src="' . get_bloginfo('stylesheet_directory').'/images/facebook-icon-small.png" width="16" height="16" alt="Facebook Page" title="Facebook Page" /> Facebook Page</a></p>'."\n\r";
 			}
 			  
 			# Show Frequency list (Tax)
 			$frequency_html='';
-			$frequency_list = get_the_term_list( $post->ID, 'frequency', 'Show Frequency: ', ', ', '' );
+			$frequency_list = get_the_term_list( $post->ID, 'frequency', '<strong>Show Frequency</strong>: ', ', ', '' );
 			if ( '' != $frequency_list ) {
 				$frequency_html= "<p>$frequency_list</p>\n";
 			}
@@ -99,7 +99,7 @@ function related_order($input) {
 			$nextonair_html='';
 			if($nextshowing)
 			{
-				$nextonair_html = '<p>Next On Air: '.date('D jS M: ga', $nextshowing['start']).'</p>';
+				$nextonair_html = '<p><strong>Next On Air</strong>: '.date('D jS M: ga', $nextshowing['start']).'</p>';
 			}
 
 			# Current / next episode
@@ -179,6 +179,9 @@ function related_order($input) {
 						<?php if (is_single()) echo $website_html; ?>
 						<?php if (is_single()) echo $twitter_html; ?>
 						<?php if (is_single()) echo $facebook_html; ?>
+						<?php if (is_single() && ($website_html || $twitter_html || $facebook_html)) : ?>
+						   <p style="margin: 0 0 15px 0;font-size: smaller;">Cambridge 105 is not responsible for the content of external websites.</p>
+						<?php endif; ?>
 						<?php if (is_single()) echo $frequency_html; ?>
 						<?php if (is_single()) echo $nextonair_html; ?>
 						<?php //if (is_single()) echo $tags ?>
