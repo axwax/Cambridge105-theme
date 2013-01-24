@@ -2,10 +2,11 @@
 /*
 File Description: The default Loop (used for pages & posts, including homepage and podcasts)
 Author: Axel Minet
-Theme Version: 0.6.1
+Theme Version: 0.7
 */
 ?>
 
+<?php diag("BEGIN POSTS") ?>
 <div class="posts">
 <?php if ( function_exists('yoast_breadcrumb') ) {
 	yoast_breadcrumb('<p id="breadcrumbs">','</p>');
@@ -40,9 +41,7 @@ $feature_3_show = get_field('feature_3_show');
 <?php endif ?>
 
         <?php /* Do we have posts, then start the loop, otherwise display 404 */
-        if (is_author()) {
-		echo get_userdata(get_query_var('author'));
-	}
+        
         ?>
       	<?php if (have_posts()) : ?>
           <?php /* Start the Loop */ ?>  	
@@ -66,58 +65,27 @@ $feature_3_show = get_field('feature_3_show');
 		$title_html='<' . $title_tag . ' class="post-title">' . $title . '</' . $title_tag . '>'."\n\r";
 	}
          if (in_category( "podcasts")) {
-	    $show_img = get_show_image('shows-image',false,true,false,false);
             $img_html = '<div class="shows-image alignleft">' . get_show_image('shows-image') . '</div>';
-            if (is_single()) {
-		
-		if ( function_exists( 'p2p_type' ) && is_single() ){
-			$connected = p2p_type( 'posts_to_shows' )->set_direction( 'from' )->get_connected( get_the_ID());
-			//echo get_the_ID();die;
-				if ( $connected->have_posts() ) {
-				//echo get_the_ID();die;
-				$show_html = '';
-				while ( $connected->have_posts()) {
-					$connected->the_post();
-					$title = the_title('', '', false);
-					$permalink = apply_filters('the_permalink', get_permalink());
-					$show_html.= '      <p class="wp-caption-text"><a href="' . esc_url($permalink) . '" title="'.esc_attr($title).'">';   
-					//$show_html.=          get_show_image('shows-thumb');
-					$show_html.=          $title;
-					$show_html.= '      </a>';
-					//$show_html.= '      <br/>' . get_the_content('[...]');
-					$show_html.= '      </p>';
-					$img_html = '<div class="wp-caption alignleft" style="width: 310px"><a href="' . esc_url($permalink) . '" title="'.esc_attr($title).'"><img src="' . $show_img . '" alt="' . esc_attr($title) . '" width="300" height="225"/></a>'.$show_html.'</div>';
-				}
-				wp_reset_postdata();
-			}
-		}
-               $leftcol = '<div class="alignleft" style="width: 312px;">';
-               $leftcol.= $img_html;
-               //$leftcol.= $show_html;
-               $leftcol.= $frequency_html;
-               $leftcol.= $tags;
-               $leftcol.= '</div>';
-            }
-            else {
-               $leftcol = $img_html;
-            }
-            echo $leftcol;
          }
-	 //elseif (!is_page()) $title_html .= '<span class="postdate">Posted by ' . get_the_author() . ' on '. get_the_time('jS F Y') .'</span>';
-	elseif (!is_page()) {
-		$title_html .= '<span class="postdate">';
-		$title_html .= get_the_date();
-		$title_html .= ' by ' . get_the_author();
-		$title_html .= '</span>';
-		
-		//$title_html .= '<a href="' . get_author_posts_url(get_the_author_meta( 'ID' )) . '">' . get_the_author_meta('display_name') . '</a>';           
-		//$title_html .= ' on '. get_the_time('jS F Y') .'</span>';
-	}
-	 ?>   
+ ?>
+            <?php if (is_single()) : ?>			
+               <div class="alignleft" style="width: 312px;">
+                     <?php echo $img_html ?>
+                     <?php if (is_single()) echo $website_html; ?>
+                     <?php if (is_single()) echo $frequency_html; ?>
+                     <?php if (is_single()) echo $tags ?>
+
+               </div>
+            <?php else : ?>
+               <?php echo $img_html ?>
+            <?php endif; ?>
+            
             <?php echo $title_html ?>			
             <div class="entry clearfix">
+                  <?php 
+                  ?>
                   <?php the_content('<p>Read the rest of this entry &raquo;</p>'); ?>
-            </div>
+        		</div>
 				<?php 
                 # below entry widgets
 				if ( is_active_sidebar( 'below_entry_widgets' ) ) : // Nothing here by default and design ?>
@@ -148,3 +116,4 @@ $feature_3_show = get_field('feature_3_show');
       
       	<?php endif; ?>
 </div><!-- end of posts div -->
+<?php diag("END POSTS") ?>
