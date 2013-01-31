@@ -1,8 +1,8 @@
 <?php
 /*
-File Description: The default Loop (used for posts, including podcasts)
+File Description: The default Loop (used for pages & posts, including homepage and podcasts)
 Author: Axel Minet
-Theme Version: 0.6.1
+Theme Version: 0.7
 */
 ?>
 
@@ -10,7 +10,36 @@ Theme Version: 0.6.1
 <div class="posts">
 <?php if ( function_exists('yoast_breadcrumb') ) {
 	yoast_breadcrumb('<p id="breadcrumbs">','</p>');
-} ?>       
+} ?>
+<? if (is_front_page()) :
+$feature_1_show = get_field('feature_1_show');
+$feature_2_show = get_field('feature_2_show');
+$feature_3_show = get_field('feature_3_show');
+								?>
+	<div class="entry clearfix">
+		<div class="threecol threecol-frontpage">
+				<div class="threecol-content threecol-1"><a href="<?=get_permalink($feature_1_show->ID)?>"><img class="alignleft" title="<?=get_field('feature_1_title')?>" alt="<?=get_field('feature_1_title')?>" src="<?= (get_field('feature_1_image') ? get_field('feature_1_image') : get_show_image('frontpage-thumb', $feature_1_show->ID , true, false, ''))?>" width="225" height="170" /></a></p>
+						<div>
+								<h2><a style="color: white;" href="<?=get_permalink($feature_1_show->ID)?>"><?=get_field('feature_1_title')?></a></h2>
+								<p><?=get_field('feature_1_description')?></p>
+						</div>
+				</div>
+				<div class="threecol-content threecol-2"><a href="<?=get_permalink($feature_2_show->ID)?>"><img class="alignleft" title="<?=get_field('feature_2_title')?>" alt="<?=get_field('feature_2_title')?>" src="<?= (get_field('feature_2_image') ? get_field('feature_2_image') : get_show_image('frontpage-thumb', $feature_2_show->ID , true, false, ''))?>" width="225" height="170" /></a></p>
+						<div>
+								<h2><a style="color: white;" href="<?=get_permalink($feature_2_show->ID)?>"><?=get_field('feature_2_title')?></a></h2>
+								<p><?=get_field('feature_2_description')?></p>
+						</div>
+				</div>
+				<div class="threecol-content threecol-3"><a href="<?=get_permalink($feature_3_show->ID)?>"><img class="alignleft" title="<?=get_field('feature_3_title')?>" alt="<?=get_field('feature_3_title')?>" src="<?= (get_field('feature_3_image') ? get_field('feature_3_image') : get_show_image('frontpage-thumb', $feature_3_show->ID , true, false, ''))?>" width="225" height="170" /></a></p>
+						<div>
+								<h2><a style="color: white;" href="<?=get_permalink($feature_3_show->ID)?>"><?=get_field('feature_3_title')?></a></h2>
+								<p><?=get_field('feature_3_description')?></p>
+						</div>
+				</div>
+		</div>
+	</div>
+<?php endif ?>
+
         <?php /* Do we have posts, then start the loop, otherwise display 404 */
         
         ?>

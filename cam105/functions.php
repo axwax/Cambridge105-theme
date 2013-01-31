@@ -95,6 +95,9 @@ add_image_size( 'shows-thumb', 150, 112, true );
 
 # add facebook thumbnail size
 add_image_size( 'facebook-thumb', 130, 130, true );
+
+# add frontpage boxes
+add_image_size( 'frontpage-thumb', 225, 170, true );
 	
 # change header image size
 add_filter('gigx_header_image_width', function($size) { return 468; });
@@ -458,6 +461,7 @@ function gigx_frontpage_scripts() {
     wp_deregister_script( 'gigx-tooltip-js' );
     wp_register_script( 'gigx-tooltip-js', get_bloginfo('stylesheet_directory') . '/js/jquery.tipTip.minified.js', array( 'jquery' ), '1.4', true );
     wp_enqueue_script( 'gigx-tooltip-js' );
+	//wp_enqueue_script( 'cam105-docready-js', get_bloginfo('stylesheet_directory') . '/js/cam105.docready.js', array( 'gigx-tooltip-js' ), false, true );
     
 }
 add_action('wp_enqueue_scripts', 'gigx_frontpage_scripts');
