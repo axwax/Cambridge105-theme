@@ -64,9 +64,33 @@ $feature_3_show = get_field('feature_3_show');
 	if ( $title && $title_tag && !is_page()) {
 		$title_html='<' . $title_tag . ' class="post-title">' . $title . '</' . $title_tag . '>'."\n\r";
 	}
-         if (in_category( "podcasts")) {
-            $img_html = '<div class="shows-image alignleft">' . get_show_image('shows-image') . '</div>';
-         }
+	
+	# podcast-specific: deal with image and show link
+	if (in_category( "podcasts")) {
+		$podcast_image = get_show_image('shows-image');
+		$img_html = '<div class="shows-image alignleft">' . $podcast_image . '</div>';			
+		
+		# Link image to associated show (posts-to-posts)
+		if ( function_exists( 'p2p_type' ) && is_single() ){
+			$connected = p2p_type( 'posts_to_shows' )->get_connected( $post->ID );
+
+			// Display connected pages
+			if ( $connected->have_posts() ) :
+				$show_html = "";
+				$connected->the_post();
+				$title = the_title('', '', false);
+				$permalink = apply_filters('the_permalink', get_permalink());
+				$show_html.= '<p style="margin: 10px 0 0 0;"><a href="' . esc_url($permalink) . '" title="'.esc_attr($title).'">';   
+				$show_html.= '<img src="' . get_bloginfo('stylesheet_directory').'/images/website-icon-small.png" width="16" height="16" alt="' . esc_attr($title) . '" title="' . esc_attr($title) . '" />';
+				$show_html.= '         ' . $title;
+				$show_html.= '      </a></p>';
+				// Prevent weirdness
+				wp_reset_postdata();
+				$podcast_image = get_show_image('shows-image', false, false, $title);
+				$img_html = '<div class="shows-image alignleft"><a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '">' . $podcast_image . '</a>' . $show_html . '</div>';
+			endif;					
+		}			
+	}
  ?>
             <?php if (is_single()) : ?>			
                <div class="alignleft" style="width: 312px;">
