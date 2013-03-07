@@ -2,7 +2,7 @@
 /*
 File Description: The Loop for "Shows" Custom Post Type (list as well as single shows)
 Author: Axel Minet
-Theme Version: 0.6.2
+Theme Version: 0.7.0
 */
 
 require_once $_SERVER['DOCUMENT_ROOT']."/schedule_info/Schedule.class.php"; 
@@ -22,27 +22,31 @@ function related_order($input) {
 			the_post(); 	  
 			$postcount++; 
 
+			#Show Slug
+			$show_slug=get_post($post->ID)->post_name;
+			
 			# Show Title (Shows CPT)
 			$title_tag='h2';
 			$single_title_tag='h1';
-			$title = the_title('', '', false);		
-			if ( $title && !is_singular() ) {
+			$show_title = the_title('', '', false);
+			$show_title = $show_title;
+			if ( $show_title && !is_singular() ) {
 				$permalink='';
 				$permalink = apply_filters('the_permalink', get_permalink());
-				if(isset($permalink)) $title = '<a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '">'.$title.'</a>';
+				if(isset($permalink)) $show_title = '<a href="' . esc_url($permalink) . '" title="' . esc_attr($show_title) . '">'.$show_title.'</a>';
 			}
 			if ( $single_title_tag && is_singular() ) {
 				$title_tag=$single_title_tag;
 			}		
-			if ( $title && $title_tag && !is_page()) {
-				$title_html='<' . $title_tag . ' class="post-title">' . $title . '</' . $title_tag . '>'."\n\r";
+			if ( $show_title && $title_tag && !is_page()) {
+				$title_html='<' . $title_tag . ' class="post-title">' . $show_title . '</' . $title_tag . '>'."\n\r";
 			}
 			if (is_singular()){
 				$img_html = '<div class="shows-image alignleft">' . get_show_image('shows-image') . '</div>';
 			}
 			else{
 				if(isset($permalink)){
-					$img_html = '<div class="shows-thumb alignleft"><a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '">' . get_show_image('shows-thumb') . '</a></div>';  
+					$img_html = '<div class="shows-thumb alignleft"><a href="' . esc_url($permalink) . '" title="' . esc_attr($show_title) . '">' . get_show_image('shows-thumb') . '</a></div>';  
 				}     
 				else $img_html = '<div class="shows-thumb alignleft">' . get_show_image('shows-thumb') . '</div>';      
 			}
@@ -84,6 +88,14 @@ function related_order($input) {
 			if  ('' != $facebook_url) {
 				$facebook_html='<p><a href="'.$facebook_url.'" target="_blank"><img src="' . get_bloginfo('stylesheet_directory').'/images/facebook-icon-small.png" width="16" height="16" alt="Facebook Page" title="Facebook Page" /> Facebook Page</a></p>'."\n\r";
 			}
+			
+			# Show's Mixcloud (Custom Meta)
+			$mixcloud_html='';
+			$mixcloud_handle=get_post_meta($post->ID, 'show_mixcloud_handle', True);
+			if  ('' != $mixcloud_handle) {			   
+			   $mixcloud_html='<p><iframe width="300" height="90" src="//www.mixcloud.com/widget/iframe/?feed=http%3A%2F%2Fwww.mixcloud.com%2F'.$mixcloud_handle.'%2F%3Flimit%3D10&embed_uuid=cde7f48c-899e-476e-b263-52ad4a31b795&stylecolor=83AE2C&embed_type=widget_standard" frameborder="0"></iframe></p>'."\n\r";	
+			   $mixcloud_html.='<p><a href="http://www.mixcloud.com/'.$mixcloud_handle.'" target="_blank"><img src="' . get_bloginfo('stylesheet_directory').'/images/mixcloud16x16.png" width="16" height="16" alt="Mixcloud Page" title="Mixcloud Page" /> Mixcloud Page</a></p>'."\n\r";
+			}			
 			  
 			# Show Frequency list (Tax)
 			$frequency_html='';
@@ -94,7 +106,7 @@ function related_order($input) {
 			
 			$schedule = new Schedule(Schedule::GetCachedScheduleURL(), Schedule::GetProgrammesURL());
 			$is_current = false;
-			$nextshowing = $schedule->GetNextShowing($post->post_name, &$is_current);
+			$nextshowing = $schedule->GetNextShowing($show_slug, &$is_current);
 			
 			$nextonair_html='';
 			if($nextshowing)
@@ -107,7 +119,7 @@ function related_order($input) {
 			
 			$now = $schedule->GetCurrentShow();
 			//if($now['pid']== basename(get_permalink())){
-			if($now['pid']== $post->post_name){
+			if($now['pid']== $show_slug){
 				$nowplaying_html = '<h2 class="related-shows latest-podcast">now playing: '.$now['start_text'].' - '.$now['end_text'].'</h2>';
 				$nowplaying_html.= '<div id="latest_podcast" class="widget widget_gigxrecentposts">';
 				$nowplaying_html .= '<p>'.$now['desc'].'</p>';
@@ -117,6 +129,8 @@ function related_order($input) {
 			# Podcasts (posts-to-posts)
 			// Find connected pages
 			$podcasts_html = '';
+			$podcast_rss = '';
+			$podcast_more = '';
 			if ( function_exists( 'p2p_type' ) && is_single() ){
 				$connected = p2p_type( 'posts_to_shows' )->get_connected( $post->ID );
 
@@ -131,31 +145,38 @@ function related_order($input) {
 					while ( $connected->have_posts() && $podcastcount<5) :
 					  $podcastcount++;
 					  $connected->the_post();
-					  $title = the_title('', '', false);
+					  $podcast_title = the_title('', '', false);
 					  $permalink = apply_filters('the_permalink', get_permalink());
 					  
 					  if(!$first){
 					     $podcasts_html.= '      <div class="twocol">';
 					     $podcasts_html.= '      <div class="twocol-1 twocol-content">';
 					     
-					     $podcasts_html.= '      <p><a href="' . esc_url($permalink) . '" title="'.esc_attr($title).'">';   
+					     $podcasts_html.= '      <p><a href="' . esc_url($permalink) . '" title="'.esc_attr($podcast_title).'">';   
 					     $podcasts_html.=          get_show_image('shows-thumb');
-					     $podcasts_html.=          $title;
+					     $podcasts_html.=          $podcast_title;
 					     $podcasts_html.= '      </a>';
 					     global $more; $more = 0;
-					     $podcasts_html.= '      <br/>' . gigx_excerpt (get_the_content(),get_the_excerpt(),false,500,$permalink,'more',False);
+						 
+						 $podcast_desc = gigx_excerpt (get_the_content(),get_the_excerpt(),false,500,$permalink,'more',false);
+					     $podcasts_html.= '      <br/>' . $podcast_desc;
+					     
+						 //$podcasts_html.= '      <br/>' . substr($podcast_desc, 0 , strpos($podcast_desc,"Tweet"));
 					     //$podcasts_html.= '      <br/>' . get_the_content('[...]');
 					     //$podcasts_html.= '      <br/>' . get_the_excerpt();
 					     $podcasts_html.=  do_shortcode('[powerpress]');
 					     $podcasts_html.= '      </p></div>';
-					     $podcasts_html.= '      <div class="twocol-2 twocol-content">Previous Shows:<ul >';
-					     
+					     if($connected->post_count>1) $podcasts_html.= '      <div class="twocol-2 twocol-content">Previous Shows:<ul >';
 					     
 					     $first=true;
+						 
+						$cat=get_category_by_slug($show_slug)->term_id;
+						$podcast_rss = '<a href="' . get_category_link($cat) .'feed" target="_blank"><img src="' . get_bloginfo('stylesheet_directory').'/images/rss16x16.png" width="16" height="16" alt="Subscribe to ' . $show_title . '\'s Podcasts via RSS" title="Subscribe to ' . $show_title . '\'s Podcasts via RSS" /> Subscribe to ' . $show_title . '\'s Podcasts via RSS</a>';
+						$podcast_more = '<a href="' . get_category_link($cat) .'">View all ' . $show_title . ' Podcasts</a>';
 					  }
 					  else{
-					     $podcasts_html.= '      <li><a href="' . esc_url($permalink) . '" title="'.esc_attr($title).'">';   
-					     $podcasts_html.=          $title;
+					     $podcasts_html.= '      <li><a href="' . esc_url($permalink) . '" title="'.esc_attr($podcast_title).'">';   
+					     $podcasts_html.=          $podcast_title;
 					     $podcasts_html.= '      </a>';
 					     $podcasts_html.=  do_shortcode('[powerpress]');
 					     $podcasts_html.= '      </li>';
@@ -164,7 +185,11 @@ function related_order($input) {
 					     
 					  }
 					endwhile;
-					$podcasts_html.= '</ul></div></div></div>';
+					if($connected->post_count>1) $podcasts_html.= '</ul>' . $podcast_more . '</div>';
+					else $podcasts_html.= $podcast_more;
+					$podcasts_html.= '</div>';
+					$podcasts_html.=  $podcast_rss;
+					$podcasts_html.= '</div>';
 					// Prevent weirdness
 					wp_reset_postdata();
 				endif;
@@ -179,7 +204,8 @@ function related_order($input) {
 						<?php if (is_single()) echo $website_html; ?>
 						<?php if (is_single()) echo $twitter_html; ?>
 						<?php if (is_single()) echo $facebook_html; ?>
-						<?php if (is_single() && ($website_html || $twitter_html || $facebook_html)) : ?>
+						<?php if (is_single()) echo $mixcloud_html; ?>
+						<?php if (is_single() && ($website_html || $twitter_html || $facebook_html || $mixcloud_html)) : ?>
 						   <p style="margin: 0 0 15px 0;font-size: smaller;">Cambridge 105 is not responsible for the content of external websites.</p>
 						<?php endif; ?>
 						<?php if (is_single()) echo $frequency_html; ?>
@@ -245,9 +271,9 @@ function related_order($input) {
 								while ($my_query->have_posts()) : 
 									$my_query->the_post();
 									$permalink = apply_filters('the_permalink', get_permalink());
-									$title = the_title('', '', false);
+									$related_title = the_title('', '', false);
 									if(isset($permalink)){
-										$img_html = '<div class="shows-thumb"><a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '">' . get_show_image('shows-thumb') . '</a></div>';  
+										$img_html = '<div class="shows-thumb"><a href="' . esc_url($permalink) . '" title="' . esc_attr($related_title) . '">' . get_show_image('shows-thumb') . '</a></div>';  
 									}     
 									else {
 										$img_html = '<div class="shows-thumb ">' . get_show_image('shows-thumb') . '</div>';           
