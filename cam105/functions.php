@@ -465,3 +465,6 @@ function gigx_frontpage_scripts() {
     
 }
 add_action('wp_enqueue_scripts', 'gigx_frontpage_scripts');
+
+# no category base redirection script
+include 'functions/no-category-base-wpml.php';
