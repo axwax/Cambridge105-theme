@@ -2,7 +2,7 @@
 /*
 File Description: The Loop for "Shows" Custom Post Type (list as well as single shows)
 Author: Axel Minet
-Theme Version: 0.6.2
+Theme Version: 0.7.0
 */
 
 require_once $_SERVER['DOCUMENT_ROOT']."/schedule_info/Schedule.class.php"; 
@@ -28,25 +28,25 @@ function related_order($input) {
 			# Show Title (Shows CPT)
 			$title_tag='h2';
 			$single_title_tag='h1';
-			$title = the_title('', '', false);
-			$show_title = $title;
-			if ( $title && !is_singular() ) {
+			$show_title = the_title('', '', false);
+			$show_title = $show_title;
+			if ( $show_title && !is_singular() ) {
 				$permalink='';
 				$permalink = apply_filters('the_permalink', get_permalink());
-				if(isset($permalink)) $title = '<a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '">'.$title.'</a>';
+				if(isset($permalink)) $show_title = '<a href="' . esc_url($permalink) . '" title="' . esc_attr($show_title) . '">'.$show_title.'</a>';
 			}
 			if ( $single_title_tag && is_singular() ) {
 				$title_tag=$single_title_tag;
 			}		
-			if ( $title && $title_tag && !is_page()) {
-				$title_html='<' . $title_tag . ' class="post-title">' . $title . '</' . $title_tag . '>'."\n\r";
+			if ( $show_title && $title_tag && !is_page()) {
+				$title_html='<' . $title_tag . ' class="post-title">' . $show_title . '</' . $title_tag . '>'."\n\r";
 			}
 			if (is_singular()){
 				$img_html = '<div class="shows-image alignleft">' . get_show_image('shows-image') . '</div>';
 			}
 			else{
 				if(isset($permalink)){
-					$img_html = '<div class="shows-thumb alignleft"><a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '">' . get_show_image('shows-thumb') . '</a></div>';  
+					$img_html = '<div class="shows-thumb alignleft"><a href="' . esc_url($permalink) . '" title="' . esc_attr($show_title) . '">' . get_show_image('shows-thumb') . '</a></div>';  
 				}     
 				else $img_html = '<div class="shows-thumb alignleft">' . get_show_image('shows-thumb') . '</div>';      
 			}
@@ -145,16 +145,16 @@ function related_order($input) {
 					while ( $connected->have_posts() && $podcastcount<5) :
 					  $podcastcount++;
 					  $connected->the_post();
-					  $title = the_title('', '', false);
+					  $podcast_title = the_title('', '', false);
 					  $permalink = apply_filters('the_permalink', get_permalink());
 					  
 					  if(!$first){
 					     $podcasts_html.= '      <div class="twocol">';
 					     $podcasts_html.= '      <div class="twocol-1 twocol-content">';
 					     
-					     $podcasts_html.= '      <p><a href="' . esc_url($permalink) . '" title="'.esc_attr($title).'">';   
+					     $podcasts_html.= '      <p><a href="' . esc_url($permalink) . '" title="'.esc_attr($podcast_title).'">';   
 					     $podcasts_html.=          get_show_image('shows-thumb');
-					     $podcasts_html.=          $title;
+					     $podcasts_html.=          $podcast_title;
 					     $podcasts_html.= '      </a>';
 					     global $more; $more = 0;
 						 
@@ -175,8 +175,8 @@ function related_order($input) {
 						$podcast_more = '<a href="' . get_category_link($cat) .'">View all ' . $show_title . ' Podcasts</a>';
 					  }
 					  else{
-					     $podcasts_html.= '      <li><a href="' . esc_url($permalink) . '" title="'.esc_attr($title).'">';   
-					     $podcasts_html.=          $title;
+					     $podcasts_html.= '      <li><a href="' . esc_url($permalink) . '" title="'.esc_attr($podcast_title).'">';   
+					     $podcasts_html.=          $podcast_title;
 					     $podcasts_html.= '      </a>';
 					     $podcasts_html.=  do_shortcode('[powerpress]');
 					     $podcasts_html.= '      </li>';
@@ -271,9 +271,9 @@ function related_order($input) {
 								while ($my_query->have_posts()) : 
 									$my_query->the_post();
 									$permalink = apply_filters('the_permalink', get_permalink());
-									$title = the_title('', '', false);
+									$related_title = the_title('', '', false);
 									if(isset($permalink)){
-										$img_html = '<div class="shows-thumb"><a href="' . esc_url($permalink) . '" title="' . esc_attr($title) . '">' . get_show_image('shows-thumb') . '</a></div>';  
+										$img_html = '<div class="shows-thumb"><a href="' . esc_url($permalink) . '" title="' . esc_attr($related_title) . '">' . get_show_image('shows-thumb') . '</a></div>';  
 									}     
 									else {
 										$img_html = '<div class="shows-thumb ">' . get_show_image('shows-thumb') . '</div>';           
