@@ -22,10 +22,14 @@ function related_order($input) {
 			the_post(); 	  
 			$postcount++; 
 
+			#Show Slug
+			$show_slug=get_post($post->ID)->post_name;
+			
 			# Show Title (Shows CPT)
 			$title_tag='h2';
 			$single_title_tag='h1';
-			$title = the_title('', '', false);		
+			$title = the_title('', '', false);
+			$show_title = $title;
 			if ( $title && !is_singular() ) {
 				$permalink='';
 				$permalink = apply_filters('the_permalink', get_permalink());
@@ -102,7 +106,7 @@ function related_order($input) {
 			
 			$schedule = new Schedule(Schedule::GetCachedScheduleURL(), Schedule::GetProgrammesURL());
 			$is_current = false;
-			$nextshowing = $schedule->GetNextShowing($post->post_name, &$is_current);
+			$nextshowing = $schedule->GetNextShowing($show_slug, &$is_current);
 			
 			$nextonair_html='';
 			if($nextshowing)
@@ -115,7 +119,7 @@ function related_order($input) {
 			
 			$now = $schedule->GetCurrentShow();
 			//if($now['pid']== basename(get_permalink())){
-			if($now['pid']== $post->post_name){
+			if($now['pid']== $show_slug){
 				$nowplaying_html = '<h2 class="related-shows latest-podcast">now playing: '.$now['start_text'].' - '.$now['end_text'].'</h2>';
 				$nowplaying_html.= '<div id="latest_podcast" class="widget widget_gigxrecentposts">';
 				$nowplaying_html .= '<p>'.$now['desc'].'</p>';
@@ -125,6 +129,8 @@ function related_order($input) {
 			# Podcasts (posts-to-posts)
 			// Find connected pages
 			$podcasts_html = '';
+			$podcast_rss = '';
+			$podcast_more = '';
 			if ( function_exists( 'p2p_type' ) && is_single() ){
 				$connected = p2p_type( 'posts_to_shows' )->get_connected( $post->ID );
 
@@ -151,15 +157,22 @@ function related_order($input) {
 					     $podcasts_html.=          $title;
 					     $podcasts_html.= '      </a>';
 					     global $more; $more = 0;
-					     $podcasts_html.= '      <br/>' . gigx_excerpt (get_the_content(),get_the_excerpt(),false,500,$permalink,'more',False);
+						 
+						 $podcast_desc = gigx_excerpt (get_the_content(),get_the_excerpt(),false,500,$permalink,'more',false);
+					     $podcasts_html.= '      <br/>' . $podcast_desc;
+					     
+						 //$podcasts_html.= '      <br/>' . substr($podcast_desc, 0 , strpos($podcast_desc,"Tweet"));
 					     //$podcasts_html.= '      <br/>' . get_the_content('[...]');
 					     //$podcasts_html.= '      <br/>' . get_the_excerpt();
 					     $podcasts_html.=  do_shortcode('[powerpress]');
 					     $podcasts_html.= '      </p></div>';
-					     $podcasts_html.= '      <div class="twocol-2 twocol-content">Previous Shows:<ul >';
-					     
+					     if($connected->post_count>1) $podcasts_html.= '      <div class="twocol-2 twocol-content">Previous Shows:<ul >';
 					     
 					     $first=true;
+						 
+						$cat=get_category_by_slug($show_slug)->term_id;
+						$podcast_rss = '<a href="' . get_category_link($cat) .'feed" target="_blank"><img src="' . get_bloginfo('stylesheet_directory').'/images/rss16x16.png" width="16" height="16" alt="Subscribe to ' . $show_title . '\'s Podcasts via RSS" title="Subscribe to ' . $show_title . '\'s Podcasts via RSS" /> Subscribe to ' . $show_title . '\'s Podcasts via RSS</a>';
+						$podcast_more = '<a href="' . get_category_link($cat) .'">View all ' . $show_title . ' Podcasts</a>';
 					  }
 					  else{
 					     $podcasts_html.= '      <li><a href="' . esc_url($permalink) . '" title="'.esc_attr($title).'">';   
@@ -172,7 +185,11 @@ function related_order($input) {
 					     
 					  }
 					endwhile;
-					$podcasts_html.= '</ul></div></div></div>';
+					if($connected->post_count>1) $podcasts_html.= '</ul>' . $podcast_more . '</div>';
+					else $podcasts_html.= $podcast_more;
+					$podcasts_html.= '</div>';
+					$podcasts_html.=  $podcast_rss;
+					$podcasts_html.= '</div>';
 					// Prevent weirdness
 					wp_reset_postdata();
 				endif;
