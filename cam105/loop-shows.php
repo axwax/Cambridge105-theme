@@ -84,6 +84,14 @@ function related_order($input) {
 			if  ('' != $facebook_url) {
 				$facebook_html='<p><a href="'.$facebook_url.'" target="_blank"><img src="' . get_bloginfo('stylesheet_directory').'/images/facebook-icon-small.png" width="16" height="16" alt="Facebook Page" title="Facebook Page" /> Facebook Page</a></p>'."\n\r";
 			}
+			
+			# Show's Mixcloud (Custom Meta)
+			$mixcloud_html='';
+			$mixcloud_handle=get_post_meta($post->ID, 'show_mixcloud_handle', True);
+			if  ('' != $mixcloud_handle) {			   
+			   $mixcloud_html='<p><iframe width="300" height="90" src="//www.mixcloud.com/widget/iframe/?feed=http%3A%2F%2Fwww.mixcloud.com%2F'.$mixcloud_handle.'%2F%3Flimit%3D10&embed_uuid=cde7f48c-899e-476e-b263-52ad4a31b795&stylecolor=83AE2C&embed_type=widget_standard" frameborder="0"></iframe></p>'."\n\r";	
+			   $mixcloud_html.='<p><a href="http://www.mixcloud.com/'.$mixcloud_handle.'" target="_blank"><img src="' . get_bloginfo('stylesheet_directory').'/images/mixcloud16x16.png" width="16" height="16" alt="Mixcloud Page" title="Mixcloud Page" /> Mixcloud Page</a></p>'."\n\r";
+			}			
 			  
 			# Show Frequency list (Tax)
 			$frequency_html='';
@@ -179,7 +187,8 @@ function related_order($input) {
 						<?php if (is_single()) echo $website_html; ?>
 						<?php if (is_single()) echo $twitter_html; ?>
 						<?php if (is_single()) echo $facebook_html; ?>
-						<?php if (is_single() && ($website_html || $twitter_html || $facebook_html)) : ?>
+						<?php if (is_single()) echo $mixcloud_html; ?>
+						<?php if (is_single() && ($website_html || $twitter_html || $facebook_html || $mixcloud_html)) : ?>
 						   <p style="margin: 0 0 15px 0;font-size: smaller;">Cambridge 105 is not responsible for the content of external websites.</p>
 						<?php endif; ?>
 						<?php if (is_single()) echo $frequency_html; ?>
