@@ -5,7 +5,7 @@
  * Selectable from a dropdown menu on the edit page screen.
  */
  
- header ("Content-Type:text/xml");
+header ("Content-Type:text/xml");
 
 $args = array(
     'numberposts'     => -1,
